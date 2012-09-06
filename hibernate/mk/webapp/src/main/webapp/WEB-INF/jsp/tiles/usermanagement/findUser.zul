@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+    
+	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+	
+	<window title="${c:l('userFind.title')}" border="normal"
+		apply="${QueryController}" style="margin: 5px 5px;">
+		<zscript>
+			import com.ixonos.skillnet.web.controllers.PracticumRowLabelComparator;
+			Comparator ascDateFrom = new PracticumRowLabelComparator(true,"Date From",false);
+			Comparator dscDateFrom = new PracticumRowLabelComparator(false,"Date From",false);
+			Comparator ascDateTo = new PracticumRowLabelComparator(true,"Date To",false);
+			Comparator dscDateTo = new PracticumRowLabelComparator(false,"Date To",false);
+			Comparator ascLevel = new PracticumRowLabelComparator(true,"Level",false);
+			Comparator dscLevel = new PracticumRowLabelComparator(false,"Level",false);
+			Comparator ascUser = new PracticumRowLabelComparator(true,"User",false);
+			Comparator dscUser = new PracticumRowLabelComparator(false,"User",false);
+			Comparator ascSkill = new PracticumRowLabelComparator(true,"Skill",false);
+			Comparator dscSkill = new PracticumRowLabelComparator(false,"Skill",false);
+			Comparator ascManager = new PracticumRowLabelComparator(true,"Manager",false);
+			Comparator dscManager = new PracticumRowLabelComparator(false,"Manager",false);
+		</zscript>	
+		<vbox width="100%">
+			<hbox width="100%">
+				<columnlayout>
+	            	<columnchildren width="15%" />
+	            	
+	            	<columnchildren width="65%">
+	            		<panel>
+		                    <panelchildren>
+		                    	<hbox spacing="1em">
+		                    		<vbox>
+		                    			<hbox>
+											<label value="${c:l('skillsEdit.skillName')}" style="margin: 3px 5px;" />
+											<textbox id="filter" />
+										</hbox>
+									</vbox>
+									<vbox>
+										<button id="filterReset" label="${c:l('skillsEdit.resetFilter')}" style="padding-left: 5px"/>
+									</vbox>
+									<vbox>	
+										<checkbox id="filterCheck" label="${c:l('userFind.filterCheckLabel')}"/>
+									</vbox>
+								</hbox>
+							</panelchildren>
+						</panel>
+					</columnchildren>
+				</columnlayout>
+			</hbox>
+			<hbox spacing="1em" width="100%">
+			<columnlayout>
+            <columnchildren width="15%">
+                <panel>
+                    <panelchildren>
+                        <listbox id="userListbox" height="250px" checkmark="true" multiple="true">
+	                        <listhead>
+	                        	<listheader label="${c:l('userFind.manager')}"/>
+	                        </listhead>
+	                        <listitem>
+                                <listcell/>
+                            </listitem>
+                        </listbox>
+                    </panelchildren>
+                </panel>
+            </columnchildren>
+            
+            <columnchildren width="65%">
+                <panel>
+                    <panelchildren>
+                        <listbox id="skillAndLevelGrid" height="250px" checkmark="true" multiple="true">
+                            <listhead sizable="true">
+                                <listheader label="${c:l('userFind.skill')}"/>
+                                <listheader label="${c:l('userFind.level')}"/>
+                                <listheader label="${c:l('userFind.length')}" width="120px"/>
+                            </listhead>
+                            <listitem>
+                                <listcell/>
+                                <listcell>
+                                    <combobox/>
+                                </listcell>    
+                                <listcell>
+                                	<intbox/>
+                                </listcell>
+                            </listitem>
+                        </listbox>  
+                    </panelchildren>
+                </panel>
+            </columnchildren>
+            <columnchildren width="10px" />
+            <columnchildren width="20%">
+                <panel>
+                    <panelchildren>
+                        <vbox spacing="2em" width="100%">
+	                        <hbox spacing="1em" width="100%">
+	                        	<button id="clear" label="${c:l('userFind.clear')}" width="70px"/>
+	                        	<button id="find" label="${c:l('userFind.find')}" width="70px"/>
+                                <button id="export" label="${c:l('userFind.export')}" width="70px" disabled="true"/>
+	                        </hbox>
+	                        <hbox width="100%">
+	                        	<checkbox id="exactCheck" label="${c:l('userFind.checkLabel')}"/>
+	                        </hbox>
+                        </vbox>
+                    </panelchildren>
+                </panel>
+            </columnchildren>
+        	</columnlayout>
+			</hbox>
+			<hbox width="79.5%">
+				<vbox spacing="2em" width="100%">
+					<listbox id="list" multiple="true" height="250px">
+						<listhead sizable="true">
+							<listheader label="${c:l('userFind.user')}" sortAscending="${ascUser}" sortDescending="${dscUser}"/>
+							<listheader label="${c:l('userFind.skill')}" sortAscending="${ascSkill}" sortDescending="${dscSkill}"/>
+							<listheader label="${c:l('userFind.level')}" sortAscending="${ascLevel}" sortDescending="${dscLevel}"/>
+							<listheader label="${c:l('userFind.from')}" sortAscending="${ascDateFrom}" sortDescending="${dscDateFrom}"/>
+							<listheader label="${c:l('userFind.to')}" sortAscending="${ascDateTo}" sortDescending="${dscDateTo}"/>
+							<listheader label="${c:l('userFind.manager')}" sortAscending="${ascManager}" sortDescending="${dscManager}"/>
+						</listhead>
+						<listitem onDoubleClick="QueryController.onDoubleClick()"/>
+					</listbox>
+				</vbox>
+			</hbox>
+		</vbox>
+	</window>
+</zk>

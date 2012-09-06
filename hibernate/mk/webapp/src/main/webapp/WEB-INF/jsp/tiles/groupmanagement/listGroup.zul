@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+    <window title="${c:l('group.title')}" width="640px" border="normal"
+		apply="${groupController}"
+         use="com.ixonos.skillnet.web.groupmanagment.GroupsUpdateAuthoritiesWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="groupsWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd" style="margin: 5px 5px;">
+	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+        <columnlayout>
+            <columnchildren width="50%" style="padding: 5px">
+                <panel title="${c:l('group.panel1.title')}" >
+                    <panelchildren>
+                        <listbox id="LISTBOX_OF_GROUP" multiple="true">
+                            <listhead>
+                                <listheader   width="100%" label="${c:l('group.name')}"/>
+                            </listhead>
+                        </listbox>
+                        <vbox width="100%">
+                            <hbox width="100%" style="padding-top: 5px">
+                            ${c:l('group.gName')}
+                                <textbox width="200px"  id="Name" constraint="no empty" />
+                            </hbox>
+                            <hbox>
+                                <button id="add" label="${c:l('group.add')}" />
+                                <button id="update" label="${c:l('group.update')}"/>
+                                <button id="delete" label="${c:l('group.delete')}"/>
+                            </hbox>
+                        </vbox>
+
+                    </panelchildren>
+                </panel>
+            </columnchildren>
+
+            <columnchildren width="50%">
+                <panel title="${c:l('group.panel2.title')}"  style="padding: 5px">
+                    <panelchildren>
+                        <listbox id="LISTBOX_AUTHORITIES" multiple="true" fixedLayout="true" checkmark="true" onSelect="groupsWindow.onUpdateAuthority(event)">
+                            <listhead>
+                                <listheader width="75%" label="${c:l('group.aCode')}"/>
+                            </listhead>
+                            <listitem>
+                                <listcell/>
+                            </listitem>
+                        </listbox>
+                    </panelchildren>
+                </panel>
+            </columnchildren>
+        </columnlayout>
+    </window>
+</zk>

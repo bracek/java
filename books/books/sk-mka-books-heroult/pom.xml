@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>sk.mka.books</groupId>
+    <artifactId>sk-mka-books</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>sk-mka-books-heroult</artifactId>
+  <name>sk-mka-books-heroult</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.5</source>
+                        <target>1.5</target>
+                        <encoding>UTF-8</encoding>
+                        <showWarnings>true</showWarnings>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>net.unto.maven.plugins</groupId>
+                    <artifactId>maven-junit4-plugin</artifactId>
+                    <version>1.0-SNAPSHOT</version>
+                    <executions>
+                        <execution>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.0.1</version>
+                    <configuration>
+                        <useFullArtifactNames>false</useFullArtifactNames>
+                        <excludes>META-INF/**/*</excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>tomcat-maven-plugin</artifactId>
+                    <version>1.0-alpha-1</version>
+                    <configuration>
+                        <url>http://localhost:8080/manager</url>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>windows-1250</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>windows-1250</encoding>
+                </configuration>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.codehaus.sonar</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>1.8M1</version>
+            </plugin>
+
+        </plugins>
+    </build>
+
+
+   
+
+    <developers>
+        <developer>
+            <id>bracek</id>
+            <name>Miroslav Katrak</name>
+            <email>miroslav dot katrak at gmail.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+    
+    <!--  <ciManagement>
+        <system>Hudson</system>
+        <url>http://kemt.fei.tuke.sk:9001/job/HeroultPavelBohatstvoKnihoven/</url>
+        <notifiers>
+            <notifier>
+                <type>mail</type>
+                <sendOnError>true</sendOnError>
+                <sendOnFailure>true</sendOnFailure>
+                <sendOnSuccess>true</sendOnSuccess>
+                <sendOnWarning>false</sendOnWarning>
+                <configuration>
+                    <address>miroslav.katrak@gmail.com</address>
+                </configuration>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+
+    <scm>
+        <connection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/books/HeroultPavelJava/</connection>
+        <developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/books/HeroultPavelJava/</developerConnection>
+        <url>http://kemt.fei.tuke.sk:3128/svn/katrak/java/books/HeroultPavelJava/</url>
+        <tag>HEAD</tag>
+    </scm> -->
+</project>

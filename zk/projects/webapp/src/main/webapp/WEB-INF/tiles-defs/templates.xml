@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    
+           
+    <!-- sorted alphabetically -->
+    <definition name=".main" template="/WEB-INF/jsp/tiles/main_template.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsp/tiles/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/tiles/menu.jsp" />
+    </definition>
+
+    <!-- user managment -->    
+        <definition name="default" extends=".main">
+        <put-attribute name="titleKey" value="pagetitle.welcome" type="string" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tiles/welcome.jsp" />
+    </definition>
+    
+    
+   
+    <definition name="usermanagement/usersAdd" extends=".main">
+        <put-attribute name="titleKey" value="pagetitle.user.add" type="string" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tiles/usermanagement/addNewUser.zul" />
+    </definition>
+
+    <definition name="usermanagement/usermanagementEdit" extends=".main">
+        <put-attribute name="titleKey" value="pagetitle.user.editAll" type="string" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tiles/usermanagement/usersEdit.zul" />
+    </definition>
+
+    <definition name="usermanagement/usermanagementEditDetail" extends=".main">
+        <put-attribute name="titleKey" value="pagetitle.user.edit" type="string" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tiles/usermanagement/usersDetail.zul" />
+    </definition>
+
+    <definition name="usermanagement/usermanagementImport" extends=".main">
+        <put-attribute name="titleKey" value="pagetitle.user.import" type="string" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tiles/usermanagement/importUsers.zul" />
+    </definition>
+
+     <!-- add projects -->
+    <definition name="projects/editProject" extends=".main">
+        <put-attribute name="titleKey" value="pagetitle.project.edit" type="string" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tiles/projects/editProject.zul" />
+    </definition>
+
+    <!-- project, users timeline -->
+    <definition name="projects/timeline" extends=".main">
+        <put-attribute name="titleKey" value="pagetitle.timeline" type="string" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tiles/projects/timeline.zul" />
+    </definition>
+    
+    <definition name="projects/editAllocation" extends=".main">
+        <put-attribute name="titleKey" value="pagetitle.allocation" type="string" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tiles/projects/editAllocation.zul" />
+    </definition>
+
+    <!-- group managment -->
+    <definition name="groupmanagement/groupmanagementEdit" extends=".main">
+        <put-attribute name="titleKey" value="pagetitle.group.edit" type="string" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tiles/groupmanagement/listGroup.zul" />
+    </definition>
+    
+
+<!--   builder-->
+    
+      <!-- sorted alphabetically -->
+    <definition name=".mainBuilder" template="/WEB-INF/jsp/tiles/main_template.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsp/tiles/header_builder.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/tiles/menu.jsp" />
+    </definition>
+    
+      <definition name="defaultBuilder" extends=".mainBuilder">
+        <put-attribute name="titleKey" value="pagetitle.welcome" type="string" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tiles/builder/uploadFile.zul" />
+    </definition>
+
+
+</tiles-definitions>

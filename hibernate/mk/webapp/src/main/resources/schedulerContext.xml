@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!-- import resource="classpath:applicationContext-logic.xml"/-->
+    <!--  annotation support -->
+    <context:annotation-config />
+	<context:component-scan base-package="com.ixonos.skillnet.web.schedule" />
+
+    <bean id="customScheduledTask" class="com.ixonos.skillnet.web.schedule.CustomScheduledTask"/>
+
+    <bean id="buzerativeEmailTask" class="com.ixonos.skillnet.web.schedule.BuzerativeEmailScheduledTask"/>
+
+    <!-- jobs scheduled by Quartz -->
+     <!-- Nightly Admin notification --> 
+     <bean id="customTaskJob"
+           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
+           p:targetObject-ref="customScheduledTask"
+             p:targetMethod="performScheduledAction"
+             p:concurrent="false" />
+
+     <bean id="buzerativeEmailTaskJob"
+           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
+           p:targetObject-ref="buzerativeEmailTask"
+             p:targetMethod="performScheduledAction"
+             p:concurrent="false" />
+
+    <!-- run every night at 1 AM -->
+    <bean id="customTaskCronTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerBean"
+          p:jobDetail-ref="customTaskJob"
+          p:cronExpression="0 0 1 * * ?"/>
+
+    <!-- run every Friday at 1 AM -->
+    <bean id="buzerativeEmailTaskCronTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerBean"
+          p:jobDetail-ref="buzerativeEmailTaskJob"
+          p:cronExpression="0 15 10 ? * FRI"/>
+
+    <!-- Task scheduler -->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+    	<list>
+    		<ref bean="customTaskCronTrigger"/>
+    		<ref bean="buzerativeEmailTaskCronTrigger"/>
+    	</list>
+    </property>
+    </bean>
+
+</beans>

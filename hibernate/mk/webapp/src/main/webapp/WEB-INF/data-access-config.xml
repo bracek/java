@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+    
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource">
+            <ref local="dataSource"/>
+        </property>
+
+        <!-- Automatically loads all annotated classes spring 2.5.6 and higher-->
+        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+        <property name="packagesToScan" value="com.ixonos.skillnet.logic.bean"/>
+
+        <property name="hibernateProperties">
+            <props>
+                <!--  <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>-->
+                <prop key="hibernate.dialect">com.ixonos.skillnet.logic.dialect.TableNameSequencePostgresDialect</prop>
+
+                <!-- setup of "hbm2ddl.auto" is in main pom.xml file in profile section -->
+                <!-- <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop> -->
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- load application context provider -->
+    <bean id="contextApplicationContextProvider" class="com.ixonos.skillnet.logic.context.SkillnetApplicationContextProvider"></bean>
+
+
+    <!-- Configuration file -->
+    <bean id="propertyConfigurerLogicModule"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="classpath:config-logic.properties" />
+
+    <!-- Skillnet Data source -->
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${skillnet.jdbc.driverClassName}"
+          p:url="${skillnet.jdbc.url}"
+          p:username="${skillnet.jdbc.username}"
+          p:password="${skillnet.jdbc.password}" />
+
+    <!-- Skillnet JDBC Data source -->
+    <bean id="dataSourceJdbc" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          p:driverClassName="org.postgresql.Driver"
+          p:url="${skillnet.jdbc.url}"
+          p:username="${skillnet.jdbc.username}"
+          p:password="${skillnet.jdbc.password}" />
+
+    <!-- Transaction managers -->
+    <bean id="skillnetTxManager"
+  	      class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+  		  p:dataSource-ref="dataSource"
+  	/>
+    <!-- Annotation-based transaction management - Activates @Transactional
++-->
+    <tx:annotation-driven transaction-manager="skillnetTxManager" />
+    <aop:aspectj-autoproxy />
+
+</beans>

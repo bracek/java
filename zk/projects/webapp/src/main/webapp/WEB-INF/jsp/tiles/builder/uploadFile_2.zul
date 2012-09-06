@@ -1,0 +1,84 @@
+<?init class="builder.BuilderInitiator" arg0="addbuilderWindow"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?page id="addbuilder" title="Add builder"?>
+
+<window title="${c:l('builder.homePageName')}" border="normal"
+	
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="addbuilderWindow"
+	use="builder.BuilderWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd" width="350px">
+            
+    <button id="uploadBtn" label="Upload icon " onClick="controlWindow.saveImage()" />
+    <separator />
+    <image id="img" />
+    <separator />
+    <label id="msgLb" />        
+        
+       <!-- application name -->
+    <tablelayout columns="2" width="100%" >
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <label value="${c:l('builder.applicationName')}" />
+                </panelchildren>
+            </panel>
+        </tablechildren>
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <a:bind value="controlWindow.builder.name" />
+                    <textbox id="name" width="90%"/>
+                </panelchildren>
+            </panel>
+        </tablechildren>
+            
+<!--            email address-->
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <label value="${c:l('builder.emailAddress')}" />
+                </panelchildren>
+            </panel>
+        </tablechildren>
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <a:bind value="controlWindow.builder.email" />
+                    <textbox id="email" width="90%"/>
+                </panelchildren>
+            </panel>
+        </tablechildren>
+     
+            
+<!--            email address-->
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <label value="${c:l('builder.categoryUrl')}" />
+                </panelchildren>
+            </panel>
+        </tablechildren>
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <a:bind value="controlWindow.builder.categoryUrl" />
+                    <textbox id="categoryUrl" width="90%"/>
+                    
+                    <button label="${c:l('builder.edit.addbuilder')}"
+							onClick="controlWindow.saveImage()" />                   
+                    
+                    
+                </panelchildren>
+            </panel>
+        </tablechildren>
+     
+
+    </tablelayout>
+                
+</window>
+
+            

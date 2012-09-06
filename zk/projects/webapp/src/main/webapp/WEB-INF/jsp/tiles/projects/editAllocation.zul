@@ -1,0 +1,89 @@
+<?init class="fi.ixonos.projects.web.allocation.EditAllocationInitiator" arg0="editAllocationWindow" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<window title="${c:l('allocation.editAllocations')}" border="normal" id="editAllocationWindow" style="margin: 5px 5px;"
+    use="fi.ixonos.projects.web.allocation.EditAllocationWindow" xmlns:a="http://www.zkoss.org/2005/zk/annotation">
+
+    <zscript>
+		import fi.ixonos.projects.web.allocation.UsersComparator;
+                				
+		Comparator ascFirstName = new UsersComparator(true, UsersComparator.NAME_COLUMN);
+		Comparator dscFirstName = new UsersComparator(false, UsersComparator.NAME_COLUMN);
+		Comparator ascLastName = new UsersComparator(true, UsersComparator.SURNAME_COLUMN);
+		Comparator dscLastName = new UsersComparator(false, UsersComparator.SURNAME_COLUMN);
+    </zscript>
+
+    <hbox width="100%" widths="80%,20%">
+        <panel id="mainPanel" title="${c:l('allocation.projectsTitle')}" style="margin-right: 5px; padding: 2px;">
+            <panelchildren>
+                <hbox align="center" widths="28%,34%,38%" style="padding-left:20px; padding-top:10px; padding-bottom:10px;" width="100%">
+                    <hbox align="center">
+                        ${c:l('allocation.openNewProject')}:
+                        <button id="addbtn" label="${c:l('allocation.createNewProject')}" onClick="editAllocationWindow.onProjectAdded(event)"/>
+                    </hbox>
+                    <hbox align="center">
+                        ${c:l('allocation.openExistingProject')}:
+                        <bandbox id="projectsBandbox" autodrop="true">
+                            <bandpopup>
+                                <listbox id="projectsListbox" height="210px" width="300px" mold="paging" pageSize="5"
+                                    onSelect="editAllocationWindow.onProjectSelected(event); projectsBandbox.close();">
+                                    <listhead>
+                                        <listheader label="Existing projects" />
+                                    </listhead>
+                                </listbox>
+                            </bandpopup>
+                        </bandbox>
+                        <!--
+                        <combobox id="projectsCombobox" autodrop="true" onChange="editAllocationWindow.onProjectSelected(event)" />
+                        -->
+                    </hbox>
+                    <hbox>
+                        <hbox id="changed" align="center" visible="false">
+                            ${c:l('allocation.unsavedChanges')}:
+                            <button id="saveall" label="${c:l('common.button.saveAll')}" image="/img/saveall-icon.png" onClick="editAllocationWindow.onSaveAllClicked(event)" />
+                        </hbox>
+                    </hbox>
+                </hbox>
+                <portallayout id="portalLayout">
+                    <portalchildren id="pc1" style="padding: 5px" width="25%" />
+                    <portalchildren id="pc2" style="padding: 5px" width="25%" />
+                    <portalchildren id="pc3" style="padding: 5px" width="25%" />
+                    <portalchildren id="pc4" style="padding: 5px" width="25%" />
+                </portallayout>
+            </panelchildren>
+        </panel>
+        <panel title="${c:l('allocation.usersTitle')}" style="margin-left: 5px; padding: 2px;">
+            <panelchildren>
+                <a:bind model="userSourceList"/>
+                <listbox id="usersSourceListbox" height="800px" multiple="false" droppable="true" onDrop="editAllocationWindow.onDropUserOnList(event)">
+                    <listhead sizable="true">
+                        <listheader id="firstNameListitem" width="50%" sortAscending="${ascFirstName}"
+                                sortDescending="${dscFirstName}" label="${c:l('userDetail.firstName')}"/>
+                        <listheader id="lastNameListitem" width="50%" sortAscending="${ascLastName}"
+                                sortDescending="${dscLastName}" label="${c:l('userDetail.lastName')}"/>
+                    </listhead>
+                    <a:bind _var="user"/>
+                    <a:bind value="user" />
+                    <listitem draggable="true">
+                        <listcell>
+                            <a:bind value="user.name" />
+                            <label width="100%"/>
+                        </listcell>
+                        <listcell>
+                            <a:bind  value="user.surname" />
+                            <label width="100%"/>
+                        </listcell>
+                    </listitem>
+                </listbox>
+            </panelchildren>
+        </panel>
+    </hbox>
+    <popup id="renamePopup" onOpen="editAllocationWindow.onProjectRenaming(event)">
+        <vbox align="center">
+            ${c:l('allocation.renameProject')}:
+            <hbox align="center">
+                <textbox id="renameTextbox" onCancel="renamePopup.close();" onOK="editAllocationWindow.onProjectRenamed(event)" />
+                <button id="renameButton" label="${c:l('common.button.done')}" onClick="editAllocationWindow.onProjectRenamed(event)" />
+            </hbox>
+        </vbox>
+    </popup>
+</window>

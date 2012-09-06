@@ -1,0 +1,66 @@
+<div>
+	<p>
+		<a href="/builder/projectses?form">add new project</a>
+	</p>
+
+	<div xmlns:jsp="http://java.sun.com/JSP/Page"
+		xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+		xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+		<jsp:directive.page contentType="text/html;charset=UTF-8" />
+		<jsp:output omit-xml-declaration="yes" />
+		<page:list id="pl_fi_ixonos_builder_domain_Projects"
+			items="${projectses}" z="NMgnkL4HGrH0QunF1qw5qVS0YOQ=">
+			<table:table data="${projectses}"
+				id="l_fi_ixonos_builder_domain_Projects" path="/projectses"
+				z="lFYk4PfagBvrdqN0PNA6vt8XZY0=">
+				<table:column id="c_fi_ixonos_builder_domain_Projects_name"
+					property="name" z="FB9tcXlsXU+MYIxpvjjdLY42fdQ=" />
+				<table:column id="c_fi_ixonos_builder_domain_Projects_symbian"
+					property="symbian" z="RkKDXP49Pd3/AXRiTbop1mpF12U=" />
+				<table:column id="c_fi_ixonos_builder_domain_Projects_meego"
+					property="meego" z="9mFnwJ7JYJiOdeYgUpwFx8/qiqc=" />
+				<table:column id="c_fi_ixonos_builder_domain_Projects_news_template"
+					property="news_template" z="CfQXxfu4aFhLPfcrtrnmdoAA9IY=" />
+			</table:table>
+		</page:list>
+	</div>
+
+	<!-- 
+	<script type="text/javascript">
+		function setValue() {
+			var text = document.getElementById('Id1').valueOf();
+			hiddenId1.value = text;
+
+		}
+	</script>
+	<input type="text" id="Id1" onchange="javascript:setValue()"></input> 
+ -->
+
+
+	<!-- 
+	<div align="right" xmlns:spring="http://www.springframework.org/tags"
+		xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+		xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+		xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+		<jsp:directive.page contentType="text/html;charset=UTF-8" />
+		<jsp:output omit-xml-declaration="yes" />
+		<spring:message var="title" code="webflow_state1_title"
+			htmlEscape="false" />
+		<form method="POST" path="/flow">
+			<div class="submit">
+				<spring:message var="cancel" code="button_cancel" htmlEscape="false" />
+				<spring:message var="proceed" code="button_proceed"
+					htmlEscape="false" />
+				<input type="submit" id="cancel" name="_eventId_cancel"
+					value="${fn:escapeXml(cancel)}" /> <input type="submit"
+					id="success" name="_eventId_success"
+					value="${fn:escapeXml(proceed)}" />
+			</div>
+			<input type="text" id="hiddenId" value="10" /> <input type="text"
+				id="hiddenId1" value="10" />
+				
+		</form>
+	</div>
+	-->
+
+</div>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phoneme><!--An phoneme list--><phoneme id="0">
+<oldPhoneme phonema="aa" oldPhonemaId="0"/>
+<oldPhoneme phonema="ao" oldPhonemaId="3"/>
+</phoneme><phoneme id="1">
+<oldPhoneme phonema="ae" oldPhonemaId="1"/>
+</phoneme><phoneme id="2">
+<oldPhoneme phonema="ah" oldPhonemaId="2"/>
+<oldPhoneme phonema="ax" oldPhonemaId="5"/>
+<oldPhoneme phonema="ax-h" oldPhonemaId="6"/>
+</phoneme><phoneme id="3">
+<oldPhoneme phonema="aw" oldPhonemaId="4"/>
+</phoneme><phoneme id="4">
+<oldPhoneme phonema="er" oldPhonemaId="22"/>
+<oldPhoneme phonema="axr" oldPhonemaId="7"/>
+</phoneme><phoneme id="5">
+<oldPhoneme phonema="ay" oldPhonemaId="8"/>
+</phoneme><phoneme id="6">
+<oldPhoneme phonema="b" oldPhonemaId="9"/>
+</phoneme><phoneme id="7">
+<oldPhoneme phonema="pcl" oldPhonemaId="45"/>
+<oldPhoneme phonema="tcl" oldPhonemaId="51"/>
+<oldPhoneme phonema="kcl" oldPhonemaId="35"/>
+<oldPhoneme phonema="bcl" oldPhonemaId="10"/>
+<oldPhoneme phonema="dcl" oldPhonemaId="13"/>
+<oldPhoneme phonema="gcl" oldPhonemaId="26"/>
+<oldPhoneme phonema="h#" oldPhonemaId="27"/>
+<oldPhoneme phonema="pau" oldPhonemaId="44"/>
+<oldPhoneme phonema="epi" oldPhonemaId="21"/>
+</phoneme><phoneme id="8">
+<oldPhoneme phonema="ch" oldPhonemaId="11"/>
+</phoneme><phoneme id="9">
+<oldPhoneme phonema="d" oldPhonemaId="12"/>
+</phoneme><phoneme id="10">
+<oldPhoneme phonema="dh" oldPhonemaId="14"/>
+</phoneme><phoneme id="11">
+<oldPhoneme phonema="dx" oldPhonemaId="15"/>
+</phoneme><phoneme id="12">
+<oldPhoneme phonema="eh" oldPhonemaId="16"/>
+</phoneme><phoneme id="13">
+<oldPhoneme phonema="l" oldPhonemaId="36"/>
+<oldPhoneme phonema="el" oldPhonemaId="17"/>
+</phoneme><phoneme id="14">
+<oldPhoneme phonema="m" oldPhonemaId="37"/>
+<oldPhoneme phonema="em" oldPhonemaId="18"/>
+</phoneme><phoneme id="15">
+<oldPhoneme phonema="n" oldPhonemaId="38"/>
+<oldPhoneme phonema="en" oldPhonemaId="19"/>
+<oldPhoneme phonema="nx" oldPhonemaId="40"/>
+</phoneme><phoneme id="16">
+<oldPhoneme phonema="ng" oldPhonemaId="39"/>
+<oldPhoneme phonema="eng" oldPhonemaId="20"/>
+</phoneme><phoneme id="17">
+<oldPhoneme phonema="ey" oldPhonemaId="23"/>
+</phoneme><phoneme id="18">
+<oldPhoneme phonema="f" oldPhonemaId="24"/>
+</phoneme><phoneme id="19">
+<oldPhoneme phonema="g" oldPhonemaId="25"/>
+</phoneme><phoneme id="20">
+<oldPhoneme phonema="hh" oldPhonemaId="28"/>
+<oldPhoneme phonema="hv" oldPhonemaId="29"/>
+</phoneme><phoneme id="21">
+<oldPhoneme phonema="ih" oldPhonemaId="30"/>
+<oldPhoneme phonema="ix" oldPhonemaId="31"/>
+</phoneme><phoneme id="22">
+<oldPhoneme phonema="iy" oldPhonemaId="32"/>
+</phoneme><phoneme id="23">
+<oldPhoneme phonema="jh" oldPhonemaId="33"/>
+</phoneme><phoneme id="24">
+<oldPhoneme phonema="k" oldPhonemaId="34"/>
+</phoneme><phoneme id="25">
+<oldPhoneme phonema="ow" oldPhonemaId="41"/>
+</phoneme><phoneme id="26">
+<oldPhoneme phonema="oy" oldPhonemaId="42"/>
+</phoneme><phoneme id="27">
+<oldPhoneme phonema="p" oldPhonemaId="43"/>
+</phoneme><phoneme id="28">
+<oldPhoneme phonema="q" oldPhonemaId="46"/>
+</phoneme><phoneme id="29">
+<oldPhoneme phonema="r" oldPhonemaId="47"/>
+</phoneme><phoneme id="30">
+<oldPhoneme phonema="s" oldPhonemaId="48"/>
+</phoneme><phoneme id="31">
+<oldPhoneme phonema="sh" oldPhonemaId="49"/>
+<oldPhoneme phonema="zh" oldPhonemaId="60"/>
+</phoneme><phoneme id="32">
+<oldPhoneme phonema="t" oldPhonemaId="50"/>
+</phoneme><phoneme id="33">
+<oldPhoneme phonema="th" oldPhonemaId="52"/>
+</phoneme><phoneme id="34">
+<oldPhoneme phonema="uh" oldPhonemaId="53"/>
+</phoneme><phoneme id="35">
+<oldPhoneme phonema="uw" oldPhonemaId="54"/>
+<oldPhoneme phonema="ux" oldPhonemaId="55"/>
+</phoneme><phoneme id="36">
+<oldPhoneme phonema="v" oldPhonemaId="56"/>
+</phoneme><phoneme id="37">
+<oldPhoneme phonema="w" oldPhonemaId="57"/>
+</phoneme><phoneme id="38">
+<oldPhoneme phonema="y" oldPhonemaId="58"/>
+</phoneme><phoneme id="39">
+<oldPhoneme phonema="z" oldPhonemaId="59"/>
+</phoneme></phoneme>

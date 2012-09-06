@@ -1,0 +1,38 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for sk.mka.hibernate.webpage.webapp:sk-mka-hibernate-webpage-webapp:war:0.0.3
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.apache.tiles:tiles-jsp:jar -> duplicate declaration of version (?) @ line 134, column 21
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.hibernate:hibernate:jar -> duplicate declaration of version (?) @ line 247, column 21
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.hibernate:hibernate-annotations:jar -> duplicate declaration of version (?) @ line 257, column 21
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: javax.persistence:persistence-api:jar -> version ${javax.persistence.version} vs 1.0 @ sk.mka.hibernate.webpage:sk-mka-hibernate-webpage:0.0.3, c:\Dropbox\Private\java\hibernate\mk\pom.xml, line 325, column 25
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: javax.servlet:servlet-api:jar -> version ${servlet.api.version} vs 2.3 @ sk.mka.hibernate.webpage:sk-mka-hibernate-webpage:0.0.3, c:\Dropbox\Private\java\hibernate\mk\pom.xml, line 375, column 25
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: javax.servlet:jstl:jar -> duplicate declaration of version ${jstl.version} @ sk.mka.hibernate.webpage:sk-mka-hibernate-webpage:0.0.3, c:\Dropbox\Private\java\hibernate\mk\pom.xml, line 381, column 25
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-eclipse-plugin is missing. @ line 353, column 21
+[WARNING] Detected profiles.xml alongside sk.mka.hibernate.webpage.webapp:sk-mka-hibernate-webpage-webapp:0.0.3, this file is no longer supported and was ignored, please use the settings.xml instead
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building mk-webapp 0.0.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ sk-mka-hibernate-webpage-webapp ---
+[INFO] Deleting c:\Dropbox\Private\java\hibernate\mk\webapp\target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 0.966s
+[INFO] Finished at: Fri Jul 20 14:04:21 CEST 2012
+[INFO] Final Memory: 12M/1472M
+[INFO] ------------------------------------------------------------------------
+[WARNING] The requested profile "kemt" could not be activated because it does not exist.
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-clean-plugin:2.4.1:clean (default-clean) on project sk-mka-hibernate-webpage-webapp: Failed to clean project: Failed to delete C:\Dropbox\Private\java\hibernate\mk\webapp\target\skillnet.log -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

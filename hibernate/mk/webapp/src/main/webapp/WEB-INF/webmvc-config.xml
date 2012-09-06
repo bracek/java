@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+
+        <!--  Annotation support -->
+    <context:annotation-config />
+    <context:component-scan base-package="com.ixonos.skillnet.web" />
+
+	<!-- Enables annotated POJO @Controllers -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+
+	<!-- Enables plain Controllers -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+    <!--
+    <bean id="controllerHandlerAdapter" class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+    -->
+
+
+	<!-- URL to flow mapping rules -->
+    <bean id="flowMappings"
+	      class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <value>
+	            /person.do=personFlowHandler
+            </value>
+        </property>
+        <property name="order" value="0" />
+    </bean>
+
+	<!-- Enables convention-based request URL mapping to @Controllers (ex: /person/* maps to PersonController) -->
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+        <property name="order" value="1"/>
+    </bean>
+
+
+<!-- Localization definition -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>messages</value>
+                <value>com.ixonos.skillnet.web.bundle.skills.messages.messages</value>
+                <value>com.ixonos.skillnet.web.bundle.skills.labels.labels</value>
+                <value>com.ixonos.skillnet.web.bundle.menu.menu</value>
+                <value>com.ixonos.skillnet.web.bundle.labels.labels</value>
+                <value>com.ixonos.skillnet.report.report</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/**/*.do">viewController</prop>
+            </props>
+        </property>
+        <property name="interceptors">
+            <list>
+                <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+                    <property name="paramName">
+                        <value>locale</value>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="viewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+
+    <bean id="tilesViewResolver"
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
+    </bean>
+
+       <!-- View resolver definition -->
+    <bean id="viewResolver"
+    	  class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+		  p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView"/>
+
+</beans>

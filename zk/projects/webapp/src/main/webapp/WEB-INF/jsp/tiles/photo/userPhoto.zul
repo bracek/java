@@ -1,0 +1,9 @@
+<?init class="fi.ixonos.projects.web.photo.UsersPhotoInitiator" arg0="usersPhotoInitiator"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<window title="${c:l('user.photo')}" mode="popup" border="normal" closable="true"
+	id="usersPhotoInitiator" onOpen="usersPhotoInitiator.detach()">      
+
+	<image id="imagePhoto" />
+	
+</window>

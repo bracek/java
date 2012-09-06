@@ -1,0 +1,106 @@
+<?init class="fi.ixonos.projects.web.usermanagement.edit.UserManagementInitiator" arg0="userManagementWindow"?>
+<?page id="userManagement" title="User management"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<window title="${c:l('user.edit.editUsers')}" border="normal"
+	use="fi.ixonos.projects.web.usermanagement.edit.UserManagementWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="userManagementWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd" style="margin: 5px 5px;">
+	
+	<zscript>
+		import fi.ixonos.projects.web.usermanagement.edit.UserComboitemRenderer;
+		import fi.ixonos.projects.web.usermanagement.edit.RolesListitemRenderer;
+		import fi.ixonos.projects.web.usermanagement.edit.UserManagementComparator;
+		
+		// renderers
+		UserComboitemRenderer userComboitemRenderer = new UserComboitemRenderer();
+		RolesListitemRenderer rolesListitemRenderer = new RolesListitemRenderer(); 
+		
+		// comparators				
+		Comparator ascUserNames = new UserManagementComparator(true,"Username");
+		Comparator dscUserNames = new UserManagementComparator(false,"Username");		
+		Comparator ascRoles = new UserManagementComparator(true,"Roles");
+		Comparator dscRoles = new UserManagementComparator(false,"Roles");
+		Comparator ascManagers = new UserManagementComparator(true,"Manager");
+		Comparator dscManagers = new UserManagementComparator(false,"Manager");
+		Comparator ascEnabled = new UserManagementComparator(true,"Enabled");
+		Comparator dscEnabled = new UserManagementComparator(false,"Enabled");
+	</zscript>
+	
+	<vbox>
+		<div height="10px"/>
+		<hbox>
+			<label value="${c:l('user.edit.group')}" style="font-weight:bold"/>
+			<a:bind model="groupList"/>
+			<combobox id="groupCombobox" onChange="userManagementWindow.onGroupSelect(event)" readonly="true">		
+				<a:bind _var="thisGroup" />
+				<a:bind value="thisGroup" />
+				<a:bind label="thisGroup.groupName" />
+				<comboitem>
+				</comboitem>
+			</combobox>
+		</hbox>
+		<div height="10px"/>		
+	</vbox>
+
+	<a:bind model="userList" selectedItem="userManagementWindow.user" />
+	<listbox mold="paging" id="usersListbox" width="100%" fixedLayout="true" multiple="true" checkmark="true" onSelect="userManagementWindow.onUserSelect(event)" onPaging="userManagementWindow.onPaging()">
+		<listhead sizable="true">
+			<listheader label="${c:l('user.name')}" sortAscending="${ascUserNames}" sortDescending="${dscUserNames}" sortDirection="ascending" width="260px"/>
+			<listheader label="${c:l('user.roles')}" sortAscending="${ascRoles}" sortDescending="${dscRoles}" width="260px"/>
+			<listheader label="${c:l('user.manager')}" sortAscending="${ascManagers}" sortDescending="${dscManagers}" width="260px"/>
+			<listheader label="${c:l('user.enabled')}" sortAscending="${ascEnabled}" sortDescending="${dscEnabled}" width="80px"/>
+			<listheader label="" />
+		</listhead>
+		<a:bind _var="thisUser" />
+		<a:bind value="thisUser" />
+		<listitem>
+			<a:bind label="thisUser.humanReadableUsername" />
+			<listcell/>
+			<listcell>
+				<bandbox readonly="true" width="250px" buttonVisible="false">
+					<bandpopup width="230px">
+						<a:bind model="authorityList" />
+						<listbox multiple="true" checkmark="true" itemRenderer="${rolesListitemRenderer}" onSelect="userManagementWindow.onAuthoritySelect(event)">					
+							<a:bind _var="thisAuthority" />
+							<a:bind value="thisAuthority" />
+							<listitem>
+								<a:bind label="thisAuthority.code" />
+								<listcell/>						
+							</listitem>
+						</listbox>	
+					</bandpopup>
+				</bandbox>
+			</listcell>
+			<listcell>
+				<a:bind model="managerList" />
+				<a:bind selectedItem="thisUser.manager" />
+				<combobox itemRenderer="${userComboitemRenderer}" readonly="true" onChange="userManagementWindow.onManagerOrEnabledChange(event)"/>
+			</listcell>
+			<listcell>
+				<div align="center">
+					<a:bind checked="thisUser.enabled" />
+					<checkbox onCheck="userManagementWindow.onManagerOrEnabledChange(event)" />
+				</div>
+			</listcell>
+			<listcell>
+				<hbox align="center">
+					<button label="${c:l('common.button.delete')}" onClick="userManagementWindow.onDeleteUser(event)" />
+                                        <!-- not needed when LDAP is used
+					<div width="5px"/>
+					<button label="${c:l('user.button.changePass')}" onClick="userManagementWindow.onChangePassword(event)"/>
+                                        -->
+				</hbox>
+			</listcell>
+		</listitem>
+	</listbox>
+
+	<vbox align="start">
+		<div height="10px"/>		
+		<button label="${c:l('user.button.addUser')}" onClick="userManagementWindow.onAddUser()"/>
+	</vbox>
+</window>

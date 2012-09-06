@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+    
+    <window apply="${ReportController}" style="margin: 5px 5px;">       
+        <menupopup id="treeContext" forward="onOpen=onContextOpen">
+          <menu id="tc_createRoot" label="${c:l('customReport.createRoot')}">
+            <menupopup>
+              <menuitem id="tc_createOr" label="${c:l('customReport.createRootOr')}" forward="onClick=onCreateRootOr" visible="true"/>
+              <menuitem id="tc_createAnd" label="${c:l('customReport.createRootAnd')}" forward="onClick=onCreateRootAnd" visible="true"/>
+            </menupopup>
+          </menu>          
+          <menuitem id="tc_changeToAnd" label="${c:l('customReport.changoToAnd')}" forward="onClick=onChangeToAnd" visible="false"/>
+          <menuitem id="tc_changeToOr" label="${c:l('customReport.changeToOr')}" forward="onClick=onChangeToOr" visible="false"/>
+          <menu id="tc_addNode" label="${c:l('customReport.addSubnode')}">
+            <menupopup>
+              <menuitem id="tc_addOr" label="${c:l('customReport.addSubnodeOr')}" forward="onClick=onAddOrNode" visible="true"/>
+              <menuitem id="tc_addAnd" label="${c:l('customReport.addSubnodeAnd')}" forward="onClick=onAddAndNode" visible="true"/>
+            </menupopup>
+          </menu>          
+          <menuitem id="tc_remove" label="${c:l('customReport.remove')}" forward="onClick=onRemoveSelectedNode"/>
+          <menu id="tc_wrapIn" label="${c:l('customReport.wrapIn')}">
+            <menupopup>
+              <menuitem id="tc_wrapInOr" label="${c:l('customReport.wrapInOr')}" forward="onClick=onWrapInOr" visible="true"/>
+              <menuitem id="tc_wrapInAnd" label="${c:l('customReport.wrapInAnd')}" forward="onClick=onWrapInAnd" visible="true"/>
+            </menupopup>
+          </menu>          
+        </menupopup>
+        
+        <!-- report format list box -->
+        <label id="format_label" value="${c:l('customReport.format')}" style="margin: 5px 5px;"/>
+        <listbox id="format_listbox" mold="select" style="margin: 5px 5px;">
+            <listitem value="pdf" label="PDF" selected="true"/>
+            <listitem value="xml" label="XML"/>
+            <listitem value="html" label="HTML"/>
+            <listitem value="rtf" label="Word (RTF)"/>
+            <listitem value="xls" label="Excel"/>
+            <listitem value="jxl" label="Excel (JXL)"/>
+            <listitem value="csv" label="CSV"/>
+            <listitem value="odt" label="OpenOffice (ODT)"/>
+        </listbox> 
+        
+        <!-- filter section -->
+        <tabbox>
+          <tabs>
+            <tab label="${c:l('customReport.filteringSimple')}" />
+            <tab label="${c:l('customReport.filteringAdvanced')}" />
+          </tabs>
+          <tabpanels>
+            <!-- Simple filtering panel -->
+            <tabpanel height="300px">
+              <columnlayout height="280px">
+                <columnchildren width="200px">
+                  <panel id="gm_panel" title="${c:l('customReport.groupManager')}">
+                    <panelchildren>
+                      <listbox id="gmListbox" height="250px" checkmark="true" multiple="true"
+                        forward="onSelect=onGMSelect" />
+                    </panelchildren>
+                  </panel>
+                </columnchildren>
+                <columnchildren width="200px">
+                  <panel id="users_panel" title="${c:l('customReport.user')}">
+                    <panelchildren>
+                      <listbox id="userListbox" height="250px" checkmark="true" multiple="true" />
+                    </panelchildren>
+                  </panel>
+                </columnchildren>
+                <columnchildren width="450px">
+                  <panel id="skill_panel" title="${c:l('customReport.skillLevel')}">
+                    <panelchildren>
+                      <listbox id="skill_and_level_listbox" height="250px" checkmark="true" multiple="true">
+                        <listhead>
+                          <listheader id="skill_header" label="${c:l('customReport.skill')}" />
+                          <listheader id="level_header" label="${c:l('customReport.level')}" width="200px" />
+                        </listhead>
+                        <listitem>
+                          <listcell />
+                          <listcell>
+                            <combobox />
+                          </listcell>
+                        </listitem>
+                      </listbox>
+                    </panelchildren>
+                  </panel>
+                </columnchildren>
+                <columnchildren width="300px">
+                  <panel>
+                    <panelchildren>
+                      <button id="reportPracticumBtn" label="${c:l('customReport.createPracticumBased')}" width="280px" height="30px"
+                        forward="onClick=onShowPracticumsReport" style="margin: 5px 5px;" />
+                      <button id="reportUserBtn" label="${c:l('customReport.createUserBased')}" width="280px" height="30px"
+                        forward="onClick=onShowUsersReport" style="margin: 5px 5px;" />
+                    </panelchildren>
+                  </panel>
+                </columnchildren>
+              </columnlayout>
+            </tabpanel>
+            <!-- Advanced filtering panel -->
+            <tabpanel height="300px">
+                <columnlayout height="280px">
+                  <columnchildren width="350px">
+                    <panel id="criteria_tree_panel" title="${c:l('customReport.criteriaTree')}">
+                      <panelchildren>
+                        <tree id="criteriaTree" zclass="z-dottree" forward="onSelect=onItemSelect"
+                            context="treeContext" height="250px">
+                        </tree>
+                      </panelchildren>
+                      </panel>
+                  </columnchildren>
+                  <columnchildren width="500px">
+                    <panel id="criteria_edit_panel" title="${c:l('customReport.editCriteria')}">
+                      <panelchildren>
+                        <grid id="grid" fixedLayout="true">
+                          <columns>
+                            <column width="150px"></column>
+                            <column width="300px"></column>
+                          </columns>
+                          <rows>
+                            <row>
+                              <label value="${c:l('customReport.variable')}" />
+                              <combobox id="criteriaVariableCombobox" readonly="true" forward="onSelect=onVariableSelect"/>
+                            </row>
+                            <row>
+                              
+                              <label value="${c:l('customReport.operator')}" />
+                              <combobox id="criteriaOperatorCombobox" readonly="true" forward="onSelect=onOperatorChanged"/>
+                            </row>
+                            <row>
+                              <label value="${c:l('customReport.value')}" />
+                              <groupbox>
+                                <listbox id="criteriaValueListbox" forward="onSelect=onValueChanged" height="170px" fixedLayout="false"/>
+                                <textbox id="criteriaValueTextbox" forward="onChange=onValueChanged" height="170px" width="100%" visible="false"/>
+                              </groupbox>                              
+                            </row>
+                            <row>
+                              <label value="${c:l('customReport.actions')}" />
+                              <hbox>
+                                <button id="saveBtn" label="${c:l('customReport.save')}" forward="onClick=onSaveBtn" disabled="true"/>
+                                <button id="addBtn" label="${c:l('customReport.add')}" forward="onClick=onAddBtn" disabled="true"/>                               
+                              </hbox>
+                            </row>
+                          </rows>
+                        </grid>
+                      </panelchildren>
+                    </panel>
+                  </columnchildren>
+                  <columnchildren width="300px">
+                    <panel>
+                      <panelchildren>
+                        <button id="advReportPracticumBtn" label="${c:l('customReport.createPracticumBased')}" width="280px" height="30px"
+                          forward="onClick=onShowPracticumReportForAdvancedFilters" style="margin: 5px 5px;" />
+                        <button id="advReportUserBtn" label="${c:l('customReport.createUserBased')}" width="280px" height="30px"
+                          forward="onClick=onShowUsersReportForAdvancedFilters" style="margin: 5px 5px;" />
+                      </panelchildren>
+                    </panel>
+                  </columnchildren>
+                </columnlayout>
+            </tabpanel>
+          </tabpanels>
+        </tabbox>
+        
+        <!-- the created report -->
+        <jasperreport id="pracReport" height="450px"/>
+    </window>
+</zk>

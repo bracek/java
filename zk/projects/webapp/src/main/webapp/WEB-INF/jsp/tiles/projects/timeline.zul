@@ -1,0 +1,65 @@
+<?init class="fi.ixonos.projects.web.timeline.TimeLineInitiator" arg0="timelineWindow"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>	
+<zk xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+    <window id="timelineWindow"
+            title="${c:l('timeline.viewTimeline')}"
+    		use="fi.ixonos.projects.web.timeline.TimeLineWindow"
+            xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+            xmlns="http://www.zkoss.org/2005/zul"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+            style="margin: 5px 5px;">
+        <zscript>
+            <![CDATA[
+                import fi.ixonos.projects.web.allocation.UsersComparator;
+                // comparators				
+                Comparator ascFirstName = new UsersComparator(true,"firstNameListitem");
+                Comparator dscFirstName = new UsersComparator(false,"firstNameListitem");
+                Comparator ascLastName = new UsersComparator(true,"lastNameListitem");
+                Comparator dscLastName = new UsersComparator(false,"lastNameListitem");
+            ]]>
+        </zscript>
+        <panel height="5px" />
+        <hbox>
+            <vbox>
+                <combobox width="230px" id="timelineCombobox" value="${c:l('timeline.combobox.projects')}" onChange="timelineWindow.onTimelineComboboxSelected(event)" readonly="true">
+                    <comboitem label="${c:l('timeline.combobox.projects')}" />
+                    <comboitem label="${c:l('timeline.combobox.users')}" />
+                </combobox>
+                <listbox id="select" multiple="true" width="250px"  height="800px" onSelect="timelineWindow.onTimelineListboxSelected(event)" />
+            </vbox>
+            <panel id="timelinePanel" height="825px" width="1100px">
+                <panelchildren>
+                    <timeline id="timeline" height="800px" width="100%">
+                        <a:bind model="timelineList"/>
+                        <bandinfo id="bandTimeline" width="100%" intervalUnit="month" intervalPixels="50" />
+                    </timeline>
+                    <button label="${c:l('timeline.increaseheight')}">
+                        <attribute name="onClick">{
+                            String panelHeight = timelinePanel.getHeight().substring(0,timelinePanel.getHeight().indexOf("px"));
+                            panelHeight = String.valueOf(Integer.valueOf(panelHeight)+100)+"px";
+                            String timelineHeight = timeline.getHeight().substring(0,timeline.getHeight().indexOf("px"));
+                            timelineHeight = String.valueOf(Integer.valueOf(timelineHeight)+100)+"px";
+                                    timelinePanel.setHeight(panelHeight);
+                                    timeLine.setHeight(timelineHeight);
+                            }
+                        </attribute>
+                    </button>
+                    <button label="${c:l('timeline.decreaseheight')}">
+                        <attribute name="onClick">{
+                            String panelHeight = timelinePanel.getHeight().substring(0,timelinePanel.getHeight().indexOf("px"));
+                            panelHeight = String.valueOf(Integer.valueOf(panelHeight)-100)+"px";
+                            String timelineHeight = timeline.getHeight().substring(0,timeline.getHeight().indexOf("px"));
+                            timelineHeight = String.valueOf(Integer.valueOf(timelineHeight)-100)+"px";
+                                    timelinePanel.setHeight(panelHeight);
+                                    timeline.setHeight(timelineHeight);
+                            }
+                        </attribute>
+                    </button>
+                </panelchildren>
+            </panel>
+        </hbox>
+    </window>
+</zk>

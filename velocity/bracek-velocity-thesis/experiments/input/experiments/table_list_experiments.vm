@@ -1,0 +1,41 @@
+\documentclass[12pt,oneside]{book}
+\usepackage[latin2]{inputenc}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{slovak}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{lscape}
+\usepackage{path}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{epsf}
+\usepackage{layout}
+\begin{document}
+
+\begin{tiny}
+\begin{longtable}{|c|c|c|c|c|c|c|c|}
+\toprule
+\rowcolor[rgb]{0.8,0.8,0.8}
+ \textbf{experiment}  & \textbf{folder} & \textbf{AverageSuccess (\%)}  & \textbf{AvrSuccessA (\%)} & \textbf{AvrSuccessB (\%)} & \textbf{mc} & \textbf{lr} & \textbf{topology}  \\
+\midrule
+#set ($index = 0)
+  #foreach ($line in $info)
+#set ($index = $index +  1)
+  #set ($separator = false)
+#set ($counter = 0)
+  #foreach ($column in $line)  #if($counter==0) $index &#else #end #set ($counter = $counter+ 1)  #if ($separator) & #else#set ($separator = true)#end$column#end \\
+\hline
+  #end
+\bottomrule
+\caption{Vysledky experimentov - uspesnosti klasifikacie fonem v zavislosti od vstupnych premennych}
+%\label{tab:}
+
+\end{longtable}
+\end{tiny}
+
+\end{document}

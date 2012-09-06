@@ -1,0 +1,6 @@
+\begin{tabular}{ l c r }
+  #foreach ($line in $numbers)
+  #set ($separator = false)
+  #foreach ($column in $line)#if ($separator) & #else#set ($separator = true)#end$column#end \\
+  #end
+\end{tabular}

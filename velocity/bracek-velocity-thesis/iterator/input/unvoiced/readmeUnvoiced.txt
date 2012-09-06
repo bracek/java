@@ -1,0 +1,1 @@
+exludnute tie fonemy, kde pocet testovacich dat je mensi ako < 200

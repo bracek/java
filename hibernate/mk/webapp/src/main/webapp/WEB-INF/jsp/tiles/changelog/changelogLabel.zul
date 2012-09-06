@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<label value="${c:l('changeLog.changelog')}" style="text-decoration: underline; font-weight: normal; color: blue; font-size:12px;cursor:pointer;cursor:hand;font-family:Tahoma;" >
+		<attribute name="onClick">{
+			Window win = (Window) Executions.createComponents("/WEB-INF/jsp/tiles/changelog/changelog.zul", null, null);
+			win.setClosable(true);
+			win.doModal();	
+	   }</attribute>
+	</label>
+</zk>

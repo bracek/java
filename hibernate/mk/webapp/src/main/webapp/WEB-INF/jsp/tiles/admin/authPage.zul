@@ -1,0 +1,47 @@
+<?init class="com.ixonos.skillnet.web.admin.importuser.AuthenticationInitiator" arg0="authenticationWindow"?>
+<?page id="authPage" title="User authentication for LDAP load"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<window id="authenticationWindow" title="${c:l('admin.authPage.title')}" width="330px" border="normal"
+	use="com.ixonos.skillnet.web.admin.importuser.AuthenticationWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+    xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+    onOK="authenticationWindow.continueLoad(event)">
+
+	<tablelayout columns="2">
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<label value="${c:l('admin.authPage.name')}" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<textbox id="name" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+		
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<label value="${c:l('admin.authPage.password')}" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<textbox type="password" id="password"/>
+				</panelchildren>
+			</panel>
+		</tablechildren>
+	</tablelayout>
+
+	<button label="${c:l('admin.authPage.continue')}" id="loadButton" onClick="authenticationWindow.continueLoad(event)" />
+    <button label="${c:l('button.cancel')}" onClick="authenticationWindow.cancelLoad(event)" />
+</window>

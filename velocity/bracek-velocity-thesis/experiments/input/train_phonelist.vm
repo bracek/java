@@ -1,0 +1,36 @@
+\documentclass[12pt,oneside]{book}
+\usepackage[latin2]{inputenc}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{slovak}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{lscape}
+\usepackage{path}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{epsf}
+\usepackage{layout}
+\begin{document}
+
+
+\begin{longtable}{|c|c|c|c|c|c|}
+\toprule
+\rowcolor[rgb]{0.8,0.8,0.8}
+ \textbf{Id fonemy} & \textbf{fonema}  & \textbf{Id fonemy} & \textbf{fonema}  & \textbf{Id fonemy} & \textbf{fonema}  \\
+\midrule
+  #foreach ($line in $info)
+  #set ($separator = false)
+  #foreach ($column in $line)#if ($separator) & #else#set ($separator = true)#end$column#end \\
+\hline
+  #end
+\bottomrule
+\caption{Fonemy v databaze TIMIT}
+%\label{tab:}
+\end{longtable}
+
+\end{document}

@@ -1,0 +1,138 @@
+<?init class="fi.ixonos.projects.web.projects.EditProjectInitiator" arg0="editProjectWindow" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<window border="none" id="editProjectWindow"
+    title="${c:l('project.edit.editProjects')}"
+    use="fi.ixonos.projects.web.projects.EditProjectWindow"
+    xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+    xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul
+		http://www.zkoss.org/2005/zul/zul.xsd"
+    style="margin: 5px 5px;">
+
+    <zscript>
+		import fi.ixonos.projects.web.allocation.UsersComparator;
+		import fi.ixonos.projects.web.projects.UserComboitemRenderer;
+
+                UserComboitemRenderer userComboitemRenderer = new UserComboitemRenderer();
+
+                Comparator ascLastName = new UsersComparator(true, UsersComparator.SURNAME_COLUMN);
+		Comparator dscLastName = new UsersComparator(false, UsersComparator.SURNAME_COLUMN);
+    </zscript>
+
+    <button id="addUser" label="${c:l('project.edit.addProject')}" width="125px" orient="vertical" onClick="editProjectWindow.onAdd(event)" />
+    <!--list of projects-->
+    <columnlayout>
+        <columnchildren width="100%">
+            <panel title="${c:l('project.edit.available')}" collapsible="true" width="100%">
+                <panelchildren>
+                    <a:bind model="projectsList" selectedItem="editProjectWindow.project"   />
+                    <listbox mold="paging" pageSize="15" id="projectsListbox" onSelect="editProjectWindow.onProjectSelected(event)">
+                        <listhead sizable="true" >
+                            <listheader width="16%" label="${c:l('project.name')}"/>
+                            <listheader width="58%" label="${c:l('project.description')}"/>
+                            <listheader width="8%" label="${c:l('project.startDate')}"/>
+                            <listheader width="8%" label="${c:l('project.endDate')}"/>
+                            <listheader width="8%" label="${c:l('project.edit.deleteProject')}"/>
+                        </listhead>
+                        <a:bind _var="project" />
+                        <listitem >
+                            <listcell>
+                                <a:bind value="project.name" />
+                                <textbox width="98%" constraint="no empty" id="nameProjectList" onChange="editProjectWindow.onUpdate(event)" onFocus="editProjectWindow.onFocus(event)" />
+                            </listcell>
+                            <listcell>
+                                <a:bind value="project.description" />
+                                <textbox width="98%" id="descriptionProjectList" onChange="editProjectWindow.onUpdate(event)" onFocus="editProjectWindow.onFocus(event)" />
+                            </listcell>
+                            <listcell>
+                                <a:bind value="project.dateFrom" />
+                                <datebox constraint="no empty" id="dateFromList" onChange="editProjectWindow.onUpdate(event)" onFocus="editProjectWindow.onFocus(event)" />
+                            </listcell>
+                            <listcell>
+                                <a:bind value="project.dateTo" />
+                                <datebox constraint="no empty" id="dateToList" onChange="editProjectWindow.onUpdate(event)" onFocus="editProjectWindow.onFocus(event)" />
+                            </listcell>
+                            <listcell>
+                                <button width="90px" label="${c:l('common.button.delete')}" onClick="editProjectWindow.onDelete(event)" />
+                            </listcell>
+                        </listitem>
+                    </listbox>
+                </panelchildren>
+            </panel>
+        </columnchildren>
+    </columnlayout>
+
+    <panel title="${c:l('project.edit.people')}" collapsible="true">
+        <panelchildren>
+            <!--list of users in selected project-->
+            <columnlayout>
+                <columnchildren width="50%">
+                    <panel width="100%">
+                        <panelchildren>
+                            <a:bind model="usersList"  selectedItem="editProjectWindow.user"  />
+                            <listbox mold="paging" pageSize="10" height="297px" id="usersListbox" droppable="true" visible="false" onDrop="editProjectWindow.onDropUserOnProject(event)">
+                                <listhead sizable="true" >
+                                    <listheader label="" width="20px"/>
+                                    <listheader label="${c:l('user.name')}" sortAscending="${ascLastName}" sortDescending="${dscLastName}" sortDirection="ascending" />
+                                </listhead>
+                                <a:bind _var="user" />
+                                <listitem draggable="true" droppable="true" onDrop="editProjectWindow.onDropUserOnProject(event)">
+                                    <listcell>
+                                        <button image="/img/minus-8.png" orient="vertical" onClick="editProjectWindow.onDeleteUserFromProject(event)" />
+                                    </listcell>
+                                    <listcell>
+                                        <a:bind value="user.surname" />
+                                        <label value="@{user.surname}" />
+                                        <label value=" " />
+                                        <a:bind value="user.name" />
+                                        <label value="@{user.name}" />
+                                    </listcell>
+                                </listitem>
+                            </listbox>
+                        </panelchildren>
+                    </panel>
+                </columnchildren>
+                <columnchildren width="50%">
+                    <panel width="100%">
+                        <panelchildren>
+                            <vbox width="100%">
+                                <hbox width="100%">
+                                    ${c:l('project.edit.quickUserSelect')}
+                                    <a:bind model="addUsersList" selectedItem="editProjectWindow.user" />
+                                    <combobox id="addUsersCombobox" autodrop="true" onChange="editProjectWindow.onAddUserToProject(event)" itemRenderer="${userComboitemRenderer}">
+                                        <a:bind _var="user" />
+                                        <comboitem>
+                                        </comboitem>
+                                    </combobox>
+                                </hbox>
+                                <vbox width="100%" align="center" height="3px">
+                                    <panel width="98%" height="1px" style="background-color:#C0C0C0;"/>
+                                </vbox>
+                                ${c:l('project.edit.dndUserSelect')}
+                                <a:bind model="allUsersList"/>
+                                <listbox mold="paging" pageSize="10" id="allUsersListbox" droppable="true" height="250px" onDrop="editProjectWindow.onDropUserOnList(event)">
+                                    <listhead sizable="true" >
+                                        <listheader label="${c:l('user.name')}" sortAscending="${ascLastName}" sortDescending="${dscLastName}" sortDirection="ascending" />
+                                    </listhead>
+                                    <a:bind _var="allUser" />
+                                    <listitem draggable="true" droppable="true" onDrop="editProjectWindow.onDropUserOnList(event)">
+                                        <listcell>
+                                            <a:bind value="allUser.surname" />
+                                            <label value="@{allUser.surname}" />
+                                            <label value=" " />
+                                            <a:bind value="allUser.name" />
+                                            <label value="@{allUser.name}" />
+                                        </listcell>
+                                    </listitem>
+                                </listbox>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                </columnchildren>
+            </columnlayout>
+        </panelchildren>
+    </panel>
+</window>

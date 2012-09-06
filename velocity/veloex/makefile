@@ -1,0 +1,2 @@
+def:
+	mvn clean

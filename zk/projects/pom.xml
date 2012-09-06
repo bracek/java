@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>fi.ixonos.projects</groupId>
+    <artifactId>projects</artifactId>
+<!--    <version>${fi.ixonos.projects.version}</version>-->
+    <version>0.2</version>
+    <packaging>pom</packaging>
+    <name>projects</name>
+
+
+    <!-- ORDER OF XML ELEMENTS IN pom.xml
+      <PROJECT>
+        <PROPERTIES/>
+        <PROFILES/>
+        <MODULES/>
+        <DEPENDENCYMANAGMENT/>
+        <REPOSITORIES/>
+        <REPOSITORY/>
+        <PLUGIN.REPOSITORY/>
+        <BUILD>
+          <PLUGIN_MANAGMENT/>
+          <PLUGINS/>
+      </BUILD>
+      <REPORTING/>
+      <LICENCES/>
+
+      <DISTRIBUTION_MANAGMENT/>
+      <ISSUE_MANAGMENT/>
+      <CI_MANAGMENT/>
+      <SCM/>
+      <DEVELOPERS/>
+    </PROJECT>
+    -->
+
+    <properties>
+        <!-- SET UP VERSION FOR DEPENDENCIES BY FOLLOWING PATTERN PLEASE
+        groupId.artifactId.version
+          for example for : org.mortbay.jetty
+
+              <groupId>org.mortbay.jetty</groupId>
+              <artifactId>maven-jetty-plugin</artifactId>
+              <version>6.1.10</version>
+
+        WILL BE FOLLOWING:
+                  <org.mortbay.jetty.maven-jetty-plugin.version>6.1.16</org.mortbay.jetty.maven-jetty-plugin.version>
+                  <version>${org.mortbay.jetty.maven-jetty-plugin.version}</version>
+        -->
+        <!-- SET UP VERSION OF SKILLNET PROJECT VERSION -->
+        <fi.ixonos.projects.vesion>0.2</fi.ixonos.projects.vesion>
+
+       <!-- PLEASE SORT IT ALPHABETICALLY ASCENDING -->
+        <asm.asm.version>3.1</asm.asm.version>
+        <cglib.version>2.2</cglib.version>
+        <aspectj.version>1.6.2</aspectj.version>
+        <bsh.version>2.0b4</bsh.version>
+        <commons-collections.version>3.2.1</commons-collections.version>
+        <commons-discovery.version>0.4</commons-discovery.version>
+        <commons-dbcp.commons-dbcp.version>1.2</commons-dbcp.commons-dbcp.version>
+        <commons-lang.version>2.4</commons-lang.version>
+        <dwr.version>2.0.3</dwr.version>
+        <hibernate.version>3.2.6.ga</hibernate.version>
+        <jaxen.version>1.1.1</jaxen.version>
+        <jdom.version>1.1</jdom.version>
+        <jstl.version>1.2</jstl.version>
+        <jta.version>1.1</jta.version>
+        <junit.version>4.8.1</junit.version>
+        <log4j.version>1.2.16</log4j.version>
+        <javax.mail.version>1.4</javax.mail.version>
+        <jasperreports.jasperreports.version>3.5.2</jasperreports.jasperreports.version>
+        <javax.persistence.version>1.0</javax.persistence.version>
+        <mysql-connector-java.version>5.1.6</mysql-connector-java.version>
+
+        <org.apache.cxf.version>2.1.4</org.apache.cxf.version>
+        <org.apache.commons.commons-io.version>1.3.2</org.apache.commons.commons-io.version>
+        <org.apache.poi.version>3.0.1-FINAL</org.apache.poi.version>
+        <org.apache.tiles.version>2.1.0</org.apache.tiles.version>
+        <org.hibernate.hibernate-annotations.version>3.2.0.ga</org.hibernate.hibernate-annotations.version>
+        <org.springframework.ldap.version>1.3.0.RELEASE</org.springframework.ldap.version>
+        <org.springframework.security.version>2.0.4</org.springframework.security.version>
+        <org.springframework.spring.version>2.5.6</org.springframework.spring.version>
+        <org.springframework.ws.version>1.5.6</org.springframework.ws.version>
+<!--        <org.zkoss.zk.zuljsp.version>1.0.0</org.zkoss.zk.zuljsp.version>-->
+        <org.zkoss.zk.zuljsp.version>1.6</org.zkoss.zk.zuljsp.version>
+        <org.zkoss.zkforge.el.version>1.0.2</org.zkoss.zkforge.el.version>
+
+        <postgresql.version>8.3-603.jdbc4</postgresql.version>
+        <servlet.api.version>2.4</servlet.api.version>
+        <taglibs.version>1.1.2</taglibs.version>
+        <quartz.version>1.6.1</quartz.version>
+
+        <zk.version>3.6.3</zk.version>
+        <ws-commons-util.version>1.0.2</ws-commons-util.version>
+
+        <!-- BEGIN OF MAVEN PLUGINS -->
+        <ch.elca.el4j.maven.plugins.version>1.7</ch.elca.el4j.maven.plugins.version>
+        <maven-default-skin-plugin.version>1.0</maven-default-skin-plugin.version>
+        <maven-resources-plugin.version>2.2</maven-resources-plugin.version>
+        <selenium-server.version>0.9.2</selenium-server.version>
+
+        <maven-antrun-plugin.version>1.1</maven-antrun-plugin.version>
+        <maven-archetype-plugin.version>2.0-alpha-5</maven-archetype-plugin.version>
+        <maven-compiler-plugin.version>2.0.2</maven-compiler-plugin.version>
+        <maven-clean-plugin.version>2.3</maven-clean-plugin.version>
+        <maven-clover-plugin.version>2.4</maven-clover-plugin.version>
+        <maven-checkstyle-plugin.version>2.2</maven-checkstyle-plugin.version>
+        <maven-docck-plugin.version>1.0</maven-docck-plugin.version>
+        <maven-eclipse-plugin.version>2.5.1</maven-eclipse-plugin.version>
+        <maven-idea-plugin.version>2.2</maven-idea-plugin.version>
+        <maven-install-plugin.version>2.2</maven-install-plugin.version>
+        <maven-jar-plugin.version>2.2</maven-jar-plugin.version>
+        <maven-jxr-plugin.version>2.1</maven-jxr-plugin.version>
+        <maven-javadoc-plugin.version>2.7</maven-javadoc-plugin.version>
+        <maven-pmd-plugin.version>2.4</maven-pmd-plugin.version>
+        <maven-site-plugin.version>2.1.1</maven-site-plugin.version>
+        <maven-surefire-plugin.version>2.4.3</maven-surefire-plugin.version>
+        <maven-surefire-report-plugin.version>2.4.3</maven-surefire-report-plugin.version>
+        <maven-project-info-reports-plugin.version>2.1.1</maven-project-info-reports-plugin.version>
+        <maven-war-plugin.version>2.0.2</maven-war-plugin.version>
+
+        <org.apache.maven.plugins-maven-war-plugin.version>2.0.1</org.apache.maven.plugins-maven-war-plugin.version>
+        <org.codehaus.mojo-findbugs-maven-plugin.version>1.1.1</org.codehaus.mojo-findbugs-maven-plugin.version>
+        <org.codehaus.mojo-cobertura-maven-plugin.version>2.1</org.codehaus.mojo-cobertura-maven-plugin.version>
+        <org.codehaus.mojo-tomcat-maven-plugin.version>1.1</org.codehaus.mojo-tomcat-maven-plugin.version>
+        <org.mortbay.jetty.maven-jetty-plugin.version>6.1.17</org.mortbay.jetty.maven-jetty-plugin.version>
+
+        <sonar-maven-plugin.version>2.3</sonar-maven-plugin.version>
+        <UmlGraph.version>4.4</UmlGraph.version>
+    </properties>
+
+
+    <profiles>
+        <profile>
+            <id>localhost</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>env</name>
+                    <value>dev</value>
+                </property>
+            </activation>
+            <properties>
+                <tomcat.manager.url>http://localhost:8080/manager</tomcat.manager.url>
+
+                <!-- projects Datasource properties -->
+                <projects.jdbc.driverClassName>org.postgresql.Driver</projects.jdbc.driverClassName>
+                <projects.jdbc.username>postgres</projects.jdbc.username>
+                <projects.jdbc.password>Martin!@#$%</projects.jdbc.password>
+                <!--<projects.jdbc.url>jdbc:postgresql://192.168.1.2/projects?charSet=UTF8</projects.jdbc.url>-->
+                <projects.jdbc.url>jdbc:postgresql://localhost/projects?charSet=UTF8</projects.jdbc.url>
+
+                <!-- Hibernate DDL property value -->
+                <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
+
+                <!-- Log4J Threshold setup-->
+                <log4j.appender.projects.Threshold>DEBUG</log4j.appender.projects.Threshold>
+                <log4j.appender.console.Threshold>DEBUG</log4j.appender.console.Threshold>
+
+                <!--<projects.log4j.email.to>tomas.kendrovsky@ixonos.com,peter.bereczk@ixonos.com,ladislav.molnar@ixonos.com</projects.log4j.email.to> -->
+                <projects.log4j.email.to>miroslav.katrak@ixonos.com</projects.log4j.email.to>
+                <projects.log4j.email.sender>projectskosice@ixonos.com</projects.log4j.email.sender>
+                <projects.log4j.email.subject>[ERROR] projects.SK</projects.log4j.email.subject>
+                <projects.log4j.smtp.server>mxtreme.ixonos.com</projects.log4j.smtp.server>
+                
+                <projects.ldap.url>ldaps://192.168.84.100:636/</projects.ldap.url>
+                <projects.ldap.base>DC=ixonos,DC=local</projects.ldap.base>
+                <projects.ldap.userSearchFilter>(objectclass=person)</projects.ldap.userSearchFilter>
+                <projects.ldap.format.userSearchName>CN={0},OU=Kosice,OU=Foreign,OU=People</projects.ldap.format.userSearchName>
+                <projects.ldap.format.distinguishedName>CN={0},OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local</projects.ldap.format.distinguishedName>
+
+            </properties>
+        </profile>
+
+        <!-- create database -->
+        <profile>
+            <id>create</id>
+            <properties>
+                <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
+            </properties>
+        </profile>
+    
+        <profile>
+            <id>validate</id>
+            <properties>
+                <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>deploy</id>
+            <properties>
+                <tomcat.manager.url>http://protoorg.kosice.ixonos.local:8080/manager</tomcat.manager.url>
+                <tomcat.manager.server>protoorg</tomcat.manager.server>
+                <tomcat.manager.path>/alloctool</tomcat.manager.path>
+
+                <!-- projects Datasource properties -->
+                <projects.jdbc.driverClassName>org.postgresql.Driver</projects.jdbc.driverClassName>
+                <projects.jdbc.username>alloctool</projects.jdbc.username>
+                <projects.jdbc.password>5f622FGb4d</projects.jdbc.password>
+                <!--<projects.jdbc.url>jdbc:postgresql://192.168.1.2/projects?charSet=UTF8</projects.jdbc.url>-->
+                <projects.jdbc.url>jdbc:postgresql://localhost/alloctool?charSet=UTF8</projects.jdbc.url>
+
+                <!-- Hibernate DDL property value -->
+                <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
+
+                <!-- Log4J Threshold setup-->
+                <log4j.appender.projects.Threshold>ERROR</log4j.appender.projects.Threshold>
+                <log4j.appender.console.Threshold>ERROR</log4j.appender.console.Threshold>
+
+                <!--<projects.log4j.email.to>tomas.kendrovsky@ixonos.com,peter.bereczk@ixonos.com,ladislav.molnar@ixonos.com</projects.log4j.email.to> -->
+                <projects.log4j.email.to>miroslavkatrak@ixonos.com</projects.log4j.email.to>
+                <projects.log4j.email.sender>projectskosice@ixonos.com</projects.log4j.email.sender>
+                <projects.log4j.email.subject>[ERROR] projects.SK</projects.log4j.email.subject>
+                <projects.log4j.smtp.server>mxtreme.ixonos.com</projects.log4j.smtp.server>
+
+            </properties>
+        </profile>
+
+        <profile>
+            <id>ldap-ixonos</id>
+            <properties>
+                <projects.ldap.url>ldaps://192.168.84.100:636/</projects.ldap.url>
+                <projects.ldap.base>DC=ixonos,DC=local</projects.ldap.base>
+                <projects.ldap.userSearchFilter>(objectclass=person)</projects.ldap.userSearchFilter>
+                <projects.ldap.format.userSearchName>CN={0},OU=Kosice,OU=Foreign,OU=People</projects.ldap.format.userSearchName>
+                <projects.ldap.format.distinguishedName>CN={0},OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local</projects.ldap.format.distinguishedName>
+            </properties>
+        </profile>
+
+    </profiles>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.asm.version}</version>
+            </dependency>
+            <!-- Tests -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${org.springframework.spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+
+            <!-- hibernate -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${org.apache.commons.commons-io.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-annotations</artifactId>
+                <version>${org.hibernate.hibernate-annotations.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.ws.commons.util</groupId>
+                <artifactId>ws-commons-util</artifactId>
+                <version>${ws-commons-util.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${commons-dbcp.commons-dbcp.version}</version>
+            </dependency>
+
+            <!-- Spring framework -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${org.springframework.spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring</artifactId>
+                <version>${org.springframework.spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${org.springframework.spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${org.springframework.spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${org.springframework.spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.ldap</groupId>
+                <artifactId>spring-ldap-core</artifactId>
+                <version>${org.springframework.ldap.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.ldap</groupId>
+                <artifactId>spring-ldap-core-tiger</artifactId>
+                <version>${org.springframework.ldap.version}</version>
+            </dependency>
+
+
+            <!-- Spring-Security framework -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core-tiger</artifactId>
+                <version>${org.springframework.security.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${org.springframework.security.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-catalina</artifactId>
+                <version>${org.springframework.security.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${org.springframework.security.version}</version>
+            </dependency>
+
+            <!-- Apache Tiles -->
+            <dependency>
+                <groupId>org.apache.tiles</groupId>
+                <artifactId>tiles-jsp</artifactId>
+                <version>${org.apache.tiles.version}</version>
+            </dependency>
+
+            <!-- Proxying -->
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+
+            <!-- AspectJ -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+
+            <!-- PostrgeSQL JDBC Driver -->
+            <dependency>
+                <groupId>postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+
+            </dependency>
+
+            <!-- Quartz -->
+            <dependency>
+                <groupId>org.opensymphony.quartz</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
+            </dependency>
+
+            <!-- Apache commons -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-discovery</groupId>
+                <artifactId>commons-discovery</artifactId>
+                <version>${commons-discovery.version}</version>
+            </dependency>
+
+            <!-- Logging -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+
+            <!--  j2ee -->
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>${javax.persistence.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet.api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${jstl.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>taglibs</groupId>
+                <artifactId>standard</artifactId>
+                <version>${taglibs.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>jta</artifactId>
+                <version>${jta.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${javax.mail.version}</version>
+            </dependency>
+
+            <!-- DWR -->
+            <dependency>
+                <groupId>org.directwebremoting</groupId>
+                <artifactId>dwr</artifactId>
+                <version>${dwr.version}</version>
+            </dependency>
+
+            <!--CXF for WebServices-->
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${org.apache.cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>${org.apache.cxf.version}</version>
+            </dependency>
+
+            <!--ZK-->
+            <dependency>
+                <groupId>org.zkoss.zk</groupId>
+                <artifactId>zuljsp</artifactId>
+                <version>${org.zkoss.zk.zuljsp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.zkoss.zk</groupId>
+                <artifactId>zhtml</artifactId>
+                <version>${zk.version}</version>
+<!--                <version>5.0.9</version>-->
+            </dependency>
+
+            <dependency>
+                <groupId>org.zkoss.zk</groupId>
+                <artifactId>zk</artifactId>
+                <version>${zk.version}</version>
+<!--                <version>5.0.9</version>-->
+            </dependency>
+
+            <dependency>
+                <groupId>org.zkoss.zk</groupId>
+                <artifactId>zkex</artifactId>
+                <version>${zk.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.zkoss.zk</groupId>
+                <artifactId>zkmax</artifactId>
+                <version>${zk.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.zkoss.zk</groupId>
+                <artifactId>zkplus</artifactId>
+                <version>${zk.version}</version>
+<!--                <version>5.0.9</version>-->
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.zkoss.zk</groupId>
+                <artifactId>zml</artifactId>
+                <version>${zk.version}</version>
+            </dependency>
+
+<!--FIXME-->
+            <dependency>
+                <groupId>org.zkoss.zk</groupId>
+                <artifactId>zul</artifactId>
+                <version>${zk.version}</version>
+<!--                <version>5.0.9</version>-->
+            </dependency>
+
+            <dependency>
+                <groupId>org.zkoss.zkforge</groupId>
+                <artifactId>timelinez</artifactId>
+                <version>1.2_1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.zkoss.common</groupId>
+                <artifactId>zweb</artifactId>
+                <version>${zk.version}</version>
+<!--                <version>5.0.9</version>-->
+            </dependency>
+
+            <dependency>
+                <groupId>org.zkoss.common</groupId>
+                <artifactId>zcommon</artifactId>
+                <version>${zk.version}</version>
+<!--                <version>5.0.9</version>-->
+            </dependency>
+
+            <dependency>
+                <groupId>org.zkoss.zkforge.el</groupId>
+                <artifactId>zcommons-el</artifactId>
+                <version>${org.zkoss.zkforge.el.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.beanshell</groupId>
+                <artifactId>bsh</artifactId>
+                <version>${bsh.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${org.apache.poi.version}</version>
+            </dependency>
+            
+            
+            <dependency>
+  <groupId>org.zkoss.zk</groupId>
+  <artifactId>zk</artifactId>
+  <version>5.0.4</version>
+</dependency>
+<dependency>
+  <groupId>org.zkoss.zk</groupId>
+  <artifactId>zul</artifactId>
+  <version>5.0.4</version>
+</dependency>
+
+        </dependencies>
+    </dependencyManagement>
+    
+    <modules>
+        <module>logic</module>
+        <module>webapp</module>
+    </modules>
+
+       <!-- BEGIN OF REPOSITORIES -->
+<!--    <repositories>
+        <repository>    
+            <id>zk repository</id>     
+            <url>http://mavensync.zkoss.org/maven2</url>   
+        </repository> 
+    </repositories>
+       -->
+       
+ 
+       
+<!--    <repositories>
+
+        <repository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>Ibiblio</id>
+            <name>Ibiblio mirror</name>
+            <layout>default</layout>
+            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>wso2-maven2-repository</id>
+            <url>http://dist.wso2.org/maven2/</url>
+        </repository>
+
+        <repository>
+            <id>codecafe.dev</id>
+            <url>http://codecafe.dev-hda.com/repository/</url>
+        </repository>
+
+        <repository>
+            <id>jasperreports</id>
+            <url>http://jasperreports.sourceforge.net/maven2/</url>
+        </repository>
+
+    </repositories>
+    -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>mvn-repository</id>
+            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+    <!-- END OF REPOSITORIES -->
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                        <encoding>UTF-8</encoding>
+                        <showWarnings>true</showWarnings>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.0.2</version>
+                    <configuration>
+                        <!--<useFullArtifactNames>false</useFullArtifactNames>-->
+                        <!--<excludes>META-INF/**/*</excludes>-->
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                            <manifestEntries>
+                                <Implementation-Build>${buildNumber}</Implementation-Build>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+
+                <!-- eclipse plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-eclipse-plugin</artifactId>
+                    <version>${maven-eclipse-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                    <configuration>
+                        <archive>
+                            <manifestEntries>
+                                <mode>development</mode>
+                                <url>${pom.url}</url>
+                                <SCM-Revision>${buildNumber}</SCM-Revision>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>tomcat-maven-plugin</artifactId>
+                    <version>${org.codehaus.mojo-tomcat-maven-plugin.version}</version>
+                    <!--  using default configuration manager account username:admin, password: /no password/ -->
+                    <configuration>
+                        <url>${tomcat.manager.url}</url>
+                        <server>${tomcat.manager.server}</server>
+                        <path>${tomcat.manager.path}</path>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cobertura-maven-plugin</artifactId>
+                    <inherited>true</inherited>
+                    <version>${org.codehaus.mojo-cobertura-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>clean</id>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>${org.codehaus.mojo-findbugs-maven-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${org.apache.maven.plugins-maven-war-plugin.version}</version>
+                    <configuration>
+                        <useFullArtifactNames>false</useFullArtifactNames>
+                        <excludes>META-INF/**/*</excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>tomcat-maven-plugin</artifactId>
+                    <version>${org.codehaus.mojo-tomcat-maven-plugin.version}</version>
+                    <configuration>
+                        <url>http://localhost:8080/manager</url>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-archetype-plugin</artifactId>
+                    <version>${maven-archetype-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${maven-antrun-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-docck-plugin</artifactId>
+                    <version>${maven-docck-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>maven-jetty-plugin</artifactId>
+                    <version>${org.mortbay.jetty.maven-jetty-plugin.version}</version>
+                    <configuration>
+                       
+                        <scanIntervalSeconds>2</scanIntervalSeconds>
+                        <!--
+                        <systemProperties>
+                            <systemProperty>
+                                <name>org.apache.commons.logging.Log</name>
+                                <value>
+                org.apache.commons.logging.impl.SimpleLog
+                                </value>
+                            </systemProperty>
+                        </systemProperties>
+                        -->
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                    <configuration>
+                        <outputEncoding>UTF-8</outputEncoding>
+                        <locales>en</locales>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>ch.elca.el4j.maven.plugins</groupId>
+                    <artifactId>maven-depgraph-plugin</artifactId>
+                    <version>${ch.elca.el4j.maven.plugins.version}</version>
+                </plugin>
+            </plugins>
+
+        </pluginManagement>
+        <!-- END OF PLUGIN MANAGMNET -->
+
+        <!-- BEGIN OF PLUGINS -->
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.sonar</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${sonar-maven-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>ch.elca.el4j.maven.plugins</groupId>
+                <artifactId>maven-depgraph-plugin</artifactId>
+                <configuration>
+                    <outDir>target/site/images</outDir>
+                    <outFile>${pom.artifactId}.png</outFile>
+                </configuration>
+<!--                <version>${ch.elca.el4j.maven.plugins.version}</version>-->
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <systemProperties>
+                        <property>
+                            <name>browser</name>
+                            <value>firefox</value>
+                        </property>
+                    </systemProperties>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <!--
+                    <excludes>
+                      <exclude>**/*Remote*.java</exclude>
+                      <exclude>**/Abstract*</exclude>
+                      <exclude>**/XmlRpcPerformanceTest.java</exclude>
+                      <exclude>**/*ITest.java</exclude>
+                      <exclude>**/*JitrTest.java</exclude>
+                    </excludes>
+                    -->
+                    <skip>false</skip>
+                    <!--  <forkMode>always</forkMode> -->
+                    <!-- if you wish to see tests output in console and not in file, set to false -->
+                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                    <reportFormat>plain</reportFormat>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <show>private</show>
+<!--                    <nohelp>true</nohelp>-->
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.0-beta-2</version>
+                <configuration>
+                    <doCheck>false</doCheck>
+                    <doUpdate>false</doUpdate>
+                    <buildNumberPropertyName>buildNumber</buildNumberPropertyName>
+                    <useLastCommittedRevision>true</useLastCommittedRevision>
+                    <timestampFormat>{0,date,dd-MM-yyyy HH:mm:ss}</timestampFormat>
+                    <timestampPropertyName>buildTimestamp</timestampPropertyName>
+                    <revisionOnScmFailure>not available</revisionOnScmFailure>
+                    <!--<format>revision {0,number}{1,number}{2,number} built on {4,date,dd-MM-yyyy HH:mm:ss}</format>-->
+                    <!--<items>-->
+                        <!--<item>buildNumber0</item>-->
+                        <!--<item>buildNumber1</item>-->
+                        <!--<item>buildNumber2</item>-->
+                        <!--<item>timestamp</item>-->
+                    <!--</items>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+        <!-- END OF PLUGINS -->
+    </build>
+
+
+    <!-- BEGIN OF REPORTING PLUGINS-->
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${org.codehaus.mojo-cobertura-maven-plugin.version}</version>
+                <inherited>true</inherited>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven-surefire-report-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changes-plugin</artifactId>
+                <configuration>
+                    <columnNames>Type,Key,Summary,Assignee,Status,Resolution,Fix Version</columnNames>
+                    <sortColumnNames>Type,Key DESC</sortColumnNames>
+                </configuration>
+
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>changes-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${org.codehaus.mojo-findbugs-maven-plugin.version}</version>
+            </plugin>
+
+            <!--maven2-javadoc-plugin
+         publishing your classes' Javadocs-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <id>uml</id>
+                        <configuration>
+                            <aggregate>true</aggregate>
+                            <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
+                            <docletArtifact>
+                                <groupId>gr.spinellis</groupId>
+                                <artifactId>UmlGraph</artifactId>
+                                <version>${UmlGraph.version}</version>
+                            </docletArtifact>
+                            <additionalparam>
+                                -inferrel -inferdep -quiet -hide java.*
+                                -collpackages java.util.* -qualify
+                                -postfixpackage -nodefontsize 9
+                                -nodefontpackagesize 7
+                            </additionalparam>
+                        </configuration>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet>
+                        <id>html</id>
+                        <configuration>
+                            <show>private</show>
+                        </configuration>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${maven-jxr-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-clover-plugin</artifactId>
+                <version>${maven-clover-plugin.version}</version>
+            </plugin>
+            <!-- pmd -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven-pmd-plugin.version}</version>
+                <configuration>
+                    <targetJdk>1.6</targetJdk>
+                    <rulesets>
+                        <ruleset>/rulesets/basic.xml</ruleset>
+                        <ruleset>/rulesets/controversial.xml</ruleset>
+                    </rulesets>
+                    <format>xml</format>
+                    <linkXref>true</linkXref>
+                    <sourceEncoding>utf-8</sourceEncoding>
+                    <minimumTokens>100</minimumTokens>
+                </configuration>
+            </plugin>
+
+            <!-- find bugs -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${org.codehaus.mojo-findbugs-maven-plugin.version}</version>
+            </plugin>
+
+            <!-- changelog-maven-plugin -->
+            <!-- TODO take to long to get all change log from the beggining of project
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>changelog-maven-plugin</artifactId>
+            </plugin>
+            -->
+            <!-- jdepend plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>taglist-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+            </plugin>
+            <!-- IDE's -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-idea-plugin</artifactId>
+                <version>${maven-idea-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>cim</report>
+                            <report>dependencies</report>
+                            <report>index</report>
+                            <report>issue-tracking</report>
+                            <report>license</report>
+                            <report>mailing-list</report>
+                            <report>maven-jira-plugin</report>
+                            <report>project-team</report>
+                            <report>scm</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+        </plugins>
+    </reporting>
+    <!-- END OF REPORTING-->
+
+    <licenses>
+        <license>
+            <name>Ixonos Oy</name>
+            <url>http://www.ixonos.com/</url>
+            <distribution>repo</distribution>
+            <comments>TODO</comments>
+        </license>
+    </licenses>
+
+<!--    <distributionManagement>
+        <repository>
+            <id>android-releases</id>
+            <name>android-releases</name>
+            <url>http://192.168.84.86:8081/artifactory/ixonos</url>
+        </repository>
+        <snapshotRepository>
+            <id>android-snapshots</id>
+            <name>android-snapshots</name>
+            <url>http://192.168.84.86:8081/artifactory/ixonos</url>
+        </snapshotRepository>
+    </distributionManagement>-->
+
+    <issueManagement>
+        <system>Jira</system>
+        <url>https://tupu.ss.ixonos.com/jira/</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>TeamCity</system>
+        <url>http://192.168.84.86:8111</url>
+        <notifiers>
+            <notifier>
+                <type>mail</type>
+                <sendOnError>true</sendOnError>
+                <sendOnFailure>true</sendOnFailure>
+                <sendOnSuccess>true</sendOnSuccess>
+                <sendOnWarning>false</sendOnWarning>
+                <configuration>
+                    <address>bamboo@ixonos.com</address>
+                </configuration>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+
+    <scm>
+        <connection>scm:svn:https://ver.tieto-x.fi/projects/</connection>
+        <developerConnection>scm:svn:https://ver.tieto-x.fi/projects/</developerConnection>
+        <url>https://ver.tieto-x.fi/projects/</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>katrami</id>
+            <name>Miroslav Katrak</name>
+            <email>miroslav dot katrak at ixonos.com</email>
+            <organization>Ixonos Oy</organization>
+            <organizationUrl>http://www.ixonos.com</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+      
+    </developers>
+
+</project>

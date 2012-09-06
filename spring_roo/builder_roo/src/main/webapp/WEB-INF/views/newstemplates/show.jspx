@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_fi_ixonos_builder_domain_NewsTemplate" object="${newstemplate}" path="/newstemplates" z="0Bdz2TdpTVd51bV0E/kTlEQqEZw=">
+        <field:display field="category_url" id="s_fi_ixonos_builder_domain_NewsTemplate_category_url" object="${newstemplate}" z="nietf2rXDOS9CC7x2Yw580xB2Rk="/>
+        <field:display field="platform" id="s_fi_ixonos_builder_domain_NewsTemplate_platform" object="${newstemplate}" z="q5a+7icK7YxUe0xVI4qOH+BDbwA="/>
+        <field:display field="project" id="s_fi_ixonos_builder_domain_NewsTemplate_project" object="${newstemplate}" z="Rb02dKSm9GlkZjSClKxLNTWEsdc="/>
+    </page:show>
+</div>

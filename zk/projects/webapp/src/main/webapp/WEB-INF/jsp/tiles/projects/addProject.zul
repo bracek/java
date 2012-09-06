@@ -1,0 +1,102 @@
+<?init class="fi.ixonos.projects.web.projects.AddProjectInitiator" arg0="addProjectWindow"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?page id="addProject" title="Add Project"?>
+
+<window title="${c:l('project.edit.addProject')}" border="normal"
+	
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="addProjectWindow"
+	use="fi.ixonos.projects.web.projects.AddProjectWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd" width="350px">
+
+    <tablelayout columns="2" width="100%" >
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <label value="${c:l('project.name')}" />
+                </panelchildren>
+            </panel>
+        </tablechildren>
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <a:bind value="addProjectWindow.project.name" />
+                    <textbox id="name" width="90%"/>
+                </panelchildren>
+            </panel>
+        </tablechildren>
+		
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <label value="${c:l('project.description')}" />
+                </panelchildren>
+            </panel>
+        </tablechildren>
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <a:bind value="addProjectWindow.project.description" />
+                    <textbox id="description" rows="2" width="90%"/>
+                </panelchildren>
+            </panel>
+        </tablechildren>
+		
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <label value="${c:l('project.startDate')}" />
+                </panelchildren>
+            </panel>
+        </tablechildren>
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <a:bind value="addProjectWindow.project.dateFrom" />
+                    <datebox id="startDate" width="50%"/>
+                </panelchildren>
+            </panel>
+        </tablechildren>
+		
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <label value="${c:l('project.endDate')}" />
+                </panelchildren>
+            </panel>
+        </tablechildren>
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <a:bind value="addProjectWindow.project.dateTo" />
+                    <datebox id="endDate" width="50%"/>
+                </panelchildren>
+            </panel>
+        </tablechildren>
+		
+        <tablechildren>
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <label value="${c:l('project.state')}" />
+                </panelchildren>
+            </panel>
+        </tablechildren>
+        <tablechildren colspan="2">
+            <panel border="normal" collapsible="true">
+                <panelchildren style="border:0">
+                    <div align="center">
+                        <button label="${c:l('project.edit.addProject')}"
+							onClick="addProjectWindow.addProject(event)" />
+                        <button label="${c:l('common.button.cancel')}"
+							onClick="addProjectWindow.detach()" />
+                    </div>
+                </panelchildren>
+            </panel>
+        </tablechildren>
+
+
+    </tablelayout>
+</window>

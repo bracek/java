@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration  SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+    
+    <!-- ===================================================================== -->
+    <!--                                                                       -->
+    <!--  Log4j Configuration                                                  -->
+    <!--                                                                       -->
+    <!-- ===================================================================== -->
+
+    <!-- ============================== -->
+    <!-- Append messages to the log files -->
+    <!-- ============================== -->
+    <appender name="PROJECTS" class="org.apache.log4j.FileAppender">
+<!--        <param name="File" value="${catalina.home}/logs/projects.log"/>-->
+        <param name="File" value="target/projects.log"/>
+        <param name="Threshold" value="${log4j.appender.projects.Threshold}"/>
+        <param name="Append" value="false"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd.MMM yyyy HH\:mm\:ss,SSS}[%p] [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- ============================== -->
+    <!-- Append messages to the console -->
+    <!-- ============================== -->
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <param name="Threshold" value="${log4j.appender.console.Threshold}"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd.MMM yyyy HH\:mm\:ss,SSS}[%p] [%c] %m%n"/>
+        </layout>
+    </appender>
+
+<!--    <appender name="SMTP" class="org.apache.log4j.net.SMTPAppender">
+         smtp appender, use async appender to log 
+        <param name="Threshold" value="ERROR"/>
+        <param name="To" value="${projects.log4j.email.to}"/>
+        <param name="From" value="${projects.log4j.email.sender}"/>
+        <param name="Subject" value="${projects.log4j.email.subject}"/>
+        <param name="SMTPHost" value="${projects.log4j.smtp.server}"/>
+         Note: BufferSize determines how many previous logs are sent with ERROR email. 
+        <param name="BufferSize" value="25"/>
+        <layout class="org.apache.log4j.HTMLLayout">
+            <param name="title" value="[Error report] projects.SK"/>
+            <param name="locationInfo" value="true"/>
+        </layout>
+    </appender>-->
+
+
+    <appender name="ASYNC_PROJECTS" class="org.apache.log4j.AsyncAppender">
+        <param name="blocking" value="false"/>
+        <!-- this is hooked to root category; categorories log directly to following appenders -->
+        <appender-ref ref="PROJECTS"/>
+    </appender>
+
+<!--    <appender name="ASYNC_SMTP" class="org.apache.log4j.AsyncAppender">
+        <param name="blocking" value="false"/>
+         multiple categories log to this appender 
+        <appender-ref ref="SMTP"/>
+    </appender>-->
+    
+    <!-- ================ -->
+    <!-- Limit categories -->
+    <!-- ================ -->
+    <!--<category name="fi.ixonos" additivity="false">-->
+        <!--<priority value="${log4j.appender.PROJECTS.Threshold}"/>-->
+        <!--<appender-ref ref="ASYNC_PROJECTS"/>-->
+    <!--</category>-->
+
+    <category name="org.springframework" additivity="false">
+        <priority value="${log4j.appender.projects.Threshold}"/>
+        <appender-ref ref="ASYNC_PROJECTS"/>
+    </category>
+
+    <category name="org.quartz" additivity="false">
+        <priority value="${log4j.appender.projects.Threshold}"/>
+        <appender-ref ref="ASYNC_PROJECTS"/>
+<!--        <appender-ref ref="ASYNC_SMTP" />-->
+    </category>
+
+    <category name="org.zkoss" additivity="false">
+        <priority value="${log4j.appender.projects.Threshold}"/>
+        <appender-ref ref="ASYNC_PROJECTS"/>
+    </category>
+
+
+    <!-- ================ -->
+    <!-- Limit loggers    -->
+    <!-- ================ -->
+    <logger name="fi.ixonos.projects">
+        <level value="${log4j.appender.projects.Threshold}"/>
+        <appender-ref ref="ASYNC_PROJECTS"/>
+<!--        <appender-ref ref="ASYNC_SMTP" />-->
+    </logger>
+
+    <!-- ======================= -->
+    <!-- Setup the Root category -->
+    <!-- ======================= -->
+    <root>
+        <!-- all|debug|info|warn|error|fatal|off|null -->
+        <priority value="INFO"/>
+<!--        <appender-ref ref="ASYNC_SMTP" />-->
+        <appender-ref ref="ASYNC_PROJECTS"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</log4j:configuration>

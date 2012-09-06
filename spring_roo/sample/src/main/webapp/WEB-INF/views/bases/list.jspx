@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_springsource_pizzashop_domain_Base" items="${bases}" z="pNr6vJduzjlKg1BwzmziBNw+ERI=">
+        <table:table data="${bases}" id="l_com_springsource_pizzashop_domain_Base" path="/bases" z="0j3f5//Qef0TFCim1OfEEHGI1YE=">
+            <table:column id="c_com_springsource_pizzashop_domain_Base_name" property="name" z="4C8p8xEWvawRDCvmzkJKRBkNCUg="/>
+            <table:column id="c_com_springsource_pizzashop_domain_Base_icon" property="icon" z="3Bh5sdx5RG8M5TxwWhRcmmUe8HE="/>
+            <table:column id="c_com_springsource_pizzashop_domain_Base_application_80_80" property="application_80_80" z="Idef6MmO0HkZBjGZAnPj3/xbegM="/>
+        </table:table>
+    </page:list>
+</div>

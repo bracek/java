@@ -1,0 +1,20 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<zk xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:zk="http://www.zkoss.org/2005/zk">
+	<window title="${c:l('changeLog.title')}" border="normal"
+		xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="changelogWindow"
+		xmlns="http://www.zkoss.org/2005/zul"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.zkoss.org/2005/zul
+		http://www.zkoss.org/2005/zul/zul.xsd"
+		width="260px" height="350px">
+		<iframe id="iframe" src="/changelog.html" width="100%"
+			height="90%" style="border: 1px solid gray" scrolling="auto" />
+		<div align="center">
+			<div height="5px" />
+			<button label="${c:l('changeLog.close')}"
+				onClick="changelogWindow.detach()" />
+			<div height="5px" />
+		</div>
+	</window>
+</zk>

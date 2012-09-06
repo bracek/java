@@ -1,0 +1,62 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<window title="${c:l('compTree.title')}"  border="none"  id="companyTreeWindow"
+	apply="${CompanyTreeModelController}"
+    xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+		http://www.zkoss.org/2005/zul/zul.xsd" style="margin: 5px 5px;">
+
+    <menupopup id="expandPopup">
+        <menuitem label="${c:l('compTree.expandTree')}" id="expandMenuItem"/>
+    </menupopup>
+
+
+    <tablelayout columns="2" width="100%">
+        <tablechildren width="50%">
+            <panel title="${c:l('compTree.tree.title')}" border="none">
+                <panelchildren>
+                    <tree id="tree" zclass="z-filetree" />
+                </panelchildren>
+            </panel>
+        </tablechildren>
+        <tablechildren width="50%">
+            <panel title="${c:l('compTree.userDetail.title')}" border="none" style="margin-bottom:10px">
+                <panelchildren>
+
+                    <grid id="userdetailsgrid">
+                        <columns sizable="true">
+                            <column label="${c:l('compTree.type')}" width="40%"/>
+                            <column label="${c:l('compTree.content')}" width="60%"/>
+                            <column />
+                        </columns>
+                    </grid>
+
+                    <listbox id="userDetailListbox"  >
+                        <listhead  >
+                            <listheader  label="${c:l('compTree.curriculum')}" />
+                            <listheader  label="${c:l('compTree.status')}"  />
+                        </listhead>
+                        <listitem >
+                            <listcell  />
+                            <listcell/>
+                        </listitem>
+                    </listbox>
+
+
+                    <grid id="userDetailGrid">
+                        <columns sizable="true">
+                            <column >
+                                <button id="downloadCV" visible="false" label="${c:l('compTree.downloadCV')}" onClick="downloadCV" />
+                            </column>
+                        </columns>
+                    </grid>
+
+                </panelchildren>
+            </panel>
+        </tablechildren>
+    </tablelayout>
+</window>

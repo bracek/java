@@ -1,0 +1,1 @@
+in top level you can skip test because in module projects-logic is import.sql file, which fill up database 

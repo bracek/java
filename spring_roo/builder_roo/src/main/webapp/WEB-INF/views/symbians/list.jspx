@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_fi_ixonos_builder_domain_Symbian" items="${symbians}" z="Jf3TyD+uvbLu0AsHArtzFQwpCYM=">
+        <table:table data="${symbians}" id="l_fi_ixonos_builder_domain_Symbian" path="/symbians" z="atraDMoYEZtwo8TgdrPPOLcpBqc=">
+            <table:column id="c_fi_ixonos_builder_domain_Symbian_project" property="project" z="qJ3CpkHCHktf3x3HS9H+u1BU6CY="/>
+            <table:column id="c_fi_ixonos_builder_domain_Symbian_filename" property="filename" z="MbBTYjwHv+0h4WBTq9S1qs1dlPI="/>
+            <table:column id="c_fi_ixonos_builder_domain_Symbian_url" label="Image url" property="url" z="user-managed"/>
+            <table:column id="c_fi_ixonos_builder_domain_Symbian_content" property="content" z="tC7qkGIegq0RB27KG2kTUvGvISw="/>
+        </table:table>
+    </page:list>
+</div>

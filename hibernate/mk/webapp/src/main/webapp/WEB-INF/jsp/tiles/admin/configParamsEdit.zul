@@ -1,0 +1,167 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<?init class="com.ixonos.skillnet.web.admin.configParam.EditConfigParamsInitiator" arg0="editConfigParamsWindow"?>
+	<?page id="editConfigParams" title="Change configuration parameters"?>
+	<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+	<window id="editConfigParamsWindow"
+		title="${c:l('admin.confgiParams.title')}" width="900px"
+		border="normal"
+		use="com.ixonos.skillnet.web.admin.configParam.EditConfigParamsWindow"
+		style="margin: 5px 5px;">
+
+		<zscript>
+		import com.ixonos.skillnet.logic.enumeration.SkillnetConfigParams;
+		
+		//config parameters
+		String smtpHost = SkillnetConfigParams.SMTP_HOST;
+		String smtpHostDef = SkillnetConfigParams.SMTP_HOST_DEFAULT;
+		String smtpProtocol = SkillnetConfigParams.SMTP_PROTOCOL;
+		String smtpProtocolDef = SkillnetConfigParams.SMTP_PROTOCOL_DEFAULT;
+		String smtpPort = SkillnetConfigParams.SMTP_PORT;
+		String smtpPortDef = SkillnetConfigParams.SMTP_PORT_DEFAULT.toString();
+		String ldapHost = SkillnetConfigParams.LDAP_HOST;
+		String ldapHostDef = SkillnetConfigParams.LDAP_HOST_DEFAULT;
+		String ldapPort = SkillnetConfigParams.LDAP_PORT;
+		String ldapPortDef = SkillnetConfigParams.LDAP_PORT_DEFAULT.toString();
+		String ldapBaseDN = SkillnetConfigParams.LDAP_BASE_DN;
+		String ldapBaseDNDef = SkillnetConfigParams.LDAP_BASE_DN_DEFAULT;		
+		String mailAddress = SkillnetConfigParams.MAIL_ADDRESS;
+		String mailAddressDef = SkillnetConfigParams.MAIL_ADDRESS_DEFAULT.toString();
+		String mailAddressPersonal = SkillnetConfigParams.MAIL_ADDRESS_PERSONAL;
+		String mailAddressPersonalDef = SkillnetConfigParams.MAIL_ADDRESS_PERSONAL_DEFAULT;
+		String minimumSkills = SkillnetConfigParams.MINIMUM_SKILLS;
+		String minimumSkillsDef = SkillnetConfigParams.MINIMUM_SKILLS_DEFAULT.toString();
+	</zscript>
+
+		<grid id="configParamsGrid" fixedLayout="true">
+			<columns>
+				<column label="${c:l('admin.confgiParams.property')}" />
+				<column label="${c:l('admin.confgiParams.value')}" />
+				<column label="${c:l('admin.confgiParams.defaultVal')}" />
+				<column
+					label="${c:l('admin.confgiParams.description')}" />
+			</columns>
+
+			<rows>
+				<row>
+					<label id="smtpHost" value="${smtpHost}" />
+
+					<a:bind value="smtpHostParam.value" />
+					<textbox id="smtpHostValue" />
+
+					<label id="smtpHostDefault" value="${smtpHostDef}" />
+
+					<a:bind value="smtpHostParam.description" />
+					<textbox id="smtpHostDescription"
+						style="width: 200px;" />
+				</row>
+				<row>
+					<label id="smtpProtocol" value="${smtpProtocol}" />
+
+					<a:bind value="smtpProtocolParam.value" />
+					<textbox id="smtpProtocolValue" />
+
+					<label id="smtpProtocolDefault"
+						value="${smtpProtocolDef}" />
+
+					<a:bind value="smtpProtocolParam.description" />
+					<textbox id="smtpProtocolDescription"
+						style="width: 200px;" />
+				</row>
+				<row>
+					<label id="smtpPort" value="${smtpPort}" />
+
+					<a:bind value="smtpPortParam.value" />
+					<textbox id="smtpPortValue" />
+
+					<label id="smtpPortDefault" value="${smtpPortDef}" />
+
+					<a:bind value="smtpPortParam.description" />
+					<textbox id="smtpPortDescription"
+						style="width: 200px;" />
+				</row>
+				<row>
+					<label id="ldapHost" value="${ldapHost}" />
+
+					<a:bind value="ldapHostParam.value" />
+					<textbox id="ldapHostValue" />
+
+					<label id="ldapHostDefault" value="${ldapHostDef}" />
+
+                    <a:bind value="ldapHostParam.description" />
+                    <textbox id="ldapHostDescription" style="width: 200px;"/>
+                </row>
+                <row>
+					<label id="ldapPort" value="${ldapPort}" />
+
+					<a:bind value="ldapPortParam.value" />
+					<textbox id="ldapPortValue" />
+
+					<label id="ldapPortDefault" value="${ldapPortDef}" />
+
+                    <a:bind value="ldapPortParam.description" />
+                    <textbox id="ldapPortDescription" style="width: 200px;"/>
+                </row>
+                <row>
+					<label id="ldapBaseDN" value="${ldapBaseDN}" />
+
+					<a:bind value="ldapBaseDNParam.value" />
+					<textbox id="ldapBaseDNValue" />
+
+					<label id="ldapBaseDNDefault" value="${ldapBaseDNDef}" />
+
+                    <a:bind value="ldapBaseDNParam.description" />
+                    <textbox id="ldapBaseDNDescription" style="width: 200px;"/>
+                </row>
+                <row>
+                    <label id="mailAddress" value="${mailAddress}"/>
+
+                    <a:bind value="mailAddressParam.value" />
+                    <textbox id="mailAddressValue" />
+
+                    <label id="mailAddressDefault" value="${mailAddressDef}"/>
+
+                    <a:bind value="mailAddressParam.description" />
+                    <textbox id="mailAddressDescription" style="width: 200px;"/>
+                </row>
+                <row>
+                    <label id="mailAddressPersonal" value="${mailAddressPersonal}"/>
+
+                    <a:bind value="mailAddressPersonalParam.value" />
+                    <textbox id="mailAddressPersonalValue" />
+
+                    <label id="mailAddressPersonalDefault" value="${mailAddressPersonalDef}"/>
+
+                    <a:bind value="mailAddressPersonalParam.description" />
+                    <textbox id="mailAddressPersonalDescription" style="width: 200px;"/>
+                </row> 
+                <row>
+					<label id="minimumSkills" value="${minimumSkills}" />
+
+					<a:bind value="minimumSkillsParam.value" />
+					<textbox id="minimumSkillsValue" />
+
+					<label id="minimumSkillsDefault" value="${minimumSkillsDef}" />
+
+                    <a:bind value="minimumSkillsParam.description" />
+                    <textbox id="minimumSkillsDescription" style="width: 200px;"/>
+                </row>              
+            </rows>
+
+		</grid>
+
+		<button label="${c:l('button.save')}" id="saveButton"
+			onClick="editConfigParamsWindow.saveProperties(event)">
+		</button>
+		<!-- 
+		<button label="Few skill notification" id="fsnButton"
+			onClick="editConfigParamsWindow.runFsn(event)">
+		</button>
+		-->
+
+	</window>
+</zk>

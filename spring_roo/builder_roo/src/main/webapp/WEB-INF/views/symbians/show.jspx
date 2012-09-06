@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_fi_ixonos_builder_domain_Symbian" object="${symbian}" path="/symbians" z="uPsNvloM+5EA4BQvkbogFIGVupY=">
+        <field:display field="project" id="s_fi_ixonos_builder_domain_Symbian_project" object="${symbian}" z="user-managed"/>
+        <field:display field="filename" id="s_fi_ixonos_builder_domain_Symbian_filename" object="${symbian}" z="user-managed"/>
+        <field:frame field="url" id="s_fi_ixonos_builder_domain_Symbian_url" object="${symbian}" z="user-managed"/>
+        <field:display field="content" id="s_fi_ixonos_builder_domain_Symbian_content" object="${symbian}" z="LFNVOQSWoetHw1OJjeN6RQ9cpIE="/>
+    </page:show>
+</div>

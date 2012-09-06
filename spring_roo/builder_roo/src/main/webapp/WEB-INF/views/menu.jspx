@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+		<menu:category id="c_symbian" z="hD5hjSShLYrjRRBcf/y3FXCqbMI=">
+			<menu:item id="i_symbian_new" messageCode="global_menu_new"
+				url="/symbians?form" z="C5Ski7X6M/7IUpSJZd4mFCWdsNo=" />
+			<menu:item id="i_symbian_list" messageCode="global_menu_list"
+				url="/symbians?page=1&amp;size=${empty param.size ? 10 : param.size}"
+				z="UDR6BkFPWm15GHJWKn92/dNeZZs=" />
+		</menu:category>
+		<menu:category id="c_meego" z="JDRTZoysZ2fGHjksDQ0NxMvYwcA=">
+			<menu:item id="i_meego_new" messageCode="global_menu_new"
+				url="/meegoes?form" z="tKvFj6Pt17h2ISJmaPXMldkgnGc=" />
+			<menu:item id="i_meego_list" messageCode="global_menu_list"
+				url="/meegoes?page=1&amp;size=${empty param.size ? 10 : param.size}"
+				z="BR1fnB5u+pkAIEQX+kwjxew7eR8=" />
+		</menu:category>
+		<menu:category id="c_platform" z="jNOVD7xB9SlyDG1+lN0arMf6bC8=">
+			<menu:item id="i_platform_new" messageCode="global_menu_new"
+				url="/platforms?form" z="GS2U0sDuY2ybbQVt/pe/Dv5bS/M=" />
+			<menu:item id="i_platform_list" messageCode="global_menu_list"
+				url="/platforms?page=1&amp;size=${empty param.size ? 10 : param.size}"
+				z="f0KMFE2LQoXqSxz2pDJ0S3Trqfo=" />
+		</menu:category>
+		<menu:category id="c_newstemplate" z="YaM/BeB3Mwi7fJtrNJKbfrYXCXc=">
+			<menu:item id="i_newstemplate_new" messageCode="global_menu_new"
+				url="/newstemplates?form" z="EH8dd/FHP78Wp9N4JwfCHFq6VbQ=" />
+			<menu:item id="i_newstemplate_list" messageCode="global_menu_list"
+				url="/newstemplates?page=1&amp;size=${empty param.size ? 10 : param.size}"
+				z="F/1Cfb+iwZRBtg4J8mdof2shl18=" />
+		</menu:category>
+		<menu:category id="c_projects" z="I8hWa0cVR6gfNxztmbdOCadth1Q=">
+			<menu:item id="i_projects_new" messageCode="global_menu_new"
+				url="/projectses?form" z="kdTi2py9zWLgLwRPNcJOeZ4zgbs=" />
+			<menu:item id="i_projects_list" messageCode="global_menu_list"
+				url="/projectses?page=1&amp;size=${empty param.size ? 10 : param.size}"
+				z="XGUb9mGpfdpnzaDvwUQ6cbtB6M0=" />
+			<menu:item id="fi_projects_nameequals" messageCode="global_menu_find"
+				url="/projectses?find=ByNameEquals&amp;form"
+				z="0ZlcmuieshqrOPE4C1cU8le22iY=" />
+		</menu:category>
+		<menu:category id="c_flows" z="5igpkb/e+HPIN8iUErvmM38Eqqk=">
+			<menu:item id="i_flows_sampleflow" messageCode="b.menu" url="/flow"
+				z="user-managed" />
+		</menu:category>
+		<menu:category id="c_templates" z="6v/T1TLjp3YIAjFKGU3nN19+xUQ=">
+			<menu:item id="i_templates_new" messageCode="global_menu_new"
+				url="/templateses?form" z="QETOr3XL/LeB0pOtolJIFs66E0o=" />
+			<menu:item id="i_templates_list" messageCode="global_menu_list"
+				url="/templateses?page=1&amp;size=${empty param.size ? 10 : param.size}"
+				z="VP385yYC90AHOIgm/rlIN7iOHms=" />
+		</menu:category>
+	</menu:menu>
+</div>

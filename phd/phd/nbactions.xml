@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-CLEAN_INSTALL</actionName>
+            <displayName>CLEAN_INSTALL</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>clean</activatedProfile>
+                <activatedProfile>install</activatedProfile>
+            </activatedProfiles>
+        </action>
+    </actions>

@@ -1,0 +1,29 @@
+<?init class="fi.ixonos.projects.web.usermanagement.ldap.ImportUsersInitiator" arg0="importUsersWindow"?>
+<?page id="importUsers" title="Import users from LDAP"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+    <window id="importUsersWindow" title="${c:l('user.edit.ldapImport')}" border="normal"
+		use="fi.ixonos.projects.web.usermanagement.ldap.ImportUsersWindow" style="margin: 5px 5px;">
+        <panel width="100%">
+            <panelchildren>
+                <a:bind model="ldapUsers" />
+                <listbox id="ldapUsersListBox" height="450" checkmark="true" multiple="true" mold="paging">
+                    <listhead width="100%">
+                        <listheader label="${c:l('user.edit.ldapName')}" width="100%"/>
+                    </listhead>
+
+                    <listitem>
+                        <listcell/>
+                    </listitem>
+                </listbox>
+                <hbox>
+                    <button label="${c:l('common.button.load')}" id="loadButton" onClick="importUsersWindow.loadLdapUsers(event)"/>
+                    <button label="${c:l('common.button.import')}" id="importButton" onClick="importUsersWindow.importLdapUsers(event)"/>
+                </hbox>
+            </panelchildren>
+        </panel>
+    </window>
+</zk>	

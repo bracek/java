@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk>
+	<listener>
+		<listener-class>fi.ixonos.projects.web.locale.LocaleProvider
+		</listener-class>
+	</listener>
+
+	<listener>
+		<description>ThreadLocal Synchronization Listener</description>
+		<listener-class>org.zkoss.zkplus.util.ThreadLocalListener</listener-class>
+	</listener>
+
+	<preference>
+		<name>ThreadLocal</name>
+		<value>
+			org.springframework.security.context.ThreadLocalSecurityContextHolderStrategy=contextHolder
+		</value>
+	</preference>
+
+	<device-config>
+		<device-type>ajax</device-type>
+		<timeout-uri>/login.jsp</timeout-uri>
+	</device-config>
+
+</zk>

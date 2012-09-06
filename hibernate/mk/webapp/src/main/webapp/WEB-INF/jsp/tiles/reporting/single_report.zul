@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+        
+    <window id="singleReportWindow" style="margin: 5px 5px;" border="normal" title="${c:l('singleReport.title')}"
+      use="com.ixonos.skillnet.web.reporting.SingleReportController">
+        
+        <!-- report format list box -->
+        <label id="format_label" value="${c:l('singleReport.format')}" style="margin: 5px 5px;"/>
+        <listbox id="format_listbox" mold="select" style="margin: 5px 5px;" 
+          onSelect="singleReportWindow.onSelectFormat(event)">
+            <listitem value="pdf" label="PDF" selected="true"/>
+            <listitem value="xml" label="XML"/>
+            <listitem value="html" label="HTML"/>
+            <listitem value="rtf" label="Word (RTF)"/>
+            <listitem value="xls" label="Excel"/>
+            <listitem value="jxl" label="Excel (JXL)"/>
+            <listitem value="csv" label="CSV"/>
+            <listitem value="odt" label="OpenOffice (ODT)"/>
+        </listbox> 
+        <button id="reportBtn" label="${c:l('singleReport.create')}" style="margin: 5px 5px;" onClick="singleReportWindow.onClickReportBtn(event)"/>
+        
+        <jasperreport id="pracReport" height="800px"/>    
+        
+    </window>
+</zk>

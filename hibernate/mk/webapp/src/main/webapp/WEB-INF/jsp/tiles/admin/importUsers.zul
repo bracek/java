@@ -1,0 +1,27 @@
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	
+	<?init class="com.ixonos.skillnet.web.admin.importuser.ImportUsersInitiator" arg0="importUsersWindow"?>
+    <?page id="importUsers" title="Import users from LDAP"?>
+    <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+    <window id="importUsersWindow" title="${c:l('admin.importUsers.title')}" width="900px" border="normal"
+		use="com.ixonos.skillnet.web.admin.importuser.ImportUsersWindow" style="margin: 5px 5px;">
+
+        <a:bind model="ldapUsers" />
+        <listbox id="ldapUsersListBox" height="450" checkmark="true" multiple="true" mold="paging">
+            <listhead>
+                <listheader label="${c:l('admin.importUsers.userCol')}" width="200" />
+            </listhead>
+
+            <listitem>
+                <listcell/>
+            </listitem>
+        </listbox>
+
+        <button label="${c:l('admin.importUsers.load')}" id="loadButton" onClick="importUsersWindow.loadLdapUsers(event)"/>
+        <button label="${c:l('admin.importUsers.import')}" id="importButton" onClick="importUsersWindow.importLdapUsers(event)"/>
+    </window>
+</zk>	

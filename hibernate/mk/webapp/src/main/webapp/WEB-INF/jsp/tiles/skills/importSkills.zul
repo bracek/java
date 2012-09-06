@@ -1,0 +1,231 @@
+<?init class="com.ixonos.skillnet.web.skills.edit.ImportSkillsInitiator" arg0="importSkillsWindow"?>
+<?page id="importSkill" title="Import skills"?>
+
+<window title="${c:l('skillsImport.title')}" border="normal"
+	use="com.ixonos.skillnet.web.skills.edit.ImportSkillsWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="importSkillsWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd"
+	closable="true" width="1000px">
+
+	<zscript>
+		<![CDATA[
+		import com.ixonos.skillnet.web.controllers.SkillsComparator;
+		import com.ixonos.skillnet.web.skills.edit.SkillListitemRenderer;
+		import java.util.Map;
+		import java.util.HashMap;
+
+		// comparators	
+		Comparator ascName = new SkillsComparator(true,"Name");
+		Comparator dscName = new SkillsComparator(false,"Name");
+
+		// renderers
+		SkillListitemRenderer skillListitemRenderer = new SkillListitemRenderer();
+		]]>
+	</zscript>
+	<vbox>
+		<panel framable="true" width="980px" height="560px"
+			title="${c:l('skillsImport.merged')}" border="normal">
+			<panelchildren>
+				<hbox>
+					<a:bind model="lmlModel"
+						selectedItem="importSkillsWindow.lmlSkill" />
+					<listbox id="listMergedLeft" multiple="true"
+						width="485px" fixedLayout="true">
+						<listhead sizable="true">
+							<listheader label="${c:l('skillsImport.imported')}"
+								sortAscending="${ascName}" sortDescending="${dscName}"
+								width="50%" />
+							<listheader label="${c:l('skillsImport.existing')}"
+								width="50%" />
+						</listhead>
+						<a:bind _var="thisImpSkills" />
+						<listitem value="@{thisImpSkills}">
+							<listcell
+								label="@{thisImpSkills.impSkill.name}" />
+							<listcell>
+								<checkbox
+									onCheck="importSkillsWindow.onCheck(event)" checked="true" />
+								<bandbox readonly="true" width="190px"
+									disabled="false" value="@{thisImpSkills.actSkill.name}">
+									<bandpopup width="200px" onCancel="self.parent.close()">
+										<vbox>
+											<hbox>
+												${c:l('skillsImport.search')}
+												<textbox
+													onOK="importSkillsWindow.onSearch(event)" focus="true" />
+											</hbox>
+											<listbox rows="8"
+												model="@{skillList}" itemRenderer="${skillListitemRenderer}"
+												onSelect="importSkillsWindow.onSkillSelect(event)">
+												<a:bind
+													_var="thisSkill" />
+												<listitem>
+													<listcell
+														label="@{thisSkill.name}" />
+												</listitem>
+											</listbox>
+										</vbox>
+									</bandpopup>
+								</bandbox>
+							</listcell>
+						</listitem>
+					</listbox>
+					<a:bind model="lmrModel"
+						selectedItem="importSkillsWindow.lmrSkill" />
+					<listbox id="listMergedRight" multiple="true"
+						width="485px" fixedLayout="true">
+						<listhead sizable="true">
+							<listheader label="${c:l('skillsImport.imported')}"
+								sortAscending="${ascName}" sortDescending="${dscName}"
+								width="50%" />
+							<listheader label="${c:l('skillsImport.existing')}"
+								width="50%" />
+						</listhead>
+						<a:bind _var="thisImpSkills" />
+						<listitem value="@{thisImpSkills}">
+							<listcell
+								label="@{thisImpSkills.impSkill.name}" />
+							<listcell>
+								<checkbox
+									onCheck="importSkillsWindow.onCheck(event)" checked="true" />
+								<bandbox readonly="true" width="190px"
+									disabled="false" value="@{thisImpSkills.actSkill.name}">
+									<bandpopup width="200px" onCancel="self.parent.close()">
+										<vbox>
+											<hbox>
+												${c:l('skillsImport.search')}
+												<textbox
+													onOK="importSkillsWindow.onSearch(event)" focus="true" />
+											</hbox>
+											<listbox rows="8"
+												model="@{skillList}" itemRenderer="${skillListitemRenderer}"
+												onSelect="importSkillsWindow.onSkillSelect(event)">
+												<a:bind
+													_var="thisSkill" />
+												<listitem>
+													<listcell
+														label="@{thisSkill.name}" />
+												</listitem>
+											</listbox>
+										</vbox>
+									</bandpopup>
+								</bandbox>
+							</listcell>
+						</listitem>
+					</listbox>
+				</hbox>
+			</panelchildren>
+		</panel>
+		<panel framable="true" width="980px" height="240px"
+			title="${c:l('skillsImport.other')}" border="normal">
+			<panelchildren>
+				<hbox>
+					<a:bind model="lolModel"
+						selectedItem="importSkillsWindow.lolSkill" />
+					<listbox id="listOtherLeft" multiple="true"
+						width="485px" fixedLayout="true">
+						<listhead sizable="true">
+							<listheader label="${c:l('skillsImport.imported')}"
+								sortAscending="${ascName}" sortDescending="${dscName}"
+								width="50%" />
+							<listheader label="${c:l('skillsImport.existing')}"
+								width="50%" />
+						</listhead>
+						<a:bind _var="thisImpSkills" />
+						<listitem value="@{thisImpSkills}">
+							<listcell
+								label="@{thisImpSkills.impSkill.name}" />
+							<listcell>
+								<checkbox
+									onCheck="importSkillsWindow.onCheck(event)" checked="false" />
+								<bandbox readonly="true" width="190px"
+									disabled="true" value="@{thisImpSkills.actSkill.name}">
+									<bandpopup width="200px" onCancel="self.parent.close()">
+										<vbox>
+											<hbox>
+												${c:l('skillsImport.search')}
+												<textbox
+													onOK="importSkillsWindow.onSearch(event)" focus="true" />
+											</hbox>
+											<listbox rows="8"
+												model="@{skillList}" itemRenderer="${skillListitemRenderer}"
+												onSelect="importSkillsWindow.onSkillSelect(event)">
+												<a:bind
+													_var="thisSkill" />
+												<listitem>
+													<listcell
+														label="@{thisSkill.name}" />
+												</listitem>
+											</listbox>
+										</vbox>
+									</bandpopup>
+								</bandbox>
+							</listcell>
+						</listitem>
+					</listbox>
+					<a:bind model="lorModel"
+						selectedItem="importSkillsWindow.lorSkill" />
+					<listbox id="listOtherRight" multiple="true"
+						width="485px" fixedLayout="true">
+						<listhead sizable="true">
+							<listheader label="${c:l('skillsImport.imported')}"
+								sortAscending="${ascName}" sortDescending="${dscName}"
+								width="50%" />
+							<listheader label="${c:l('skillsImport.existing')}"
+								width="50%" />
+						</listhead>
+						<a:bind _var="thisImpSkills" />
+						<listitem value="@{thisImpSkills}">
+							<listcell
+								label="@{thisImpSkills.impSkill.name}" />
+							<listcell>
+								<checkbox
+									onCheck="importSkillsWindow.onCheck(event)" checked="false" />
+								<bandbox readonly="true" width="190px"
+									disabled="true" value="@{thisImpSkills.actSkill.name}">
+									<bandpopup width="200px" onCancel="self.parent.close()">
+										<vbox>
+											<hbox>
+												${c:l('skillsImport.search')}
+												<textbox
+													onOK="importSkillsWindow.onSearch(event)" focus="true" />
+											</hbox>
+											<listbox rows="8"
+												model="@{skillList}" itemRenderer="${skillListitemRenderer}"
+												onSelect="importSkillsWindow.onSkillSelect(event)">
+												<a:bind
+													_var="thisSkill" />
+												<listitem>
+													<listcell
+														label="@{thisSkill.name}" />
+												</listitem>
+											</listbox>
+										</vbox>
+									</bandpopup>
+								</bandbox>
+							</listcell>
+						</listitem>
+					</listbox>
+				</hbox>
+			</panelchildren>
+		</panel>
+		<panel width="980px" height="30px" border="normal">
+			<panelchildren>
+				<hbox align="right">
+					<button id="import" label="${c:l('skillsImport.upload')}"
+						style="font-family:verdana"
+						onClick="importSkillsWindow.onUpload(event)" />
+					<button id="finish" label="${c:l('skillsImport.import')}"
+						style="font-family:verdana"
+						onClick="importSkillsWindow.onImport(event)" />
+					<button id="cancel" label="${c:l('skillsImport.cancel')}"
+						style="font-family:verdana"
+						onClick="importSkillsWindow.onCancel(event)" />
+				</hbox>
+			</panelchildren>
+		</panel>
+	</vbox>
+</window>

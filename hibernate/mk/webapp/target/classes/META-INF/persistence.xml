@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="mk_postgres" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>sk.mka.bean.Node</class>
+    <class>sk.mka.bean.Address</class>
+    <class>sk.mka.bean.CodeTable</class>
+    <class>sk.mka.bean.GroupMember</class>
+    <class>sk.mka.bean.Person</class>
+    <class>sk.mka.bean.Osoba</class>
+    <class>sk.mka.bean.Authority</class>
+    <class>sk.mka.bean.Student</class>
+    <class>sk.mka.bean.GroupAuthority</class>
+    <class>sk.mka.bean.Practicum</class>
+    <class>sk.mka.bean.Skill</class>
+    <class>sk.mka.bean.Groups</class>
+    <class>sk.mka.bean.Message</class>
+    <class>sk.mka.bean.Product</class>
+    <class>sk.mka.bean.Users</class>
+    <class>sk.mka.bean.House</class>
+    <class>sk.mka.bean.Book</class>
+    <properties>
+      <property name="hibernate.connection.username" value="postgres"/>
+      <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+      <property name="hibernate.connection.password" value="postgres"/>
+      <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/mk"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+    </properties>
+  </persistence-unit>
+</persistence>

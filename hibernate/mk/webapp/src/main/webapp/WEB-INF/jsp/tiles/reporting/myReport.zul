@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="com.ixonos.skillnet.web.reporting.MyReportInitiator"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+        
+    <window id="myReportWindow"	>
+    </window>
+</zk>

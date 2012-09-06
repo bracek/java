@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+	<window apply="${EditSkillsController}">
+		<zscript>
+			import com.ixonos.skillnet.web.controllers.*;
+			Comparator ascName = new SkillsComparator(true,"Name");
+			Comparator dscName = new SkillsComparator(false,"Name");
+			Comparator ascDescription = new SkillsComparator(true,"Description");
+			Comparator dscDescription = new SkillsComparator(false,"Description");
+			Comparator ascEvaluable = new SkillsComparator(true,"Evaluable");
+			Comparator dscEvaluable = new SkillsComparator(false,"Evaluable");
+		</zscript>
+
+		<menupopup id="expandPopup">
+			<menuitem label="${c:l('skillsEdit.expandTree')}"
+				id="expandMenuItem" />
+		</menupopup>
+
+		<tablelayout columns="2" width="100%">
+			<tablechildren id="tc1" width="40%">
+				<panel id="treePanel"
+					title="${c:l('skillsEdit.tree.title')}" droppable="true"
+					border="normal">
+					<panelchildren>
+						<tree id="tree" zclass="z-filetree" />
+					</panelchildren>
+				</panel>
+			</tablechildren>
+			<tablechildren id="tc2" width="60%">
+				<panel title="${c:l('skillsEdit.skills.title')}"
+					border="normal">
+					<panelchildren>
+						<panel height="3px" />
+						<label value="${c:l('skillsEdit.skillName')}"
+							style="margin: 3px 5px;" />
+						<textbox id="filter" />
+						<button id="filterReset"
+							label="${c:l('skillsEdit.resetFilter')}"
+							style="padding-left: 5px">
+						</button>
+						<panel height="3px" />
+						<listbox id="list" multiple="true"
+							fixedLayout="true" height="500px">
+							<listhead sizable="true">
+								<listheader
+									label="${c:l('skillsEdit.name')}" sortAscending="${ascName}"
+									sortDescending="${dscName}" width="37%" />
+								<listheader
+									label="${c:l('skillsEdit.description')}"
+									sortAscending="${ascDescription}"
+									sortDescending="${dscDescription}" width="50%" />
+								<listheader
+									label="${c:l('skillsEdit.evaluable')}"
+									sortAscending="${ascEvaluable}"
+									sortDescending="${dscEvaluable}" width="13%" align="center" />
+							</listhead>
+						</listbox>
+						<grid id="grid" fixedLayout="true">
+							<columns>
+								<column
+									label="${c:l('skillsEdit.type')}" width="20%%" />
+								<column
+									label="${c:l('skillsEdit.content')}" width="50%" />
+								<column
+									label="${c:l('skillsEdit.information')}" width="30%" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										value="${c:l('skillsEdit.skillName')}" />
+									<textbox id="name" width="100%" />
+									<label
+										value="${c:l('skillsEdit.nameOfSkill')}" />
+								</row>
+								<row>
+									<label
+										value="${c:l('skillsEdit.evaluable')}" />
+									<checkbox id="evaluable" />
+									<label
+										value="${c:l('skillsEdit.canBeEval')}" />
+								</row>
+								<row>
+									<label
+										value="${c:l('skillsEdit.description')}" />
+									<textbox id="description"
+										width="100%" rows="3" />
+									<label
+										value="${c:l('skillsEdit.descOfSkill')}" />
+								</row>
+								<row>
+									<label
+										value="${c:l('skillsEdit.mapping')}" />
+									<listbox id="mappingList" rows="3"
+										fixedLayout="true" />
+									<label
+										value="${c:l('skillsEdit.skillMapping')}" />
+								</row>
+							</rows>
+						</grid>
+						<vbox>
+							<hbox>
+								<button id="add"
+									label="${c:l('skillsEdit.createSkill')}"
+									style="font-family:verdana" />
+								<button id="update"
+									label="${c:l('skillsEdit.updateSkill')}"
+									style="font-family:verdana" />
+								<button id="delete"
+									label="${c:l('skillsEdit.deleteSkill')}"
+									style="font-family:verdana" />
+								<button id="import"
+									label="${c:l('skillsEdit.import')}"
+									style="font-family:verdana" />
+								<button id="exportSkills"
+									label="${c:l('skillsEdit.exportSkills')}"
+									style="font-family:verdana" />
+								<button id="exportTrees"
+									label="${c:l('skillsEdit.exportTrees')}"
+									style="font-family:verdana" />
+							</hbox>
+						</vbox>
+					</panelchildren>
+				</panel>
+			</tablechildren>
+		</tablelayout>
+	</window>
+</zk>

@@ -1,0 +1,154 @@
+<?init class="fi.ixonos.projects.web.usermanagement.edit.AddNewUserInitiator" arg0="addNewUserWindow"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?page id="addNewUser" title="Add new user"?>
+
+<window title="${c:l('user.edit.createUser')}" border="normal"
+	use="fi.ixonos.projects.web.usermanagement.edit.AddNewUserWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation" id="addNewUserWindow"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd" width="320px">
+
+	<zscript>
+		import fi.ixonos.projects.web.usermanagement.edit.UserComboitemRenderer;
+                    UserComboitemRenderer userComboitemRenderer = new UserComboitemRenderer();
+	</zscript>
+
+	<tablelayout columns="2">
+		<tablechildren colspan="2">
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<div align="center">
+						<label value="${c:l('user.edit.createUser')}"
+							style="font-weight:bold" />
+					</div>
+				</panelchildren>
+			</panel>
+		</tablechildren>
+
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<label value="${c:l('user.login')}" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<a:bind value="addNewUserWindow.user.username" />
+					<textbox />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<label value="${c:l('user.pass')}" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<a:bind value="addNewUserWindow.user.password" />
+					<textbox type="password" id="password" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<label value="${c:l('user.passConf')}" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<textbox type="password" id="confirmation" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<label value="${c:l('user.enabled')}" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<a:bind checked="addNewUserWindow.user.enabled" />
+					<checkbox/>
+				</panelchildren>
+			</panel>
+		</tablechildren>
+
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<label value="${c:l('user.manager')}" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<a:bind model="managerList" />
+					<a:bind
+						selectedItem="addNewUserWindow.user.manager" />
+					<combobox itemRenderer="${userComboitemRenderer}"
+						readonly="true" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<label value="${c:l('user.roles')}" />
+				</panelchildren>
+			</panel>
+		</tablechildren>
+		<tablechildren>
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<bandbox readonly="true" width="200px">
+						<bandpopup width="200px">
+							<a:bind model="authorities" />
+							<listbox multiple="true" checkmark="true"
+								onSelect="addNewUserWindow.onAuthoritySelect(event)"
+								id="usersAuthorities">
+								<a:bind _var="thisAuthority" />
+								<a:bind value="thisAuthority" />
+								<listitem>
+									<a:bind label="thisAuthority.code" />
+									<listcell />
+								</listitem>
+							</listbox>
+						</bandpopup>
+					</bandbox>
+				</panelchildren>
+			</panel>
+		</tablechildren>
+
+		<tablechildren colspan="2">
+			<panel border="normal" collapsible="true">
+				<panelchildren style="border:0">
+					<div align="center">
+						<button label="${c:l('userAddNew.add')}"
+							onClick="addNewUserWindow.onAddNewUser()" />
+						<button label="${c:l('userAddNew.cancel')}"
+							onClick="addNewUserWindow.detach()" />
+					</div>
+				</panelchildren>
+			</panel>
+		</tablechildren>
+	</tablelayout>
+</window>

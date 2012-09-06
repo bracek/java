@@ -1,0 +1,89 @@
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>        
+<?init class="fi.ixonos.projects.web.usermanagement.editDetail.UsersEditDetailInitiator" arg0="usersEditDetailWindow"?>
+<?page id="usersEditDetail" title="User detail"?>
+
+    <window title="${c:l('user.edit.changeProfile')}"  border="normal"
+	use="fi.ixonos.projects.web.usermanagement.editDetail.UsersEditDetailWindow"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+	id="usersEditDetailWindow" xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd" style="margin: 5px 5px;">
+
+        <a:bind model="userList" />
+        <listbox mold="paging" id="usersListbox">
+            <listhead sizable="true" >
+                <listheader label="${c:l('user.firstName')}"/>
+                <listheader label="${c:l('user.lastName')}"/>
+                <listheader label="${c:l('user.email')}" />
+                <listheader label="${c:l('user.telephone')}" />
+                <listheader label="${c:l('user.location')}" />
+                <listheader label="${c:l('user.position')}" />
+                <listheader label="${c:l('user.uploadCV')}" />
+                <listheader label="${c:l('user.downloadCV')}" />
+                <listheader label="${c:l('user.update')}" />
+            </listhead>
+            <a:bind _var="user"/>
+            <listitem >
+                <listcell>
+                    <a:bind  value="user.name" />
+                    <textbox width="100%" constraint="no empty" id="name" onChange="usersEditDetailWindow.changeUserDetail(event)"/>
+                </listcell>
+                <listcell>
+                    <a:bind  value="user.surname" />
+                    <textbox width="100%" constraint="no empty" id="surname" onChange="usersEditDetailWindow.changeUserDetail(event)"/>
+                </listcell>
+                <listcell>
+                    <a:bind value="user.email" />
+                    <textbox width="100%" constraint="no empty"  id="email" onChange="usersEditDetailWindow.changeUserDetail(event)"/>
+                </listcell>
+                <listcell>
+                    <a:bind value="user.telephoneNumber" />
+                    <textbox width="100%" constraint="no empty"  id="telephoneNumber" onChange="usersEditDetailWindow.changeUserDetail(event)"/>
+                </listcell>
+                <listcell>
+                    <a:bind value="user.location" />
+                    <textbox width="100%" constraint="no empty"  id="location" onChange="usersEditDetailWindow.changeUserDetail(event)"/>
+                </listcell>
+                <listcell>
+                    <a:bind value="user.position" />
+                    <textbox width="100%" constraint="no empty"  id="position" onChange="usersEditDetailWindow.changeUserDetail(event)"/>
+                </listcell>
+                <listcell>
+                    <button label="${c:l('user.button.uploadCV')}" onClick="usersEditDetailWindow.uploadCV(event)">
+                    </button>
+                </listcell>
+                <listcell>
+                    <button id="downloadCV" visible="@{user.isCurriculumAlreadyFillUp}" label="${c:l('user.button.downloadCV')}" onClick="usersEditDetailWindow.downloadCV(event)" />
+                </listcell>                
+            </listitem>
+        </listbox>
+        
+        <panel height="5px" />
+        <vbox>
+        	<image id="imagePhoto" onClick="usersEditDetailWindow.onOpenPhoto(event)"/>
+        	<hbox>
+        		<button id="uploadPhoto" label="${c:l('user.button.uploadPhoto')}" onClick="usersEditDetailWindow.uploadPhoto(event)"/>
+        		<button id="deletePhoto" label="${c:l('user.button.deletePhoto')}" onClick="usersEditDetailWindow.deletePhoto(event)"/>
+        	</hbox>
+        </vbox>
+        
+        <zscript> <![CDATA[
+			if ((Executions.getCurrent().isExplorer())) {
+       			usersListbox.setHeight("60px");	
+       			name.setWidth("98%");
+       			surname.setWidth("98%");
+       			email.setWidth("98%");
+       			telephoneNumber.setWidth("98%");
+       			location.setWidth("98%");
+       			position.setWidth("98%");
+	        	}
+        	]]>
+        </zscript>
+    </window>
+</zk>

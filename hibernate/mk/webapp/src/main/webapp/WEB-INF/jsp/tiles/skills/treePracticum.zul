@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?component name="panel" extends="panel" border="normal"  collapsible="true" style="margin-bottom:10px"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+	<window apply="${PracticumTreeController}">
+		<zscript>
+		import com.ixonos.skillnet.web.controllers.*;
+		Comparator ascDateFrom = new PracticumRowLabelComparator(true,"Date From",false);
+		Comparator dscDateFrom = new PracticumRowLabelComparator(false,"Date From",false);
+		Comparator ascDateTo = new PracticumRowLabelComparator(true,"Date To",false);
+		Comparator dscDateTo = new PracticumRowLabelComparator(false,"Date To",false);
+		Comparator ascLevel = new PracticumRowLabelComparator(true,"Level",false);
+		Comparator dscLevel = new PracticumRowLabelComparator(false,"Level",false);
+		Comparator ascName = new SkillsComparator(true,"Name");
+		Comparator dscName = new SkillsComparator(false,"Name");
+		Comparator ascDescription = new SkillsComparator(true,"Description");
+		Comparator dscDescription = new SkillsComparator(false,"Description");
+	</zscript>
+
+		<menupopup id="expandPopup">
+			<menuitem label="${c:l('skillsPracticum.expandTree')}"
+				id="expandMenuItem" />
+		</menupopup>
+
+
+		<portallayout>
+			<portalchildren width="100%">
+				<panel id="treepanel"
+					title="${c:l('skillsPracticum.tree.title')}" border="normal"
+					droppable="true">
+					<panelchildren>
+						<tree id="tree" zclass="z-filetree"
+							height="175px" />
+					</panelchildren>
+				</panel>
+			</portalchildren>
+			<portalchildren width="100%">
+				<panel title="${c:l('skillsPracticum.practicum')}"
+					border="normal" style="margin-bottom:10px">
+					<panelchildren>
+						<label id="skillabel" />
+						<grid id="practicumgrid" height="177px">
+							<columns sizable="true">
+								<column
+									label="${c:l('skillsPracticum.dateFrom')}" tooltiptext="${c:l('skillsPracticum.dateFrom.tooltip')}"
+									sortAscending="${ascDateFrom}" sortDescending="${dscDateFrom}" />
+								<column
+									label="${c:l('skillsPracticum.dateTo')}" tooltiptext="${c:l('skillsPracticum.dateTo.tooltip')}"
+									sortAscending="${ascDateTo}" sortDescending="${dscDateTo}"
+									sortDirection="ascending" />
+								<column
+									label="${c:l('skillsPracticum.level')}"
+									sortAscending="${ascLevel}" sortDescending="${dscLevel}" />
+								<column />
+							</columns>
+						</grid>
+					</panelchildren>
+				</panel>
+			</portalchildren>
+			<portalchildren width="100%">
+				<panel title="${c:l('skillsPracticum.skills.title')}"
+					border="normal">
+					<panelchildren>
+						<panel height="3px" />
+						<label
+							value="${c:l('skillsPracticum.skillName')}"
+							style="margin: 1px 5px;" />
+						<textbox id="filter" />
+						<panel height="3px" />
+						<listbox id="listSkill" multiple="true"
+							height="400px" fixedLayout="true">
+							<listhead sizable="true">
+								<listheader
+									label="${c:l('skillsPracticum.name')}"
+									sortAscending="${ascName}" sortDescending="${dscName}"
+									width="37%" />
+								<listheader
+									label="${c:l('skillsPracticum.description')}"
+									sortAscending="${ascDescription}"
+									sortDescending="${dscDescription}" width="50%" />
+							</listhead>
+						</listbox>
+					</panelchildren>
+				</panel>
+			</portalchildren>
+		</portallayout>
+	</window>
+</zk>
