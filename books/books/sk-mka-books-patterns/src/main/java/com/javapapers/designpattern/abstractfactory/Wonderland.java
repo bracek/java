@@ -1,7 +1,7 @@
 package com.javapapers.designpattern.abstractfactory;
 
 public class Wonderland {
-	public Wonderland(AnimalFactory factory) {
+	public Wonderland(final AnimalFactory factory) {
 		Animal animal = factory.createAnimal();
 		animal.breathe();
 	}
