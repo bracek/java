@@ -14,7 +14,6 @@ public class Car extends Vehicle {
 		System.out.print("Car ");
 		workShop1.work();
 		workShop2.work();
-
 	}
 
 }
