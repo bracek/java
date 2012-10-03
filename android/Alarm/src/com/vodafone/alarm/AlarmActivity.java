@@ -9,9 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-public final class AndroidAlarmActivity extends Activity {
+import com.vodafone.settings.Utils;
+
+public final class AlarmActivity extends Activity {
 
 	private PendingIntent pendingIntent;
 
@@ -28,13 +29,12 @@ public final class AndroidAlarmActivity extends Activity {
 			@Override
 			public void onClick(final View arg0) {
 
-				final Intent myIntent = new Intent(AndroidAlarmActivity.this,
+				final Intent myIntent = new Intent(AlarmActivity.this,
 						MyAlarmService.class);
-				pendingIntent = PendingIntent.getService(
-						AndroidAlarmActivity.this, 0, myIntent, 0);
+				pendingIntent = PendingIntent.getService(AlarmActivity.this, 0,
+						myIntent, 0);
 
 				final AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-
 				final Calendar calendar = Calendar.getInstance();
 				// calendar.set(Calendar.HOUR_OF_DAY, 8);// Just an example
 				// setting
@@ -65,11 +65,9 @@ public final class AndroidAlarmActivity extends Activity {
 				alarmManager.cancel(pendingIntent);
 
 				// Tell the user about what we did.
-				Toast.makeText(AndroidAlarmActivity.this, "Cancel!",
-						Toast.LENGTH_LONG).show();
-
+				Utils.showToast(AlarmActivity.this, "Cancel!");
 			}
 		});
-
 	}
+
 }
