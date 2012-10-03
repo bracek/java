@@ -24,9 +24,9 @@ public class AlarmReceiver extends AbstractAlarmReceiver implements
 		// Toast.makeText(context, "Alarm !!!!!!!!!!",
 		// Toast.LENGTH_LONG).show(); // For
 		// example
-		vibrator = (Vibrator) context
-				.getSystemService(Context.VIBRATOR_SERVICE);
-		vibrator.vibrate(VIBRATE_SECOND);
+		// vibrator = (Vibrator) context
+		// .getSystemService(Context.VIBRATOR_SERVICE);
+		// vibrator.vibrate(VIBRATE_SECOND);
 
 		// recursion problem
 
@@ -56,7 +56,7 @@ public class AlarmReceiver extends AbstractAlarmReceiver implements
 		final Intent i = new Intent(context, AlarmReceiver.class);
 		final PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
 		am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
-				+ (ALARM_SECOND * 1000), pi);
+				+ (ALARM_SECOND * 1), pi);
 		// Toast.makeText(this, "Alarm set in " + ALARM_SECOND + " seconds",
 		// Toast.LENGTH_LONG).show();
 

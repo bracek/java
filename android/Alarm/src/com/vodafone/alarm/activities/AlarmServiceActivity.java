@@ -1,4 +1,4 @@
-package com.vodafone.alarm;
+package com.vodafone.alarm.activities;
 
 import java.util.Calendar;
 
@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.vodafone.alarm.MyAlarmService;
+import com.vodafone.alarm.R;
 import com.vodafone.settings.Utils;
 
-public final class AlarmActivity extends Activity {
+public final class AlarmServiceActivity extends Activity {
 
 	private PendingIntent pendingIntent;
 
@@ -29,21 +31,19 @@ public final class AlarmActivity extends Activity {
 			@Override
 			public void onClick(final View arg0) {
 
-				final Intent myIntent = new Intent(AlarmActivity.this,
+				final Intent myIntent = new Intent(AlarmServiceActivity.this,
 						MyAlarmService.class);
-				pendingIntent = PendingIntent.getService(AlarmActivity.this, 0,
-						myIntent, 0);
+				pendingIntent = PendingIntent.getService(
+						AlarmServiceActivity.this, 0, myIntent, 0);
 
 				final AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 				final Calendar calendar = Calendar.getInstance();
-				// calendar.set(Calendar.HOUR_OF_DAY, 8);// Just an example
-				// setting
-				// // the alarm for the 8th
-				// // hour of a day.
-				// calendar.set(Calendar.MINUTE, 0);
 				calendar.setTimeInMillis(System.currentTimeMillis());
-				calendar.add(Calendar.SECOND, 1);
-				calendar.set(Calendar.MILLISECOND, 0);
+				// calendar.set(Calendar.DAY_OF_WEEK, 3);
+				// calendar.set(Calendar.HOUR_OF_DAY, 15);
+				// calendar.set(Calendar.MINUTE, 45);
+				calendar.add(Calendar.SECOND, 3);
+				// calendar.set(Calendar.MILLISECOND, 0);
 				am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
 						pendingIntent);
 
@@ -51,10 +51,10 @@ public final class AlarmActivity extends Activity {
 				// am.setRepeating(AlarmManager.RTC_WAKEUP,
 				// calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,
 				// pendingIntent);
-				// Toast.makeText(AndroidAlarmService.this, "Start Alarm",
-				// Toast.LENGTH_LONG).show();
+				Utils.showToast(AlarmServiceActivity.this, "Start Alarm");
 
 			}
+
 		});
 
 		buttonCancel.setOnClickListener(new Button.OnClickListener() {
@@ -65,7 +65,7 @@ public final class AlarmActivity extends Activity {
 				alarmManager.cancel(pendingIntent);
 
 				// Tell the user about what we did.
-				Utils.showToast(AlarmActivity.this, "Cancel!");
+				Utils.showToast(AlarmServiceActivity.this, "Cancel!");
 			}
 		});
 	}

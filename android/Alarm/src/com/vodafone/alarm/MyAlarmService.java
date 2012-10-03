@@ -13,21 +13,20 @@ public final class MyAlarmService extends Service {
 
 	@Override
 	public void onCreate() {
-		Toast.makeText(this, "MyAlarmService.onCreate()", Toast.LENGTH_LONG)
+		Toast.makeText(this, "AlarmService.onCreate()", Toast.LENGTH_LONG)
 				.show();
 	}
 
 	@Override
 	public IBinder onBind(final Intent intent) {
-		Toast.makeText(this, "MyAlarmService.onBind()", Toast.LENGTH_LONG)
-				.show();
+		Toast.makeText(this, "AlarmService.onBind()", Toast.LENGTH_LONG).show();
 		return null;
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		Toast.makeText(this, "MyAlarmService.onDestroy()", Toast.LENGTH_LONG)
+		Toast.makeText(this, "AlarmService.onDestroy()", Toast.LENGTH_LONG)
 				.show();
 	}
 
@@ -35,14 +34,14 @@ public final class MyAlarmService extends Service {
 	public void onStart(final Intent intent, final int startId) {
 		// super.onStart(intent, startId);
 		alarm.setAlarm(MyAlarmService.this);
-		Toast.makeText(this, "MyAlarmService.onStart()", Toast.LENGTH_LONG)
+		Toast.makeText(this, "AlarmService.onStart()", Toast.LENGTH_LONG)
 				.show();
 
 	}
 
 	@Override
 	public boolean onUnbind(final Intent intent) {
-		Toast.makeText(this, "MyAlarmService.onUnbind()", Toast.LENGTH_LONG)
+		Toast.makeText(this, "AlarmService.onUnbind()", Toast.LENGTH_LONG)
 				.show();
 		return super.onUnbind(intent);
 	}

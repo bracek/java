@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <uses-sdk
         android:minSdkVersion="10"
@@ -15,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".AlarmActivity"
+            android:name=".activities.AlarmActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,13 +27,17 @@
 
         <service android:name=".MyAlarmService" />
 
-        <receiver android:name=".AlarmReceiver" >
+        <receiver
+            android:name=".AlarmReceiver"
+            android:process=":remote" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
         <receiver android:name=".RepeatedAlarmReceiver" >
         </receiver>
+
+        <activity android:name="AlarmActivity" />
     </application>
 
 </manifest>
