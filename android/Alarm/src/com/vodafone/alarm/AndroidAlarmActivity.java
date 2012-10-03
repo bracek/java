@@ -36,8 +36,14 @@ public final class AndroidAlarmActivity extends Activity {
 				final AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 
 				final Calendar calendar = Calendar.getInstance();
+				// calendar.set(Calendar.HOUR_OF_DAY, 8);// Just an example
+				// setting
+				// // the alarm for the 8th
+				// // hour of a day.
+				// calendar.set(Calendar.MINUTE, 0);
 				calendar.setTimeInMillis(System.currentTimeMillis());
 				calendar.add(Calendar.SECOND, 1);
+				calendar.set(Calendar.MILLISECOND, 0);
 				am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
 						pendingIntent);
 
@@ -47,6 +53,7 @@ public final class AndroidAlarmActivity extends Activity {
 				// pendingIntent);
 				// Toast.makeText(AndroidAlarmService.this, "Start Alarm",
 				// Toast.LENGTH_LONG).show();
+
 			}
 		});
 
