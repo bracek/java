@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">com.vodafone.alarm</string>
+    <string name="title_activity_main">Alarm activity example</string>
+    <string name="menu_settings">Settings</string>
+
+</resources>
