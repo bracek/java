@@ -45,7 +45,6 @@ public final class AndroidAlarmActivity extends Activity {
 				// am.setRepeating(AlarmManager.RTC_WAKEUP,
 				// calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,
 				// pendingIntent);
-
 				// Toast.makeText(AndroidAlarmService.this, "Start Alarm",
 				// Toast.LENGTH_LONG).show();
 			}
