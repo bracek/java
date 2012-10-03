@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public final class AndroidAlarmService extends Activity {
+public final class AndroidAlarmActivity extends Activity {
 
 	private PendingIntent pendingIntent;
 
@@ -28,18 +28,23 @@ public final class AndroidAlarmService extends Activity {
 			@Override
 			public void onClick(final View arg0) {
 
-				final Intent myIntent = new Intent(AndroidAlarmService.this,
+				final Intent myIntent = new Intent(AndroidAlarmActivity.this,
 						MyAlarmService.class);
 				pendingIntent = PendingIntent.getService(
-						AndroidAlarmService.this, 0, myIntent, 0);
+						AndroidAlarmActivity.this, 0, myIntent, 0);
 
-				final AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+				final AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 
 				final Calendar calendar = Calendar.getInstance();
 				calendar.setTimeInMillis(System.currentTimeMillis());
 				calendar.add(Calendar.SECOND, 1);
-				alarmManager.set(AlarmManager.RTC_WAKEUP,
-						calendar.getTimeInMillis(), pendingIntent);
+				am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+						pendingIntent);
+
+				// set repeating
+				// am.setRepeating(AlarmManager.RTC_WAKEUP,
+				// calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,
+				// pendingIntent);
 
 				// Toast.makeText(AndroidAlarmService.this, "Start Alarm",
 				// Toast.LENGTH_LONG).show();
@@ -54,7 +59,7 @@ public final class AndroidAlarmService extends Activity {
 				alarmManager.cancel(pendingIntent);
 
 				// Tell the user about what we did.
-				Toast.makeText(AndroidAlarmService.this, "Cancel!",
+				Toast.makeText(AndroidAlarmActivity.this, "Cancel!",
 						Toast.LENGTH_LONG).show();
 
 			}
