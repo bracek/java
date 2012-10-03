@@ -1,5 +1,17 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme" parent="android:Theme.Light" />
+
+    <style name="mainLayout">
+        <item name="android:background">#4682b4</item>
+    </style>
+
+    <style name="buttons">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="textViews">
+        <item name="android:textColor">#ffffff</item>
+    </style>
 
 </resources>

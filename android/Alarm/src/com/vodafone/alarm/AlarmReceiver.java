@@ -6,7 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Vibrator;
 
-public class AlarmReceiver extends AalarmReceiver implements IAlarmReceiver {
+public class AlarmReceiver extends AbstractAlarmReceiver implements
+		IAlarmReceiver {
+	private Vibrator vibrator;
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -21,7 +24,7 @@ public class AlarmReceiver extends AalarmReceiver implements IAlarmReceiver {
 		// Toast.makeText(context, "Alarm !!!!!!!!!!",
 		// Toast.LENGTH_LONG).show(); // For
 		// example
-		final Vibrator vibrator = (Vibrator) context
+		vibrator = (Vibrator) context
 				.getSystemService(Context.VIBRATOR_SERVICE);
 		vibrator.vibrate(VIBRATE_SECOND);
 
@@ -68,12 +71,14 @@ public class AlarmReceiver extends AalarmReceiver implements IAlarmReceiver {
 
 	}
 
-	public void CancelAlarm(final Context context) {
+	public void cancelAlarm(final Context context) {
 		final Intent intent = new Intent(context, AlarmReceiver.class);
 		final PendingIntent sender = PendingIntent.getBroadcast(context, 0,
 				intent, 0);
 		final AlarmManager alarmManager = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.cancel(sender);
+		vibrator.cancel();
+
 	}
 }

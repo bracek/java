@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Vibrator;
 import android.widget.Toast;
 
-public class RepeatedAlarmReceiver extends AalarmReceiver implements
+public class RepeatedAlarmReceiver extends AbstractAlarmReceiver implements
 		IAlarmReceiver {
 
 	@Override
