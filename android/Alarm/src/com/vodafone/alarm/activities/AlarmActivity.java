@@ -21,9 +21,10 @@ public class AlarmActivity extends Activity {
 
 	private void startAlarmActivity() {
 		final Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+		i.putExtra(AlarmClock.EXTRA_HOUR, 14);
 		i.putExtra(AlarmClock.EXTRA_MESSAGE, "New Alarm");
-		i.putExtra(AlarmClock.EXTRA_HOUR, 16);
-		i.putExtra(AlarmClock.EXTRA_MINUTES, 27);
+		i.putExtra(AlarmClock.EXTRA_MINUTES, 54);
+		// i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
 		startActivity(i);
 	}
 
@@ -46,6 +47,10 @@ public class AlarmActivity extends Activity {
 
 			@Override
 			public void onClick(final View arg0) {
+				// final AlarmManager alarmManager = (AlarmManager)
+				// getSystemService(ALARM_SERVICE);
+				// alarmManager.cancel(i);
+
 				Utils.showToast(AlarmActivity.this, "Cancel!");
 			}
 		});
