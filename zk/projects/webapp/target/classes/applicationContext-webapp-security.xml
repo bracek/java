@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.4.xsd">
+
+    <http auto-config="true" realm="SkillNet Ixonos Realm">
+
+        <!--<port-mappings >-->
+            <!--<port-mapping http="8080" https="8443"/>-->
+        <!--</port-mappings>-->
+
+        <!-- skills security -->
+        <!--
+         can't be done following because of diffrent ROLES in directory skilles
+        <intercept-url pattern="/skills/**" access="ROLE_USER,ROLE_GROUP_MANAGER"/>
+       ==> use following intercept-url
+        -->
+        <intercept-url pattern="/js/**" filters="none"/>
+        <intercept-url pattern="/img/**" filters="none"/>
+        <intercept-url pattern="/zkau/web/**/img/**" filters="none"/>
+        <intercept-url pattern="/zkau/web/**/css/**" filters="none"/>
+        <intercept-url pattern="/css/**" filters="none"/>
+        <intercept-url pattern="/**/*.js" filters="none"/>
+
+        <intercept-url pattern="/ws/**" filters="none"/>
+
+        <!-- usermanagment security -->
+        <intercept-url pattern="/usermanagement/usermanagementEditDetail.do" access="ROLE_USER"/>
+        <intercept-url pattern="/usermanagement/usermanagementEdit.do" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/usermanagement/usermanagementImport.do" access="ROLE_GROUP_MANAGER"/>
+
+        <!-- groupmanagment security -->
+        <intercept-url pattern="/groupmanagement/**" access="ROLE_ADMIN"/>
+
+        <!-- projects security -->
+        <intercept-url pattern="/projects/**" access="ROLE_GROUP_MANAGER"/>
+
+        <!-- help security-->
+        <intercept-url pattern="/help/**" access="IS_AUTHENTICATED_FULLY"/>
+
+        <intercept-url pattern="/index.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <!--
+        <intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY"/>
+        -->
+
+        <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=1"
+                    login-processing-url="/j_security_check"/>
+        <logout logout-url="/logout" invalidate-session="true" logout-success-url="/login.jsp"/>
+    </http>
+
+    <beans:bean id="trustManager" class="fi.ixonos.projects.web.servlet.IxonosTrustManager"/>
+
+</beans:beans>

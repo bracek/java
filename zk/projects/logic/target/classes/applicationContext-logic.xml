@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!--  Annotation support -->
+    <context:annotation-config />
+    <context:component-scan base-package="fi.ixonos.projects.logic" />
+
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <value>*Facade</value>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>hibernateInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="hibernateInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource">
+            <ref local="dataSourceProjects"/>
+        </property>
+        
+        <!-- Automatically loads all annotated classes spring 2.5.6 and higher-->
+        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+        <property name="packagesToScan" value="fi.ixonos.projects.logic.bean"/>
+
+        <property name="hibernateProperties">
+            <props>
+                <!--  <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>-->
+                <prop key="hibernate.dialect">fi.ixonos.projects.logic.dialect.TableNameSequencePostgresDialect</prop>
+
+                <!-- setup of "hbm2ddl.auto" is in main pom.xml file in profile section -->
+                <!-- hibernate.hbm2ddl.auto : {create create-drop update validate} //-->
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <!-- load application context provider -->
+    <bean id="contextApplicationContextProvider" class="fi.ixonos.projects.logic.context.ProjectsApplicationContextProvider"></bean>
+
+    <!-- Configuration file -->
+    <bean id="propertyConfigurerLogicModule"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="classpath:config-logic.properties" />
+    
+    <!-- Projects Data source -->
+    <bean id="dataSourceProjects"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${projects.jdbc.driverClassName}"
+          p:url="${projects.jdbc.url}"
+          p:username="${projects.jdbc.username}"
+          p:password="${projects.jdbc.password}" />
+
+    <!-- projects JDBC Data source -->
+    <bean id="dataSourceJdbc" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          p:driverClassName="${projects.jdbc.driverClassName}"
+          p:url="${projects.jdbc.url}"
+          p:username="${projects.jdbc.username}"
+          p:password="${projects.jdbc.password}" />
+
+		<!--
+	    p:defaultAutoCommit="${jdbc.defaultAutoCommit}"
+	    p:validationQuery="${jdbc.validationQuery}"
+	    p:testOnBorrow="${jdbc.testOnBorrow}"
+	    p:accessToUnderlyingConnectionAllowed="${jdbc.accessToUnderlyingConnectionAllowed}"
+	    p:initialSize="${jdbc.initialSize}"
+	    p:maxActive="${jdbc.maxActive}" 
+		-->          
+
+    <!-- Transaction managers -->
+    <bean id="projectsTxManager"
+  	      class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+  		  p:dataSource-ref="dataSourceProjects"
+  	/>
+    <!-- Annotation-based transaction management - Activates @Transactional
++-->
+    <tx:annotation-driven transaction-manager="projectsTxManager" />
+    <aop:aspectj-autoproxy />
+	
+</beans>
