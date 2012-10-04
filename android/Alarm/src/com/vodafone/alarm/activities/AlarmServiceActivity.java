@@ -42,7 +42,7 @@ public final class AlarmServiceActivity extends Activity {
 				// calendar.set(Calendar.DAY_OF_WEEK, 3);
 				// calendar.set(Calendar.HOUR_OF_DAY, 15);
 				// calendar.set(Calendar.MINUTE, 45);
-				calendar.add(Calendar.SECOND, 3);
+				calendar.add(Calendar.SECOND, 2);
 				// calendar.set(Calendar.MILLISECOND, 0);
 				am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
 						pendingIntent);
