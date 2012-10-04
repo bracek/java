@@ -1,4 +1,4 @@
-package com.vodafone.alarm.activities;
+package com.vodafone.alarm.receivers;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;

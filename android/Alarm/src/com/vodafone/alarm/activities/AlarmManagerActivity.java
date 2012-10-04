@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.vodafone.alarm.R;
+import com.vodafone.alarm.receivers.AlarmManagerBroadcastReceiver;
 
 public final class AlarmManagerActivity extends Activity {
 
