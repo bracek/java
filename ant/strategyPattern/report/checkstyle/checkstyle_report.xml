@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.6">
+<file name="c:\Users\katrami\Desktop\java\ant\strategyPattern\src\org\wikipedia\en\designpattern\strategy\ConcreteStrategyAdd.java">
+<error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
+</file>
+<file name="c:\Users\katrami\Desktop\java\ant\strategyPattern\src\org\wikipedia\en\designpattern\strategy\ConcreteStrategyMultiply.java">
+</file>
+<file name="c:\Users\katrami\Desktop\java\ant\strategyPattern\src\org\wikipedia\en\designpattern\strategy\ConcreteStrategySubtract.java">
+</file>
+<file name="c:\Users\katrami\Desktop\java\ant\strategyPattern\src\org\wikipedia\en\designpattern\strategy\Context.java">
+</file>
+<file name="c:\Users\katrami\Desktop\java\ant\strategyPattern\src\org\wikipedia\en\designpattern\strategy\Strategy.java">
+</file>
+<file name="c:\Users\katrami\Desktop\java\ant\strategyPattern\src\org\wikipedia\en\designpattern\strategy\StrategyExample.java">
+</file>
+</checkstyle>
