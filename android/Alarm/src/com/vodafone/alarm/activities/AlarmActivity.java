@@ -22,6 +22,7 @@ import com.vodafone.settings.Utils;
 public final class AlarmActivity extends Activity {
 
 	private AlarmVodafoneBroadcastRecevier alarmVodafoneBroadcastRecevier;
+	private int hour = 14;
 	private int minute = 26;
 	private Button buttonCancel;
 	private Button buttonStart;
@@ -71,7 +72,8 @@ public final class AlarmActivity extends Activity {
 			public void onClick(final View view) {
 				// TODO enable alarm in future
 				startAlarmActivity();
-				alarmVodafoneBroadcastRecevier.setAlarmInFuture(context);
+				alarmVodafoneBroadcastRecevier.setAlarmInFuture(context, hour,
+						minute - 1);
 				Utils.showToast(AlarmActivity.this, "Alarm started");
 			}
 		});

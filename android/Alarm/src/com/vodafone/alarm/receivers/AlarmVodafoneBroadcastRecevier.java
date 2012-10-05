@@ -69,7 +69,8 @@ public final class AlarmVodafoneBroadcastRecevier extends BroadcastReceiver {
 
 	}
 
-	public void setAlarmInFuture(final Context context) {
+	public void setAlarmInFuture(final Context context, final int hour,
+			final int minute) {
 		final AlarmManager am = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
 		final Intent intent = new Intent(context,
@@ -78,8 +79,10 @@ public final class AlarmVodafoneBroadcastRecevier extends BroadcastReceiver {
 
 		final Calendar calendar = Calendar.getInstance();
 		calendar.setTimeInMillis(System.currentTimeMillis());
-		calendar.set(Calendar.HOUR_OF_DAY, 14);
-		calendar.set(Calendar.MINUTE, 46);
+		calendar.set(Calendar.HOUR_OF_DAY, hour);
+		calendar.set(Calendar.MINUTE, minute);
+		// calendar.set(Calendar.HOUR_OF_DAY, 14);
+		// calendar.set(Calendar.MINUTE, 46);
 		final PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent,
 				0);
 		am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
