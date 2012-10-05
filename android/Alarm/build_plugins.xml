@@ -88,14 +88,14 @@
 		</findbugs>
 	</target>
 
-	<!-- -->
 	<path id="pmd2.classpath">
 		<pathelement location="${build}" />
 		<fileset dir="${pmd.home.dir}/lib/">
 			<include name="*.jar" />
 		</fileset>
 	</path>
-
+	
+	<!-- -->
 	<path id="pmd.lib">
 		<fileset dir="${pmd.home.dir}/lib">
 			<include name="*.jar" />
@@ -105,7 +105,15 @@
 	<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd2.classpath" />
 	<target name="report.pmd">
 		<mkdir dir="${report.pmd.dir}" />
-		<pmd rulesetfiles="rulesets/favorites.xml">
+		<!-- <pmd rulesetfiles="rulesets/pmd_ruleset.xml">
+			<formatter type="xml" toFile="${report.pmd.dir}/pmd_report.xml" />
+			<fileset dir="${src.dir}">
+				<include name="**/*.java" />
+			</fileset>
+		</pmd> -->
+		 
+		<pmd>
+		    <ruleset>basic</ruleset>
 			<formatter type="xml" toFile="${report.pmd.dir}/pmd_report.xml" />
 			<fileset dir="${src.dir}">
 				<include name="**/*.java" />
@@ -121,19 +129,6 @@
         </fileset>
     </path>
 
-    <target name="report.pmd2">
-        <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.lib"/>
-        <pmd shortFilenames="true">
-            <ruleset>basic</ruleset>
-        	<!--
-            <formatter type="xml" toFile="reports/pmd.xml" linkPrefix="http://pmd.sourceforge.net/xref/"/>
-            -->
-            <formatter type="xml" toFile="reports/pmd.xml" />
-            <fileset dir="${src.dir}">
-                <include name="**/*.java"/>
-            </fileset>
-        </pmd>
-    </target>
 
 
 	<!-- -->
