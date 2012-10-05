@@ -34,17 +34,6 @@ public final class AlarmVodafoneBroadcastRecevier extends BroadcastReceiver {
 	@Override
 	public void onReceive(final Context context, final Intent intent) {
 
-		// Toast.makeText(context, "rusime alarm !!!",
-		// Toast.LENGTH_LONG).show();
-		//
-		// // final Intent intent = new Intent(context,
-		// // AlarmVodafoneBroadcastRecevier.class);
-		// final PendingIntent sender = PendingIntent.getBroadcast(context, 0,
-		// intent, 0);
-		// final AlarmManager alarmManager = (AlarmManager) context
-		// .getSystemService(Context.ALARM_SERVICE);
-		// alarmManager.cancel(sender);
-
 		final PowerManager pm = (PowerManager) context
 				.getSystemService(Context.POWER_SERVICE);
 		final PowerManager.WakeLock wl = pm.newWakeLock(
@@ -107,5 +96,19 @@ public final class AlarmVodafoneBroadcastRecevier extends BroadcastReceiver {
 		final AlarmManager alarmManager = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.cancel(sender);
+	}
+
+	public void setRepetingAlarm(final Context context) {
+		final AlarmManager am = (AlarmManager) context
+				.getSystemService(Context.ALARM_SERVICE);
+		final Intent intent = new Intent(context,
+				AlarmManagerBroadcastReceiver.class);
+		intent.putExtra(ONE_TIME, Boolean.FALSE);
+		final PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent,
+				0);
+		// After after 30 seconds
+		am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
+				1000 * 5, pi);
+
 	}
 }

@@ -21,34 +21,28 @@ import com.vodafone.settings.Utils;
  */
 public final class AlarmActivity extends Activity {
 
+	private static final boolean START_ALARM = true;
 	private AlarmVodafoneBroadcastRecevier alarmVodafoneBroadcastRecevier;
-	private int hour = 14;
-	private int minute = 26;
+	private int hour = 16;
+	private int minute = 37;
 	private Button buttonCancel;
 	private Button buttonStart;
 	private Context context;
 
-	@SuppressWarnings("unused")
 	private void startAlarmActivity() {
+
 		final Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-		i.putExtra(AlarmClock.EXTRA_HOUR, 14);
+		i.putExtra(AlarmClock.EXTRA_HOUR, hour);
 		i.putExtra(AlarmClock.EXTRA_MESSAGE, "New Alarm");
 		i.putExtra(AlarmClock.EXTRA_MINUTES, minute);
 		i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
-
-		final int requestCode = 3;
-		startActivityForResult(i, requestCode);
-		// startActivity(i);
+		startActivity(i);
 	}
 
 	@Override
 	protected void onActivityResult(final int requestCode,
 			final int resultCode, final Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-
-		if (resultCode == 3) {
-			Utils.showToast(AlarmActivity.this, "trojecka sa vratila");
-		}
 	}
 
 	private void initView() {
@@ -71,9 +65,14 @@ public final class AlarmActivity extends Activity {
 			@Override
 			public void onClick(final View view) {
 				// TODO enable alarm in future
-				startAlarmActivity();
-				alarmVodafoneBroadcastRecevier.setAlarmInFuture(context, hour,
-						minute - 1);
+				if (START_ALARM)
+					startAlarmActivity();
+
+				// alarmVodafoneBroadcastRecevier.setAlarm(context);
+				alarmVodafoneBroadcastRecevier.setRepetingAlarm(context);
+				// alarmVodafoneBroadcastRecevier.setAlarmInFuture(context,
+				// hour,
+				// minute);
 				Utils.showToast(AlarmActivity.this, "Alarm started");
 			}
 		});
