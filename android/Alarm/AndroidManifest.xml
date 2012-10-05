@@ -43,6 +43,7 @@
         <!-- Broadcast receiver -->
         <receiver android:name=".receivers.AlarmManagerBroadcastReceiver" >
         </receiver>
+        <receiver android:name=".receivers.AlarmVodafoneBroadcastRecevier" />
     </application>
 
 </manifest>
