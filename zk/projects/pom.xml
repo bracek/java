@@ -126,7 +126,7 @@
         <org.codehaus.mojo-tomcat-maven-plugin.version>1.1</org.codehaus.mojo-tomcat-maven-plugin.version>
         <org.mortbay.jetty.maven-jetty-plugin.version>6.1.17</org.mortbay.jetty.maven-jetty-plugin.version>
 
-        <sonar-maven-plugin.version>2.3</sonar-maven-plugin.version>
+        <sonar-maven-plugin.version>2.0</sonar-maven-plugin.version>
         <UmlGraph.version>4.4</UmlGraph.version>
     </properties>
 

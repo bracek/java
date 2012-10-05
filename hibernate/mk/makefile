@@ -1,5 +1,7 @@
 ### BEGIN OF PROFILES ###
 ##kemt ###
+sonar:
+	mvn sonar:sonar
 default:
 	make kemt.install
 kemt.install:
