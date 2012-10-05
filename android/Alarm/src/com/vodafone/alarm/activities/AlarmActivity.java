@@ -21,9 +21,9 @@ public final class AlarmActivity extends Activity {
 
 	private void startAlarmActivity() {
 		final Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-		i.putExtra(AlarmClock.EXTRA_HOUR, 14);
+		i.putExtra(AlarmClock.EXTRA_HOUR, 9);
 		i.putExtra(AlarmClock.EXTRA_MESSAGE, "New Alarm");
-		i.putExtra(AlarmClock.EXTRA_MINUTES, 54);
+		i.putExtra(AlarmClock.EXTRA_MINUTES, 24);
 		// i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
 		startActivity(i);
 	}
