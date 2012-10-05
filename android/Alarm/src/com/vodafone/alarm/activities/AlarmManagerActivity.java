@@ -29,7 +29,7 @@ public final class AlarmManagerActivity extends Activity {
 	public void startRepeatingTimer(final View view) {
 		final Context context = this.getApplicationContext();
 		if (alarm != null) {
-			alarm.SetAlarm(context);
+			alarm.setAlarm(context);
 		} else {
 			Toast.makeText(context, "Alarm is null", Toast.LENGTH_SHORT).show();
 		}
@@ -38,7 +38,7 @@ public final class AlarmManagerActivity extends Activity {
 	public void cancelRepeatingTimer(final View view) {
 		final Context context = this.getApplicationContext();
 		if (alarm != null) {
-			alarm.CancelAlarm(context);
+			alarm.cancelAlarm(context);
 		} else {
 			Toast.makeText(context, "Alarm is null", Toast.LENGTH_SHORT).show();
 		}

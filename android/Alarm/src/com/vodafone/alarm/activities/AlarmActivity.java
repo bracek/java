@@ -17,7 +17,7 @@ import com.vodafone.settings.Utils;
  * @author katrami
  * 
  */
-public class AlarmActivity extends Activity {
+public final class AlarmActivity extends Activity {
 
 	private void startAlarmActivity() {
 		final Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);

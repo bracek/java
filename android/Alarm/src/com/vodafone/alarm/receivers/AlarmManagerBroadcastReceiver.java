@@ -39,7 +39,7 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
          wl.release();
          
 	}
-	public void SetAlarm(Context context)
+	public void setAlarm(Context context)
     {
         AlarmManager am=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
@@ -49,7 +49,7 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
         am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 5 , pi); 
     }
 
-    public void CancelAlarm(Context context)
+    public void cancelAlarm(Context context)
     {
         Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
         PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
