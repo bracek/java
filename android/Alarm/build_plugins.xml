@@ -35,11 +35,8 @@
 	<property name="cobertura.ser.file" location="${report.temp.dir}/cobertura.ser" />
 
 	<path id="run.classpath">
-		<pathelement path="${bin.dir}" />
-		<!--
-		<pathelement path="${basedir}/lib/junit-4.5.jar" />
-		-->
-		<pathelement path="${junit.dir}/lib/junit-4.5.jar" />
+		<pathelement path="${bin.dir}" />		
+		<pathelement path="${junit.dir}/lib/junit-4.10.jar" />
 	</path>
 
 	<path id="cobertura.classpath">
@@ -83,7 +80,7 @@
 		<findbugs home="${findbugs.home.dir}" workHard="true" output="xml:withMessages" outputFile="${report.findbugs.dir}/findbugs.xml">
 			<class location="${bin.dir}" />
 			<auxClasspath>
-				<fileset file="${basedir}/lib/junit-4.5.jar" />
+				<fileset file="${junit.dir}/lib/junit-4.10.jar" />
 			</auxClasspath>
 		</findbugs>
 	</target>
