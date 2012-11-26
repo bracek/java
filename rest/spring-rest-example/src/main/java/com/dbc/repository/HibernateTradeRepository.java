@@ -4,22 +4,19 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.dbc.model.Trade;
 
-public class HibernateTradeRepository  extends HibernateDaoSupport implements TradeRepository{
- 
-	@Override
-	public Trade getTradeByReference(String reference) {
+public class HibernateTradeRepository extends HibernateDaoSupport implements TradeRepository {
 
-		throw new RuntimeException();
-	}
+    public Trade getTradeByReference(final String reference) {
 
-	@Override
-	public Long createTrade(Trade trade) {
-		return (Long) getHibernateTemplate().save(trade);
-	}
+        throw new RuntimeException();
+    }
 
-	@Override
-	public Trade getTradeById(Long id) {
-		return getHibernateTemplate().get(Trade.class, id);
-	}
+    public Long createTrade(final Trade trade) {
+        return (Long) getHibernateTemplate().save(trade);
+    }
+
+    public Trade getTradeById(final Long id) {
+        return getHibernateTemplate().get(Trade.class, id);
+    }
 
 }

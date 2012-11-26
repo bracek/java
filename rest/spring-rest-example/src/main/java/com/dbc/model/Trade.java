@@ -9,41 +9,40 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @Entity
 public class Trade {
 
-	@Id
-	private long id;
-	private String reference;
-	private String description;
+    @Id
+    private long id;
+    private String reference;
+    private String description;
 
-	public Trade()
-	{
-		super();
-	}
-	
-	public long getId() {
-		return id;
-	}
+    public Trade() {
+        super();
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public Trade(long id) {
-		this.id = id;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public String getReference() {
-		return reference;
-	}
+    public Trade(long id) {
+        this.id = id;
+    }
 
-	public void setReference(String reference) {
-		this.reference = reference;
-	}
+    public String getReference() {
+        return reference;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

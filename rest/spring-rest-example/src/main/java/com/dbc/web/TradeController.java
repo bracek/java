@@ -12,24 +12,23 @@ import com.dbc.service.TradeService;
 
 @Controller
 public class TradeController {
- 
-	@Autowired
-	TradeService service;
- 	
-	@RequestMapping(value = "/find/trade/{id}")
-	public ModelAndView findTradeById(@PathVariable Long id) {
-		Trade trade = service.getTradeById(id);
-		ModelAndView mav = new ModelAndView("tradeView", 
-				BindingResult.MODEL_KEY_PREFIX + "trade", trade);
-		return mav;
-	}
-	
-	@RequestMapping(value = "/create/trade/{id}")
-	public ModelAndView createTrade(@PathVariable Long id) {
-		Trade trade = new Trade(id); 
-		service.createTrade(trade);
-		ModelAndView mav = new ModelAndView("tradeView", BindingResult.MODEL_KEY_PREFIX + "trade", trade);
-		return mav;
-	}
-	
+
+    @Autowired
+    TradeService service;
+
+    @RequestMapping(value = "/find/trade/{id}")
+    public ModelAndView findTradeById(@PathVariable Long id) {
+        Trade trade = service.getTradeById(id);
+        ModelAndView mav = new ModelAndView("tradeView", BindingResult.MODEL_KEY_PREFIX + "trade", trade);
+        return mav;
+    }
+
+    @RequestMapping(value = "/create/trade/{id}")
+    public ModelAndView createTrade(@PathVariable Long id) {
+        Trade trade = new Trade(id);
+        service.createTrade(trade);
+        ModelAndView mav = new ModelAndView("tradeView", BindingResult.MODEL_KEY_PREFIX + "trade", trade);
+        return mav;
+    }
+
 }

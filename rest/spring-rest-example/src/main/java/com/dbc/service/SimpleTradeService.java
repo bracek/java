@@ -7,30 +7,26 @@ import com.dbc.model.Trade;
 import com.dbc.repository.TradeRepository;
 
 @Service
-public class SimpleTradeService implements TradeService{
+public class SimpleTradeService implements TradeService {
 
-	@Autowired
-	TradeRepository tradeRepository;	
-	
-	public SimpleTradeService()
-	{
-		super();
-	}
-	
-	public SimpleTradeService(TradeRepository tradeRepository)
-	{
-		this.tradeRepository = tradeRepository;
-	}
-	
-	@Override
-	public Long createTrade(Trade t) {
-		Long id = tradeRepository.createTrade(t);
-		return id;
-	}
+    @Autowired
+    TradeRepository tradeRepository;
 
-	@Override
-	public Trade getTradeById(Long id) {
-		return tradeRepository.getTradeById(id);
-	}
+    public SimpleTradeService() {
+        super();
+    }
+
+    public SimpleTradeService(final TradeRepository tradeRepository) {
+        this.tradeRepository = tradeRepository;
+    }
+
+    public Long createTrade(final Trade t) {
+        final Long id = tradeRepository.createTrade(t);
+        return id;
+    }
+
+    public Trade getTradeById(final Long id) {
+        return tradeRepository.getTradeById(id);
+    }
 
 }
