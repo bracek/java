@@ -7,8 +7,6 @@
 		 version="2.5">
 
 	<display-name>REST Sample</display-name>
-
-	
 	
 <context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -24,7 +22,7 @@
 		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
 		<init-param>
 			<param-name>com.sun.jersey.config.property.packages</param-name>
-			<param-value>com.mkyong.rest</param-value>
+			<param-value>com.in.reliance.services</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -32,7 +30,6 @@
 	<servlet-mapping>
 		<servlet-name>jersey-serlvet</servlet-name>
 		<url-pattern>/*</url-pattern>
-<!-- 		<url-pattern>/rest/*</url-pattern> -->
 	</servlet-mapping>
 	
 

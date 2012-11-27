@@ -9,6 +9,8 @@ site:
 	make preview
 preview:
 	chromium-browser target/site/index.html &
+eclipse:
+	mvn clean eclipse:eclipse
 
 
 
