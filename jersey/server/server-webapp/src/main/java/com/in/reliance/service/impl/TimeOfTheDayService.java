@@ -18,6 +18,18 @@ import com.in.reliance.service.ITimeOfTheDayService;
 public class TimeOfTheDayService implements ITimeOfTheDayService {
 	private static String PATTERN = "MM.dd.yyyy HH:mm:ss";
 
+	@GET
+	@Path("/do")
+	@Produces("application/json")
+	public Time getTime() {
+		final SimpleDateFormat df = new SimpleDateFormat(PATTERN);
+		final Time t = new Time();
+		t.setName("mirko");
+		t.setTime(df.format(Calendar.getInstance().getTime()));
+		return t;
+
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -26,7 +38,6 @@ public class TimeOfTheDayService implements ITimeOfTheDayService {
 	 * .lang.String)
 	 */
 	@Override
-	@GET
 	@Produces("text/plain")
 	@Path("/asplaintext/{name}")
 	public String getTimeOfTheDay(@PathParam("name") final String name) {

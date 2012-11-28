@@ -4,7 +4,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Component;
@@ -16,25 +15,29 @@ import com.in.reliance.service.ITrackService;
 @Path("/track")
 public class TrackService implements ITrackService {
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.in.reliance.service.impl.ITrackService#getTrackInJSON()
 	 */
 	@Override
 	@GET
-	@Path("/get")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/do")
+	@Produces("application/json")
 	public Track getTrackInJSON() {
-
 		final Track track = new Track();
 		track.setTitle("Enter Sandman");
 		track.setSinger("Metallica");
-
 		return track;
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.in.reliance.service.impl.ITrackService#createTrackInJSON(com.in.reliance.domain.Track)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.in.reliance.service.impl.ITrackService#createTrackInJSON(com.in.reliance
+	 * .domain.Track)
 	 */
 	@Override
 	@POST

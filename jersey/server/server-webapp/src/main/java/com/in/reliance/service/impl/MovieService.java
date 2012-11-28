@@ -18,17 +18,17 @@ import com.in.reliance.service.IMovieService;
 public class MovieService implements IMovieService {
 
 	private static String PATTERN = "MM.dd.yyyy HH:mm:ss";
-	
-	 @GET
-	    @Produces("application/xml")
-	    @Path("/{name}/")
-	    public Time getTimeOfTheDayInXML(@PathParam("name") String name) {
-	        SimpleDateFormat df = new SimpleDateFormat(PATTERN);
-	        Time t = new Time();
-	        t.setName(name);
-	        t.setTime(df.format(Calendar.getInstance().getTime()));
-	        return t;
-	        
-	        
-	    }
+
+	@Override
+	@GET
+	@Produces("application/xml")
+	@Path("/{name}/")
+	public Time getTimeOfTheDayInXML(@PathParam("name") final String name) {
+		final SimpleDateFormat df = new SimpleDateFormat(PATTERN);
+		final Time t = new Time();
+		t.setName(name);
+		t.setTime(df.format(Calendar.getInstance().getTime()));
+		return t;
+
+	}
 }
