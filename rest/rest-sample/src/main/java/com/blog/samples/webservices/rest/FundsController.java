@@ -34,29 +34,30 @@ public class FundsController {
 	private static final String DATA_FIELD = "data";
 	private static final String ERROR_FIELD = "error";
 
-	private static final Logger logger_c = Logger.getLogger(FundsController.class);
+	private static final Logger logger_c = Logger
+			.getLogger(FundsController.class);
 
 	/**
 	 * Gets a fund by fund id.
-	 *
+	 * 
 	 * @param fundId_p
 	 *            the fund id_p
 	 * @return the fund
 	 */
 	@RequestMapping(value = "/rest/funds/{fundId}", method = RequestMethod.GET)
-	public ModelAndView getFund(@PathVariable("fundId") String fundId_p) {
+	public ModelAndView getFund(@PathVariable("fundId") final String fundId_p) {
 		Fund fund = null;
 
 		/* validate fund Id parameter */
 		if (isEmpty(fundId_p) || fundId_p.length() < 5) {
-			String sMessage = "Error invoking getFund - Invalid fund Id parameter";
+			final String sMessage = "Error invoking getFund - Invalid fund Id parameter";
 			return createErrorResponse(sMessage);
 		}
 
 		try {
 			fund = fundService_i.getFundById(fundId_p);
-		} catch (Exception e) {
-			String sMessage = "Error invoking getFund. [%1$s]";
+		} catch (final Exception e) {
+			final String sMessage = "Error invoking getFund. [%1$s]";
 			return createErrorResponse(String.format(sMessage, e.toString()));
 		}
 
@@ -66,17 +67,18 @@ public class FundsController {
 
 	/**
 	 * Gets all funds.
-	 *
+	 * 
 	 * @return the funds
 	 */
 	@RequestMapping(value = "/rest/funds/", method = RequestMethod.GET)
 	public ModelAndView getFunds() {
 		List<Fund> funds = null;
-
+		logger_c.debug("1");
+		
 		try {
 			funds = fundService_i.getAllFunds();
-		} catch (Exception e) {
-			String sMessage = "Error getting all funds. [%1$s]";
+		} catch (final Exception e) {
+			final String sMessage = "Error getting all funds. [%1$s]";
 			return createErrorResponse(String.format(sMessage, e.toString()));
 		}
 
@@ -86,22 +88,22 @@ public class FundsController {
 
 	/**
 	 * Creates a new fund.
-	 *
+	 * 
 	 * @param fund_p
 	 *            the fund_p
 	 * @return the model and view
 	 */
 	@RequestMapping(value = { "/rest/funds/" }, method = { RequestMethod.POST })
-	public ModelAndView createFund(@RequestBody Fund fund_p,
-			HttpServletResponse httpResponse_p, WebRequest request_p) {
+	public ModelAndView createFund(@RequestBody final Fund fund_p,
+			final HttpServletResponse httpResponse_p, final WebRequest request_p) {
 
 		Fund createdFund;
 		logger_c.debug("Creating Fund: " + fund_p.toString());
 
 		try {
 			createdFund = fundService_i.createFund(fund_p);
-		} catch (Exception e) {
-			String sMessage = "Error creating new fund. [%1$s]";
+		} catch (final Exception e) {
+			final String sMessage = "Error creating new fund. [%1$s]";
 			return createErrorResponse(String.format(sMessage, e.toString()));
 		}
 
@@ -109,7 +111,8 @@ public class FundsController {
 		httpResponse_p.setStatus(HttpStatus.CREATED.value());
 
 		/* set location of created resource */
-		httpResponse_p.setHeader("Location", request_p.getContextPath() + "/rest/funds/" + fund_p.getFundId());
+		httpResponse_p.setHeader("Location", request_p.getContextPath()
+				+ "/rest/funds/" + fund_p.getFundId());
 
 		/**
 		 * Return the view
@@ -119,20 +122,21 @@ public class FundsController {
 
 	/**
 	 * Updates fund with given fund id.
-	 *
+	 * 
 	 * @param fund_p
 	 *            the fund_p
 	 * @return the model and view
 	 */
 	@RequestMapping(value = { "/rest/funds/{fundId}" }, method = { RequestMethod.PUT })
-	public ModelAndView updateFund(@RequestBody Fund fund_p, @PathVariable("fundId") String fundId_p,
-								   HttpServletResponse httpResponse_p) {
+	public ModelAndView updateFund(@RequestBody final Fund fund_p,
+			@PathVariable("fundId") final String fundId_p,
+			final HttpServletResponse httpResponse_p) {
 
 		logger_c.debug("Updating Fund: " + fund_p.toString());
 
 		/* validate fund Id parameter */
 		if (isEmpty(fundId_p) || fundId_p.length() < 5) {
-			String sMessage = "Error updating fund - Invalid fund Id parameter";
+			final String sMessage = "Error updating fund - Invalid fund Id parameter";
 			return createErrorResponse(sMessage);
 		}
 
@@ -140,8 +144,8 @@ public class FundsController {
 
 		try {
 			fund = fundService_i.updateFund(fund_p);
-		} catch (Exception e) {
-			String sMessage = "Error updating fund. [%1$s]";
+		} catch (final Exception e) {
+			final String sMessage = "Error updating fund. [%1$s]";
 			return createErrorResponse(String.format(sMessage, e.toString()));
 		}
 
@@ -151,27 +155,28 @@ public class FundsController {
 
 	/**
 	 * Deletes the fund with the given fund id.
-	 *
+	 * 
 	 * @param fundId_p
 	 *            the fund id_p
 	 * @return the model and view
 	 */
 	@RequestMapping(value = "/rest/funds/{fundId}", method = RequestMethod.DELETE)
-	public ModelAndView removeFund(@PathVariable("fundId") String fundId_p,
-								   HttpServletResponse httpResponse_p) {
+	public ModelAndView removeFund(
+			@PathVariable("fundId") final String fundId_p,
+			final HttpServletResponse httpResponse_p) {
 
 		logger_c.debug("Deleting Fund Id: " + fundId_p.toString());
 
 		/* validate fund Id parameter */
 		if (isEmpty(fundId_p) || fundId_p.length() < 5) {
-			String sMessage = "Error deleting fund - Invalid fund Id parameter";
+			final String sMessage = "Error deleting fund - Invalid fund Id parameter";
 			return createErrorResponse(sMessage);
 		}
 
 		try {
 			fundService_i.deleteFund(fundId_p);
-		} catch (Exception e) {
-			String sMessage = "Error invoking getFunds. [%1$s]";
+		} catch (final Exception e) {
+			final String sMessage = "Error invoking getFunds. [%1$s]";
 			return createErrorResponse(String.format(sMessage, e.toString()));
 		}
 
@@ -179,38 +184,38 @@ public class FundsController {
 		return new ModelAndView(jsonView_i, DATA_FIELD, null);
 	}
 
-	public static boolean isEmpty(String s_p) {
+	public static boolean isEmpty(final String s_p) {
 		return (null == s_p) || s_p.trim().length() == 0;
 	}
 
 	/**
 	 * Create an error REST response.
-	 *
+	 * 
 	 * @param sMessage
 	 *            the s message
 	 * @return the model and view
 	 */
-	private ModelAndView createErrorResponse(String sMessage) {
+	private ModelAndView createErrorResponse(final String sMessage) {
 		return new ModelAndView(jsonView_i, ERROR_FIELD, sMessage);
 	}
 
 	/**
 	 * Injector methods.
-	 *
+	 * 
 	 * @param fundService_p
 	 *            the new fund service
 	 */
-	public void setFundService(FundService fundService_p) {
+	public void setFundService(final FundService fundService_p) {
 		fundService_i = fundService_p;
 	}
 
 	/**
 	 * Injector methods.
-	 *
+	 * 
 	 * @param view
 	 *            the new json view
 	 */
-	public void setJsonView(View view) {
+	public void setJsonView(final View view) {
 		jsonView_i = view;
 	}
 
