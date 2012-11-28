@@ -1,4 +1,4 @@
-package com.in.reliance.service;
+package com.in.reliance.service.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,10 +11,11 @@ import javax.ws.rs.Produces;
 import org.springframework.stereotype.Component;
 
 import com.in.reliance.domain.Time;
+import com.in.reliance.service.IMovieService;
 
 @Component
 @Path("/movie")
-public class MovieService {
+public class MovieService implements IMovieService {
 
 	private static String PATTERN = "MM.dd.yyyy HH:mm:ss";
 	
