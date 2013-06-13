@@ -2,8 +2,8 @@ package com.mkyong;
 
 public class Track {
 
-	String title;
-	String singer;
+	private String title;
+	private String singer;
 
 	public String getTitle() {
 		return title;
