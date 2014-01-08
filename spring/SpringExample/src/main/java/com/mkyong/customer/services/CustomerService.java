@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Scope("singleton")
+//@Scope("prototype")
 public class CustomerService 
 {
 	String message;
