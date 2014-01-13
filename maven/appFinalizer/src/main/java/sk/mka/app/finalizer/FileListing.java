@@ -1,4 +1,5 @@
 package sk.mka.app.finalizer;
+
 import java.util.*;
 import java.io.*;
 
@@ -41,28 +42,40 @@ public final class FileListing {
 		final StringBuffer paramsTemporaryBuffer = new StringBuffer();
 
 		try {
-			reader = new BufferedReader(new FileReader(file));
-			String line = null;
 
-			// repeat until all lines is read
+			String extension = null;
+			String fileName = file.getName();
+			int i = fileName.lastIndexOf('.');
+			if (i > 0) {
+				extension = fileName.substring(i + 1);
+			}
+			if (extension != null && extension.equals("java")) {
 
-			while ((line = reader.readLine()) != null) {
+				reader = new BufferedReader(new FileReader(file));
+				String line = null;
 
-				if (line.contains(COMMENT)) { // skip commented code
+				// repeat until all lines is read
 
-					int indexOfSlash = line.indexOf(COMMENT);
+				while ((line = reader.readLine()) != null) {
 
-					if (line.contains(LEFT_BRACKET)) {
-						int indexOfBeginingBracket = line.indexOf(LEFT_BRACKET);
-						if (indexOfSlash < indexOfBeginingBracket) {
+					if (line.contains(COMMENT)) { // skip commented code
+
+						int indexOfSlash = line.indexOf(COMMENT);
+
+						if (line.contains(LEFT_BRACKET)) {
+							int indexOfBeginingBracket = line
+									.indexOf(LEFT_BRACKET);
+							if (indexOfSlash < indexOfBeginingBracket) {
+								appendLine(stringBuffer, line);
+							} else {
+								modify(stringBuffer, paramsTemporaryBuffer,
+										line);
+							}
+						} else
 							appendLine(stringBuffer, line);
-						} else {
-							modify(stringBuffer, paramsTemporaryBuffer, line);
-						}
 					} else
-						appendLine(stringBuffer, line);
-				} else
-					modify(stringBuffer, paramsTemporaryBuffer, line);
+						modify(stringBuffer, paramsTemporaryBuffer, line);
+				}
 
 			}
 		} catch (FileNotFoundException e) {
@@ -90,7 +103,7 @@ public final class FileListing {
 	private static void modify(StringBuffer stringBuffer,
 			StringBuffer paramsTemporaryBuffer, String line) {
 		if (line.contains("private") || line.contains("public")
-				|| line.contains("protected")) {
+				|| line.contains("static") || line.contains("protected")) {
 			if (!line.contains("new")) {
 				// first check if has no parameter
 
