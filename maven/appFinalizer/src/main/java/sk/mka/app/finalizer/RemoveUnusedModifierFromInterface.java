@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Recursive file listing under a specified directory.
@@ -19,9 +20,7 @@ import java.util.List;
  * @author Miroslav Katrak
  * @author anonymous user
  */
-public final class AddMissingFinal {
-
-	
+public final class RemoveUnusedModifierFromInterface {
 
 	/**
 	 * Demonstrate use.
@@ -33,17 +32,18 @@ public final class AddMissingFinal {
 	public static void main(String... aArgs) throws FileNotFoundException {
 		final File startingDirectory = new File(aArgs[0]);
 		// File startingDirectory = new File(".java");
-		final List<File> files = AddMissingFinal.getFileListing(startingDirectory);
+		final List<File> files = RemoveUnusedModifierFromInterface
+				.getFileListing(startingDirectory);
 
 		// print out all file names, in the the order of File.compareTo()
 		for (File file : files) {
 			if (file.isFile()) {
-				appendFinalToMethod(file);
+				doFileModification(file);
 			}
 		}
 	}
 
-	private static void appendFinalToMethod(final File file) {
+	private static void doFileModification(final File file) {
 		BufferedReader reader = null;
 		final StringBuffer stringBuffer = new StringBuffer();
 		final StringBuffer paramsTemporaryBuffer = new StringBuffer();
@@ -61,32 +61,57 @@ public final class AddMissingFinal {
 				System.out.println(file);
 				doModification = true;
 
-				reader = new BufferedReader(new FileReader(file));
-				String line = null;
+				boolean isInterface = false;
 
-				// repeat until all lines is read
-
-				while ((line = reader.readLine()) != null) {
-
-					if (line.contains(Utils.COMMENT)) { // skip commented code
-
-						int indexOfSlash = line.indexOf(Utils.COMMENT);
-
-						if (line.contains(Utils.LEFT_BRACKET)) {
-							int indexOfBeginingBracket = line
-									.indexOf(Utils.LEFT_BRACKET);
-							if (indexOfSlash < indexOfBeginingBracket) {
-								appendLine(stringBuffer, line);
-							} else {
-								modify(stringBuffer, paramsTemporaryBuffer,
-										line);
+				Scanner scanner = null;
+				try {
+					scanner = new Scanner(file);
+					while (scanner.hasNextLine()) {
+						String line = scanner.nextLine();
+						if (!line.contains(Utils.COMMENT)
+								|| !line.startsWith("/*")) {
+							if (line.contains("interface")
+									|| line.contains("public interface")) {
+								if (line.contains("{")) {
+									isInterface = true;
+									break;
+								}
 							}
-						} else
-							appendLine(stringBuffer, line);
-					} else
-						modify(stringBuffer, paramsTemporaryBuffer, line);
+						}
+					}
+				} finally {
+					if (scanner != null)
+						scanner.close();
 				}
 
+				if (!isInterface)
+					return;
+				else {
+					reader = new BufferedReader(new FileReader(file));
+					String line = null;
+
+					// repeat until all lines is read
+					while ((line = reader.readLine()) != null) {
+						if (line.contains(Utils.COMMENT)) { // skip commented
+															// code
+
+							int indexOfSlash = line.indexOf(Utils.COMMENT);
+
+							if (line.contains(Utils.LEFT_BRACKET)) {
+								int indexOfBeginingBracket = line
+										.indexOf(Utils.LEFT_BRACKET);
+								if (indexOfSlash < indexOfBeginingBracket) {
+									appendLine(stringBuffer, line);
+								} else {
+									modify(stringBuffer, paramsTemporaryBuffer,
+											line);
+								}
+							} else
+								appendLine(stringBuffer, line);
+						} else
+							modify(stringBuffer, paramsTemporaryBuffer, line);
+					}
+				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -113,108 +138,25 @@ public final class AddMissingFinal {
 
 	private static void modify(StringBuffer stringBuffer,
 			StringBuffer paramsTemporaryBuffer, String line) {
-		if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC)
-				|| line.contains("static") || line.contains(Utils.PROTECTED)) {
-			if (!line.contains(Utils.NEW)) {
-				// first check if has no parameter
 
-				if (line.contains("(")) {
-
-					// System.out.println("single_line:" + line);
-
-					int indexOfStart = line.indexOf("(");
-					final String beg = line.substring(0, indexOfStart + 1);
-
-					if (line.contains(")")) {
-						// start and end on the same line
-						// System.out.println("line:" + line);
-
-						int endOfStart = line.indexOf(")");
-						final String middle = line.substring(indexOfStart + 1,
-								endOfStart);
-
-						// System.out.println("beg: " + beg);
-						final String end = line.substring(endOfStart);
-						// System.out.println("end: " + end);
-
-						// System.out.println("\tmiddle: " +
-						// middle);
-						boolean isWhitespace = middle.matches("^\\s*$");
-						if (!isWhitespace) {
-							appendFinalToParams(stringBuffer, beg, middle, end);
-						} else {
-							appendLine(stringBuffer, line);
-						}
-					} else { // no contains ")"
-						// appendLine(stringBuffer, line);
-						// System.out.println("\tparamsTemporaryBuffer: "
-						// + paramsTemporaryBuffer);
-						paramsTemporaryBuffer.append(line);
-					}
-				} else {
-					appendLine(stringBuffer, line);
-				}
-			} else
-				appendLine(stringBuffer, line);
+		if (line.contains("interface")) {
+			paramsTemporaryBuffer.append(line);
+			stringBuffer.append(line);
+			stringBuffer.append(Utils.NEWLINE);
 		} else {
-			if (paramsTemporaryBuffer.length() > 0) {
 
-				if (line.contains(")")) {
-					paramsTemporaryBuffer.append(line);
-					final int indexOfStartBracket = paramsTemporaryBuffer
-							.indexOf("(");
-					final int indexOfEndOfStart = paramsTemporaryBuffer
-							.indexOf(")");
-
-					final String beggining = paramsTemporaryBuffer.substring(0,
-							indexOfStartBracket + 1);
-					final String middle = paramsTemporaryBuffer.substring(
-							indexOfStartBracket + 1, indexOfEndOfStart);
-					final String end = paramsTemporaryBuffer
-							.substring(indexOfEndOfStart);
-
-					final StringBuffer tempStringBuffer = new StringBuffer();
-					appendFinalToParams(tempStringBuffer, beggining, middle,
-							end);
-					stringBuffer.append(tempStringBuffer.toString());
-					paramsTemporaryBuffer.delete(0,
-							paramsTemporaryBuffer.length());
-
-				} else
-					paramsTemporaryBuffer.append(line);
-
-			} else
-				appendLine(stringBuffer, line);
+			StringBuffer tempBuffer = new StringBuffer();
+			String removedModfierLine = line.replace("public", "");
+			tempBuffer.append(removedModfierLine);
+			tempBuffer.append(Utils.NEWLINE);
+			stringBuffer.append(tempBuffer);
 		}
-	}
 
-	private static void appendFinalToParams(StringBuffer stringBuffer,
-			final String beg, final String middle, final String end) {
-		final String[] split = middle.split(",");
-		for (int i = 0; i < split.length; i++) {
-			if (i == 0) {
-				stringBuffer.append(beg);
-			}
-
-			if (!split[i].contains("final"))
-				stringBuffer.append("final ");
-
-			stringBuffer.append(split[i]);
-			if (i < split.length - 1)
-				stringBuffer.append(",");
-
-			if (i == split.length - 1) {
-				stringBuffer.append(end);
-			}
-
-			stringBuffer.append("\n");
-			// System.out.println("stringbuffer: " + stringBuffer.toString());
-		}
 	}
 
 	private static void appendLine(StringBuffer stringBuffer, String line) {
 		stringBuffer.append(line);
-		stringBuffer.append("\n");
+		stringBuffer.append(Utils.NEWLINE);
 	}
 
 	private static void writeToFile(final String filename, final String output) {

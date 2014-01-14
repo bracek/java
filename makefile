@@ -1,5 +1,4 @@
 run.sonar:
-	cd books/ && make && cd .. 
 	cd jersey/ && make && cd .. 
 	cd hibernate/ && make && cd .. 
 	cd jsp/ && make && cd .. 
@@ -12,7 +11,6 @@ run.sonar:
 	cd zk/ && make && cd .. 
 
 clean:
-	cd books/ && make clean && cd .. 
 	cd hibernate/ && make clean && cd .. 
 	cd jsp/ && make clean && cd .. 
 	cd maven/ && make clean && cd .. 
