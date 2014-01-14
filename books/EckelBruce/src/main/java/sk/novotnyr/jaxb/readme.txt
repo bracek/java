@@ -1,1 +1,0 @@
-jaxb is supported from java 1.6 and upper
