@@ -74,10 +74,15 @@ public final class RemoveUnusedModifierFromInterface {
 									|| line.contains("public interface")) {
 								if (line.contains("{")) {
 									isInterface = true;
-									break;
 								}
 							}
 						}
+						
+						if(isInterface){
+							if(line.contains(Utils.CLASS))
+								isInterface = false;
+						}
+						
 					}
 				} finally {
 					if (scanner != null)
@@ -139,14 +144,27 @@ public final class RemoveUnusedModifierFromInterface {
 	private static void modify(StringBuffer stringBuffer,
 			StringBuffer paramsTemporaryBuffer, String line) {
 
-		if (line.contains("interface")) {
+		if (line.contains("public interface")) {
 			paramsTemporaryBuffer.append(line);
 			stringBuffer.append(line);
 			stringBuffer.append(Utils.NEWLINE);
 		} else {
 
+			String removedModfierLine = "";
 			StringBuffer tempBuffer = new StringBuffer();
-			String removedModfierLine = line.replace("public", "");
+			if (line.contains(Utils.PUBLIC)) {
+				removedModfierLine = line.replace(Utils.PUBLIC,
+						Utils.EMPTY_STRING);
+			} else if (line.contains(Utils.ABSTRACT)) {
+				if (!line.contains(Utils.PACKAGE)) {
+					removedModfierLine = line.replace(Utils.ABSTRACT,
+							Utils.EMPTY_STRING);
+				} else
+					tempBuffer.append(line);
+			} else {
+				tempBuffer.append(line);
+			}
+
 			tempBuffer.append(removedModfierLine);
 			tempBuffer.append(Utils.NEWLINE);
 			stringBuffer.append(tempBuffer);
