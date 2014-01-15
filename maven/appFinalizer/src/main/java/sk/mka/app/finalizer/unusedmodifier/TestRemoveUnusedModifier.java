@@ -32,7 +32,7 @@ public final class TestRemoveUnusedModifier {
 		// print out all file names, in the the order of File.compareTo()
 		for (File file : files) {
 			if (file.isFile()) {
-				removeUnusedModifier.getFile(file);
+				removeUnusedModifier.parseFile(file);
 			}
 		}
 	}

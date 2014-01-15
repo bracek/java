@@ -15,7 +15,7 @@ import sk.mka.app.finalizer.Utils;
 public final class AddMissingFinalImpl extends AbstractAction implements
 		IAction {
 
-	public void getFile(final File file) {
+	public void parseFile(final File file) {
 		BufferedReader reader = null;
 		final StringBuffer stringBuffer = new StringBuffer();
 		final StringBuffer paramsTemporaryBuffer = new StringBuffer();

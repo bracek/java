@@ -15,7 +15,7 @@ import sk.mka.app.finalizer.Utils;
 
 public class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
 
-	public void getFile(final File file) {
+	public void parseFile(final File file) {
 		BufferedReader reader = null;
 		final StringBuffer stringBuffer = new StringBuffer();
 		final StringBuffer paramsTemporaryBuffer = new StringBuffer();
@@ -103,7 +103,7 @@ public class RemoveUnusedModifierImpl extends AbstractAction implements IAction 
 
 		if (isInterface) {
 			String absolutePath = file.getAbsolutePath();
-			final int lastIndexOfDot = absolutePath.lastIndexOf(".");
+			final int lastIndexOfDot = absolutePath.lastIndexOf(Utils.DOT);
 			absolutePath = absolutePath.substring(0, lastIndexOfDot);
 			absolutePath += ".java";
 			writeToFile(absolutePath, stringBuffer.toString());

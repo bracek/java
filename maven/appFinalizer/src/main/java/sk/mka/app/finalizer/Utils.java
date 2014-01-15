@@ -14,5 +14,6 @@ public class Utils {
 	public static String EMPTY_STRING = "";
 	public static String PACKAGE = "package";
 	public static String CLASS = "class";
+	public static final String DOT = ".";
 
 }

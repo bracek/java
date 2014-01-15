@@ -9,6 +9,6 @@ public interface IAction {
 	List<File> getFileListing(File startingDirectory)
 			throws FileNotFoundException;
 
-	void getFile(File file);
+	void parseFile(File file);
 
 }

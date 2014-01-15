@@ -33,7 +33,7 @@ public final class TestAddMissingFinal {
 		// print out all file names, in the the order of File.compareTo()
 		for (File file : files) {
 			if (file.isFile()) {
-				addMissingFinal.getFile(file);
+				addMissingFinal.parseFile(file);
 			}
 		}
 	}
