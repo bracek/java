@@ -11,7 +11,6 @@ import sk.mka.app.finalizer.IAction;
  * 
  * @author javapractices.com
  * @author Miroslav Katrak
- * @author anonymous user
  */
 public final class TestAddMissingFinal {
 
@@ -30,7 +29,6 @@ public final class TestAddMissingFinal {
 		final List<File> files = addMissingFinal
 				.getFileListing(startingDirectory);
 
-		// print out all file names, in the the order of File.compareTo()
 		for (File file : files) {
 			if (file.isFile()) {
 				addMissingFinal.parseFile(file);

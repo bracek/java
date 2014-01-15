@@ -25,7 +25,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
 			String extension = null;
 			String fileName = file.getName();
-			int i = fileName.lastIndexOf('.');
+			int i = fileName.lastIndexOf(Utils.DOT);
 			if (i > 0) {
 				extension = fileName.substring(i + 1);
 			}
@@ -42,9 +42,9 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
 						int indexOfSlash = line.indexOf(Utils.COMMENT);
 
-						if (line.contains(Utils.LEFT_BRACKET)) {
+						if (line.contains(Utils.OPEN_PARENTHES_OPENING)) {
 							int indexOfBeginingBracket = line
-									.indexOf(Utils.LEFT_BRACKET);
+									.indexOf(Utils.OPEN_PARENTHES_OPENING);
 							if (indexOfSlash < indexOfBeginingBracket) {
 								appendLine(stringBuffer, line);
 							} else {
@@ -81,12 +81,6 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 		}
 	}
 
-	// @Override
-	// protected void modify(StringBuffer stringBuffer,
-	// StringBuffer paramsTemporaryBuffer, String line) {
-	//
-	// }
-
 	@Override
 	protected void modify(StringBuffer stringBuffer,
 			StringBuffer paramsTemporaryBuffer, String line) {
@@ -94,39 +88,26 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 				|| line.contains("static") || line.contains(Utils.PROTECTED)) {
 			if (!line.contains(Utils.NEW)) {
 
-				if (line.contains("(")) {
+				if (line.contains(Utils.OPEN_PARENTHES_OPENING)) {
 
-					// System.out.println("single_line:" + line);
-
-					int indexOfStart = line.indexOf("(");
+					int indexOfStart = line
+							.indexOf(Utils.OPEN_PARENTHES_OPENING);
 					final String beg = line.substring(0, indexOfStart + 1);
 
-					if (line.contains(")")) {
-						// start and end on the same line
-						// System.out.println("line:" + line);
-
-						int endOfStart = line.indexOf(")");
+					if (line.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
+						int endOfStart = line
+								.indexOf(Utils.OPEN_PARENTHESIS_CLOSING);
 						final String middle = line.substring(indexOfStart + 1,
 								endOfStart);
-
-						// System.out.println("beg: " + beg);
 						final String end = line.substring(endOfStart);
-						// System.out.println("end: " + end);
-
-						// System.out.println("\tmiddle: " +
-						// middle);
 						boolean isWhitespace = middle.matches("^\\s*$");
 						if (!isWhitespace) {
 							appendFinalToParams(stringBuffer, beg, middle, end);
 						} else {
 							appendLine(stringBuffer, line);
 						}
-					} else { // no contains ")"
-						// appendLine(stringBuffer, line);
-						// System.out.println("\tparamsTemporaryBuffer: "
-						// + paramsTemporaryBuffer);
+					} else
 						paramsTemporaryBuffer.append(line);
-					}
 				} else {
 					appendLine(stringBuffer, line);
 				}
@@ -135,12 +116,12 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 		} else {
 			if (paramsTemporaryBuffer.length() > 0) {
 
-				if (line.contains(")")) {
+				if (line.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
 					paramsTemporaryBuffer.append(line);
 					final int indexOfStartBracket = paramsTemporaryBuffer
-							.indexOf("(");
+							.indexOf(Utils.OPEN_PARENTHES_OPENING);
 					final int indexOfEndOfStart = paramsTemporaryBuffer
-							.indexOf(")");
+							.indexOf(Utils.OPEN_PARENTHESIS_CLOSING);
 
 					final String beggining = paramsTemporaryBuffer.substring(0,
 							indexOfStartBracket + 1);
@@ -164,7 +145,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 		}
 	}
 
-	private static void appendFinalToParams(StringBuffer stringBuffer,
+	private void appendFinalToParams(StringBuffer stringBuffer,
 			final String beg, final String middle, final String end) {
 		final String[] split = middle.split(",");
 		for (int i = 0; i < split.length; i++) {
@@ -172,28 +153,27 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 				stringBuffer.append(beg);
 			}
 
-			if (!split[i].contains("final"))
-				stringBuffer.append("final ");
+			if (!split[i].contains(Utils.FINAL))
+				stringBuffer.append(Utils.FINAL + Utils.SPACE);
 
 			stringBuffer.append(split[i]);
 			if (i < split.length - 1)
-				stringBuffer.append(",");
+				stringBuffer.append(Utils.COMMA);
 
 			if (i == split.length - 1) {
 				stringBuffer.append(end);
 			}
 
-			stringBuffer.append("\n");
-			// System.out.println("stringbuffer: " + stringBuffer.toString());
+			stringBuffer.append(Utils.NEWLINE);
 		}
 	}
 
-	private static void appendLine(StringBuffer stringBuffer, String line) {
+	private void appendLine(StringBuffer stringBuffer, String line) {
 		stringBuffer.append(line);
-		stringBuffer.append("\n");
+		stringBuffer.append(Utils.NEWLINE);
 	}
 
-	private static void writeToFile(final String filename, final String output) {
+	private void writeToFile(final String filename, final String output) {
 		try {
 			final BufferedWriter out = new BufferedWriter(new FileWriter(
 					filename));

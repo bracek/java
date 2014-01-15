@@ -66,14 +66,13 @@ public class RemoveUnusedModifierImpl extends AbstractAction implements IAction 
 
 					// repeat until all lines is read
 					while ((line = reader.readLine()) != null) {
-						if (line.contains(Utils.COMMENT)) { // skip commented
-															// code
+						if (line.contains(Utils.COMMENT)) {
 
 							int indexOfSlash = line.indexOf(Utils.COMMENT);
 
-							if (line.contains(Utils.LEFT_BRACKET)) {
+							if (line.contains(Utils.OPEN_PARENTHES_OPENING)) {
 								int indexOfBeginingBracket = line
-										.indexOf(Utils.LEFT_BRACKET);
+										.indexOf(Utils.OPEN_PARENTHES_OPENING);
 								if (indexOfSlash < indexOfBeginingBracket) {
 									appendLine(stringBuffer, line);
 								} else {
@@ -109,15 +108,16 @@ public class RemoveUnusedModifierImpl extends AbstractAction implements IAction 
 			writeToFile(absolutePath, stringBuffer.toString());
 		}
 	}
-	
-	protected void modify(StringBuffer stringBuffer, StringBuffer paramsTemporaryBuffer, String line) {
-		
+
+	protected void modify(StringBuffer stringBuffer,
+			StringBuffer paramsTemporaryBuffer, String line) {
+
 		if (line.contains("public interface")) {
 			paramsTemporaryBuffer.append(line);
 			stringBuffer.append(line);
 			stringBuffer.append(Utils.NEWLINE);
 		} else {
-	
+
 			String removedModfierLine = "";
 			StringBuffer tempBuffer = new StringBuffer();
 			if (line.contains(Utils.PUBLIC)) {
@@ -132,14 +132,13 @@ public class RemoveUnusedModifierImpl extends AbstractAction implements IAction 
 			} else {
 				tempBuffer.append(line);
 			}
-	
+
 			tempBuffer.append(removedModfierLine);
 			tempBuffer.append(Utils.NEWLINE);
 			stringBuffer.append(tempBuffer);
 		}
-	
-	}
 
+	}
 
 	private static void appendLine(StringBuffer stringBuffer, String line) {
 		stringBuffer.append(line);
