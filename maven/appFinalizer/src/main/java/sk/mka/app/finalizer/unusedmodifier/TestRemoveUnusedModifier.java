@@ -12,7 +12,7 @@ import sk.mka.app.finalizer.IAction;
  * @author Miroslav Katrak
  * @author anonymous user
  */
-public final class RunRemoveUnusedModifier {
+public final class TestRemoveUnusedModifier {
 
 	/**
 	 * Demonstrate use.
