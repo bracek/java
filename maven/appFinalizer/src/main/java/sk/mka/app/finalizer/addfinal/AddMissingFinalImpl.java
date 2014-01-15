@@ -36,8 +36,6 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 				reader = new BufferedReader(new FileReader(file));
 				String line = null;
 
-				// repeat until all lines is read
-
 				while ((line = reader.readLine()) != null) {
 
 					if (line.contains(Utils.COMMENT)) { // skip commented code
@@ -95,7 +93,6 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 		if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC)
 				|| line.contains("static") || line.contains(Utils.PROTECTED)) {
 			if (!line.contains(Utils.NEW)) {
-				// first check if has no parameter
 
 				if (line.contains("(")) {
 
