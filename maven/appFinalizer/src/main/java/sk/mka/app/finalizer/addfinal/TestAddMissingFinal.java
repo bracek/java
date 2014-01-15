@@ -13,7 +13,7 @@ import sk.mka.app.finalizer.IAction;
  * @author Miroslav Katrak
  * @author anonymous user
  */
-public final class RunAddMissingFinal {
+public final class TestAddMissingFinal {
 
 	/**
 	 * Demonstrate use.
