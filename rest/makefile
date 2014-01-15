@@ -1,3 +1,7 @@
+clean.install: 
+	cd SpringMVC/ && mvn clean instal && cd ..
+	cd spring-rest-example/ && mvn clean install && cd ..
+	cd rest-sample/ && mvn clean install && cd ..
 clean: 
 	cd SpringMVC/ && mvn clean && cd ..
 	cd spring-rest-example/ && mvn clean && cd ..

@@ -1,3 +1,7 @@
+clean.install:
+	cd RESTfulExample/ && mvn clean install  && cd .. 
+	cd server/ && mvn clean install && cd .. 
+	cd json-support/ && mvn clean install && cd .. 
 run.sonar:
 	cd RESTfulExample/ && mvn sonar:sonar  && cd .. 
 #	cd jaxrs-jersey-spring/ && mvn sonar:sonar && cd.. 
