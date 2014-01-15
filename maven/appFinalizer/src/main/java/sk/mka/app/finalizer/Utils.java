@@ -1,18 +1,18 @@
 package sk.mka.app.finalizer;
 
-class Utils {
+public class Utils {
 
-	static String NEW = "new";
-	static String PROTECTED = "protected";
-	static String PRIVATE = "private";
-	static String PUBLIC = "public";
-	static String ABSTRACT = "abstract";
-	static String JAVA = "java";
-	static String COMMENT = "//";
-	static String LEFT_BRACKET = "(";
-	static String NEWLINE = "\n";
-	static String EMPTY_STRING = "";
-	static String PACKAGE = "package";
-	static String CLASS = "class";
+	public static String NEW = "new";
+	public static String PROTECTED = "protected";
+	public static String PRIVATE = "private";
+	public static String PUBLIC = "public";
+	public static String ABSTRACT = "abstract";
+	public static String JAVA = "java";
+	public static String COMMENT = "//";
+	public static String LEFT_BRACKET = "(";
+	public static String NEWLINE = "\n";
+	public static String EMPTY_STRING = "";
+	public static String PACKAGE = "package";
+	public static String CLASS = "class";
 
 }

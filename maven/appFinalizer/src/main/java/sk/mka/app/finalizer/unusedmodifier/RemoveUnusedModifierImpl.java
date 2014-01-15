@@ -1,4 +1,4 @@
-package sk.mka.app.finalizer;
+package sk.mka.app.finalizer.unusedmodifier;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,9 +9,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class RemoveUnusedModifierImpl extends AbstracAction implements IAction {
+import sk.mka.app.finalizer.AbstractAction;
+import sk.mka.app.finalizer.IAction;
+import sk.mka.app.finalizer.Utils;
 
-	public void doFileModification(final File file) {
+public class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
+
+	public void getFile(final File file) {
 		BufferedReader reader = null;
 		final StringBuffer stringBuffer = new StringBuffer();
 		final StringBuffer paramsTemporaryBuffer = new StringBuffer();

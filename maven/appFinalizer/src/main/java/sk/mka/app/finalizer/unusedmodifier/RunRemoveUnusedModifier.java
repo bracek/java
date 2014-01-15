@@ -1,8 +1,10 @@
-package sk.mka.app.finalizer;
+package sk.mka.app.finalizer.unusedmodifier;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
+
+import sk.mka.app.finalizer.IAction;
 
 /**
  * Recursive file listing under a specified directory.
@@ -30,7 +32,7 @@ public final class RunRemoveUnusedModifier {
 		// print out all file names, in the the order of File.compareTo()
 		for (File file : files) {
 			if (file.isFile()) {
-				removeUnusedModifier.doFileModification(file);
+				removeUnusedModifier.getFile(file);
 			}
 		}
 	}

@@ -7,27 +7,27 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class AbstracAction {
-
-	static List<File> getFileListingNoSort(File aStartingDir)
-			throws FileNotFoundException {
-				List<File> result = new ArrayList<File>();
-				File[] filesAndDirs = aStartingDir.listFiles();
-				List<File> filesDirs = Arrays.asList(filesAndDirs);
-				for (File file : filesDirs) {
-					result.add(file); // always add, even if directory
-					if (!file.isFile()) {
-						// must be a directory
-						// recursive call!
-						List<File> deeperList = getFileListingNoSort(file);
-						result.addAll(deeperList);
-					}
-				}
-				return result;
-			}
+public abstract class AbstractAction implements IAction{
 
 	protected abstract void modify(StringBuffer stringBuffer,
 			StringBuffer paramsTemporaryBuffer, String line);
+
+	static List<File> getFileListingNoSort(File aStartingDir)
+			throws FileNotFoundException {
+		List<File> result = new ArrayList<File>();
+		File[] filesAndDirs = aStartingDir.listFiles();
+		List<File> filesDirs = Arrays.asList(filesAndDirs);
+		for (File file : filesDirs) {
+			result.add(file); // always add, even if directory
+			if (!file.isFile()) {
+				// must be a directory
+				// recursive call!
+				List<File> deeperList = getFileListingNoSort(file);
+				result.addAll(deeperList);
+			}
+		}
+		return result;
+	}
 
 	/**
 	 * Directory is valid if it exists, does not represent a file, and can be
@@ -58,7 +58,8 @@ public abstract class AbstracAction {
 	 * @param aStartingDir
 	 *            is a valid directory, which can be read.
 	 */
-	public List<File> getFileListing(File aStartingDir) throws FileNotFoundException {
+	public List<File> getFileListing(File aStartingDir)
+			throws FileNotFoundException {
 		validateDirectory(aStartingDir);
 		List<File> result = getFileListingNoSort(aStartingDir);
 		Collections.sort(result);
