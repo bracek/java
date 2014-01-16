@@ -39,6 +39,7 @@ public class EditProductController {
      */
     public static final String viewName = "editProduct";
 
+
     /**
      * The product manager service.
      */
