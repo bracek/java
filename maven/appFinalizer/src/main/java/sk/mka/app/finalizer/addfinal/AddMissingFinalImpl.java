@@ -87,7 +87,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
                           StringBuffer paramsTemporaryBuffer, String line) {
         if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC)
                 || line.contains("static") || line.contains(Utils.PROTECTED)) {
-            if (!line.contains(Utils.NEW)) {
+            if (!line.contains(Utils.NEW) && !line.contains(".class")) {
 
                 if (line.contains(Utils.OPEN_PARENTHES_OPENING)) {
 
