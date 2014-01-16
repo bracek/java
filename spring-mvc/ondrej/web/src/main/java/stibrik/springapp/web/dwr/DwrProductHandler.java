@@ -1,7 +1,5 @@
 package stibrik.springapp.web.dwr;
 
-import javax.annotation.Resource;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.directwebremoting.annotations.Param;
@@ -9,8 +7,9 @@ import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.directwebremoting.spring.SpringCreator;
 import org.springframework.stereotype.Component;
-
 import stibrik.springapp.service.ProductService;
+
+import javax.annotation.Resource;
 
 /**
  * The Class DwrProductHandler.

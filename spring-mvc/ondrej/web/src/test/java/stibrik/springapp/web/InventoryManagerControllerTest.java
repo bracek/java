@@ -1,12 +1,7 @@
 package stibrik.springapp.web;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.ui.ModelMap;
-
-import stibrik.springapp.service.ProductServiceImpl;
 
 /**
  * The Class InventoryManagerControllerTest.

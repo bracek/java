@@ -1,8 +1,8 @@
 package stibrik.springapp.dao;
 
-import java.util.List;
-
 import stibrik.springapp.bean.Product;
+
+import java.util.List;
 
 /**
  * The Interface ProductDao.

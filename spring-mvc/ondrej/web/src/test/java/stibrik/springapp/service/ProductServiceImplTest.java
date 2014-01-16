@@ -1,11 +1,10 @@
 package stibrik.springapp.service;
 
 
-import java.util.List;
-
 import org.junit.Test;
-
 import stibrik.springapp.bean.Product;
+
+import java.util.List;
 
 /**
  * 

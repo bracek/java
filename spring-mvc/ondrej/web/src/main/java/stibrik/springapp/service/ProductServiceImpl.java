@@ -1,17 +1,15 @@
 package stibrik.springapp.service;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import stibrik.springapp.bean.Product;
 import stibrik.springapp.dao.ProductDao;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * The Class ProductServiceImpl.
