@@ -17,20 +17,21 @@ import springapp.service.ProductManager;
 
 public class InventoryController implements Controller {
 
-    protected final Log logger = LogFactory.getLog(getClass());
-    private ProductManager productManager;
+	protected final Log logger = LogFactory.getLog(getClass());
+	private ProductManager productManager;
 
-    public ModelAndView handleRequest(final HttpServletRequest request,final  HttpServletResponse response)
-            throws ServletException, IOException {
-        String now = (new java.util.Date()).toString();
-        logger.info("returning hello view with " + now);
-        Map<String, Object> myModel = new HashMap<String, Object>();
-        myModel.put("now", now);
-        myModel.put("products", this.productManager.getProducts());
-        return new ModelAndView("hello", "model", myModel);
-    }
+	public ModelAndView handleRequest(final HttpServletRequest request,
+			final HttpServletResponse response) throws ServletException,
+			IOException {
+		String now = (new java.util.Date()).toString();
+		logger.info("returning hello view with " + now);
+		Map<String, Object> myModel = new HashMap<String, Object>();
+		myModel.put("now", now);
+		myModel.put("products", this.productManager.getProducts());
+		return new ModelAndView("hello", "model", myModel);
+	}
 
-    public void setProductManager(final ProductManager productManager) {
-        this.productManager = productManager;
-    }
+	public void setProductManager(final ProductManager productManager) {
+		this.productManager = productManager;
+	}
 }
