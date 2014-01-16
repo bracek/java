@@ -1,8 +1,10 @@
 package springapp.web;
 
 import org.junit.Test;
-import static junit.framework.Assert.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 
 public class HelloControllerTest {
 

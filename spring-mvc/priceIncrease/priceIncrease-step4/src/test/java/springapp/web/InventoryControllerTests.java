@@ -1,10 +1,13 @@
 package springapp.web;
 
-import java.util.Map;
 import org.junit.Test;
-import static junit.framework.Assert.*;
 import org.springframework.web.servlet.ModelAndView;
 import springapp.service.SimpleProductManager;
+
+import java.util.Map;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 
 public class InventoryControllerTests {
 

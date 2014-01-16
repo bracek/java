@@ -1,11 +1,13 @@
 package springapp.service;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
-import static junit.framework.Assert.*;
 import springapp.domain.Product;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static junit.framework.Assert.*;
 
 public class SimpleProductManagerTests {
 

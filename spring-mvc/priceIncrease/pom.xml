@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ixonos.springmvc.priceincrease</groupId>
     <artifactId>core</artifactId>
@@ -7,21 +8,21 @@
     <version>1.0-SNAPSHOT</version>
     <name>priceIncrease-core</name>
 
-<!--    <distributionManagement>
-        <repository>
-            <id>kemt_artifactory</id>
-            <name>xeon.fei.ett-releases</name>
-            <url>http://kemt.fei.tuke.sk:8081/artifactory/kemt_repository</url>
-        </repository>
-        <snapshotRepository>
-            <id>kemt_artifactory</id>
-            <name>xeon.fei.ett-snapshots</name>
-            <url>http://kemt.fei.tuke.sk:8081/artifactory/kemt_repository</url>
-        </snapshotRepository>
-    </distributionManagement>-->
+    <!--    <distributionManagement>
+            <repository>
+                <id>kemt_artifactory</id>
+                <name>xeon.fei.ett-releases</name>
+                <url>http://kemt.fei.tuke.sk:8081/artifactory/kemt_repository</url>
+            </repository>
+            <snapshotRepository>
+                <id>kemt_artifactory</id>
+                <name>xeon.fei.ett-snapshots</name>
+                <url>http://kemt.fei.tuke.sk:8081/artifactory/kemt_repository</url>
+            </snapshotRepository>
+        </distributionManagement>-->
 
     <build>
-         <pluginManagement>
+        <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -120,7 +121,6 @@
     </modules>
 
 
-
     <dependencies>
 
         <dependency>
@@ -132,7 +132,7 @@
     </dependencies>
 
 
-     <ciManagement>
+    <ciManagement>
         <system>Hudson</system>
         <url>http://kemt.fei.tuke.sk:9001/job/priceIncrease/</url>
         <notifiers>
@@ -163,7 +163,8 @@
 
     <scm>
         <connection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/spring-mvc/priceIncrease/</connection>
-        <developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/spring-mvc/priceIncrease/</developerConnection>
+        <developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/spring-mvc/priceIncrease/
+        </developerConnection>
         <url>http://kemt.fei.tuke.sk:3128/svn/katrak/java/spring-mvc/priceIncrease/</url>
         <tag>HEAD</tag>
     </scm>

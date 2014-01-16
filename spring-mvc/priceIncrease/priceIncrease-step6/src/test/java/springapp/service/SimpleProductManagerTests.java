@@ -1,11 +1,12 @@
 package springapp.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import junit.framework.TestCase;
 import springapp.domain.Product;
 import springapp.repository.InMemoryProductDao;
 import springapp.repository.ProductDao;
-import junit.framework.TestCase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SimpleProductManagerTests extends TestCase {
 
@@ -32,7 +33,7 @@ public class SimpleProductManagerTests extends TestCase {
         products.add(product);
         ProductDao productDao = new InMemoryProductDao(products);
         productManager.setProductDao(productDao);
-    //productManager.setProducts(products);
+        //productManager.setProducts(products);
     }
 
     public void testGetProductsWithNoProducts() {

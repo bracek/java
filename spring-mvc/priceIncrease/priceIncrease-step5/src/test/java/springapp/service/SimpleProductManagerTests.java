@@ -1,9 +1,12 @@
 package springapp.service;
+
+import org.junit.Before;
+import org.junit.Test;
+import springapp.domain.Product;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Before;
-import springapp.domain.Product;
-import org.junit.Test;
+
 import static junit.framework.Assert.*;
 
 public class SimpleProductManagerTests {
@@ -56,33 +59,31 @@ public class SimpleProductManagerTests {
         try {
             productManager = new SimpleProductManager();
             productManager.increasePrice(POSITIVE_PRICE_INCREASE);
-        }
-        catch(NullPointerException ex) {
+        } catch (NullPointerException ex) {
             fail("Products list is null.");
         }
     }
 
     @Test
     public void testIncreasePriceWithEmptyListOfProducts() {
-      try {
-          productManager = new SimpleProductManager();
-          productManager.setProducts(new ArrayList<Product>());
-          productManager.increasePrice(POSITIVE_PRICE_INCREASE);
-      }
-      catch(Exception ex) {
-          fail("Products list is empty.");
-      }
-  }
+        try {
+            productManager = new SimpleProductManager();
+            productManager.setProducts(new ArrayList<Product>());
+            productManager.increasePrice(POSITIVE_PRICE_INCREASE);
+        } catch (Exception ex) {
+            fail("Products list is empty.");
+        }
+    }
 
-  @Test
-  public void testIncreasePriceWithPositivePercentage() {
-      productManager.increasePrice(POSITIVE_PRICE_INCREASE);
-      double expectedChairPriceWithIncrease = 22.55;
-      double expectedTablePriceWithIncrease = 165.11;
-      List<Product> products = productManager.getProducts();
-      Product product = products.get(0);
-      assertEquals(expectedChairPriceWithIncrease, product.getPrice());
-      product = products.get(1);
-      assertEquals(expectedTablePriceWithIncrease, product.getPrice());
-  }
+    @Test
+    public void testIncreasePriceWithPositivePercentage() {
+        productManager.increasePrice(POSITIVE_PRICE_INCREASE);
+        double expectedChairPriceWithIncrease = 22.55;
+        double expectedTablePriceWithIncrease = 165.11;
+        List<Product> products = productManager.getProducts();
+        Product product = products.get(0);
+        assertEquals(expectedChairPriceWithIncrease, product.getPrice());
+        product = products.get(1);
+        assertEquals(expectedTablePriceWithIncrease, product.getPrice());
+    }
 }

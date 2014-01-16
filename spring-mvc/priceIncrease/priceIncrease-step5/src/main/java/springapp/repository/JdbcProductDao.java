@@ -1,8 +1,5 @@
 package springapp.repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -10,9 +7,15 @@ import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import springapp.domain.Product;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao {
 
-    /** Logger for this class and subclasses */
+    /**
+     * Logger for this class and subclasses
+     */
     protected final Log logger = LogFactory.getLog(getClass());
 
     public List<Product> getProductList() {
@@ -33,7 +36,7 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao {
 
     private static class ProductMapper implements ParameterizedRowMapper<Product> {
 
-        public Product mapRow(final ResultSet rs,final  int rowNum) throws SQLException {
+        public Product mapRow(final ResultSet rs, final int rowNum) throws SQLException {
             Product prod = new Product();
             prod.setId(rs.getInt("id"));
             prod.setDescription(rs.getString("description"));

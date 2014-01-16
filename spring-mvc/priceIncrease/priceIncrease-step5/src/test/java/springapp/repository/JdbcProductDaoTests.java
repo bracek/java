@@ -1,8 +1,9 @@
 package springapp.repository;
 
-import java.util.List;
 import org.springframework.test.AbstractTransactionalDataSourceSpringContextTests;
 import springapp.domain.Product;
+
+import java.util.List;
 
 public class JdbcProductDaoTests extends AbstractTransactionalDataSourceSpringContextTests {
 

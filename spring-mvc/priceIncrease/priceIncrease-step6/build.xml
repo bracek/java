@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <project name="springapp" basedir="." default="usage">
     <property file="build.properties"/>
-    <property  name="src.dir" value="src"/>
-    <property  name="web.dir" value="war"/>
-    <property  name="test.dir" value="test"/>
-    <property  name="build.dir" value="${web.dir}/WEB-INF/classes"/>
-    <property  name="name" value="springapp"/>
+    <property name="src.dir" value="src"/>
+    <property name="web.dir" value="war"/>
+    <property name="test.dir" value="test"/>
+    <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
+    <property name="name" value="springapp"/>
     <path id="master-classpath">
-      <fileset dir="lib/">
+        <fileset dir="lib/">
             <include name="*.jar"/>
         </fileset>
         <!-- We need the servlet API classes: -->
@@ -47,7 +47,7 @@
     <target name="build" description="Compile main source tree java files">
         <mkdir dir="${build.dir}"/>
         <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true"
-                deprecation="false" optimize="false" failonerror="true">
+               deprecation="false" optimize="false" failonerror="true">
             <src path="${src.dir}"/>
             <classpath refid="master-classpath"/>
         </javac>
@@ -61,7 +61,7 @@
     </target>
     <target name="deploywar" depends="build" description="Deploy application as a WAR file">
         <war destfile="${name}.war"
-              webxml="${web.dir}/WEB-INF/web.xml">
+             webxml="${web.dir}/WEB-INF/web.xml">
             <fileset dir="${web.dir}">
                 <include name="**/*.*"/>
             </fileset>
@@ -90,7 +90,7 @@
     <target name="buildtests" description="Compile test tree java files">
         <mkdir dir="${build.dir}"/>
         <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true"
-        deprecation="false" optimize="false" failonerror="true">
+               deprecation="false" optimize="false" failonerror="true">
             <src path="${test.dir}"/>
             <classpath refid="master-classpath"/>
         </javac>
@@ -105,10 +105,10 @@
     </path>
     <target name="tests" depends="build, buildtests" description="Run tests">
         <junit printsummary="on"
-        fork="false"
-        haltonfailure="false"
-        failureproperty="tests.failed"
-        showoutput="true">
+               fork="false"
+               haltonfailure="false"
+               failureproperty="tests.failed"
+               showoutput="true">
             <classpath refid="test-classpath"/>
             <formatter type="brief" usefile="false"/>
             <batchtest>
@@ -119,21 +119,21 @@
             </batchtest>
         </junit>
         <fail if="tests.failed">
-        tests.failed=${tests.failed}
-        ***********************************************************
-        ***********************************************************
-        **** One or more tests failed! Check the output ... ****
-        ***********************************************************
-        ***********************************************************
+            tests.failed=${tests.failed}
+            ***********************************************************
+            ***********************************************************
+            **** One or more tests failed! Check the output ... ****
+            ***********************************************************
+            ***********************************************************
         </fail>
     </target>
     <target name="dbTests" depends="build, buildtests,dropTables,createTables,loadData"
-        description="Run db tests">
+            description="Run db tests">
         <junit printsummary="on"
-        fork="false"
-        haltonfailure="false"
-        failureproperty="tests.failed"
-        showoutput="true">
+               fork="false"
+               haltonfailure="false"
+               failureproperty="tests.failed"
+               showoutput="true">
             <classpath refid="test-classpath"/>
             <formatter type="brief" usefile="false"/>
             <batchtest>
@@ -143,84 +143,84 @@
             </batchtest>
         </junit>
         <fail if="tests.failed">
-        tests.failed=${tests.failed}
-        ***********************************************************
-        ***********************************************************
-        **** One or more tests failed! Check the output ... ****
-        ***********************************************************
-        ***********************************************************
+            tests.failed=${tests.failed}
+            ***********************************************************
+            ***********************************************************
+            **** One or more tests failed! Check the output ... ****
+            ***********************************************************
+            ***********************************************************
         </fail>
     </target>
     <target name="createTables">
         <echo message="CREATE TABLES USING: ${db.driver} ${db.url}"/>
         <sql driver="${db.driver}"
-          url="${db.url}"
-          userid="${db.user}"
-          password="${db.pw}"
-          onerror="continue"
-          src="db/create_products.sql">
+             url="${db.url}"
+             userid="${db.user}"
+             password="${db.pw}"
+             onerror="continue"
+             src="db/create_products.sql">
             <classpath refid="master-classpath"/>
         </sql>
     </target>
     <target name="dropTables">
         <echo message="DROP TABLES USING: ${db.driver} ${db.url}"/>
         <sql driver="${db.driver}"
-          url="${db.url}"
-          userid="${db.user}"
-          password="${db.pw}"
-          onerror="continue">
+             url="${db.url}"
+             userid="${db.user}"
+             password="${db.pw}"
+             onerror="continue">
             <classpath refid="master-classpath"/>
-    DROP TABLE products;
+            DROP TABLE products;
         </sql>
     </target>
     <target name="loadData">
         <echo message="LOAD DATA USING: ${db.driver} ${db.url}"/>
         <sql driver="${db.driver}"
-          url="${db.url}"
-          userid="${db.user}"
-          password="${db.pw}"
-          onerror="continue"
-          src="db/load_data.sql">
+             url="${db.url}"
+             userid="${db.user}"
+             password="${db.pw}"
+             onerror="continue"
+             src="db/load_data.sql">
             <classpath refid="master-classpath"/>
         </sql>
     </target>
     <target name="printData">
         <echo message="PRINT DATA USING: ${db.driver} ${db.url}"/>
         <sql driver="${db.driver}"
-          url="${db.url}"
-          userid="${db.user}"
-          password="${db.pw}"
-          onerror="continue"
-          print="true">
+             url="${db.url}"
+             userid="${db.user}"
+             password="${db.pw}"
+             onerror="continue"
+             print="true">
             <classpath refid="master-classpath"/>
-    SELECT * FROM products;
+            SELECT * FROM products;
         </sql>
     </target>
     <target name="clearData">
         <echo message="CLEAR DATA USING: ${db.driver} ${db.url}"/>
         <sql driver="${db.driver}"
-          url="${db.url}"
-          userid="${db.user}"
-          password="${db.pw}"
-              onerror="continue">
+             url="${db.url}"
+             userid="${db.user}"
+             password="${db.pw}"
+             onerror="continue">
             <classpath refid="master-classpath"/>
-        DELETE FROM products;
+            DELETE FROM products;
         </sql>
     </target>
     <target name="shutdownDb">
         <echo message="SHUT DOWN DATABASE USING: ${db.driver} ${db.url}"/>
         <sql driver="${db.driver}"
-              url="${db.url}"
-              userid="${db.user}"
-              password="${db.pw}"
-              onerror="continue">
+             url="${db.url}"
+             userid="${db.user}"
+             password="${db.pw}"
+             onerror="continue">
             <classpath refid="master-classpath"/>
-        SHUTDOWN;
+            SHUTDOWN;
         </sql>
     </target>
-<!-- ============================================================== -->
-<!-- Tomcat tasks - remove these if you don't have Tomcat installed -->
-<!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Tomcat tasks - remove these if you don't have Tomcat installed -->
+    <!-- ============================================================== -->
     <path id="catalina-ant-classpath">
         <!-- We need the Catalina jars for Tomcat -->
         <!-- * for other app servers - check the docs -->
@@ -245,34 +245,34 @@
     </taskdef>
     <target name="install" description="Install application in Tomcat">
         <install url="${tomcat.manager.url}"
-                  username="${tomcat.manager.username}"
-                  password="${tomcat.manager.password}"
-                  path="/${name}"
-                  war="${name}"/>
+                 username="${tomcat.manager.username}"
+                 password="${tomcat.manager.password}"
+                 path="/${name}"
+                 war="${name}"/>
     </target>
     <target name="reload" description="Reload application in Tomcat">
         <reload url="${tomcat.manager.url}"
-                  username="${tomcat.manager.username}"
-                  password="${tomcat.manager.password}"
-                  path="/${name}"/>
+                username="${tomcat.manager.username}"
+                password="${tomcat.manager.password}"
+                path="/${name}"/>
     </target>
     <target name="start" description="Start Tomcat application">
         <start url="${tomcat.manager.url}"
-                  username="${tomcat.manager.username}"
-                  password="${tomcat.manager.password}"
-                  path="/${name}"/>
+               username="${tomcat.manager.username}"
+               password="${tomcat.manager.password}"
+               path="/${name}"/>
     </target>
     <target name="stop" description="Stop Tomcat application">
         <stop url="${tomcat.manager.url}"
-                  username="${tomcat.manager.username}"
-                  password="${tomcat.manager.password}"
-                  path="/${name}"/>
+              username="${tomcat.manager.username}"
+              password="${tomcat.manager.password}"
+              path="/${name}"/>
     </target>
     <target name="list" description="List Tomcat applications">
         <list url="${tomcat.manager.url}"
-                 username="${tomcat.manager.username}"
-                 password="${tomcat.manager.password}"/>
+              username="${tomcat.manager.username}"
+              password="${tomcat.manager.password}"/>
     </target>
-<!-- End Tomcat tasks -->
+    <!-- End Tomcat tasks -->
 </project>
 
