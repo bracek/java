@@ -39,7 +39,6 @@ public class EditProductController {
      * The Constant viewName.
      */
     public static final String viewName = "editProduct";
-
     /**
      * The product manager service.
      */
