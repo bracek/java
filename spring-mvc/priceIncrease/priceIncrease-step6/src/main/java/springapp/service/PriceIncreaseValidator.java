@@ -14,11 +14,11 @@ public class PriceIncreaseValidator implements Validator {
     /** Logger for this class and subclasses */
     protected final Log logger = LogFactory.getLog(getClass());
 
-    public boolean supports(Class clazz) {
+    public boolean supports(final Class clazz) {
         return PriceIncrease.class.equals(clazz);
     }
 
-    public void validate(Object obj, Errors errors) {
+    public void validate(final Object obj,final  Errors errors) {
         PriceIncrease pi = (PriceIncrease) obj;
         if (pi == null) {
             errors.rejectValue("percentage", "error.not-specified", null, "Value required.");
@@ -35,7 +35,7 @@ public class PriceIncreaseValidator implements Validator {
         }
     }
 
-    public void setMinPercentage(int i) {
+    public void setMinPercentage(final int i) {
         minPercentage = i;
     }
 
@@ -43,7 +43,7 @@ public class PriceIncreaseValidator implements Validator {
         return minPercentage;
     }
 
-    public void setMaxPercentage(int i) {
+    public void setMaxPercentage(final int i) {
         maxPercentage = i;
     }
 

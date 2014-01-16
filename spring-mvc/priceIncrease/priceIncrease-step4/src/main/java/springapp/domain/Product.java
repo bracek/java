@@ -6,13 +6,13 @@ public class Product implements Serializable {
     public String getDescription() {
         return description;
     }
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
     public Double getPrice() {
         return price;
     }
-    public void setPrice(Double price) {
+    public void setPrice(final Double price) {
         this.price = price;
     }
     public String toString() {

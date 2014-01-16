@@ -8,7 +8,7 @@ public class JdbcProductDaoTests extends AbstractTransactionalDataSourceSpringCo
 
     private ProductDao productDao;
 
-    public void setProductDao(ProductDao productDao) {
+    public void setProductDao(final ProductDao productDao) {
         this.productDao = productDao;
     }
 

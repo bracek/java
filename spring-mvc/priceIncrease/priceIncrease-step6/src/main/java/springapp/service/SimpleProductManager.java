@@ -9,7 +9,7 @@ public class SimpleProductManager implements ProductManager {
         // return products;
         return productDao.getProductList();
     }
-    public void increasePrice(int percentage) {
+    public void increasePrice(final int percentage) {
         List<Product> products = productDao.getProductList();
         if (products != null) {
             for (Product product : products) {
@@ -20,7 +20,7 @@ public class SimpleProductManager implements ProductManager {
             }
         }
     }
-    public void setProductDao(ProductDao productDao) {
+    public void setProductDao(final ProductDao productDao) {
         this.productDao = productDao;
     }
 //    public void setProducts(List<Product> products) {

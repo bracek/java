@@ -11,7 +11,7 @@ public class SimpleProductManager implements ProductManager {
         return products;
     }
 
-    public void increasePrice(int percentage) {
+    public void increasePrice(final int percentage) {
         if (products != null) {
             for (Product product : products) {
                 double newPrice = product.getPrice().doubleValue() *
@@ -21,7 +21,7 @@ public class SimpleProductManager implements ProductManager {
         }
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(final List<Product> products) {
         this.products = products;
     }
 }

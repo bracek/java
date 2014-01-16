@@ -9,7 +9,7 @@ public class PriceIncrease {
     protected final Log logger = LogFactory.getLog(getClass());
     private int percentage;
 
-    public void setPercentage(int i) {
+    public void setPercentage(final int i) {
         percentage = i;
         logger.info("Percentage set to " + i);
     }

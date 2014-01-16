@@ -16,7 +16,7 @@ public class PriceIncreaseFormController extends SimpleFormController {
     protected final Log logger = LogFactory.getLog(getClass());
     private ProductManager productManager;
 
-    public ModelAndView onSubmit(Object command)
+    public ModelAndView onSubmit(final Object command)
             throws ServletException {
         int increase = ((PriceIncrease) command).getPercentage();
         logger.info("Increasing prices by " + increase + "%.");
@@ -25,13 +25,13 @@ public class PriceIncreaseFormController extends SimpleFormController {
         return new ModelAndView(new RedirectView(getSuccessView()));
     }
 
-    protected Object formBackingObject(HttpServletRequest request) throws ServletException {
+    protected Object formBackingObject(final HttpServletRequest request) throws ServletException {
         PriceIncrease priceIncrease = new PriceIncrease();
         priceIncrease.setPercentage(20);
         return priceIncrease;
     }
 
-    public void setProductManager(ProductManager productManager) {
+    public void setProductManager(final ProductManager productManager) {
         this.productManager = productManager;
     }
 

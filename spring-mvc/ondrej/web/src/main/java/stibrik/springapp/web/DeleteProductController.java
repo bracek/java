@@ -27,33 +27,40 @@ public class DeleteProductController {
 
 	// -------------------------------- ATTRS ----------------------------------
 	/** The logger. */
-	private static final Log logger = LogFactory.getLog(DeleteProductController.class);
-	
+	private static final Log logger = LogFactory
+			.getLog(DeleteProductController.class);
+
 	/** The product manager service. */
 	@Resource
 	private ProductService productService;
-	
+
 	// ----------------------------- CONSTRUCTORS ------------------------------
 
 	// -------------------------------- METHODS --------------------------------
 	/**
 	 * Handle request, method <code>GET</code>.
 	 * 
-	 * @param id the id
-	 * @param request the request
+	 * @param id
+	 *            the id
+	 * @param request
+	 *            the request
 	 * 
 	 * @return the string
 	 * 
-	 * @throws Exception the exception
+	 * @throws Exception
+	 *             the exception
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public String handle(@RequestParam(value = PRODUCT, required = false) Integer id, HttpServletRequest request) throws Exception {
-		logger.debug("handle()[GET]: has just been started. Given product id " + id);
-		
+	public String handle(
+			final @RequestParam(value = PRODUCT, required = false) Integer id,
+			HttpServletRequest request) throws Exception {
+		logger.debug("handle()[GET]: has just been started. Given product id "
+				+ id);
+
 		if (id != null && id > 0) {
 			productService.deleteProduct(id);
 		}
-		
+
 		return doRedirect(viewName);
 	}
 }

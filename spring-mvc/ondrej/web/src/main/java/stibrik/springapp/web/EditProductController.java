@@ -59,7 +59,7 @@ public class EditProductController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public String handle(@RequestParam(value = PRODUCT, required = false) Integer id, ModelMap model, HttpServletRequest request) throws Exception {
+	public String handle(final @RequestParam(value = PRODUCT,required = false) Integer id, ModelMap model, HttpServletRequest request) throws Exception {
 		logger.debug("handle()[GET]: has just been started. Given product id " + id);
 		
 		Product product = new Product();
@@ -83,7 +83,7 @@ public class EditProductController {
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	//Note: BindingResult parameter must follow the ModelAttribute parameter
-	public String handle(@ModelAttribute(PRODUCT) Product product, BindingResult result, HttpServletRequest request) throws Exception {
+	public String handle(final @ModelAttribute(PRODUCT) Product product, BindingResult result, HttpServletRequest request) throws Exception {
 		logger.debug("handle()[POST]: has just been started. Given product is " + product);		
 		
 		validator.validate(product, result);

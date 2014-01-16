@@ -23,7 +23,7 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao {
         return products;
     }
 
-    public void saveProduct(Product prod) {
+    public void saveProduct(final Product prod) {
         logger.info("Saving product: " + prod.getDescription());
         int count = getSimpleJdbcTemplate().update(
                 "update products set description = :description, price = :price where id = :id",
@@ -33,7 +33,7 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao {
 
     private static class ProductMapper implements ParameterizedRowMapper<Product> {
 
-        public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
+        public Product mapRow(final ResultSet rs,final  int rowNum) throws SQLException {
             Product prod = new Product();
             prod.setId(rs.getInt("id"));
             prod.setDescription(rs.getString("description"));

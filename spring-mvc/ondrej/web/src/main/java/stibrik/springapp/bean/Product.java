@@ -48,7 +48,7 @@ public class Product implements Serializable {
 	 * This method sets value o field <code>id</code>.
 	 * @param id The id to set.
 	 */
-	public void setId(Integer id) {
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 	/**
@@ -62,7 +62,7 @@ public class Product implements Serializable {
 	 * This method sets value o field <code>price</code>.
 	 * @param price The price to set.
 	 */
-	public void setPrice(Double price) {
+	public void setPrice(final Double price) {
 		this.price = price;
 	}
 	/**
@@ -76,7 +76,7 @@ public class Product implements Serializable {
 	 * This method sets value o field <code>description</code>.
 	 * @param description The description to set.
 	 */
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = description;
 	}
 	

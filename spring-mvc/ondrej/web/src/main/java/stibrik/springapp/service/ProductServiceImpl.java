@@ -51,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
 	 * 
 	 * @see stibrik.springapp.service.ProductManager#increasePrice(int)
 	 */
-	public void increasePrice(int percentage) {
+	public void increasePrice(final int percentage) {
 		if (products != null) {
 			for (Product product : products) {
 				Double newPrice = product.getPrice() * (100 + percentage) / 100;
@@ -64,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
 	 * @see stibrik.springapp.service.ProductService#saveProduct(stibrik.springapp.bean.Product)
 	 */
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void saveProduct(Product prod) {
+	public void saveProduct(final Product prod) {
 		logger.debug("saveProduct(): Method has just been started.");
 		if (prod != null) {
 			if (prod.getId() == null) {
@@ -83,7 +83,7 @@ public class ProductServiceImpl implements ProductService {
 	 * @see stibrik.springapp.service.ProductService#deleteProduct(java.lang.Integer)
 	 */
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void deleteProduct(Integer id) {
+	public void deleteProduct(final Integer id) {
 		logger.debug("deleteProduct(): Method has just been started. Deleteing product with id = " + id);
 		if (id != null) {
 			productDao.deleteProduct(id);
@@ -94,7 +94,7 @@ public class ProductServiceImpl implements ProductService {
 	 * @see stibrik.springapp.service.ProductService#findById(java.lang.Integer)
 	 */
 	@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
-	public Product findById(Integer id) {
+	public Product findById(final Integer id) {
 		logger.debug("findById(): Method has just been started.");
 		return productDao.findById(id);
 	}

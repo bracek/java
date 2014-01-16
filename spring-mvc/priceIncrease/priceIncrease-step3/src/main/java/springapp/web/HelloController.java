@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Date;
 public class HelloController implements Controller {
     protected final Log logger = LogFactory.getLog(getClass());
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
+    public ModelAndView handleRequest(final HttpServletRequest request,final  HttpServletResponse response)
             throws ServletException, IOException {
         String now = (new Date()).toString();
         logger.info("Returning hello view with " + now);

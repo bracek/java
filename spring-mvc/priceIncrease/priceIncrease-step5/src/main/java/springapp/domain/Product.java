@@ -8,7 +8,7 @@ public class Product implements Serializable {
     private String description;
     private Double price;
 
-    public void setId(int i) {
+    public void setId(final int i) {
         id = i;
     }
 
@@ -20,7 +20,7 @@ public class Product implements Serializable {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -28,7 +28,7 @@ public class Product implements Serializable {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(final Double price) {
         this.price = price;
     }
 
