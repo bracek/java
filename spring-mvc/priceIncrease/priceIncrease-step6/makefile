@@ -1,6 +1,6 @@
 def:
-	mvn install
+mvn install
 clean:
-	mvn  clean
+mvn  clean
 generate:
-	ant createTables loadData printData
+ant createTables loadData printData

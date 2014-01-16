@@ -19,81 +19,81 @@ import java.util.List;
 @Service("productManager")
 public class ProductServiceImpl implements ProductService {
 
-	// -------------------------------- ATTRS ----------------------------------
-	/** The logger. */
-	private static final Log logger = LogFactory.getLog(ProductServiceImpl.class);
-	
-	/** The product dao. */
-	@Resource
-	private ProductDao productDao;	
-	
-	/** The products. */
-	private List<Product> products;
+// -------------------------------- ATTRS ----------------------------------
+/** The logger. */
+private static final Log logger = LogFactory.getLog(ProductServiceImpl.class);
 
-	// ----------------------------- CONSTRUCTORS ------------------------------
-	
-	// -------------------------------- METHODS --------------------------------
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see stibrik.springapp.service.ProductManager#getProducts()
-	 */
-	@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
-	public List<Product> getProducts() {
-		logger.debug("getProducts(): Method has just been started.");
-		return productDao.getProductList();
-	}
+/** The product dao. */
+@Resource
+private ProductDao productDao;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see stibrik.springapp.service.ProductManager#increasePrice(int)
-	 */
-	public void increasePrice(final int percentage) {
-		if (products != null) {
-			for (Product product : products) {
-				Double newPrice = product.getPrice() * (100 + percentage) / 100;
-				product.setPrice(newPrice);
-			}
-		}
-	}
+/** The products. */
+private List<Product> products;
 
-	/* (non-Javadoc)
-	 * @see stibrik.springapp.service.ProductService#saveProduct(stibrik.springapp.bean.Product)
-	 */
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void saveProduct(final Product prod) {
-		logger.debug("saveProduct(): Method has just been started.");
-		if (prod != null) {
-			if (prod.getId() == null) {
-				logger.debug("saveProduct(): Product id not found, adding new record.");
-				productDao.addProduct(prod);
-				
-			} else {
-				logger.debug("saveProduct(): Product id found, updating record with id=" + prod.getId());
-				productDao.updateProduct(prod);
-			}
-			logger.debug("saveProduct(): Product is stored.");
-		}		
-	}
-	
-	/* (non-Javadoc)
-	 * @see stibrik.springapp.service.ProductService#deleteProduct(java.lang.Integer)
-	 */
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void deleteProduct(final Integer id) {
-		logger.debug("deleteProduct(): Method has just been started. Deleteing product with id = " + id);
-		if (id != null) {
-			productDao.deleteProduct(id);
-		}
-	}
+// ----------------------------- CONSTRUCTORS ------------------------------
 
-	/* (non-Javadoc)
-	 * @see stibrik.springapp.service.ProductService#findById(java.lang.Integer)
-	 */
-	@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
-	public Product findById(final Integer id) {
-		logger.debug("findById(): Method has just been started.");
-		return productDao.findById(id);
-	}
+// -------------------------------- METHODS --------------------------------
+/*
+ * (non-Javadoc)
+ * 
+ * @see stibrik.springapp.service.ProductManager#getProducts()
+ */
+@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
+public List<Product> getProducts() {
+logger.debug("getProducts(): Method has just been started.");
+return productDao.getProductList();
+}
+
+/*
+ * (non-Javadoc)
+ * 
+ * @see stibrik.springapp.service.ProductManager#increasePrice(int)
+ */
+public void increasePrice(final int percentage) {
+if (products != null) {
+for (Product product : products) {
+Double newPrice = product.getPrice() * (100 + percentage) / 100;
+product.setPrice(newPrice);
+}
+}
+}
+
+/* (non-Javadoc)
+ * @see stibrik.springapp.service.ProductService#saveProduct(stibrik.springapp.bean.Product)
+ */
+@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+public void saveProduct(final Product prod) {
+logger.debug("saveProduct(): Method has just been started.");
+if (prod != null) {
+if (prod.getId() == null) {
+logger.debug("saveProduct(): Product id not found, adding new record.");
+productDao.addProduct(prod);
+
+} else {
+logger.debug("saveProduct(): Product id found, updating record with id=" + prod.getId());
+productDao.updateProduct(prod);
+}
+logger.debug("saveProduct(): Product is stored.");
+}
+}
+
+/* (non-Javadoc)
+ * @see stibrik.springapp.service.ProductService#deleteProduct(java.lang.Integer)
+ */
+@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+public void deleteProduct(final Integer id) {
+logger.debug("deleteProduct(): Method has just been started. Deleteing product with id = " + id);
+if (id != null) {
+productDao.deleteProduct(id);
+}
+}
+
+/* (non-Javadoc)
+ * @see stibrik.springapp.service.ProductService#findById(java.lang.Integer)
+ */
+@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
+public Product findById(final Integer id) {
+logger.debug("findById(): Method has just been started.");
+return productDao.findById(id);
+}
 }

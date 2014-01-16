@@ -20,38 +20,38 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/inventory.do")
 public class InventoryManagerController {
 
-	// -------------------------------- ATTRS ----------------------------------
-	/** The logger. */
-	private static final Log logger = LogFactory.getLog(InventoryManagerController.class);
-	
-	/** The Constant viewName. */
-	public static final String viewName = "inventory";
-	
-	/** The product manager service. */
-	@Resource
-	private ProductService productService;
-	
-	// ----------------------------- CONSTRUCTORS ------------------------------
+// -------------------------------- ATTRS ----------------------------------
+/** The logger. */
+private static final Log logger = LogFactory.getLog(InventoryManagerController.class);
 
-	// -------------------------------- METHODS --------------------------------
-	/**
-	 * Handle request.
-	 * 
-	 * @param model the model
-	 * @param request the request
-	 * @param response the response
-	 * 
-	 * @return the string
-	 * 
-	 * @throws Exception the exception
-	 */
-	@SuppressWarnings("unchecked")
-	@RequestMapping
-	public String handle(final ModelMap model,final  HttpServletRequest request,final  HttpServletResponse response) throws Exception {
-		logger.debug("handle(): has just been started.");
-		
-		model.put("products", productService.getProducts());
-		
-		return viewName;
-	}
+/** The Constant viewName. */
+public static final String viewName = "inventory";
+
+/** The product manager service. */
+@Resource
+private ProductService productService;
+
+// ----------------------------- CONSTRUCTORS ------------------------------
+
+// -------------------------------- METHODS --------------------------------
+/**
+ * Handle request.
+ * 
+ * @param model the model
+ * @param request the request
+ * @param response the response
+ * 
+ * @return the string
+ * 
+ * @throws Exception the exception
+ */
+@SuppressWarnings("unchecked")
+@RequestMapping
+public String handle(final ModelMap model,final  HttpServletRequest request,final  HttpServletResponse response) throws Exception {
+logger.debug("handle(): has just been started.");
+
+model.put("products", productService.getProducts());
+
+return viewName;
+}
 }

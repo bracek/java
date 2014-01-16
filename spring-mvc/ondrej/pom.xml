@@ -1,192 +1,192 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>stibrik.springapp</groupId>
-	<version>1.0</version>
-	<artifactId>springapp</artifactId>
-	<packaging>pom</packaging>
-	<name>ondrej</name>
-	<modules>
-		<module>web</module>
-	</modules>
+<modelVersion>4.0.0</modelVersion>
+<groupId>stibrik.springapp</groupId>
+<version>1.0</version>
+<artifactId>springapp</artifactId>
+<packaging>pom</packaging>
+<name>ondrej</name>
+<modules>
+<module>web</module>
+</modules>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<source>1.6</source>
-						<target>1.6</target>
-						<encoding>UTF-8</encoding>
-						<showWarnings>true</showWarnings>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>net.unto.maven.plugins</groupId>
-					<artifactId>maven-junit4-plugin</artifactId>
-					<version>1.0-SNAPSHOT</version>
-					<executions>
-						<execution>
-							<phase>test</phase>
-							<goals>
-								<goal>test</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>2.0.2</version>
-					<configuration>
-						<useFullArtifactNames>false</useFullArtifactNames>
-						<excludes>META-INF/**/*</excludes>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>tomcat-maven-plugin</artifactId>
-					<version>1.1</version>
-					<configuration>
-						<url>http://localhost:8080/manager</url>
-						<server>tomcatServer</server>
-					</configuration>
-				</plugin>
+<build>
+<pluginManagement>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-compiler-plugin</artifactId>
+<configuration>
+<source>1.6</source>
+<target>1.6</target>
+<encoding>UTF-8</encoding>
+<showWarnings>true</showWarnings>
+</configuration>
+</plugin>
+<plugin>
+<groupId>net.unto.maven.plugins</groupId>
+<artifactId>maven-junit4-plugin</artifactId>
+<version>1.0-SNAPSHOT</version>
+<executions>
+<execution>
+<phase>test</phase>
+<goals>
+<goal>test</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-war-plugin</artifactId>
+<version>2.0.2</version>
+<configuration>
+<useFullArtifactNames>false</useFullArtifactNames>
+<excludes>META-INF/**/*</excludes>
+</configuration>
+</plugin>
+<plugin>
+<groupId>org.codehaus.mojo</groupId>
+<artifactId>tomcat-maven-plugin</artifactId>
+<version>1.1</version>
+<configuration>
+<url>http://localhost:8080/manager</url>
+<server>tomcatServer</server>
+</configuration>
+</plugin>
 
-				<plugin>
-					<groupId>org.codehaus.sonar</groupId>
-					<artifactId>sonar-maven-plugin</artifactId>
-					<version>2.0</version>
-				</plugin>
+<plugin>
+<groupId>org.codehaus.sonar</groupId>
+<artifactId>sonar-maven-plugin</artifactId>
+<version>2.0</version>
+</plugin>
 
-			</plugins>
-		</pluginManagement>
-	</build>
+</plugins>
+</pluginManagement>
+</build>
 
-	<dependencyManagement>
-		<dependencies>
-			<!-- Genral J2EE application -->
-			<!-- <dependency> <groupId>javax.j2ee</groupId> <artifactId>j2ee</artifactId> 
-				<version>1.4</version> <scope>provided</scope> </dependency> -->
-			<dependency>
-				<groupId>javax.persistence</groupId>
-				<artifactId>persistence-api</artifactId>
-				<version>1.0</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>servlet-api</artifactId>
-				<version>2.4</version>
-			</dependency>
-			<dependency>
-				<groupId>jstl</groupId>
-				<artifactId>jstl</artifactId>
-				<version>1.1.2</version>
-			</dependency>
+<dependencyManagement>
+<dependencies>
+<!-- Genral J2EE application -->
+<!-- <dependency> <groupId>javax.j2ee</groupId> <artifactId>j2ee</artifactId> 
+<version>1.4</version> <scope>provided</scope> </dependency> -->
+<dependency>
+<groupId>javax.persistence</groupId>
+<artifactId>persistence-api</artifactId>
+<version>1.0</version>
+</dependency>
+<dependency>
+<groupId>javax.servlet</groupId>
+<artifactId>servlet-api</artifactId>
+<version>2.4</version>
+</dependency>
+<dependency>
+<groupId>jstl</groupId>
+<artifactId>jstl</artifactId>
+<version>1.1.2</version>
+</dependency>
 
-			<dependency>
-				<groupId>taglibs</groupId>
-				<artifactId>standard</artifactId>
-				<version>1.1.2</version>
-			</dependency>
+<dependency>
+<groupId>taglibs</groupId>
+<artifactId>standard</artifactId>
+<version>1.1.2</version>
+</dependency>
 
-			<dependency>
-				<groupId>javax.annotation</groupId>
-				<artifactId>jsr250-api</artifactId>
-				<version>1.0</version>
-			</dependency>
+<dependency>
+<groupId>javax.annotation</groupId>
+<artifactId>jsr250-api</artifactId>
+<version>1.0</version>
+</dependency>
 
-			<!-- Spring framework -->
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>2.5.3</version>
-			</dependency>
+<!-- Spring framework -->
+<dependency>
+<groupId>org.springframework</groupId>
+<artifactId>spring-core</artifactId>
+<version>2.5.3</version>
+</dependency>
 
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>2.5.3</version>
-			</dependency>
+<dependency>
+<groupId>org.springframework</groupId>
+<artifactId>spring-webmvc</artifactId>
+<version>2.5.3</version>
+</dependency>
 
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>2.5.3</version>
-			</dependency>
+<dependency>
+<groupId>org.springframework</groupId>
+<artifactId>spring-jdbc</artifactId>
+<version>2.5.3</version>
+</dependency>
 
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>2.5.3</version>
-			</dependency>
+<dependency>
+<groupId>org.springframework</groupId>
+<artifactId>spring-aop</artifactId>
+<version>2.5.3</version>
+</dependency>
 
-			<dependency>
-				<groupId>org.springmodules</groupId>
-				<artifactId>spring-modules-validation</artifactId>
-				<version>0.9</version>
-			</dependency>
+<dependency>
+<groupId>org.springmodules</groupId>
+<artifactId>spring-modules-validation</artifactId>
+<version>0.9</version>
+</dependency>
 
-			<!-- Others -->
-			<dependency>
-				<groupId>org.directwebremoting</groupId>
-				<artifactId>dwr</artifactId>
-				<version>3.0.M1</version>
-			</dependency>
+<!-- Others -->
+<dependency>
+<groupId>org.directwebremoting</groupId>
+<artifactId>dwr</artifactId>
+<version>3.0.M1</version>
+</dependency>
 
-			<dependency>
-				<groupId>commons-dbcp</groupId>
-				<artifactId>commons-dbcp</artifactId>
-				<version>1.2</version>
-			</dependency>
+<dependency>
+<groupId>commons-dbcp</groupId>
+<artifactId>commons-dbcp</artifactId>
+<version>1.2</version>
+</dependency>
 
-			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>2.4</version>
-			</dependency>
+<dependency>
+<groupId>commons-lang</groupId>
+<artifactId>commons-lang</artifactId>
+<version>2.4</version>
+</dependency>
 
-			<!-- PostrgeSQL JDBC Driver -->
-			<dependency>
-				<groupId>postgresql</groupId>
-				<artifactId>postgresql</artifactId>
-				<version>8.3-603.jdbc3</version>
-			</dependency>
+<!-- PostrgeSQL JDBC Driver -->
+<dependency>
+<groupId>postgresql</groupId>
+<artifactId>postgresql</artifactId>
+<version>8.3-603.jdbc3</version>
+</dependency>
 
-			<!-- Logging -->
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>1.2.13</version>
-			</dependency>
+<!-- Logging -->
+<dependency>
+<groupId>log4j</groupId>
+<artifactId>log4j</artifactId>
+<version>1.2.13</version>
+</dependency>
 
-			<!-- Tests -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.0</version>
-				<scope>test</scope>
-			</dependency>
+<!-- Tests -->
+<dependency>
+<groupId>junit</groupId>
+<artifactId>junit</artifactId>
+<version>4.0</version>
+<scope>test</scope>
+</dependency>
 
-			<!-- inter module references -->
-			<dependency>
-				<groupId>${pom.groupId}</groupId>
-				<artifactId>web</artifactId>
-				<version>1.0</version>
-				<type>war</type>
-			</dependency>
+<!-- inter module references -->
+<dependency>
+<groupId>${pom.groupId}</groupId>
+<artifactId>web</artifactId>
+<version>1.0</version>
+<type>war</type>
+</dependency>
 
-			<dependency>
-				<groupId>aspect</groupId>
-				<artifactId>aspectjtools</artifactId>
-				<version>1.5.4</version>
-			</dependency>
+<dependency>
+<groupId>aspect</groupId>
+<artifactId>aspectjtools</artifactId>
+<version>1.5.4</version>
+</dependency>
 
-		</dependencies>
-	</dependencyManagement>
+</dependencies>
+</dependencyManagement>
 
 </project>

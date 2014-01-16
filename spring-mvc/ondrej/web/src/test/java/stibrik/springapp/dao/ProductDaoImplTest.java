@@ -5,36 +5,36 @@ import org.junit.Test;
 
 public class ProductDaoImplTest {
 
-	// -------------------------------- ATTRS ----------------------------------
-	//private ProductDaoImpl productDao;
-	
-	// ----------------------------- CONSTRUCTORS ------------------------------
+// -------------------------------- ATTRS ----------------------------------
+//private ProductDaoImpl productDao;
 
-	// -------------------------------- METHODS --------------------------------
-	@Before
-	public void setUp() throws Exception {
-		//productDao = new ProductDaoImpl();
-		
-	}
+// ----------------------------- CONSTRUCTORS ------------------------------
 
-	@Test
-	public void testGetProductList() {
-		
-		
-	}
+// -------------------------------- METHODS --------------------------------
+@Before
+public void setUp() throws Exception {
+//productDao = new ProductDaoImpl();
 
-	@Test
-	public void testUpdateProduct() {
-		//fail("Not yet implemented");
-	}
+}
 
-	@Test
-	public void testAddProduct() {
-		//fail("Not yet implemented");
-	}
+@Test
+public void testGetProductList() {
 
-	@Test
-	public void testFindById() {
-		//fail("Not yet implemented");
-	}
+
+}
+
+@Test
+public void testUpdateProduct() {
+//fail("Not yet implemented");
+}
+
+@Test
+public void testAddProduct() {
+//fail("Not yet implemented");
+}
+
+@Test
+public void testFindById() {
+//fail("Not yet implemented");
+}
 }

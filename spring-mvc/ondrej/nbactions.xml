@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
-	<action>
-		<actionName>CUSTOM-JETTY_RUN</actionName>
-		<displayName>JETTY_RUN</displayName>
-		<goals>
-			<goal>jetty:run</goal>
-		</goals>
-		<properties>
-			<skipTests>true</skipTests>
-		</properties>
-		<activatedProfiles>
-			<activatedProfile>JETTY_RUN</activatedProfile>
-		</activatedProfiles>
-	</action>
+<action>
+<actionName>CUSTOM-JETTY_RUN</actionName>
+<displayName>JETTY_RUN</displayName>
+<goals>
+<goal>jetty:run</goal>
+</goals>
+<properties>
+<skipTests>true</skipTests>
+</properties>
+<activatedProfiles>
+<activatedProfile>JETTY_RUN</activatedProfile>
+</activatedProfiles>
+</action>
 </actions>

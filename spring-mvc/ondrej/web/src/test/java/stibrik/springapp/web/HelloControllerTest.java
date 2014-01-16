@@ -9,19 +9,19 @@ import org.junit.Test;
  */
 public class HelloControllerTest {
 
-	// -------------------------------- ATTRS ----------------------------------
+// -------------------------------- ATTRS ----------------------------------
 
-	// ----------------------------- CONSTRUCTORS ------------------------------
+// ----------------------------- CONSTRUCTORS ------------------------------
   
-	// -------------------------------- METHODS --------------------------------
-	@Test
-	public void testHandleRequestView() throws Exception {
-//		HelloController controller = new HelloController();
-//		ModelMap model = new ModelMap();
-//		String viewName = controller.handle(model, null, null);
-//		assertEquals("hello", viewName);
-//		assertNotNull(model);
-//		String nowValue = (String) model.get("now");
-//		assertNotNull(nowValue);
-	}
+// -------------------------------- METHODS --------------------------------
+@Test
+public void testHandleRequestView() throws Exception {
+//HelloController controller = new HelloController();
+//ModelMap model = new ModelMap();
+//String viewName = controller.handle(model, null, null);
+//assertEquals("hello", viewName);
+//assertNotNull(model);
+//String nowValue = (String) model.get("now");
+//assertNotNull(nowValue);
+}
 }

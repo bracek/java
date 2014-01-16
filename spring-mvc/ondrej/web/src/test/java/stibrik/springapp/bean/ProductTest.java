@@ -11,41 +11,41 @@ import static org.junit.Assert.assertNull;
  */
 public class ProductTest {
 
-	// -------------------------------- ATTRS ----------------------------------
-	private Product product;
-	
-	// ----------------------------- CONSTRUCTORS ------------------------------
+// -------------------------------- ATTRS ----------------------------------
+private Product product;
 
-	// -------------------------------- METHODS --------------------------------
-	/**
-	 * Sets the up.
-	 * 
-	 * @throws Exception the exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		product = new Product();
-	}
+// ----------------------------- CONSTRUCTORS ------------------------------
 
-	/**
-	 * Test get price.
-	 */
-	@Test
-	public void testSetAndGetPrice() {
-		String testDescription = "aDescription";
-		assertNull(product.getDescription());
-		product.setDescription(testDescription);
-		assertEquals(testDescription, product.getDescription());
-	}
+// -------------------------------- METHODS --------------------------------
+/**
+ * Sets the up.
+ * 
+ * @throws Exception the exception
+ */
+@Before
+public void setUp() throws Exception {
+product = new Product();
+}
 
-	/**
-	 * Test get description.
-	 */
-	@Test
-	public void testSetAndGetDescription() {
-		double testPrice = 100.00;
-		assertEquals(0, 0, 0);
-		product.setPrice(testPrice);
-		assertEquals(testPrice, product.getPrice(), 0);
-	}
+/**
+ * Test get price.
+ */
+@Test
+public void testSetAndGetPrice() {
+String testDescription = "aDescription";
+assertNull(product.getDescription());
+product.setDescription(testDescription);
+assertEquals(testDescription, product.getDescription());
+}
+
+/**
+ * Test get description.
+ */
+@Test
+public void testSetAndGetDescription() {
+double testPrice = 100.00;
+assertEquals(0, 0, 0);
+product.setPrice(testPrice);
+assertEquals(testPrice, product.getPrice(), 0);
+}
 }

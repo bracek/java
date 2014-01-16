@@ -18,38 +18,38 @@ import javax.annotation.Resource;
  */
 @Component("dwrProduct")
 @RemoteProxy(
-	creator = SpringCreator.class,
-	creatorParams = {
-		@Param(name="beanName", value="dwrProduct"),
-		@Param(name="javascript", value="DwrProduct")
-		
-	},
-	name = "dwrProduct"
+creator = SpringCreator.class,
+creatorParams = {
+@Param(name="beanName", value="dwrProduct"),
+@Param(name="javascript", value="DwrProduct")
+
+},
+name = "dwrProduct"
 )
 public class DwrProductHandler {
 
-	// -------------------------------- ATTRS ----------------------------------
-	/** The logger. */
-	private static final Log logger = LogFactory.getLog(DwrProductHandler.class);
-	
-	/** The product manager service. */
-	@Resource
-	private ProductService productService;
-		
-	// ----------------------------- CONSTRUCTORS ------------------------------
+// -------------------------------- ATTRS ----------------------------------
+/** The logger. */
+private static final Log logger = LogFactory.getLog(DwrProductHandler.class);
 
-	// -------------------------------- METHODS --------------------------------
-	/**
-	 * Delete product according given parameter. If id is null, zero or negative integer, method does nothing.
-	 * 
-	 * @param id the id
-	 */
-	@RemoteMethod
-	public void deleteProduct(final Integer id) {
-		logger.debug("deleteProduct(): Has just been started. Product Id = " + id);
-		
-		if (id != null && id > 0) {
-			productService.deleteProduct(id);
-		}
-	}
+/** The product manager service. */
+@Resource
+private ProductService productService;
+
+// ----------------------------- CONSTRUCTORS ------------------------------
+
+// -------------------------------- METHODS --------------------------------
+/**
+ * Delete product according given parameter. If id is null, zero or negative integer, method does nothing.
+ * 
+ * @param id the id
+ */
+@RemoteMethod
+public void deleteProduct(final Integer id) {
+logger.debug("deleteProduct(): Has just been started. Product Id = " + id);
+
+if (id != null && id > 0) {
+productService.deleteProduct(id);
+}
+}
 }

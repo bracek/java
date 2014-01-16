@@ -20,35 +20,35 @@ import java.util.Date;
 @RequestMapping("/hello.do")
 public class HelloController {
 
-	// -------------------------------- ATTRS ----------------------------------
-	/** The logger. */
-	private static final Log logger = LogFactory.getLog(HelloController.class);
-	
-	/** The Constant viewName. */
-	public static final String viewName = "hello";
+// -------------------------------- ATTRS ----------------------------------
+/** The logger. */
+private static final Log logger = LogFactory.getLog(HelloController.class);
 
-	// ----------------------------- CONSTRUCTORS ------------------------------
+/** The Constant viewName. */
+public static final String viewName = "hello";
 
-	// -------------------------------- METHODS --------------------------------
-	/**
-	 * Handle.
-	 * 
-	 * @param model the model
-	 * @param request the request
-	 * @param response the response
-	 * 
-	 * @return the string
-	 * 
-	 * @throws Exception the exception
-	 */
-	@SuppressWarnings("unchecked")
-	@RequestMapping
-	public String handle(final ModelMap model,final  HttpServletRequest request,final  HttpServletResponse response) throws Exception {
-		String now = (new SimpleDateFormat("dd.MM.yyyy HH:mm:ss")).format(new Date());
-		logger.debug("handle(): Returning hello view with " + now);
-		
-		model.put("now", now);
-		
-		return viewName;
-	}	
+// ----------------------------- CONSTRUCTORS ------------------------------
+
+// -------------------------------- METHODS --------------------------------
+/**
+ * Handle.
+ * 
+ * @param model the model
+ * @param request the request
+ * @param response the response
+ * 
+ * @return the string
+ * 
+ * @throws Exception the exception
+ */
+@SuppressWarnings("unchecked")
+@RequestMapping
+public String handle(final ModelMap model,final  HttpServletRequest request,final  HttpServletResponse response) throws Exception {
+String now = (new SimpleDateFormat("dd.MM.yyyy HH:mm:ss")).format(new Date());
+logger.debug("handle(): Returning hello view with " + now);
+
+model.put("now", now);
+
+return viewName;
+}
 }
