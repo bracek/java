@@ -1,42 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
 
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-	<!-- 
-		Activates various annotations to be detected in bean classes:
-		Spring's @Required and @Autowired, as well as JSR 250's @Resource.
-	-->
+	<!-- Activates various annotations to be detected in bean classes: Spring's 
+		@Required and @Autowired, as well as JSR 250's @Resource. -->
 	<context:annotation-config />
-	
+
 	<context:component-scan base-package="stibrik.springapp" />
-	
-    <!-- Application data source configuration -->
-	<bean id="dataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
-		p:driverClassName="org.postgresql.Driver"
-		p:url="jdbc:postgresql://127.0.0.1:5432/hib"
-		p:username="postgres"
-		p:password="Jejka@()@84"
-		p:defaultAutoCommit="true"
-		p:validationQuery="SELECT 1"
-		p:testOnBorrow="true"
-		p:accessToUnderlyingConnectionAllowed="true"
-		p:initialSize="1"
-		p:maxActive="10"
-	/>
-    
-    <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
-  	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-  		p:dataSource-ref="dataSourceTarget"
-  	/>
+
+	<!-- Application data source configuration -->
+	<bean id="dataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="org.postgresql.Driver"
+		p:url="jdbc:postgresql://127.0.0.1:5432/hib" p:username="postgres"
+		p:password="Jejka@()@84" p:defaultAutoCommit="true" p:validationQuery="SELECT 1"
+		p:testOnBorrow="true" p:accessToUnderlyingConnectionAllowed="true"
+		p:initialSize="1" p:maxActive="10" />
+
+	<!-- Transaction manager for a single Hibernate SessionFactory (alternative 
+		to JTA) -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSourceTarget" />
 
 	<!-- Activates @Transactional -->
 	<tx:annotation-driven transaction-manager="txManager" />

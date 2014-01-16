@@ -35,8 +35,8 @@ img {
 	border: none;
 }
 
-table { 
-	width:100%;	
+table {
+	width: 100%;
 }
 
 fieldset {
@@ -45,9 +45,9 @@ fieldset {
 
 legend {
 	border: 1px solid #c1c1c1;
-	font-style:italic;
-	margin-left:3px;
-	padding:1px 5px;
+	font-style: italic;
+	margin-left: 3px;
+	padding: 1px 5px;
 }
 
 label {
@@ -66,10 +66,9 @@ img.link {
 	text-align: left;
 	width: 600px;
 	height: 500px;
-	margin-left:auto;
-	margin-right:auto;
+	margin-left: auto;
+	margin-right: auto;
 	background-color: #eeeeee;
-	
 }
 
 .menuWrapper {
@@ -79,7 +78,6 @@ img.link {
 .bodyWrapper {
 	width: 100%;
 }
-
 
 .submit {
 	
@@ -103,19 +101,19 @@ img.link {
 }
 
 #Error messages
-.form-item { 
-	margin: 20px 0; 
+.form-item {
+	margin: 20px 0;
 }
 
 .form-label {
-	font-weight: bold; 
+	font-weight: bold;
 }
 
-.form-error-field { 
-	background-color: #FFC; 
+.form-error-field {
+	background-color: #FFC;
 }
 
-.form-error-message { 
-	font-weight: bold; 
-	color: #900; 
-}  
+.form-error-message {
+	font-weight: bold;
+	color: #900;
+}

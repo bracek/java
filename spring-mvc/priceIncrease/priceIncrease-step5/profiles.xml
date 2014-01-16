@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profilesXml>
-    <profiles>
-        <profile>
-            <id>netbeans-private</id>
-            <activation>
-                <property>
-                    <name>netbeans.execution</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <properties>
-                <netbeans.deployment.server.id>[/opt/glassfish-v2ur2]deployer:Sun:AppServer::localhost:4848
-                </netbeans.deployment.server.id>
-            </properties>
-        </profile>
-    </profiles>
+	<profiles>
+		<profile>
+			<id>netbeans-private</id>
+			<activation>
+				<property>
+					<name>netbeans.execution</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<properties>
+				<netbeans.deployment.server.id>[/opt/glassfish-v2ur2]deployer:Sun:AppServer::localhost:4848
+				</netbeans.deployment.server.id>
+			</properties>
+		</profile>
+	</profiles>
 </profilesXml>
