@@ -59,10 +59,7 @@ public abstract class AbstractAction implements IAction {
     public List<File> getFileListing(File aStartingDir)
             throws FileNotFoundException {
         validateDirectory(aStartingDir);
-//        final List<File> result = getFileListingNoSort(aStartingDir);
         getFileListingNoSort(aStartingDir);
-//		Collections.sort(result);
-//        return result;
         return getFileListingNoSort(aStartingDir);
 
     }
