@@ -34,6 +34,7 @@ public class EditProductController {
     private static final Log logger = LogFactory.getLog(EditProductController.class);
 
     public static final String PRODUCT = "product";
+
     /**
      * The Constant viewName.
      */
