@@ -26,10 +26,10 @@ public final class TestRemoveUnusedModifier {
 
 		final IAction removeUnusedModifier = new RemoveUnusedModifierImpl();
 
-		final List<File> files = removeUnusedModifier
-				.getFileListing(startingDirectory);
+        final List<File> files = removeUnusedModifier
+                .getFileListing(startingDirectory);
 
-		// print out all file names, in the the order of File.compareTo()
+        // print out all file names, in the the order of File.compareTo()
 		for (File file : files) {
 			if (file.isFile()) {
 				removeUnusedModifier.parseFile(file);
