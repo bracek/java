@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public abstract class AbstractAction implements IAction {
@@ -16,12 +15,14 @@ public abstract class AbstractAction implements IAction {
             throws FileNotFoundException {
         final List<File> result = new ArrayList<File>();
         final File[] filesAndDirs = aStartingDir.listFiles();
-        final List<File> filesDirs = Arrays.asList(filesAndDirs);
-        for (File file : filesDirs) {
-            result.add(file); // always add, even if directory
-            if (!file.isFile()) {
-                final List<File> deeperList = getFileListingNoSort(file);
-                result.addAll(deeperList);
+        if (filesAndDirs != null) {
+            final List<File> filesDirs = Arrays.asList(filesAndDirs);
+            for (File file : filesDirs) {
+                result.add(file); // always add, even if directory
+                if (!file.isFile()) {
+                    final List<File> deeperList = getFileListingNoSort(file);
+                    result.addAll(deeperList);
+                }
             }
         }
         return result;
@@ -58,9 +59,12 @@ public abstract class AbstractAction implements IAction {
     public List<File> getFileListing(File aStartingDir)
             throws FileNotFoundException {
         validateDirectory(aStartingDir);
-        final List<File> result = getFileListingNoSort(aStartingDir);
+//        final List<File> result = getFileListingNoSort(aStartingDir);
+        getFileListingNoSort(aStartingDir);
 //		Collections.sort(result);
-        return result;
+//        return result;
+        return getFileListingNoSort(aStartingDir);
+
     }
 
 }
