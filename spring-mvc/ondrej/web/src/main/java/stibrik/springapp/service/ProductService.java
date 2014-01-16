@@ -14,28 +14,28 @@ public interface ProductService {
 	 * 
 	 * @param percentage the percentage
 	 */
-	public void increasePrice(int percentage);
+	 void increasePrice(int percentage);
 	
 	/**
 	 * Gets the products.
 	 * 
 	 * @return the products
 	 */
-	public List<Product> getProducts();
+	 List<Product> getProducts();
 	
 	/**
 	 * Save product.
 	 * 
 	 * @param prod the prod
 	 */
-	public void saveProduct(Product prod);
+	 void saveProduct(Product prod);
 	
 	/**
 	 * Delete product.
 	 * 
 	 * @param id the id
 	 */
-	public void deleteProduct(Integer id);
+	 void deleteProduct(Integer id);
 	
 	/**
 	 * Find by id.
@@ -44,6 +44,6 @@ public interface ProductService {
 	 * 
 	 * @return the product
 	 */
-	public Product findById(Integer id);
+	 Product findById(Integer id);
 
 }

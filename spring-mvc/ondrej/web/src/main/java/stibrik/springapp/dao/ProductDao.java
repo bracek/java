@@ -16,7 +16,7 @@ public interface ProductDao {
 	 * 
 	 * @return the product list
 	 */
-	public List<Product> getProductList();
+	 List<Product> getProductList();
 	
 
 	/**
@@ -24,7 +24,7 @@ public interface ProductDao {
 	 * 
 	 * @param prod the prod
 	 */
-	public void updateProduct(Product prod);
+	 void updateProduct(Product prod);
 	
 	
 	/**
@@ -32,7 +32,7 @@ public interface ProductDao {
 	 * 
 	 * @param prod the prod
 	 */
-	public void addProduct(Product prod);
+	 void addProduct(Product prod);
 	
 	/**
 	 * Find by id.
@@ -41,12 +41,12 @@ public interface ProductDao {
 	 * 
 	 * @return the product
 	 */
-	public Product findById(Integer id);
+	 Product findById(Integer id);
 
 	/**
 	 * Delete product.
 	 * 
 	 * @param id the id
 	 */
-	public void deleteProduct(Integer id);
+	 void deleteProduct(Integer id);
 }
