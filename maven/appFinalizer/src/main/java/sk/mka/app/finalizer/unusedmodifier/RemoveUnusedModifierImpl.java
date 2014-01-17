@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
 
+    @Override
     public void parseFile(final File file) {
         BufferedReader reader = null;
         final StringBuffer stringBuffer = new StringBuffer();
