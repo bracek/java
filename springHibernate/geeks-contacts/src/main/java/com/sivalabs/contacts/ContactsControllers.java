@@ -81,6 +81,7 @@ public class ContactsControllers {
         return mav;
     }
 
+
     @RequestMapping(value = "/updateContact", method = RequestMethod.POST)
     public String update(final @ModelAttribute("editContact") Contact contact, BindingResult result, SessionStatus status) {
         validator.validate(contact, result);
@@ -91,7 +92,6 @@ public class ContactsControllers {
         status.setComplete();
         return "redirect:viewAllContacts.do";
     }
-
 
     @RequestMapping("deleteContact")
     public ModelAndView delete(final @RequestParam("id") Integer id) {
