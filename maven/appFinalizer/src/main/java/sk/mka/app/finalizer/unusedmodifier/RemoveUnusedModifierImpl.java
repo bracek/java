@@ -32,7 +32,7 @@ class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
                     while (scanner.hasNextLine()) {
                         String line = scanner.nextLine();
                         if (!line.contains(Utils.COMMENT)
-                                || !line.startsWith("/*")) {
+                                || !line.startsWith(Utils.PREFIX)) {
                             if (line.contains(Utils.INTERFACE)
                                     || line.contains(Utils.PUBLIC_INTERFACE)) {
                                 if (line.contains("{")) {
