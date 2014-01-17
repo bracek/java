@@ -13,6 +13,16 @@ import com.mkyong.Track;
 @Path("/json/metallica")
 public class JSONService {
 
+	@POST
+	@Path("/post")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public final Response createTrackInJSON(final Track track) {
+
+		final String result = "Track saved : " + track;
+		return Response.status(201).entity(result).build();
+
+	}
+
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -23,16 +33,6 @@ public class JSONService {
 		track.setSinger("Metallica");
 
 		return track;
-
-	}
-
-	@POST
-	@Path("/post")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createTrackInJSON(final Track track) {
-
-		final String result = "Track saved : " + track;
-		return Response.status(201).entity(result).build();
 
 	}
 
