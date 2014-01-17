@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public interface LoadData {
 
-    public DataInputStream openDataInputStream(final String filename) throws FileNotFoundException;
+     DataInputStream openDataInputStream(final String filename) throws FileNotFoundException;
 
     /**
      * 
@@ -19,7 +19,7 @@ public interface LoadData {
      * @return array of array from filename, where in each line is used tabulator separator
      * @throws IOException
      */
-    public String[][] loadData(final String filename) throws IOException;
+     String[][] loadData(final String filename) throws IOException;
 
     /**
      *
@@ -28,5 +28,5 @@ public interface LoadData {
      * @returna array of array
      * @throws IOException
      */
-    public Object[][] loadDataAsObjects(final String filename) throws IOException;
+     Object[][] loadDataAsObjects(final String filename) throws IOException;
 }

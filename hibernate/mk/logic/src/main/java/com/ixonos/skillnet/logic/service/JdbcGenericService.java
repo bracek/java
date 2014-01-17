@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface JdbcGenericService<T> {
 
-    public List<T> jdbcGetListOfIds();
+     List<T> jdbcGetListOfIds();
 
     void jdbcDelete(final Integer id);
 

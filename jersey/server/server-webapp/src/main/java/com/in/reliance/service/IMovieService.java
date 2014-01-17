@@ -6,6 +6,6 @@ import com.in.reliance.domain.Time;
 
 public interface IMovieService {
 
-	public abstract Time getTimeOfTheDayInXML(final @PathParam("name") String name);
+	 abstract Time getTimeOfTheDayInXML(final @PathParam("name") String name);
 
 }

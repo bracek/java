@@ -14,21 +14,21 @@ public interface IZkWindowGeneralAction<T> {
      * @param event
      * @throws Exception
      */
-    public void onAdd(final Event event) throws Exception;
+     void onAdd(final Event event) throws Exception;
 
     /***
      * Method is triggered when update button is pressed
      * @param event
      * @throws Exception
      */
-    public void onUpdate(final Event event) throws Exception;
+     void onUpdate(final Event event) throws Exception;
 
     /**
      * Method is triggered when delete button is pressed
      * @param event
      * @throws Exception
      */
-    public void onDelete(final Event event) throws Exception;
+     void onDelete(final Event event) throws Exception;
 
     /**
      * Method checks if new value for binded object is alright 

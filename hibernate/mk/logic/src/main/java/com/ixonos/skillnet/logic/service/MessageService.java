@@ -9,11 +9,11 @@ import com.ixonos.skillnet.logic.bean.Message;
  */
 public interface MessageService extends HibernateGenericService<Message> {
 
-    public void delete(final Integer id);
+     void delete(final Integer id);
 
-    public Message load(final Integer id);
+     Message load(final Integer id);
 
-    public void save(final Message mess);
+     void save(final Message mess);
 
     List<Message> getList();
 }

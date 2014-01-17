@@ -9,14 +9,14 @@ import org.junit.Test;
 public interface TestInterface {
 
     @Test
-    public void testInsert();
+     void testInsert();
 
     @Test
-    public void testUpdate();
+     void testUpdate();
 
     @Test
-    public void testLoad();
+     void testLoad();
 
     @Test
-    public void testDelete();
+     void testDelete();
 }

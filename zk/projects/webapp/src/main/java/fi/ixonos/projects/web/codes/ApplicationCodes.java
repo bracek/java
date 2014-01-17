@@ -8,17 +8,17 @@ public interface ApplicationCodes {
 
     interface ATUHORITIES {
 
-        public static final String AUTHORITIES_NAME = "AUTHORITIES";
+         static final String AUTHORITIES_NAME = "AUTHORITIES";
     }
 
     interface CODETABLE {
 
-        public static final String GROUP_CODE = "groupCode";
+         static final String GROUP_CODE = "groupCode";
     }
 
     interface GROUP_AUTHORITY {
 
-        public static final String GROUP = "group";
+         static final String GROUP = "group";
     }
 }
 

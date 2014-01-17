@@ -6,5 +6,5 @@ package sk.mka.phd.timit.distribution;
  */
 public interface IPhonemeDistribution  {
 
-    public String getPhonemeById(final Integer key);
+     String getPhonemeById(final Integer key);
 }

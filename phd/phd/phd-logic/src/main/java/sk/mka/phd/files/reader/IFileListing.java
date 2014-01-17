@@ -14,5 +14,5 @@ public interface IFileListing {
      * @param directory
      * @return
      */
-    public List<File> getFiles(final String directory);
+     List<File> getFiles(final String directory);
 }

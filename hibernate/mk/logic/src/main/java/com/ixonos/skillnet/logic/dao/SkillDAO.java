@@ -13,5 +13,5 @@ public interface SkillDAO extends GenericDAO<Skill> {
 	 * 
 	 * @return the valuable skills count
 	 */
-	public Integer getValuableSkillsCount();
+	 Integer getValuableSkillsCount();
 }

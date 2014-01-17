@@ -39,7 +39,7 @@ public interface FileMka {
      * @param fileName
      * @return
      */
-    public Writer openFileForWriting(final String fileName);
+     Writer openFileForWriting(final String fileName);
 
 
 }

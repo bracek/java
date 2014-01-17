@@ -11,10 +11,10 @@ import fi.ixonos.projects.logic.bean.Users;
  */
 public interface  ProjectsService extends HibernateGenericService<Projects> {
 
-    public Projects getProject(final Integer projectId) throws Exception;
+     Projects getProject(final Integer projectId) throws Exception;
 
-    public void addUser(final Integer projectId,final  Users user) throws Exception;
+     void addUser(final Integer projectId,final  Users user) throws Exception;
 
-    public void removeUser(final Integer projectId,final  Users user) throws Exception;
+     void removeUser(final Integer projectId,final  Users user) throws Exception;
 
 }

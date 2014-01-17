@@ -17,14 +17,14 @@ public interface MailService {
      * @param newUser
      * @return
      */
-    public boolean sendNewAccountCreatedEmail(InternetAddress newUser, List<String> textParameters);
+     boolean sendNewAccountCreatedEmail(InternetAddress newUser, List<String> textParameters);
     
     /**
      * send email to deleted user
      * @param deletedUser
      * @return
      */
-    public boolean sendUserAccountDeletedEmail(final InternetAddress deletedUser,final  List<String> textParameters);
+     boolean sendUserAccountDeletedEmail(final InternetAddress deletedUser,final  List<String> textParameters);
     
     
     /**
@@ -32,20 +32,20 @@ public interface MailService {
      * @param user
      * @return
      */
-    public boolean sendChangedPasswordEmail(final InternetAddress user,final  List<String> textParameters);
+     boolean sendChangedPasswordEmail(final InternetAddress user,final  List<String> textParameters);
 
     /**
      * sends nightly notification
      * @param textParameters
      * @return
      */
-    public boolean sendAdminNightlyNotification(final List<String> textParameters);
+     boolean sendAdminNightlyNotification(final List<String> textParameters);
     
     /**
      * Method sends notification to users with few skills recorded in Skillnet.
      * 
      * @return true, if successful
      */
-    public boolean sendFewSkillsNotification();
+     boolean sendFewSkillsNotification();
 
 }

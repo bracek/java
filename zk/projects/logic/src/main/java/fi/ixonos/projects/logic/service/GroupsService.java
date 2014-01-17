@@ -11,10 +11,10 @@ import fi.ixonos.projects.logic.bean.Groups;
  * @author magurja
  */
 public interface GroupsService extends HibernateGenericService<Groups> {
-	public List<String> getGroupMembers(final String groupName) throws Exception;
-	public boolean changeGroupMembers(final String groupName,final  List<String> members) throws Exception;
-    public Groups getGroup(final String groupName) throws Exception;
-    public String getTreeRootName(final String userName,final  Properties props) throws Exception;
-    public boolean changeGroupMember(final String groupName,final  String member,final  boolean isAdded) throws Exception;
-    public boolean changeGroupMembers(final String groupName,final  Map<String,final Boolean> selectedUsersMap) throws Exception;
+	 List<String> getGroupMembers(final String groupName) throws Exception;
+	 boolean changeGroupMembers(final String groupName,final  List<String> members) throws Exception;
+     Groups getGroup(final String groupName) throws Exception;
+     String getTreeRootName(final String userName,final  Properties props) throws Exception;
+     boolean changeGroupMember(final String groupName,final  String member,final  boolean isAdded) throws Exception;
+     boolean changeGroupMembers(final String groupName,final  Map<String,final Boolean> selectedUsersMap) throws Exception;
 }

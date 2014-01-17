@@ -12,6 +12,6 @@ public interface ServiceInterface {
 
 
     @Test
-    public void testInsert();
+     void testInsert();
 
 }

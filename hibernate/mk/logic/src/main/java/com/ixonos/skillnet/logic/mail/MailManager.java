@@ -30,7 +30,7 @@ public interface MailManager {
 	 * @throws Exception
 	 *             the exception
 	 */
-	public void sendMail(final List<String> recipients,
+	 void sendMail(final List<String> recipients,
 			final List<String> ccRecipients, final List<String> bccRecipients,
 			final MailTemplates.Template template,
 			final List<String> textParameters,
@@ -51,7 +51,7 @@ public interface MailManager {
 	 * @throws Exception
 	 *             the exception
 	 */
-	public void sendMail(final List<String> recipients,
+	 void sendMail(final List<String> recipients,
 			MailTemplates.Template template, final List<String> textParameters,
 			final Map<String, ClassPathResource> attachments) throws Exception;
 
@@ -68,7 +68,7 @@ public interface MailManager {
 	 * @throws Exception
 	 *             the exception
 	 */
-	public void sendMail(final List<String> recipients,
+	 void sendMail(final List<String> recipients,
 			final MailTemplates.Template template,
 			final List<String> textParameters) throws Exception;
 
@@ -83,7 +83,7 @@ public interface MailManager {
 	 * @throws Exception
 	 *             the exception
 	 */
-	public void sendMail(final List<String> recipients,
+	 void sendMail(final List<String> recipients,
 			final MailTemplates.Template template) throws Exception;
 
 	/**
@@ -101,7 +101,7 @@ public interface MailManager {
 	 * @throws Exception
 	 *             the exception
 	 */
-	public void sendMail(final String recipient,
+	 void sendMail(final String recipient,
 			final MailTemplates.Template template,
 			final List<String> textParameters,
 			final Map<String, ClassPathResource> attachments) throws Exception;
@@ -119,7 +119,7 @@ public interface MailManager {
 	 * @throws Exception
 	 *             the exception
 	 */
-	public void sendMail(final String recipient,
+	 void sendMail(final String recipient,
 			final MailTemplates.Template template,
 			final List<String> textParameters) throws Exception;
 
@@ -134,6 +134,6 @@ public interface MailManager {
 	 * @throws Exception
 	 *             the exception
 	 */
-	public void sendMail(final String recipient,
+	 void sendMail(final String recipient,
 			final MailTemplates.Template template) throws Exception;
 }

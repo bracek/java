@@ -13,6 +13,6 @@ public interface OsobaService {
     /**
      * Find persons by last name.
      */
-    public Collection<Osoba> findPersonsByLastName(final String lastName);
+     Collection<Osoba> findPersonsByLastName(final String lastName);
 
 }

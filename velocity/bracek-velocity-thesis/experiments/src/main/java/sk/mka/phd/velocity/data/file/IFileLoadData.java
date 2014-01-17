@@ -17,7 +17,7 @@ public interface IFileLoadData {
      * @return
      * @throws FileNotFoundException
      */
-    public DataInputStream openDataInputStream(final String filename) throws FileNotFoundException;
+     DataInputStream openDataInputStream(final String filename) throws FileNotFoundException;
 
     /**
      *
@@ -26,7 +26,7 @@ public interface IFileLoadData {
      * @returna array of array
      * @throws IOException
      */
-    public Object[][] loadDataAsObjects(final String filename) throws IOException;
+     Object[][] loadDataAsObjects(final String filename) throws IOException;
 
     /**
      *

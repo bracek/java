@@ -9,12 +9,12 @@ public interface OsobaDao {
     /**
      * Find persons.
      */
-    public Collection<Osoba> findPersons() throws DataAccessException;
+     Collection<Osoba> findPersons() throws DataAccessException;
 
     /**
      * Find persons by last name.
      */
-    public Collection<Osoba> findPersonsByLastName(final String lastName) throws DataAccessException;
+     Collection<Osoba> findPersonsByLastName(final String lastName) throws DataAccessException;
 
     
 }

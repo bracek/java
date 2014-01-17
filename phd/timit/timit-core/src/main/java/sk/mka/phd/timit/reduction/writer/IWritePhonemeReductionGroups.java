@@ -10,5 +10,5 @@ import sk.mka.phd.timit.reduction.PhonemaGroup;
  */
 public interface IWritePhonemeReductionGroups {
 
-    public void write(final ArrayList<PhonemaGroup> groups);
+     void write(final ArrayList<PhonemaGroup> groups);
 }

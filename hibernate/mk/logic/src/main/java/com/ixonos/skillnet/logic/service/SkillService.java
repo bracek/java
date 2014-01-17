@@ -10,10 +10,10 @@ import com.ixonos.skillnet.logic.bean.Skill;
  */
 public interface SkillService extends HibernateGenericService<Skill> {
 
-	public List<Skill> findAlike(final String name);
+	 List<Skill> findAlike(final String name);
 
-	public List<String> getNodePaths(final int skillId,final  String rootName);
+	 List<String> getNodePaths(final int skillId,final  String rootName);
 	
-	public Integer getMinimalCountOfSkills();
+	 Integer getMinimalCountOfSkills();
 
 }

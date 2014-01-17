@@ -7,7 +7,7 @@ import sk.mka.app.finalizer.Utils;
 import java.io.*;
 import java.util.Scanner;
 
-public class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
+class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
 
     public void parseFile(final File file) {
         BufferedReader reader = null;
@@ -33,8 +33,8 @@ public class RemoveUnusedModifierImpl extends AbstractAction implements IAction 
                         String line = scanner.nextLine();
                         if (!line.contains(Utils.COMMENT)
                                 || !line.startsWith("/*")) {
-                            if (line.contains("interface")
-                                    || line.contains("public interface")) {
+                            if (line.contains(Utils.INTERFACE)
+                                    || line.contains(Utils.PUBLIC_INTERFACE)) {
                                 if (line.contains("{")) {
                                     isInterface = true;
                                 }

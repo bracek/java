@@ -11,9 +11,9 @@ import java.util.Collection;
  */
 public interface BookService extends HibernateGenericService<Book> {
 
-    public Book load(final Integer id);
+     Book load(final Integer id);
 
-    public Collection<Book> loadAll();
+     Collection<Book> loadAll();
 }
 
 

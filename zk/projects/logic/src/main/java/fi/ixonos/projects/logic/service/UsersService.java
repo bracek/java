@@ -12,11 +12,11 @@ import java.util.List;
  */
 public interface UsersService extends HibernateGenericService<Users> {
 
-    public Users getUser(final String username) throws Exception;
+     Users getUser(final String username) throws Exception;
 
-    public boolean changePassword(final String userName,final  String text) throws Exception;
+     boolean changePassword(final String userName,final  String text) throws Exception;
 
-    public boolean isPasswordCorrect(final String userName,final  String text) throws Exception;
+     boolean isPasswordCorrect(final String userName,final  String text) throws Exception;
 
     /**
      * Removes the user.
@@ -27,7 +27,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public boolean removeUser(final String userName) throws Exception;
+     boolean removeUser(final String userName) throws Exception;
 
     /***
      *
@@ -35,7 +35,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * @return list of projects in which user is working
      * @throws Exception
      */
-    public Collection<Projects> getProjectsCollectionForUser(final String userName) throws Exception;
+     Collection<Projects> getProjectsCollectionForUser(final String userName) throws Exception;
 
     /***
      *
@@ -43,7 +43,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * @return open project for its management
      * @throws Exception
      */
-    public void openProject(final String userName,final  Projects project) throws Exception;
+     void openProject(final String userName,final  Projects project) throws Exception;
 
     /***
      *
@@ -51,7 +51,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * @return close project after its management
      * @throws Exception
      */
-    public void closeProject(final String userName,final  Projects project) throws Exception;
+     void closeProject(final String userName,final  Projects project) throws Exception;
 
     /***
      *
@@ -59,21 +59,21 @@ public interface UsersService extends HibernateGenericService<Users> {
      * @return close project after its management
      * @throws Exception
      */
-    public Collection<Projects> getOpenedProjects(final String userName) throws Exception;
+     Collection<Projects> getOpenedProjects(final String userName) throws Exception;
 
     /**
      * Gets the all users.
      *
      * @return the all users
      */
-    public List<Users> getAllUsers();
+     List<Users> getAllUsers();
 
     /**
      * Returns list of users sorted by given column.
      * @param string column name
      * @return users list
      */
-    public List<Users> getSortedUsers(final String string);
+     List<Users> getSortedUsers(final String string);
 
     /**
      * Update curriculum.
@@ -83,7 +83,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public void updateCurriculum(final String userName,final  byte[] cvByteArray) throws Exception;
+     void updateCurriculum(final String userName,final  byte[] cvByteArray) throws Exception;
 
     /**
      * Update Photo.
@@ -103,7 +103,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public void updateUsersInfo(final String username,final  Users user) throws Exception;
+     void updateUsersInfo(final String username,final  Users user) throws Exception;
 
     /**
      * Update user.
@@ -115,14 +115,14 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public boolean updateUser(final String userName,final  List<String> authorities) throws Exception;
+     boolean updateUser(final String userName,final  List<String> authorities) throws Exception;
 
     /**
      * Gets the all group managers.
      *
      * @return the all group managers
      */
-    public List<Users> getAllGroupManagers();
+     List<Users> getAllGroupManagers();
 
     /**
      * Update user.
@@ -135,7 +135,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public boolean updateUser(final String userName,final  Users manager,final  Boolean enabled) throws Exception;
+     boolean updateUser(final String userName,final  Users manager,final  Boolean enabled) throws Exception;
 
 
     /**
@@ -146,7 +146,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * @return true, if is user already registered
      */
 
-    public boolean isUserAlreadyRegistered(final String login);
+     boolean isUserAlreadyRegistered(final String login);
 
     /**
      * Adds the new user.
@@ -167,7 +167,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public boolean addNewUser(final String login,final  String password,final  String name,final  String surname,final  String email,final  String phoneNumber,final  String location,final  String position,final  Boolean enabled,final  Users manager,final  List<String> authorities) throws Exception;
+     boolean addNewUser(final String login,final  String password,final  String name,final  String surname,final  String email,final  String phoneNumber,final  String location,final  String position,final  Boolean enabled,final  Users manager,final  List<String> authorities) throws Exception;
 
     /**
      * Hash password.

@@ -10,21 +10,21 @@ public interface ProductDao {
      *
      * @return the product list
      */
-    public List<Product> getProductList();
+     List<Product> getProductList();
 
     /**
      * Update product.
      *
      * @param prod the prod
      */
-    public void updateProduct(final Product prod);
+     void updateProduct(final Product prod);
 
     /**
      * Adds the product.
      *
      * @param prod the prod
      */
-    public void addProduct(final Product prod);
+     void addProduct(final Product prod);
 
     /**
      * Find by id.
@@ -33,12 +33,12 @@ public interface ProductDao {
      *
      * @return the product
      */
-   public Product findById(final Integer id);
+    Product findById(final Integer id);
 
     /**
      * Delete product.
      *
      * @param id the id
      */
-    public void deleteProduct(final Integer id);
+     void deleteProduct(final Integer id);
 }

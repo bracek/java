@@ -17,21 +17,21 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @return the all users
      */
-    public List<Users> getAllUsers();
+     List<Users> getAllUsers();
 
     /**
      * Gets the all administrators.
      * 
      * @return the all administrators
      */
-    public List<Users> getAllAdministrators();
+     List<Users> getAllAdministrators();
 
     /**
      * Gets the all group managers.
      * 
      * @return the all group managers
      */
-    public List<Users> getAllGroupManagers();
+     List<Users> getAllGroupManagers();
 
     /**
      * Removes the user.
@@ -42,7 +42,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @throws Exception the exception
      */
-    public boolean removeUser(final String userName) throws Exception;
+     boolean removeUser(final String userName) throws Exception;
 
     /**
      * Change password.
@@ -54,7 +54,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @throws Exception the exception
      */
-    public boolean changePassword(String userName, String newPassword) throws Exception;
+     boolean changePassword(String userName, String newPassword) throws Exception;
 
     /**
      * Adds the new user.
@@ -75,7 +75,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @throws Exception the exception
      */
-    public boolean addNewUser(final String login,final  String password,final  String name,final  String surname,final  String email,final  String phoneNumber,final  String location,final  String position,final  Boolean enabled,final  Users manager,final  List<String> authorities) throws Exception;
+     boolean addNewUser(final String login,final  String password,final  String name,final  String surname,final  String email,final  String phoneNumber,final  String location,final  String position,final  Boolean enabled,final  Users manager,final  List<String> authorities) throws Exception;
 
     /**
      * Update curriculum.
@@ -85,7 +85,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @throws Exception the exception
      */
-    public void updateCurriculum(final String userName,final  byte[] cvByteArray) throws Exception;
+     void updateCurriculum(final String userName,final  byte[] cvByteArray) throws Exception;
 
     /**
      * Update user.
@@ -97,7 +97,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @throws Exception the exception
      */
-    public boolean updateUser(final String userName,final  List<String> authorities) throws Exception;
+     boolean updateUser(final String userName,final  List<String> authorities) throws Exception;
 
     /**
      * Update user.
@@ -110,7 +110,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @throws Exception the exception
      */
-    public boolean updateUser(final String userName,final  Users manager,final  Boolean enabled) throws Exception;
+     boolean updateUser(final String userName,final  Users manager,final  Boolean enabled) throws Exception;
 
     /**
      * Checks if is user already registered.
@@ -119,7 +119,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @return true, if is user already registered
      */
-    public boolean isUserAlreadyRegistered(final String login);
+     boolean isUserAlreadyRegistered(final String login);
 
     /**
      * Gets the user.
@@ -130,7 +130,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @throws Exception the exception
      */
-    public Users getUser(final String userName) throws Exception;
+     Users getUser(final String userName) throws Exception;
 
     /**
      * Checks if is password correct.
@@ -142,7 +142,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @throws Exception the exception
      */
-    public boolean isPasswordCorrect(final String userName,final  String password) throws Exception;
+     boolean isPasswordCorrect(final String userName,final  String password) throws Exception;
 
     /**
      * Update users info.
@@ -152,7 +152,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @throws Exception the exception
      */
-    public void updateUsersInfo(final String username,final  Users user) throws Exception;
+     void updateUsersInfo(final String username,final  Users user) throws Exception;
     
     /**
      * Gets the users with few skills, resp. users with percentage of
@@ -164,5 +164,5 @@ public interface UsersService extends HibernateGenericService<Users> {
      * 
      * @return the users with few skills
      */
-    public List<Users> getUsersWithFewSkills(final Integer minimalCount);
+     List<Users> getUsersWithFewSkills(final Integer minimalCount);
 }

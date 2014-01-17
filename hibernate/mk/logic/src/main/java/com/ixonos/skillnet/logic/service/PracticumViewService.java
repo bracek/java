@@ -8,6 +8,6 @@ import com.ixonos.skillnet.logic.bean.PracticumView;
  * @author magurja
  */
 public interface PracticumViewService extends HibernateGenericService<PracticumView> {	
-	 public List<PracticumView> getPracticumsWithSkills(final List<String> skills,final  List<Integer> levels);	   
-	 public List<String> getUsersWithSkills(final List<String> skills,final  List<Integer> levels);
+	  List<PracticumView> getPracticumsWithSkills(final List<String> skills,final  List<Integer> levels);	   
+	  List<String> getUsersWithSkills(final List<String> skills,final  List<Integer> levels);
 }

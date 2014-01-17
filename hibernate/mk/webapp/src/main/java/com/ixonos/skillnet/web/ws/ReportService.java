@@ -14,7 +14,7 @@ import com.ixonos.skillnet.web.ws.common.WSReport;
 public interface ReportService {
 
 	@WebMethod(operationName = "getReportById")
-	public WSReport getReportById(
+	 WSReport getReportById(
 			final @WebParam(name = "reportId", mode = WebParam.Mode.IN) Integer id);
 
 }

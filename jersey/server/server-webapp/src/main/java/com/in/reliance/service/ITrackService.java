@@ -6,8 +6,8 @@ import com.in.reliance.domain.Track;
 
 public interface ITrackService {
 
-	public Track getTrackInJSON();
+	 Track getTrackInJSON();
 
-	public abstract Response createTrackInJSON(final Track track);
+	 abstract Response createTrackInJSON(final Track track);
 
 }
