@@ -35,7 +35,7 @@ class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
                                 || !line.startsWith(Utils.PREFIX)) {
                             if (line.contains(Utils.INTERFACE)
                                     || line.contains(Utils.PUBLIC_INTERFACE)) {
-                                if (line.contains("{")) {
+                                if (line.contains(Utils.COMPOSITE_BRACKET_OPEN)) {
                                     isInterface = true;
                                 }
                             }
