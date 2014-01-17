@@ -11,7 +11,6 @@ public class Utils {
     public static String PRIVATE = "private";
     public static String PROTECTED = "protected";
     public static String PUBLIC = "public";
-
     public static String ABSTRACT = "abstract";
     public static String JAVA = "java";
     public static String COMMENT = "//";
