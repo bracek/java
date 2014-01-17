@@ -11,7 +11,7 @@ import org.zkoss.zul.RowRenderer;
  
 public class SimpleRenderer implements RowRenderer {
     private int id = 0;
-    public void render(Row row, java.lang.Object data) {
+    public void render(final Row row,final  java.lang.Object data) {
         String[] contributors = (String[]) data;
         // the data append to each row with simple label
         row.appendChild(new Label(id + ""));
@@ -23,7 +23,7 @@ public class SimpleRenderer implements RowRenderer {
         final Button thumbBtn = new Button(null, "/images/thumb-up.png");
         thumbBtn.setParent(d);
         thumbBtn.addEventListener(Events.ON_CLICK, new EventListener() {
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 d.appendChild(new Label("Thumbs up"));              
                 thumbBtn.setDisabled(true);
             }

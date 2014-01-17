@@ -10,7 +10,7 @@ make download.sources:
 	mvn dependency:resolve -Dclassifier=sources
 make download.javadoc:
 	mvn dependency:resolve -Dclassifier=javadoc
-localhost.validate: ### default is validate ###
+localhost.validate: 
 	mvn -Dmaven.test.skip=true -Plocalhost clean install
 localhost.create:
 	mvn  -Dmaven.test.skip=true -Plocalhost,create clean install

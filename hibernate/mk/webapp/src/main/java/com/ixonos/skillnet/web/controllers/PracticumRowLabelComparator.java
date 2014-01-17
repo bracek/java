@@ -10,18 +10,18 @@ public class PracticumRowLabelComparator implements Comparator {
 	private String _column;
 	private boolean _considerNullValues = true;
 
-	public PracticumRowLabelComparator(boolean asc, String column) {
+	public PracticumRowLabelComparator(final boolean asc,final  String column) {
 		_asc = asc;
 		_column = column;
 	}
 	
-	public PracticumRowLabelComparator(boolean asc, String column, boolean considerNullValues) {
+	public PracticumRowLabelComparator(final boolean asc,final  String column,final  boolean considerNullValues) {
 		_asc = asc;
 		_column = column;
 		_considerNullValues = considerNullValues;
 	}
 
-	public int compare(Object o1, Object o2) {
+	public int compare(final Object o1,final  Object o2) {
 		Practicum practicum1 = (Practicum) o1;
 		Practicum practicum2 = (Practicum) o2;
 		int v = 0;

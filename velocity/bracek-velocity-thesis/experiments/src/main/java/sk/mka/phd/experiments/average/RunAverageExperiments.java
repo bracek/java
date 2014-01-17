@@ -20,7 +20,7 @@ public class RunAverageExperiments {
      *  combine starting Directory
      * @param args 
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         try {
 
             String inputDir = "/home/bracek/Dropbox/private/phd/matlab_results/timit.40/statistics.append/dr3";

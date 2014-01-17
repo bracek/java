@@ -15,7 +15,7 @@ import fi.ixonos.projects.logic.dao.AuthorityDAO;
 public class AuthorityDAOImpl extends GenericDAOImpl<Authority> implements AuthorityDAO {
 
    @Autowired
-   public AuthorityDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public AuthorityDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
 }

@@ -36,7 +36,7 @@ public class Config implements Serializable {
     public Config() {
     }
 
-    public Config(String property) {
+    public Config(final String property) {
         this.property = property;
     }
 
@@ -44,7 +44,7 @@ public class Config implements Serializable {
         return property;
     }
 
-    public void setProperty(String property) {
+    public void setProperty(final String property) {
         this.property = property;
     }
 
@@ -52,7 +52,7 @@ public class Config implements Serializable {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(final String value) {
         this.value = value;
     }
 
@@ -60,7 +60,7 @@ public class Config implements Serializable {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -72,7 +72,7 @@ public class Config implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Config)) {
             return false;

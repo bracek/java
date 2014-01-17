@@ -34,7 +34,7 @@ public class SkillnetInitServlet extends HttpServlet {
     public static Properties props;    
     
     @Override
-    public void init(ServletConfig config) throws ServletException {
+    public void init(final ServletConfig config) throws ServletException {
 		logger.info("#init: Method has just been started.");
 		super.init(config);
 		initProperties(config);
@@ -42,7 +42,7 @@ public class SkillnetInitServlet extends HttpServlet {
         Labels.register(new GeneralLabelLocator());		
     }
     
-    private void initProperties(ServletConfig config) {
+    private void initProperties(final ServletConfig config) {
     	InputStream propStream = SkillnetInitServlet.class.getClassLoader().getResourceAsStream(CONFIG_FILENAME);
 		props = new Properties();
 		try {
@@ -77,7 +77,7 @@ public class SkillnetInitServlet extends HttpServlet {
 		}
     }
     
-    public String convertStreamToString(InputStream is) {    	        
+    public String convertStreamToString(final InputStream is) {    	        
     	BufferedReader reader = new BufferedReader(new InputStreamReader(is));
     	StringBuilder sb = new StringBuilder();    	
     	String line = null;

@@ -46,7 +46,7 @@ public class UsersController {
      * Gets a person based on it's id.
      */
     @RequestMapping(value = "/users/edit.do")
-    public ModelAndView edit(@RequestParam("username") String username) {
+    public ModelAndView edit(final @RequestParam("username") String username) {
         Users result = null;
         try {
             result = usersService.getUser(username);
@@ -60,7 +60,7 @@ public class UsersController {
      * Saves a person.
      */
     @RequestMapping(value = "/users/save.do")
-    public ModelAndView save(Users users) {
+    public ModelAndView save(final Users users) {
         usersService.create(users);
         return new ModelAndView(SEARCH_VIEW_KEY, search());
     }
@@ -82,7 +82,7 @@ public class UsersController {
      * Deletes a person.
      */
     @RequestMapping(value = "/users/delete.do")
-    public ModelAndView delete(@RequestParam("username") String username) {
+    public ModelAndView delete(final @RequestParam("username") String username) {
         Users readUsers = new Users();
         readUsers.setUsername(username);
 //        readUsers.setEnabled(1);

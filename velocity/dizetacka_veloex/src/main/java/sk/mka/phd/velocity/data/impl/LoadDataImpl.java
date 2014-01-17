@@ -20,7 +20,7 @@ public class LoadDataImpl extends AbstractLoadData implements LoadData {
      * @return
      */
     @Override
-    public String[][] loadData(String filename) {
+    public String[][] loadData(final String filename) {
         String[][] numbers = null;
         try {
             numbers = super.loadData(filename);

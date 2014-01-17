@@ -28,7 +28,7 @@ public class CriteriaTreeLeaf extends AbstractCriteriaTreeItem {
      * @param operator criteria operator
      * @param value criteria value
      */
-    public CriteriaTreeLeaf(String variable, int operator, Object[] value) {
+    public CriteriaTreeLeaf(final String variable,final  int operator,final  Object[] value) {
         super();
         setVariable(variable);
         setOperator(operator);
@@ -42,7 +42,7 @@ public class CriteriaTreeLeaf extends AbstractCriteriaTreeItem {
      * @param operator criteria operator
      * @param value criteria value
      */
-    public CriteriaTreeLeaf(String variable, int operator, Object value) {
+    public CriteriaTreeLeaf(final String variable,final  int operator,final  Object value) {
         this(variable, operator, new Object[]{value});
     }
     
@@ -56,7 +56,7 @@ public class CriteriaTreeLeaf extends AbstractCriteriaTreeItem {
     /**
      * variable setter
      */
-    public void setVariable(String variable) {
+    public void setVariable(final String variable) {
         this.variable = variable;
     }
 
@@ -64,7 +64,7 @@ public class CriteriaTreeLeaf extends AbstractCriteriaTreeItem {
     /**
      * operator setter
      */
-    public void setOperator(int operator) {
+    public void setOperator(final int operator) {
         if (OP_AND==operator || OP_OR==operator) {
             throw new IllegalArgumentException("AND and OR operators are not supported in tree leaves!");
         }        
@@ -91,14 +91,14 @@ public class CriteriaTreeLeaf extends AbstractCriteriaTreeItem {
     /**
      * value setter
      */
-    public void setValue(Object[] value) {
+    public void setValue(final Object[] value) {
         this.value = value;
     }
     
     /**
      * value setter
      */
-    public void setValue(Object value) {
+    public void setValue(final Object value) {
         this.value = new Object[] {value};
     }
     

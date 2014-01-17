@@ -23,15 +23,16 @@ public class UsersEditDetailInitiator extends AnnotateDataBinderInit {
 			.getApplicationContext().getBean("usersService");
 
 	@Override
-	public void doAfterCompose(Page page, Component[] comps) throws Exception {
+	public void doAfterCompose(final Page page, final Component[] comps)
+			throws Exception {
 
 		final String userName = ((SkillnetUser) SecurityContextHolder
 				.getContext().getAuthentication().getPrincipal()).getUsername();
-		UsersEditDetailWindow usersEditDetailWindow = (UsersEditDetailWindow) comps[0];
+		final UsersEditDetailWindow usersEditDetailWindow = (UsersEditDetailWindow) comps[0];
 
 		Users user = new Users();
 		user.setUsername(userName);
-		List<Users> users = usersService.readByCriteria(user);
+		final List<Users> users = usersService.readByCriteria(user);
 		user = users.get(0);
 		usersEditDetailWindow.setUser(user);
 		if (!Arrays.equals(user.getCurriculum(), null)) {

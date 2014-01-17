@@ -30,13 +30,13 @@ public class ImportLdapUsersService {
      * logger for current class
      */
     private static final Logger logger = Logger.getLogger(ImportLdapUsersService.class);
-    private static final String LDAP_DefaultUSFilter = "(objectclass=person)";
+    private static final String LDAP_DefaultUSFilter = "(final objectclass=person)";
     private static final String LDAP_DefaultSFormat = "OU=Kosice,OU=Foreign,OU=People";
     private static final String LDAP_DefaultDNFormat = "CN={0},OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local";
-    private final UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private final UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
     private final ContextSource contextSource;
 
-    public ImportLdapUsersService(ContextSource contextSource) {
+    public ImportLdapUsersService(final ContextSource contextSource) {
         this.contextSource = contextSource;
     }
 
@@ -47,7 +47,7 @@ public class ImportLdapUsersService {
      * @return List of strings, each strings like: "CN=Marek Menhert,OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local";
      **/
     @SuppressWarnings("unchecked")
-    public List<String> getUsersFullNameList(String principal, String ldapManagerPassword) {
+    public List<String> getUsersFullNameList(final String principal,final  String ldapManagerPassword) {
         NamingEnumeration results = null;
         DirContext ctx = null;
         try {
@@ -99,7 +99,7 @@ public class ImportLdapUsersService {
         }
     }
 
-    public List<Map<String, Object>> findUsersByCN(String searchExpression, String principal, String ldapManagerPassword) {
+    public List<Map<String, Object>> findUsersByCN(final String searchExpression,final  String principal,final  String ldapManagerPassword) {
         NamingEnumeration results = null;
         DirContext ctx = null;
         try {
@@ -172,7 +172,7 @@ public class ImportLdapUsersService {
         }
     }
 
-    private Object getOptionalAttribute(Attributes attrs, String attrName) throws NamingException {
+    private Object getOptionalAttribute(final Attributes attrs,final  String attrName) throws NamingException {
         return attrs.get(attrName) != null ? attrs.get(attrName).get() : "";
     }
 }

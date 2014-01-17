@@ -30,7 +30,7 @@ public class LoadInputDataImpl extends AbstractLoadData implements LoadData, Pho
     private static Logger log = Logger.getLogger(LoadInputDataImpl.class);
 
     @Override
-    public String[][] loadData(String filename) throws IOException {
+    public String[][] loadData(final String filename) throws IOException {
         String[] subStr;
         try {
             // Open the file that is the first
@@ -114,7 +114,7 @@ public class LoadInputDataImpl extends AbstractLoadData implements LoadData, Pho
     }
 
     @Override
-    public List loadPhonemaList(String filename) {
+    public List loadPhonemaList(final String filename) {
         String[] subStr;
         try {
             // Open the file that is the first

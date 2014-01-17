@@ -39,11 +39,11 @@ public class ImportUsersWindow extends Window {
     private BindingListModel ldapUsers;
     private String ldapName;
     private String ldapPassword;
-    private final UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
-    private final ImportLdapUsersService ldapUsersService = (ImportLdapUsersService) ProjectsApplicationContext.getApplicationContext().getBean("ldapUsersService");
+    private final UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private final ImportLdapUsersService ldapUsersService = (final ImportLdapUsersService) ProjectsApplicationContext.getApplicationContext().getBean("ldapUsersService");
 
     @SuppressWarnings("unchecked")
-    public void loadLdapUsers(Event event) throws Exception {
+    public void loadLdapUsers(final Event event) throws Exception {
 
         AuthenticationWindow win = (AuthenticationWindow) Executions.createComponents("/WEB-INF/jsp/tiles/usermanagement/authPage.zul", null, new HashMap<String, Object>());
         win.setName(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
@@ -81,7 +81,7 @@ public class ImportUsersWindow extends Window {
     }
 
     @SuppressWarnings("unchecked")
-    public void importLdapUsers(Event event) throws Exception {
+    public void importLdapUsers(final Event event) throws Exception {
         Set/*<Listitem>*/ selectedUsers = /*(Set<Listitem>)*/ ((Listbox) this.getFellow("ldapUsersListBox")).getSelectedItems();
         logger.debug("#importLdapUsers: " + selectedUsers.size() + " users selected.");
 
@@ -167,7 +167,7 @@ public class ImportUsersWindow extends Window {
     /**
      * @param ldapUsers the ldapUsers to set
      */
-    public void setLdapUsers(BindingListModel ldapUsers) {
+    public void setLdapUsers(final BindingListModel ldapUsers) {
         this.ldapUsers = ldapUsers;
     }
 

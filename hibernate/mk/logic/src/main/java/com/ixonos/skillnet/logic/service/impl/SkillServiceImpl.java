@@ -27,6 +27,7 @@ import com.ixonos.skillnet.logic.jdbc.JdbcSkillDAO;
 import com.ixonos.skillnet.logic.service.AbstractGenericService;
 import com.ixonos.skillnet.logic.service.ConfigService;
 import com.ixonos.skillnet.logic.service.SkillService;
+
 /**
  * 
  * @author magurja
@@ -37,54 +38,58 @@ public final class SkillServiceImpl extends AbstractGenericService<Skill>
 
 	@Resource
 	protected SkillDAO skillDAO;
-    
+
 	@Resource
 	protected JdbcSkillDAO jdbcSkillDAO;
-	
-    /** The configuration  service. */
-    @Resource
-    protected ConfigService configService;
+
+	/** The configuration service. */
+	@Resource
+	protected ConfigService configService;
 
 	@Autowired
-    @Override
-    public void setServiceDAO(@Qualifier("skillDAO") GenericDAO genericDAO) {
-        super.setServiceDAO(genericDAO);
-    }
-    @Autowired
-    @Override
-    public void setJdbcGenericDAO(@Qualifier("jdbcSkillDAO") JdbcGenericDAO jdbcGenericDAO) {
-        super.setJdbcGenericDAO(jdbcGenericDAO);
-    }
-
-    @Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
-    @Transactional(readOnly = true)
 	@Override
-	public List<Skill> findAlike(String name) {
-        if (jdbcSkillDAO == null) {
-            throw new IllegalArgumentException("Given argument (jdbcNodeDAO) is null.");
-        }
+	public void setServiceDAO(final @Qualifier("skillDAO") GenericDAO genericDAO) {
+		super.setServiceDAO(genericDAO);
+	}
+
+	@Autowired
+	@Override
+	public void setJdbcGenericDAO(
+			final @Qualifier("jdbcSkillDAO") JdbcGenericDAO jdbcGenericDAO) {
+		super.setJdbcGenericDAO(jdbcGenericDAO);
+	}
+
+	@Secured({ ROLE_ADMIN, ROLE_USER, ROLE_GM })
+	@Transactional(readOnly = true)
+	@Override
+	public List<Skill> findAlike(final String name) {
+		if (jdbcSkillDAO == null) {
+			throw new IllegalArgumentException(
+					"Given argument (jdbcNodeDAO) is null.");
+		}
 		return jdbcSkillDAO.findAlike(name);
 	}
 
-    @Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
-    @Transactional(readOnly = true)
+	@Secured({ ROLE_ADMIN, ROLE_USER, ROLE_GM })
+	@Transactional(readOnly = true)
 	@Override
-	public List<String> getNodePaths(int skillId, String rootName) {
-		List<Node> nodes = read(skillId).getNodeCollection();
-		List<String> paths = new ArrayList<String>();
+	public List<String> getNodePaths(final int skillId, final String rootName) {
+		final List<Node> nodes = read(skillId).getNodeCollection();
+		final List<String> paths = new ArrayList<String>();
 
 		if (nodes.size() == 0)
 			return null;
 
-		for (Node node : nodes) {
-			String path = getNodePath(node, rootName, "");
+		for (final Node node : nodes) {
+			final String path = getNodePath(node, rootName, "");
 			if (path.length() != 0)
 				paths.add(path.substring(0, path.length() - 1));
 		}
 		return paths;
 	}
 
-	private String getNodePath(Node node, String rootName, String path) {
+	private String getNodePath(final Node node, final String rootName,
+			String path) {
 		if (node.getSkill().getName().equals(rootName))
 			return path;
 
@@ -94,20 +99,23 @@ public final class SkillServiceImpl extends AbstractGenericService<Skill>
 		}
 		return "";
 	}
-	
-	/* (non-Javadoc)
-	 * @see com.ixonos.skillnet.logic.service.SkillService#getMinimalCountOfSkills()
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ixonos.skillnet.logic.service.SkillService#getMinimalCountOfSkills()
 	 */
 	@Transactional(readOnly = true)
 	@Override
 	public Integer getMinimalCountOfSkills() {
-		Integer minSkillsParam = configService.getIntProperty(MINIMUM_SKILLS, MINIMUM_SKILLS_DEFAULT);
-		Integer skillsCount = skillDAO.getValuableSkillsCount();
-		
+		final Integer minSkillsParam = configService.getIntProperty(
+				MINIMUM_SKILLS, MINIMUM_SKILLS_DEFAULT);
+		final Integer skillsCount = skillDAO.getValuableSkillsCount();
+
 		return new BigDecimal(skillsCount)
-					.multiply(new BigDecimal(minSkillsParam))
-					.divide(new BigDecimal(100), 0, BigDecimal.ROUND_DOWN)
-					.intValue();
+				.multiply(new BigDecimal(minSkillsParam))
+				.divide(new BigDecimal(100), 0, BigDecimal.ROUND_DOWN)
+				.intValue();
 	}
 }
-

@@ -11,11 +11,11 @@ public class Time {
 	@XmlElement
 	private String name;
 
-	public void setTime(String time) {
+	public void setTime(final String time) {
 		this.time = time;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 

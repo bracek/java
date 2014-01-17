@@ -14,7 +14,7 @@ public interface PhonemeLoadData {
      * @param filename
      * @return list of phonema, which is used in database TIMIT 
      */
-    public List loadPhonemaList(String filename);
+    public List loadPhonemaList(final String filename);
 
     public List<Integer> getNnId();
 

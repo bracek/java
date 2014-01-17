@@ -5,11 +5,11 @@ import java.util.List;
 import org.adit.spring.hibernate.entity.User;
 
 public interface UserDao {
-	public void saveUser(User user);
+	public void saveUser(final User user);
 
-	public List<User> getAllUser(User user);
+	public List<User> getAllUser(final User user);
 
-	public User selectUserById(String userId);
+	public User selectUserById(final String userId);
 
-	public void deleteUser(User user);
+	public void deleteUser(final User user);
 }

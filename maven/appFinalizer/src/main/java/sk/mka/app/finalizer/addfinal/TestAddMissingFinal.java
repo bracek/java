@@ -21,7 +21,7 @@ public final class TestAddMissingFinal {
 	 *            - <tt>aArgs[0]</tt> is the full name of an existing directory
 	 *            that can be read.
 	 */
-	public static void main(String... aArgs) throws FileNotFoundException {
+	public static void main(final String... aArgs) throws FileNotFoundException {
 		final File startingDirectory = new File(aArgs[0]);
 
 		final IAction addMissingFinal = new AddMissingFinalImpl();

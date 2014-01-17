@@ -16,7 +16,7 @@ import fi.ixonos.projects.logic.dao.GroupAuthorityDAO;
 public class GroupAuthorityDAOImpl extends GenericDAOImpl<GroupAuthority> implements GroupAuthorityDAO {
 
     @Autowired
-    public GroupAuthorityDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+    public GroupAuthorityDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
         setSessionFactory(sessionFactory);
     }
 }

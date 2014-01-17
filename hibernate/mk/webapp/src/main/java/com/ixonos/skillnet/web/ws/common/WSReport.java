@@ -18,7 +18,7 @@ public class WSReport {
         return stringRecords;
     }
 
-    public void setStringRecords(List<String> stringRecords) {
+    public void setStringRecords(final List<String> stringRecords) {
         this.stringRecords = stringRecords;
     }
 
@@ -26,7 +26,7 @@ public class WSReport {
         return doubleRecords;
     }
 
-    public void setDoubleRecords(List<Double> doubleRecords) {
+    public void setDoubleRecords(final List<Double> doubleRecords) {
         this.doubleRecords = doubleRecords;
     }
     

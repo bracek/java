@@ -14,7 +14,7 @@ import javax.faces.validator.ValidatorException;
  */
 public class EmailValidator implements Validator {
 
-    public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+    public void validate(final FacesContext context,final  UIComponent component,final  Object value) throws ValidatorException {
         //Get the component's contents and cast it to a String
         String enteredEmail = (String) value;
 

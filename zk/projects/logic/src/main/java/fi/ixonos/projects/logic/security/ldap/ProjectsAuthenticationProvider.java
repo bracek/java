@@ -16,15 +16,15 @@ import org.springframework.security.userdetails.UserDetailsService;
  */
 public class ProjectsAuthenticationProvider extends LdapAuthenticationProvider {
 
-    public ProjectsAuthenticationProvider(LdapAuthenticator authenticator, LdapAuthoritiesPopulator authoritiesPopulator) {
+    public ProjectsAuthenticationProvider(final LdapAuthenticator authenticator,final  LdapAuthoritiesPopulator authoritiesPopulator) {
         super(authenticator, authoritiesPopulator);
     }
 
-    public ProjectsAuthenticationProvider(LdapAuthenticator authenticator) {
+    public ProjectsAuthenticationProvider(final LdapAuthenticator authenticator) {
         super(authenticator);
     }
 
-    public void setUsersDetailsService(UserDetailsService usersDetailService) {
+    public void setUsersDetailsService(final UserDetailsService usersDetailService) {
         this.setUserDetailsContextMapper(new ProjectsDetailsContextMapper(usersDetailService));
     }
 

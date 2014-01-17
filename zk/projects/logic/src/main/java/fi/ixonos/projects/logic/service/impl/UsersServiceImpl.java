@@ -47,7 +47,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("usersDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("usersDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
 
@@ -56,7 +56,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
      */
     @Transactional(readOnly = true)
     @Override
-    public Users getUser(String userName) throws Exception {
+    public Users getUser(final String userName) throws Exception {
         DetachedCriteria criteria = DetachedCriteria.forClass(Users.class);
         criteria.add(Restrictions.eq("username", userName));
         List<Users> users = readByCriteria(criteria);
@@ -87,7 +87,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
      */
     @Transactional(readOnly = true)
     @Override
-    public boolean isPasswordCorrect(String userName, String password) throws Exception {
+    public boolean isPasswordCorrect(final String userName,final  String password) throws Exception {
         Users user = getUser(userName);
         return hashPassword(password, userName).equals(user.getPassword());
     }
@@ -103,7 +103,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
      * @throws Exception the exception
      */
     @Override
-    public String hashPassword(String plainPassword, String userName) throws Exception {
+    public String hashPassword(final String plainPassword,final  String userName) throws Exception {
         MessageDigestPasswordEncoder mdpe = new MessageDigestPasswordEncoder("SHA-256");
         return mdpe.encodePassword(plainPassword, userName);
     }
@@ -123,7 +123,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
 
     @Transactional(readOnly = true)
     @Override
-    public List<Users> getSortedUsers(String string) {
+    public List<Users> getSortedUsers(final String string) {
         DetachedCriteria criteria = DetachedCriteria.forClass(Users.class);
         criteria.addOrder(Order.asc(string));
         return readByCriteria(criteria);
@@ -144,7 +144,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
 
     @Transactional
     @Override
-    public boolean removeUser(String userName) throws Exception {
+    public boolean removeUser(final String userName) throws Exception {
         Users userForDelete = getUser(userName);
         // it is not allowed to delete manager if one or more users are still assigned to him
         List<Users> users = userForDelete.getUserCollection();
@@ -165,7 +165,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
 
     @Transactional
     @Override
-    public void openProject(String userName, Projects project) throws Exception {
+    public void openProject(final String userName,final  Projects project) throws Exception {
         Users user = getUser(userName);
         user.getProjectsOpenedCollection().add(project);
         createOrUpdate(user);
@@ -173,7 +173,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
 
     @Transactional
     @Override
-    public void closeProject(String userName, Projects project) throws Exception {
+    public void closeProject(final String userName,final  Projects project) throws Exception {
         Users user = getUser(userName);
         user.getProjectsOpenedCollection().remove(project);
         createOrUpdate(user);
@@ -181,7 +181,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
 
     @Transactional(readOnly = true)
     @Override
-    public Collection<Projects> getOpenedProjects(String userName) throws Exception {
+    public Collection<Projects> getOpenedProjects(final String userName) throws Exception {
         Users user = getUser(userName);
         Collection<Projects> projectsOpenedCollection = user.getProjectsOpenedCollection();
         for (Projects projects : projectsOpenedCollection) {
@@ -196,7 +196,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
     @Secured(ROLE_USER)
     @Transactional
     @Override
-    public void updateCurriculum(String userName, byte[] cvByteArray) throws Exception {
+    public void updateCurriculum(final String userName,final  byte[] cvByteArray) throws Exception {
         Users user = getUser(userName);
         user.setCurriculum(cvByteArray);
         user.setIsCurriculumAlreadyFillUp(true);
@@ -209,7 +209,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
     @Secured(ROLE_USER)
     @Transactional
     @Override
-    public void updatePhoto(String userName, byte[] photoByteArray) throws Exception {
+    public void updatePhoto(final String userName,final  byte[] photoByteArray) throws Exception {
         Users user = getUser(userName);
         user.setPhoto(photoByteArray);
         user.setPhotoUploaded(true);
@@ -222,7 +222,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
     @Secured(ROLE_USER)
     @Override
     @Transactional
-    public void updateUsersInfo(String username, Users user) throws Exception {
+    public void updateUsersInfo(final String username,final  Users user) throws Exception {
 
         final Users updateUser = getUser(username);
         updateUser.setName(user.getName());
@@ -241,7 +241,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
     @Secured(ROLE_ADMIN)
     @Transactional
     @Override
-    public boolean updateUser(String userName, List<String> authorities) throws Exception {
+    public boolean updateUser(final String userName,final  List<String> authorities) throws Exception {
         Users user = getUser(userName);
         // prepared list delete, add authorities
         List<Authority> authorityCollection = user.getAuthorityCollection();
@@ -282,7 +282,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
      *
      * @throws Exception the exception
      */
-    private Authority getAuthority(String authorityName) throws Exception {
+    private Authority getAuthority(final String authorityName) throws Exception {
         CodeTable codeTable = new CodeTable();
         codeTable.setGroupCode("AUTHORITIES");
         codeTable.setCode(authorityName);
@@ -339,7 +339,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
     @Secured(ROLE_ADMIN)
     @Transactional
     @Override
-    public boolean updateUser(String userName, Users manager, Boolean enabled) throws Exception {
+    public boolean updateUser(final String userName,final  Users manager,final  Boolean enabled) throws Exception {
         Users user = getUser(userName);
         // update manager
         if (manager != null) {
@@ -362,7 +362,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
      */
     @Transactional(readOnly = true)
     @Override
-    public boolean isUserAlreadyRegistered(String login) {
+    public boolean isUserAlreadyRegistered(final String login) {
         Users checkUser = new Users();
         checkUser.setUsername(login);
         List<Users> users = readByCriteria(checkUser);
@@ -375,10 +375,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
      */
     @Transactional
     @Override
-    public boolean addNewUser(String login, String password, String name,
-            String surname, String email, String phoneNumber, String location,
-            String position, Boolean enabled, Users manager,
-            List<String> authorities) throws Exception {
+    public boolean addNewUser(final String login,final  String password,final  String name,final             String surname,final  String email,final  String phoneNumber,final  String location,final             String position,final  Boolean enabled,final  Users manager,final             List<String> authorities) throws Exception {
 
         Users user = new Users();
         user.setUsername(login);

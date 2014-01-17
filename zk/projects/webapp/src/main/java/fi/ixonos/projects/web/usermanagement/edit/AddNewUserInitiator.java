@@ -19,12 +19,12 @@ import org.zkoss.zul.Listbox;
 public class AddNewUserInitiator extends AnnotateDataBinderInit {
 
     @Resource
-    private CodeTableService codeTableService = (CodeTableService) SpringUtil.getApplicationContext().getBean("codeTableService");
+    private CodeTableService codeTableService = (final CodeTableService) SpringUtil.getApplicationContext().getBean("codeTableService");
     @Resource
-    protected UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    protected UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
 
     @Override
-    public void doAfterCompose(Page page, Component[] comps) throws Exception {
+    public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {
         List<Users> users = usersService.getAllUsers();
         List<CodeTable> authorities = new ArrayList<CodeTable>();
         try {

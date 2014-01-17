@@ -63,8 +63,8 @@ import org.zkoss.zul.Window;
  */
 public class EditAllocationWindow extends Window {
 
-    private ProjectsService projectService = (ProjectsService) ProjectsApplicationContext.getApplicationContext().getBean("projectsService");
-    private UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private ProjectsService projectService = (final ProjectsService) ProjectsApplicationContext.getApplicationContext().getBean("projectsService");
+    private UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
     private Map<Panel, Projects> projectMap = new HashMap<Panel, Projects>();
     private Map<Panel, Combobox> availableMap = new HashMap<Panel, Combobox>();
     private Map<Panel, Listbox> allocatedMap = new HashMap<Panel, Listbox>();
@@ -76,7 +76,7 @@ public class EditAllocationWindow extends Window {
         projectsListbox.setItemRenderer(new ListitemRenderer() {
 
             @Override
-            public void render(Listitem item, Object data) throws Exception {
+            public void render(final Listitem item,final  Object data) throws Exception {
                 item.setLabel(((Projects) data).getName());
                 item.setValue(data);
             }
@@ -96,7 +96,7 @@ public class EditAllocationWindow extends Window {
         return projects;
     }
 
-    public void onProjectAdded(Event e) throws InterruptedException, Exception {
+    public void onProjectAdded(final Event e) throws InterruptedException, Exception {
         AddProjectWindow win = (AddProjectWindow) Executions.createComponents("/WEB-INF/jsp/tiles/projects/addProject.zul", null, null);
         win.doModal();
         Projects project = win.getProject();
@@ -112,7 +112,7 @@ public class EditAllocationWindow extends Window {
         }
     }
 
-    public void onProjectSelected(Event e) throws InterruptedException, Exception {
+    public void onProjectSelected(final Event e) throws InterruptedException, Exception {
         Listbox projectsListbox = (Listbox) e.getTarget();
         Listitem item = projectsListbox.getSelectedItem();
         if (item != null) {
@@ -128,7 +128,7 @@ public class EditAllocationWindow extends Window {
         }
     }
 
-    public void onProjectRenaming(Event e) {
+    public void onProjectRenaming(final Event e) {
         OpenEvent oe = (OpenEvent) e;
         if (oe.isOpen()) {
             ((Textbox) getFellow("renameTextbox")).setValue("");
@@ -142,7 +142,7 @@ public class EditAllocationWindow extends Window {
         }
     }
 
-    public void onProjectRenamed(Event e) throws Exception {
+    public void onProjectRenamed(final Event e) throws Exception {
         try {
             if (renaming != null) {
                 renameProject(renaming, ((Textbox) getFellow("renameTextbox")).getValue());
@@ -152,7 +152,7 @@ public class EditAllocationWindow extends Window {
         }
     }
 
-    public void onSaveAllClicked(Event e) throws Exception {
+    public void onSaveAllClicked(final Event e) throws Exception {
         for(Map.Entry<Panel, Projects> entry : projectMap.entrySet()) {
             Projects project = entry.getValue();
             if(project.isDirty()) {
@@ -187,7 +187,7 @@ public class EditAllocationWindow extends Window {
     }
 
     @Transactional
-    private Panel createPanel(Projects project) {
+    private Panel createPanel(final Projects project) {
         final Panel p = initPanel(new Panel());// Get a panel template
         projectMap.put(p, project);
         p.setTitle(project.getName());
@@ -199,7 +199,7 @@ public class EditAllocationWindow extends Window {
         description.addEventListener(Events.ON_CHANGING, new EventListener() {
 
             @Override
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 Projects project = projectMap.get(p);
                 project.setDescription(description.getValue());
                 project.setDirty(true);
@@ -213,7 +213,7 @@ public class EditAllocationWindow extends Window {
         dateboxFrom.addEventListener(Events.ON_CHANGE, new EventListener() {
 
             @Override
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 Projects project = projectMap.get(p);
                 project.setDateFrom(dateboxFrom.getValue());
                 project.setDirty(true);
@@ -224,7 +224,7 @@ public class EditAllocationWindow extends Window {
         dateboxTo.addEventListener(Events.ON_CHANGE, new EventListener() {
 
             @Override
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 Projects project = projectMap.get(p);
                 project.setDateTo(dateboxTo.getValue());
                 project.setDirty(true);
@@ -266,14 +266,14 @@ public class EditAllocationWindow extends Window {
         usersListbox.setItemRenderer(new ListitemRenderer() {
 
             @Override
-            public void render(final Listitem item, Object data) throws Exception {
+            public void render(final Listitem item,final  Object data) throws Exception {
                 item.setDraggable("true");
                 Listcell imageCell = new Listcell();
                 Button removeButton = new Button("", "/img/minus-8.png");
                 removeButton.addEventListener(Events.ON_CLICK, new EventListener() {
 
                     @Override
-                    public void onEvent(Event event) throws Exception {
+                    public void onEvent(final Event event) throws Exception {
                         try {
                             Projects project = projectMap.get(p);
                             project.getUsersCollection().remove((Users) item.getValue());
@@ -296,7 +296,7 @@ public class EditAllocationWindow extends Window {
         usersCombobox.setItemRenderer(new ComboitemRenderer() {
 
             @Override
-            public void render(Comboitem item, Object data) throws Exception {
+            public void render(final Comboitem item,final  Object data) throws Exception {
                 Users u = (Users) data;
                 item.setLabel(u.getUsername() + " - [ " + u.getName() + " " + u.getSurname() + " ]");
                 item.setValue(data);
@@ -305,7 +305,7 @@ public class EditAllocationWindow extends Window {
         usersCombobox.addEventListener(Events.ON_CHANGE, new EventListener() {
 
             @Override
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 try {
                     Comboitem ci = ((Combobox) event.getTarget()).getSelectedItem();
                     if (ci != null) {
@@ -328,7 +328,7 @@ public class EditAllocationWindow extends Window {
         miSave.addEventListener(Events.ON_CLICK, new EventListener() {
 
             @Override
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 Projects project = projectMap.get(p);
                 if (checkValues(project)) {
                     return;
@@ -347,7 +347,7 @@ public class EditAllocationWindow extends Window {
         miRevert.addEventListener(Events.ON_CLICK, new EventListener() {
 
             @Override
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 Projects project = projectMap.get(p);
                 // reload data from database
                 project = projectService.getProject(project.getProjectsId());
@@ -362,7 +362,7 @@ public class EditAllocationWindow extends Window {
         miRename.addEventListener(Events.ON_CLICK, new EventListener() {
 
             @Override
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 ((Popup) getFellow("renamePopup")).open(p, "overlap");
             }
         });
@@ -372,7 +372,7 @@ public class EditAllocationWindow extends Window {
         miDelete.addEventListener(Events.ON_CLICK, new EventListener() {
 
             @Override
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 Projects project = projectMap.get(p);
                 int answer = Messagebox.show(Labels.getLabel("project.question.delete") + " '" + project.getName() + "' ?", Labels.getLabel("common.dialog.confirmation"), Messagebox.YES | Messagebox.NO, Messagebox.QUESTION);
                 if (answer == Messagebox.YES) {
@@ -393,7 +393,7 @@ public class EditAllocationWindow extends Window {
         p.addEventListener(Events.ON_CLOSE, new EventListener() {
 
             @Override
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 Projects project = projectMap.get(p);
                 if (project != null) {
                     final String username = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
@@ -431,7 +431,7 @@ public class EditAllocationWindow extends Window {
         p.addEventListener(Events.ON_DROP, new EventListener() {
 
             @Override
-            public void onEvent(Event event) throws Exception {
+            public void onEvent(final Event event) throws Exception {
                 Component dragged = ((DropEvent) event).getDragged();
                 Component target = ((DropEvent) event).getTarget();
                 Projects project = null;
@@ -456,7 +456,7 @@ public class EditAllocationWindow extends Window {
         return p;
     }
 
-    private Panel initPanel(Panel panel) {
+    private Panel initPanel(final Panel panel) {
         panel.setBorder("normal");
         panel.setCollapsible(true);
         panel.setClosable(true);
@@ -466,13 +466,13 @@ public class EditAllocationWindow extends Window {
         return panel;
     }
 
-    private List<Users> getAvailableUsers(Projects project) {
+    private List<Users> getAvailableUsers(final Projects project) {
         List<Users> users = usersService.readAll();
         users.removeAll(new ArrayList<Users>(project.getUsersCollection()));
         return users;
     }
 
-    public void onDropUserOnList(Event event) throws Exception {
+    public void onDropUserOnList(final Event event) throws Exception {
         Component dragged = ((DropEvent) event).getDragged();
         if (!"usersSourceListbox".equals(dragged.getParent().getId()) && dragged instanceof Listitem) {
             Listitem li = (Listitem) dragged;
@@ -492,7 +492,7 @@ public class EditAllocationWindow extends Window {
         }
     }
 
-    private Panel retrieveProjectPanel(Component comp) {
+    private Panel retrieveProjectPanel(final Component comp) {
         if (comp instanceof Panel) {
             return (Panel) comp;
         } else {
@@ -527,7 +527,7 @@ public class EditAllocationWindow extends Window {
         }
     }
 
-    private boolean checkValues(Projects project) throws Exception {
+    private boolean checkValues(final Projects project) throws Exception {
         StringBuilder error = new StringBuilder();
         if (project.getName() == null || "".equals(project.getName())) {
             error.append(Labels.getLabel("project.error.insertName"));
@@ -550,7 +550,7 @@ public class EditAllocationWindow extends Window {
         }
     }
 
-    private void updatePanelData(Panel p) {
+    private void updatePanelData(final Panel p) {
         Projects project = projectMap.get(p);
         Listbox usersListbox = allocatedMap.get(p);
         Combobox usersCombobox = availableMap.get(p);

@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.mkyong.customer.services.CustomerService;
 
 public class App {
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "Spring-Customer.xml" });
 

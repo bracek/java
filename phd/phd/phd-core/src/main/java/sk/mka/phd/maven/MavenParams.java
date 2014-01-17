@@ -22,8 +22,7 @@ public class MavenParams {
     protected static Logger log = Logger.getLogger(MavenParams.class);
     private static boolean writeMavenParams = true;
 
-    public static final String getPomValue(
-            final String inKey)
+    public static final String getPomValue(            final String inKey)
             throws FileNotFoundException, IOException {
         int i = 0;
         String cleanValue = null;

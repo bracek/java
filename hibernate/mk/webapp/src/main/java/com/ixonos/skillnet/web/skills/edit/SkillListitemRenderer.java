@@ -9,23 +9,24 @@ import com.ixonos.skillnet.web.skills.edit.ImportSkillsWindow.ImportSkillsListIt
 
 public class SkillListitemRenderer implements ListitemRenderer {
 
-	public void render(Listitem item, Object data) throws Exception {
-		Skill skill = (Skill) data;
-		ImportSkillsListItem impItem = (ImportSkillsListItem) ((Listitem) getParentComponent(
+	@Override
+	public void render(final Listitem item, final Object data) throws Exception {
+		final Skill skill = (Skill) data;
+		final ImportSkillsListItem impItem = (ImportSkillsListItem) ((Listitem) getParentComponent(
 				item, Listitem.class)).getValue();
 
-		Skill actSkill = impItem.getActSkill();
-		if(actSkill != null)
+		final Skill actSkill = impItem.getActSkill();
+		if (actSkill != null)
 			item.setSelected(skill.getSkillId().equals(actSkill.getSkillId()));
 		item.setValue(data);
 		item.setLabel(skill.getName());
 	}
 
-	private Component getParentComponent(Component component, Class<?> clazz)
-			throws Exception {
+	private Component getParentComponent(Component component,
+			final Class<?> clazz) throws Exception {
 		int index = 0;
-		while ((component != null)
-				&& !clazz.isInstance((component = component.getParent()))) {
+		while (component != null
+				&& !clazz.isInstance(component = component.getParent())) {
 			index++;
 			if (index == 50) {
 				throw new Exception("No parent " + clazz + " found!");

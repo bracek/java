@@ -13,12 +13,12 @@ public class SeparatorConst {
         return separator;
     }
 
-    public void setSeparator(Separator separator) {
+    public void setSeparator(final Separator separator) {
         this.separator = separator;
     }
     private Separator separator;
 
-    private SeparatorConst(Separator separator) {
+    private SeparatorConst(final Separator separator) {
         this.separator = separator;
     }
     private static final List<SeparatorConst> sepConstants = new ArrayList<SeparatorConst>();

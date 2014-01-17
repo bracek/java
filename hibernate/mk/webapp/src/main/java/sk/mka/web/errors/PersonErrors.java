@@ -15,7 +15,7 @@ public class PersonErrors implements Errors {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void setNestedPath(String arg0) {
+    public void setNestedPath(final String arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -23,7 +23,7 @@ public class PersonErrors implements Errors {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void pushNestedPath(String arg0) {
+    public void pushNestedPath(final String arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -31,31 +31,31 @@ public class PersonErrors implements Errors {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void reject(String arg0) {
+    public void reject(final String arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void reject(String arg0, String arg1) {
+    public void reject(final String arg0,final  String arg1) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void reject(String arg0, Object[] arg1, String arg2) {
+    public void reject(final String arg0,final  Object[] arg1,final  String arg2) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void rejectValue(String arg0, String arg1) {
+    public void rejectValue(final String arg0,final  String arg1) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void rejectValue(String arg0, String arg1, String arg2) {
+    public void rejectValue(final String arg0,final  String arg1,final  String arg2) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void rejectValue(String arg0, String arg1, Object[] arg2, String arg3) {
+    public void rejectValue(final String arg0,final  String arg1,final  Object[] arg2,final  String arg3) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void addAllErrors(Errors arg0) {
+    public void addAllErrors(final Errors arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -103,27 +103,27 @@ public class PersonErrors implements Errors {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean hasFieldErrors(String arg0) {
+    public boolean hasFieldErrors(final String arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public int getFieldErrorCount(String arg0) {
+    public int getFieldErrorCount(final String arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public List getFieldErrors(String arg0) {
+    public List getFieldErrors(final String arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public FieldError getFieldError(String arg0) {
+    public FieldError getFieldError(final String arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Object getFieldValue(String arg0) {
+    public Object getFieldValue(final String arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Class getFieldType(String arg0) {
+    public Class getFieldType(final String arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

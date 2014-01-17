@@ -9,7 +9,7 @@ import sk.mka.phd.matlab.generator.Generator;
  */
 public class GenerateVoicedIterator {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
         final Generator voicedVoicelessGenerator = new VoicedGeneratorImpl();
         voicedVoicelessGenerator.init();
     }

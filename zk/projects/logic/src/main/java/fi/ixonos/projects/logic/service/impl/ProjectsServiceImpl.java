@@ -28,13 +28,13 @@ public final class ProjectsServiceImpl extends AbstractGenericService<Projects> 
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("projectsDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("projectsDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
 
     @Override
     @Transactional(readOnly=true)
-    public Projects getProject(Integer projectId) throws Exception {
+    public Projects getProject(final Integer projectId) throws Exception {
         DetachedCriteria criteria = DetachedCriteria.forClass(Projects.class);
         criteria.add(Restrictions.eq("projectsId", projectId));
         criteria.setResultTransformer(DetachedCriteria.DISTINCT_ROOT_ENTITY);
@@ -50,7 +50,7 @@ public final class ProjectsServiceImpl extends AbstractGenericService<Projects> 
 
     @Override
     @Transactional
-    public void addUser(Integer projectId, Users user) throws Exception {
+    public void addUser(final Integer projectId,final  Users user) throws Exception {
         Projects project = getProject(projectId);
         project.getUsersCollection().add(user);
         update(project);
@@ -58,7 +58,7 @@ public final class ProjectsServiceImpl extends AbstractGenericService<Projects> 
 
     @Override
     @Transactional
-    public void removeUser(Integer projectId, Users user) throws Exception {
+    public void removeUser(final Integer projectId,final  Users user) throws Exception {
         Projects project = getProject(projectId);
         project.getUsersCollection().remove(user);
         update(project);

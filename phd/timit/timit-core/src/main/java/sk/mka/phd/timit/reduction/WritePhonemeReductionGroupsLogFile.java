@@ -25,7 +25,7 @@ public class WritePhonemeReductionGroupsLogFile extends AbstractWritePhonemeRedu
     }
 
     @Override
-    public void write(ArrayList<PhonemaGroup> groups) {
+    public void write(final ArrayList<PhonemaGroup> groups) {
         String separator;
 
         try {

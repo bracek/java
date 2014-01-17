@@ -40,8 +40,7 @@ public final class AlarmActivity extends Activity {
 	}
 
 	@Override
-	protected void onActivityResult(final int requestCode,
-			final int resultCode, final Intent data) {
+	protected void onActivityResult(final int requestCode,			final int resultCode, final Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 

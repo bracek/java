@@ -17,11 +17,11 @@ public class OsobaValidator implements Validator {
     /** Logger for this class and subclasses */
     protected final Log logger = LogFactory.getLog(getClass());
 
-    public boolean supports(Class clazz) {
+    public boolean supports(final Class clazz) {
         return Osoba.class.equals(clazz);
     }
 
-    public void validate(Object obj, Errors e) {
+    public void validate(final Object obj,final  Errors e) {
         ValidationUtils.rejectIfEmpty(e, "firstName", "firstName.empty");
 
 //        Person person = (Person) obj;

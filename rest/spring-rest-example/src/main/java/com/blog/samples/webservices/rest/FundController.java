@@ -20,7 +20,7 @@ public class FundController {
     }
 
     /*
-     * @RequestMapping(value = "/funds/", method = RequestMethod.GET) public ModelAndView getFunds() { List<Fund> funds = null;
+     * @RequestMapping(final value = "/funds/",final  method = RequestMethod.GET) public ModelAndView getFunds() { List<Fund> funds = null;
      * 
      * try { funds = fundService_i.getAllFunds(); } catch (final Exception e) { final String sMessage = "Error getting all funds. [%1$s]"; return
      * createErrorResponse(String.format(sMessage, e.toString())); }

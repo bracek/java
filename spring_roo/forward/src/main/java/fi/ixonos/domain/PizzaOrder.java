@@ -63,11 +63,11 @@ public class PizzaOrder implements Serializable {
     public PizzaOrder() {
     }
 
-    public PizzaOrder(Long id) {
+    public PizzaOrder(final Long id) {
         this.id = id;
     }
 
-    public PizzaOrder(Long id, String name) {
+    public PizzaOrder(final Long id,final  String name) {
         this.id = id;
         this.name = name;
     }
@@ -76,7 +76,7 @@ public class PizzaOrder implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -84,7 +84,7 @@ public class PizzaOrder implements Serializable {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(final String address) {
         this.address = address;
     }
 
@@ -92,7 +92,7 @@ public class PizzaOrder implements Serializable {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
+    public void setDeliveryDate(final Date deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 
@@ -100,7 +100,7 @@ public class PizzaOrder implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -108,7 +108,7 @@ public class PizzaOrder implements Serializable {
         return total;
     }
 
-    public void setTotal(Float total) {
+    public void setTotal(final Float total) {
         this.total = total;
     }
 
@@ -116,7 +116,7 @@ public class PizzaOrder implements Serializable {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(final Integer version) {
         this.version = version;
     }
 
@@ -125,7 +125,7 @@ public class PizzaOrder implements Serializable {
         return pizzaCollection;
     }
 
-    public void setPizzaCollection(Collection<Pizza> pizzaCollection) {
+    public void setPizzaCollection(final Collection<Pizza> pizzaCollection) {
         this.pizzaCollection = pizzaCollection;
     }
 
@@ -137,7 +137,7 @@ public class PizzaOrder implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof PizzaOrder)) {
             return false;

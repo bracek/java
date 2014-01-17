@@ -16,7 +16,7 @@ public class MkaResultsFilesInFolderFileReaderImpl extends AbstractFileReaderMka
     private static final String SVN_DOT_EXCLUDE = ".svn";
 
     @Override
-    public List<File> getFileListingNoSort(File aStartingDir) throws FileNotFoundException {
+    public List<File> getFileListingNoSort(final File aStartingDir) throws FileNotFoundException {
         List<File> result = new ArrayList<File>();
         File[] filesAndDirs = aStartingDir.listFiles();
         List<File> filesDirs = Arrays.asList(filesAndDirs);

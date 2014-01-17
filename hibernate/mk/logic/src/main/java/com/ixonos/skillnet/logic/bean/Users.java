@@ -109,11 +109,11 @@ public class Users implements Serializable {
     public Users() {
     }
 
-    public Users(Integer userId) {
+    public Users(final Integer userId) {
         this.userId = userId;
     }
 
-    public Users(Integer userId, String username, String password, Boolean enabled) {
+    public Users(final Integer userId,final  String username,final  String password,final  Boolean enabled) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -124,7 +124,7 @@ public class Users implements Serializable {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(final Integer userId) {
         this.userId = userId;
     }
 
@@ -132,7 +132,7 @@ public class Users implements Serializable {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
@@ -140,7 +140,7 @@ public class Users implements Serializable {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -148,7 +148,7 @@ public class Users implements Serializable {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(final Boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -156,7 +156,7 @@ public class Users implements Serializable {
         return authorityCollection;
     }
 
-    public void setAuthorityCollection(List<Authority> authorityCollection) {
+    public void setAuthorityCollection(final List<Authority> authorityCollection) {
         this.authorityCollection = authorityCollection;
     }
 
@@ -164,7 +164,7 @@ public class Users implements Serializable {
         return groupMemberCollection;
     }
 
-    public void setGroupMemberCollection(List<GroupMember> groupMemberCollection) {
+    public void setGroupMemberCollection(final List<GroupMember> groupMemberCollection) {
         this.groupMemberCollection = groupMemberCollection;
     }
 
@@ -172,7 +172,7 @@ public class Users implements Serializable {
         return createdSkills;
     }
 
-    public void setCreatedSkills(List<Skill> createdSkills) {
+    public void setCreatedSkills(final List<Skill> createdSkills) {
         this.createdSkills = createdSkills;
     }
 
@@ -180,7 +180,7 @@ public class Users implements Serializable {
         return modifiedSkills;
     }
 
-    public void setModifiedSkills(List<Skill> modifiedSkills) {
+    public void setModifiedSkills(final List<Skill> modifiedSkills) {
         this.modifiedSkills = modifiedSkills;
     }
 
@@ -188,7 +188,7 @@ public class Users implements Serializable {
         return practicumCollection;
     }
 
-    public void setPracticumCollection(List<Practicum> practicumCollection) {
+    public void setPracticumCollection(final List<Practicum> practicumCollection) {
         this.practicumCollection = practicumCollection;
     }
 
@@ -196,7 +196,7 @@ public class Users implements Serializable {
         return userCollection;
     }
 
-    public void setUserCollection(List<Users> userCollection) {
+    public void setUserCollection(final List<Users> userCollection) {
         this.userCollection = userCollection;
     }
 
@@ -204,11 +204,11 @@ public class Users implements Serializable {
         return manager;
     }
 
-    public void setManager(Users manager) {
+    public void setManager(final Users manager) {
         this.manager = manager;
     }
 
-    public void setAuthorities(String authorities) {
+    public void setAuthorities(final String authorities) {
         this.authorities = authorities;
     }
 
@@ -227,7 +227,7 @@ public class Users implements Serializable {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(final String location) {
         this.location = location;
     }
 
@@ -235,7 +235,7 @@ public class Users implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -243,7 +243,7 @@ public class Users implements Serializable {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(final String position) {
         this.position = position;
     }
 
@@ -251,7 +251,7 @@ public class Users implements Serializable {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(final String surname) {
         this.surname = surname;
     }
 
@@ -259,7 +259,7 @@ public class Users implements Serializable {
         return telephoneNumber;
     }
 
-    public void setTelephoneNumber(String telephoneNumber) {
+    public void setTelephoneNumber(final String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
 
@@ -267,7 +267,7 @@ public class Users implements Serializable {
         return curriculum;
     }
 
-    public void setCurriculum(byte[] curriculum) {
+    public void setCurriculum(final byte[] curriculum) {
         this.curriculum = curriculum;
     }
 
@@ -275,7 +275,7 @@ public class Users implements Serializable {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -287,12 +287,12 @@ public class Users implements Serializable {
         return isCurriculumAlreadyFillUp;
     }
 
-    public void setIsCurriculumAlreadyFillUp(boolean isCurriculumAlreadyFillUp) {
+    public void setIsCurriculumAlreadyFillUp(final boolean isCurriculumAlreadyFillUp) {
         this.isCurriculumAlreadyFillUp = isCurriculumAlreadyFillUp;
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Users)) {
             return false;

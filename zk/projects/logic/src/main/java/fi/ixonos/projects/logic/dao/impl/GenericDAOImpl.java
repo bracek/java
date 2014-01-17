@@ -138,7 +138,7 @@ public abstract class GenericDAOImpl<T> extends HibernateDaoSupport implements G
      * {@inheritDoc GenericDAO<T>}
      */
     @SuppressWarnings("unchecked")
-	public List<T> readByCriteria(T t) {
+	public List<T> readByCriteria(final T t) {
         try {
             return getSession().createCriteria(getEntityClass()).add(Example.create(t)).list();
         } catch (Exception e) {
@@ -151,7 +151,7 @@ public abstract class GenericDAOImpl<T> extends HibernateDaoSupport implements G
      * {@inheritDoc GenericDAO<T>}
      */
     @SuppressWarnings("unchecked")
-	public List<T> readByCriteria(DetachedCriteria criteria) {
+	public List<T> readByCriteria(final DetachedCriteria criteria) {
         try {
             return criteria.getExecutableCriteria(getSession()).list();
         } catch (Exception e) {
@@ -163,7 +163,7 @@ public abstract class GenericDAOImpl<T> extends HibernateDaoSupport implements G
      * {@inheritDoc GenericDAO<T>}
      */
     @SuppressWarnings("unchecked")
-	public T readUniqueByCriteria(DetachedCriteria criteria) {
+	public T readUniqueByCriteria(final DetachedCriteria criteria) {
         try {
             return (T) criteria.getExecutableCriteria(getSession()).uniqueResult();
         } catch (ClassCastException e) {

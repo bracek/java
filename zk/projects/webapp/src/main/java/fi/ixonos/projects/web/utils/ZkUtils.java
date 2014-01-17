@@ -11,7 +11,7 @@ import org.zkoss.zk.ui.Component;
  */
 public class ZkUtils {
 
-    public static Component getParentComponent(Component component, Class clazz) throws Exception {
+    public static Component getParentComponent(final Component component,final  Class clazz) throws Exception {
         int index = 0;
         while ((component != null) && !clazz.isInstance((component = component.getParent()))) {
             index++;

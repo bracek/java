@@ -107,7 +107,7 @@ public abstract class AbstractGenerateExperimentsAverage implements IGenerateExp
     }
 
     @Override
-    public ArrayList countAvarageForFile(String folderName, Object[][] info) {
+    public ArrayList countAvarageForFile(final String folderName,final  Object[][] info) {
         ArrayList expArrayList = new ArrayList();
         double average = 0;
         double Aaverage = 0;
@@ -144,7 +144,7 @@ public abstract class AbstractGenerateExperimentsAverage implements IGenerateExp
      * @return
      */
     @Override
-    public Object[][] createFileObject(ArrayList experimentsList) {
+    public Object[][] createFileObject(final ArrayList experimentsList) {
         rows = experimentsList.size();
         Object[][] info = new Object[rows][cols];
         int col = 0;
@@ -159,7 +159,7 @@ public abstract class AbstractGenerateExperimentsAverage implements IGenerateExp
         return info;
     }
 
-    public void createSortedInfoForVelocity(HashMap sortedPopByIndex, Object[][] info) throws NumberFormatException {
+    public void createSortedInfoForVelocity(final HashMap sortedPopByIndex,final  Object[][] info) throws NumberFormatException {
         Set keys = sortedPopByIndex.keySet();
         List list = new ArrayList(keys);
         Collections.sort(list);
@@ -175,7 +175,7 @@ public abstract class AbstractGenerateExperimentsAverage implements IGenerateExp
         }
     }
 
-    public HashMap putInfoArrayOfArrayToHashMap(Object[][] unsortedInfo) throws NumberFormatException {
+    public HashMap putInfoArrayOfArrayToHashMap(final Object[][] unsortedInfo) throws NumberFormatException {
         //necessary to sort
         HashMap sortedPopByIndex = new HashMap();
         for (int i = 0; i < unsortedInfo.length; i++) {
@@ -291,7 +291,7 @@ public abstract class AbstractGenerateExperimentsAverage implements IGenerateExp
         return expArrayList;
     }
 
-    private void writeInfoToOuputFile(Object[][] info) throws IOException {
+    private void writeInfoToOuputFile(final Object[][] info) throws IOException {
         final Writer output = new FileMkaImpl().openFileForWriting(OUTPUT_AVERAGE_EXPERIMENTS);
 
 
@@ -337,7 +337,7 @@ public abstract class AbstractGenerateExperimentsAverage implements IGenerateExp
     }
 
     @Override
-    public void setExperimentStartFolder(String experimentStartFolder) {
+    public void setExperimentStartFolder(final String experimentStartFolder) {
         this.experimentStartFolder = experimentStartFolder;
 
 
@@ -357,7 +357,7 @@ public abstract class AbstractGenerateExperimentsAverage implements IGenerateExp
 
     }
 
-    public void setTemplateVelocityFileForAverageListExperiments(String templateVelocityFileForAverageListExperiments) {
+    public void setTemplateVelocityFileForAverageListExperiments(final String templateVelocityFileForAverageListExperiments) {
         this.templateVelocityFileForAverageListExperiments = templateVelocityFileForAverageListExperiments;
 
 
@@ -377,7 +377,7 @@ public abstract class AbstractGenerateExperimentsAverage implements IGenerateExp
 
     }
 
-    public void setWhichColumnContainsBBclassification(int whichColumnContainsBBclassification) {
+    public void setWhichColumnContainsBBclassification(final int whichColumnContainsBBclassification) {
         this.whichColumnContainsBBclassification = whichColumnContainsBBclassification;
 
 

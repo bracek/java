@@ -32,7 +32,7 @@ public class Fund{
 	 *
 	 * @param fundId the new fund id
 	 */
-	public void setFundId(String fundId) {
+	public void setFundId(final String fundId) {
 		this.fundId = fundId;
 	}
 
@@ -50,7 +50,7 @@ public class Fund{
 	 *
 	 * @param fundDescription the new fund description
 	 */
-	public void setFundDescription(String fundDescription) {
+	public void setFundDescription(final String fundDescription) {
 		this.fundDescription = fundDescription;
 	}
 
@@ -68,7 +68,7 @@ public class Fund{
 	 *
 	 * @param bidPrice the new bid price
 	 */
-	public void setBidPrice(double bidPrice) {
+	public void setBidPrice(final double bidPrice) {
 		this.bidPrice = bidPrice;
 	}
 
@@ -86,7 +86,7 @@ public class Fund{
 	 *
 	 * @param offerPrice the new offer price
 	 */
-	public void setOfferPrice(double offerPrice) {
+	public void setOfferPrice(final double offerPrice) {
 		this.offerPrice = offerPrice;
 	}
 
@@ -105,7 +105,7 @@ public class Fund{
 	 *
 	 * @param lastUpdated the new last updated
 	 */
-	public void setLastUpdated(Date lastUpdated) {
+	public void setLastUpdated(final Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
 

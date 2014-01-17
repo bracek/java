@@ -27,7 +27,7 @@ public abstract class AbstractFileLoadData extends AbstractLoadData implements I
     private String[][] values;
     private final List<String> phonemaArrayList = new ArrayList<String>();
 
-    public List loadPhonemaList(String filename) {
+    public List loadPhonemaList(final String filename) {
         String[] subStr;
         try {
             // Open the file that is the first
@@ -60,7 +60,7 @@ public abstract class AbstractFileLoadData extends AbstractLoadData implements I
     }
 
     @Override
-    public String[][] getFileContent(String filename) throws IOException {
+    public String[][] getFileContent(final String filename) throws IOException {
         String[][] numbers;
         if (ReadFileSingleton.getInstance().getValues() == null) {
             numbers = ReadFileSingleton.getInstance().loadData(filename, getSeparator());
@@ -73,7 +73,7 @@ public abstract class AbstractFileLoadData extends AbstractLoadData implements I
   
 
     @Override
-    public Object[][] loadDataAsObjects(String filename) throws IOException {
+    public Object[][] loadDataAsObjects(final String filename) throws IOException {
         this.filename = filename;
         String[] subStr;
         try {
@@ -141,7 +141,7 @@ public abstract class AbstractFileLoadData extends AbstractLoadData implements I
      * @param strLine
      * @param subStr
      */
-    protected void splitLine(String strLine, String[] subStr) {
+    protected void splitLine(final String strLine,final  String[] subStr) {
         if (!strLine.equals("")) {
             subStr = strLine.split(getSeparator());
             cols = subStr.length;
@@ -155,7 +155,7 @@ public abstract class AbstractFileLoadData extends AbstractLoadData implements I
         return values;
     }
 
-    public void setValues(String[][] values) {
+    public void setValues(final String[][] values) {
         this.values = values;
     }
 }

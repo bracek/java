@@ -23,12 +23,12 @@ public final class AuthorityServiceImpl extends AbstractGenericService<Authority
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("authorityDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("authorityDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
 
     @Override
-    public Authority getAuthority(String authority) {
+    public Authority getAuthority(final String authority) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

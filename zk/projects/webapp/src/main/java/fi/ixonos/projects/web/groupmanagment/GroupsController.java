@@ -51,7 +51,7 @@ public class GroupsController extends GenericForwardComposer implements
 			.getLogger(GroupsController.class);
 
 	@Resource
-	protected GroupAuthorityService groupAuthorityService = (GroupAuthorityService) ProjectsApplicationContext
+	protected GroupAuthorityService groupAuthorityService = (final GroupAuthorityService) ProjectsApplicationContext
 			.getApplicationContext().getBean("groupAuthorityService");
 	@Resource
 	protected GroupsService groupsService;
@@ -72,7 +72,7 @@ public class GroupsController extends GenericForwardComposer implements
 	private HashMap<Integer, Boolean> hashMapEnabled;
 
 	@Override
-	public void doAfterCompose(Component comp) throws Exception {
+	public void doAfterCompose(final Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		listModelList = new ListModelList();
 		List<Groups> groups = groupsService.readAll();
@@ -90,7 +90,7 @@ public class GroupsController extends GenericForwardComposer implements
 
 			// TODO prepare cheeckbox which will be enabled for specific groups
 			@Override
-			public void onEvent(Event e) throws Exception {
+			public void onEvent(final Event e) throws Exception {
 
 				hashMapEnabled = new HashMap<Integer, Boolean>();
 				cleanHashMap(hashMapEnabled);
@@ -111,15 +111,13 @@ public class GroupsController extends GenericForwardComposer implements
 
 			}
 
-			private void cleanHashMap(HashMap<Integer, Boolean> hashMapEnabled) {
+			private void cleanHashMap(final HashMap<Integer,final  Boolean> hashMapEnabled) {
 				for (int i = 0; i < listOfAuthoritiesFromCodeTable().size(); i++) {
 					hashMapEnabled.put(i, Boolean.FALSE);
 				}
 			}
 
-			private void findMatchInListForCodeTableAndGroupAuthorityTable(
-					final List<GroupAuthority> authorityListFromDatabase,
-					final List<CodeTable> listOfAllAuhtoritiesFromCodeTable) {
+			private void findMatchInListForCodeTableAndGroupAuthorityTable(					final List<GroupAuthority> authorityListFromDatabase,					final List<CodeTable> listOfAllAuhtoritiesFromCodeTable) {
 				Integer codeTableId;
 				Integer groupAuthorityCodeTableId;
 
@@ -154,8 +152,7 @@ public class GroupsController extends GenericForwardComposer implements
 				}
 			}
 
-			private List<GroupAuthority> getAuthoritiesForSelectedGroups(
-					final Groups selectedGroup) {
+			private List<GroupAuthority> getAuthoritiesForSelectedGroups(					final Groups selectedGroup) {
 				DetachedCriteria dCriteria2 = DetachedCriteria
 						.forClass(GroupAuthority.class);
 				dCriteria2.add(Restrictions.eq(
@@ -168,7 +165,7 @@ public class GroupsController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(Listitem listItem, Object data) throws Exception {
+	public void render(final Listitem listItem,final  Object data) throws Exception {
 		if (data instanceof Groups) {
 			listItem.setValue(data);
 			Groups group = (Groups) data;
@@ -194,7 +191,7 @@ public class GroupsController extends GenericForwardComposer implements
 	}
 
 	@Transactional
-	public void onClick$add(Event e) {
+	public void onClick$add(final Event e) {
 		String nameValue = Name.getValue();
 		if (nameValue != null) {
 			Groups group = new Groups();
@@ -209,7 +206,7 @@ public class GroupsController extends GenericForwardComposer implements
 	}
 
 	@Transactional
-	public void onClick$delete(Event e) {
+	public void onClick$delete(final Event e) {
 		if (null != selectedGroup) {
 			int index = listModelList.indexOf(selectedGroup);
 			try {
@@ -237,7 +234,7 @@ public class GroupsController extends GenericForwardComposer implements
 	}
 
 	@Transactional
-	public void onClick$update(Event e) {
+	public void onClick$update(final Event e) {
 		if (selectedGroup != null) {
 			selectedGroup.setGroupName(Name.getValue());
 			try {

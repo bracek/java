@@ -41,11 +41,11 @@ public class GroupAuthority implements Serializable {
     public GroupAuthority() {
     }
 
-    public GroupAuthority(Integer groupAuthorityId) {
+    public GroupAuthority(final Integer groupAuthorityId) {
         this.groupAuthorityId = groupAuthorityId;
     }
 
-    public GroupAuthority(Integer groupAuthorityId, CodeTable authority) {
+    public GroupAuthority(final Integer groupAuthorityId,final  CodeTable authority) {
         this.groupAuthorityId = groupAuthorityId;
         this.authority = authority;
     }
@@ -54,7 +54,7 @@ public class GroupAuthority implements Serializable {
         return groupAuthorityId;
     }
 
-    public void setGroupAuthorityId(Integer groupAuthorityId) {
+    public void setGroupAuthorityId(final Integer groupAuthorityId) {
         this.groupAuthorityId = groupAuthorityId;
     }
 
@@ -62,7 +62,7 @@ public class GroupAuthority implements Serializable {
         return authority;
     }
 
-    public void setAuthority(CodeTable authority) {
+    public void setAuthority(final CodeTable authority) {
         this.authority = authority;
     }
 
@@ -70,7 +70,7 @@ public class GroupAuthority implements Serializable {
 		return group;
 	}
 
-	public void setGroup(Groups group) {
+	public void setGroup(final Groups group) {
 		this.group = group;
 	}
 
@@ -82,7 +82,7 @@ public class GroupAuthority implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof GroupAuthority)) {
             return false;

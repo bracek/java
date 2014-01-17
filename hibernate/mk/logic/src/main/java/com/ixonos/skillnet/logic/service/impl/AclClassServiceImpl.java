@@ -21,7 +21,7 @@ public final class AclClassServiceImpl extends AbstractGenericService<AclClass> 
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("aclClassDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("aclClassDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
 }

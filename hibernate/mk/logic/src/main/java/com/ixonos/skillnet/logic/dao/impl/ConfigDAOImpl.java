@@ -16,7 +16,7 @@ import com.ixonos.skillnet.logic.dao.ConfigDAO;
 public class ConfigDAOImpl extends GenericDAOImpl<Config> implements ConfigDAO {
 
 	@Autowired
-	   public ConfigDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+	   public ConfigDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
 	       setSessionFactory(sessionFactory);
 	   }
 

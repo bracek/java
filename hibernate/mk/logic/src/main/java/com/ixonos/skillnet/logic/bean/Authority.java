@@ -50,11 +50,11 @@ public class Authority implements Serializable {
     public Authority() {
     }
 
-    public Authority(Integer authorityId) {
+    public Authority(final Integer authorityId) {
         this.authorityId = authorityId;
     }
 
-    public Authority(Integer authorityId, CodeTable authority) {
+    public Authority(final Integer authorityId,final  CodeTable authority) {
         this.authorityId = authorityId;
         this.authority = authority;
     }
@@ -63,7 +63,7 @@ public class Authority implements Serializable {
         return authorityId;
     }
 
-    public void setAuthorityId(Integer authorityId) {
+    public void setAuthorityId(final Integer authorityId) {
         this.authorityId = authorityId;
     }
 
@@ -71,7 +71,7 @@ public class Authority implements Serializable {
         return authority;
     }
 
-    public void setAuthority(CodeTable authority) {
+    public void setAuthority(final CodeTable authority) {
         this.authority = authority;
     }
 
@@ -79,7 +79,7 @@ public class Authority implements Serializable {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(final Users user) {
 		this.user = user;
 	}
 
@@ -91,7 +91,7 @@ public class Authority implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Authority)) {
             return false;

@@ -13,7 +13,7 @@ public class SimplifyTimitApp {
 
     final static Logger log = Logger.getLogger(SimplifyTimitApp.class);
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final String inputFolder = TimitParams.getInputDirectory(TimitParams.TimitValues.dir);
 
         final IFileListing fileListing = new FilteredFileListing("_out.csv", "csv");

@@ -22,16 +22,16 @@ import fi.ixonos.projects.logic.service.UsersService;
 public class UserManagementInitiator extends AnnotateDataBinderInit {
 
 	@Resource
-	private CodeTableService codeTableService = (CodeTableService)SpringUtil.getApplicationContext().getBean("codeTableService");
+	private CodeTableService codeTableService = (final CodeTableService)SpringUtil.getApplicationContext().getBean("codeTableService");
 
 	@Resource
-	protected UsersService usersService = (UsersService)SpringUtil.getApplicationContext().getBean("usersService");
+	protected UsersService usersService = (final UsersService)SpringUtil.getApplicationContext().getBean("usersService");
 	
 	@Resource
-	protected GroupsService groupsService = (GroupsService)SpringUtil.getApplicationContext().getBean("groupsService");
+	protected GroupsService groupsService = (final GroupsService)SpringUtil.getApplicationContext().getBean("groupsService");
 
 	@Override
-	public void doAfterCompose(Page page, Component[] comps) throws Exception {		
+	public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {		
 		List<Users> userList = getOrderedListOfUsers();
 		List<CodeTable> authorityList = codeTableService.getCodes("AUTHORITIES");			
 		List<Users> managerList = getOrderedListOfManagers();
@@ -54,7 +54,7 @@ public class UserManagementInitiator extends AnnotateDataBinderInit {
 	}
 
     @Deprecated
-	private List<Users> getOrderedListOfManagers(List<Users> users) {
+	private List<Users> getOrderedListOfManagers(final List<Users> users) {
 		return this.getOrderedListOfManagers();
 	}
 	
@@ -69,7 +69,7 @@ public class UserManagementInitiator extends AnnotateDataBinderInit {
 		List<Groups> groups = groupsService.readAll();
 		Groups[] groupsArray = groups.toArray(new Groups[groups.size()]);
 		Arrays.sort(groupsArray, new Comparator<Groups>() {
-			public int compare(Groups o1, Groups o2) {
+			public int compare(final Groups o1,final  Groups o2) {
 				return o1.getGroupName().compareTo(o2.getGroupName());
 			}
 			

@@ -1,5 +1,5 @@
 clean.install:
-	cd geeks-contacts/ && mvn clean install && cd ..
+#	cd geeks-contacts/ && mvn clean install && cd ..
 run.sonar:
 	cd geeks-contacts/ && mvn sonar:sonar && cd ..
 clean:

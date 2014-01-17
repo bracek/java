@@ -8,7 +8,7 @@ import com.mkyong.stock.model.Stock;
 
 public class App 
 {
-    public static void main( String[] args )
+    public static void main(final  String[] args )
     {
     	ApplicationContext appContext = 
     		new ClassPathXmlApplicationContext("spring/config/BeanLocations.xml");

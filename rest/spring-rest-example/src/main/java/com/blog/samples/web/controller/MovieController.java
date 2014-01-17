@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MovieController {
 
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public String getMovie(@PathVariable String name, ModelMap model) {
+    public String getMovie(final @PathVariable String name,final  ModelMap model) {
 
         model.addAttribute("movie", name);
         return "list";
@@ -19,7 +19,7 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getDefaultMovie(ModelMap model) {
+    public String getDefaultMovie(final ModelMap model) {
 
         model.addAttribute("movie", "this is default movie");
         return "list";

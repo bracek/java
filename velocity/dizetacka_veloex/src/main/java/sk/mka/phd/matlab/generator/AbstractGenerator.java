@@ -159,7 +159,7 @@ public abstract class AbstractGenerator implements Generator {
     /**
      * @param wantVoiced the wantVoiced to set
      */
-    public void setWantVoiced(int wantVoiced) {
+    public void setWantVoiced(final int wantVoiced) {
         this.wantVoiced = wantVoiced;
     }
 }

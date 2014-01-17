@@ -14,7 +14,7 @@ public class StringUtil {
      *
      * @return true, if is empty
      */
-    public static boolean isEmpty(String str) {
+    public static boolean isEmpty(final String str) {
         if (str == null) {
             return true;
         }
@@ -33,7 +33,7 @@ public class StringUtil {
      *
      * @return true, if is not empty
      */
-    public static boolean isNotEmpty(String str) {
+    public static boolean isNotEmpty(final String str) {
         return !isEmpty(str);
     }
 
@@ -44,7 +44,7 @@ public class StringUtil {
      *
      * @return the string
      */
-    public static String doRedirect(String viewName) {
+    public static String doRedirect(final String viewName) {
         return "redirect:" + viewName + ".do";
     }
 }

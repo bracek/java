@@ -19,7 +19,7 @@ public class ProjectsApplicationContext {
      * Injected from the class "ApplicationContextProvider" which is automatically
      * loaded during Spring-Initialization.
      */
-    public static void setApplicationContext(ApplicationContext applicationContext) {
+    public static void setApplicationContext(final ApplicationContext applicationContext) {
         ctx = applicationContext;
     }
 }

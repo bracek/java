@@ -16,7 +16,7 @@ import com.ixonos.skillnet.logic.dao.AclClassDAO;
 public class AclClassDAOImpl extends GenericDAOImpl<AclClass> implements AclClassDAO {
 
    @Autowired
-   public AclClassDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public AclClassDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
 }

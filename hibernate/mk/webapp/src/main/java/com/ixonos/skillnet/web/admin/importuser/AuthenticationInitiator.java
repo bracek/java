@@ -11,7 +11,7 @@ import org.zkoss.zkplus.databind.AnnotateDataBinderInit;
 public class AuthenticationInitiator extends AnnotateDataBinderInit {
 
 	@Override
-	public void doAfterCompose(Page page, Component[] comps) throws Exception {		
+	public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {		
 		super.doAfterCompose(page, comps);
 	}
 }

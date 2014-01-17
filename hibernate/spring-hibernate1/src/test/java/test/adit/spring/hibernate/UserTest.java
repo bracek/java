@@ -18,7 +18,7 @@ public class UserTest {
 	private UserDao dao;
 
 	@Autowired
-	public void setDao(UserDao dao) {
+	public void setDao(final UserDao dao) {
 		this.dao = dao;
 	}
 

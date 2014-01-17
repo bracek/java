@@ -62,7 +62,7 @@ public class Person implements Serializable {
     /**
      * Sets id (primary key).
      */
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
     
@@ -77,7 +77,7 @@ public class Person implements Serializable {
     /**
      * Sets first name.
      */
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
     
@@ -92,7 +92,7 @@ public class Person implements Serializable {
     /**
      * Sets last name.
      */
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
@@ -108,7 +108,7 @@ public class Person implements Serializable {
     /**
      * Sets list of <code>Address</code>es.
      */
-	public void setAddresses(Set<Address> addresses) {
+	public void setAddresses(final Set<Address> addresses) {
 		this.addresses = addresses;
 	}
 
@@ -122,11 +122,11 @@ public class Person implements Serializable {
     /**
      * Sets date created.
      */
-	public void setCreated(Date created) {
+	public void setCreated(final Date created) {
 		this.created = created;
 	}
 	
-	public Address findAddressById(Integer id) {
+	public Address findAddressById(final Integer id) {
 	    Address result = null;
 	    
 	    if (addresses != null) {
@@ -186,7 +186,7 @@ public class Person implements Serializable {
 	 * Indicates whether some other object is equal to this one.
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj) {
 			return true;
 		}

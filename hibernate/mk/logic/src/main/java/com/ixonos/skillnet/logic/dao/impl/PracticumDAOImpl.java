@@ -15,7 +15,7 @@ import com.ixonos.skillnet.logic.dao.PracticumDAO;
 public class PracticumDAOImpl extends GenericDAOImpl<Practicum> implements PracticumDAO {
 
    @Autowired
-   public PracticumDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public PracticumDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
 }

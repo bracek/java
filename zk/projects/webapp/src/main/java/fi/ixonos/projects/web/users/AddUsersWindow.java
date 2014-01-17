@@ -19,7 +19,7 @@ public final class AddUsersWindow extends Window {
     private Users user;
     private Listbox usersListbox;
     private Listbox updateProjectListbox;
-    private UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    private UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
     private List<Users> addUsersList;
 
     public AddUsersWindow() {
@@ -27,7 +27,7 @@ public final class AddUsersWindow extends Window {
     }
 
     //TODO add password from zk instead of hardcocde
-    public void onAdd(Event event) throws Exception {
+    public void onAdd(final Event event) throws Exception {
         if (checkValues(this.user)) {
             return;
         }
@@ -46,7 +46,7 @@ public final class AddUsersWindow extends Window {
         this.detach();
     }
 
-    public boolean checkValues(Users t) throws Exception {
+    public boolean checkValues(final Users t) throws Exception {
         StringBuilder error = new StringBuilder();
         if (user.getUsername() == null || "".equals(user.getUsername())) {
             error.append(Labels.getLabel("users.error.insertName"));
@@ -74,7 +74,7 @@ public final class AddUsersWindow extends Window {
         }
     }
 
-    public void onDelete(Event event)
+    public void onDelete(final Event event)
             throws Exception {
 
         refreshView();
@@ -95,7 +95,7 @@ public final class AddUsersWindow extends Window {
         return updateProjectListbox;
     }
 
-    public void setUpdateProjectListbox(Listbox updateProjectListbox) {
+    public void setUpdateProjectListbox(final Listbox updateProjectListbox) {
         this.updateProjectListbox = updateProjectListbox;
     }
 
@@ -103,7 +103,7 @@ public final class AddUsersWindow extends Window {
         return usersListbox;
     }
 
-    public void setUsersListbox(Listbox usersListbox) {
+    public void setUsersListbox(final Listbox usersListbox) {
         this.usersListbox = usersListbox;
     }
 
@@ -111,7 +111,7 @@ public final class AddUsersWindow extends Window {
         return user;
     }
 
-    public void setUser(Users user) {
+    public void setUser(final Users user) {
         this.user = user;
     }
 
@@ -119,7 +119,7 @@ public final class AddUsersWindow extends Window {
         return addUsersList;
     }
 
-    public void setAddUsersList(List<Users> addUsersList) {
+    public void setAddUsersList(final List<Users> addUsersList) {
         this.addUsersList = addUsersList;
     }
 }

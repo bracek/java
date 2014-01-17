@@ -47,14 +47,14 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("groupsDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("groupsDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
     
     @Secured({ROLE_ADMIN, ROLE_GM})
     @Transactional(readOnly = true)
     @Override
-    public List<String> getGroupMembers(String groupName) throws Exception {
+    public List<String> getGroupMembers(final String groupName) throws Exception {
     	Groups group = getGroup(groupName);
     	List<String> members = new ArrayList<String>();
     	List<GroupMember> groupMembers = group.getGroupMemberCollection();
@@ -67,7 +67,7 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
     @Secured(ROLE_ADMIN)
     @Transactional
     @Override
-    public boolean changeGroupMembers(String groupName, List<String> members) throws Exception {
+    public boolean changeGroupMembers(final String groupName,final  List<String> members) throws Exception {
     	Groups group = getGroup(groupName);    	    	
     	// prepared list delete, add authorities
     	List<GroupMember> membersCollection = group.getGroupMemberCollection();
@@ -102,7 +102,7 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
     @Secured(ROLE_ADMIN)
     @Transactional
     @Override
-    public boolean changeGroupMember(String groupName, String member, boolean isAdded) throws Exception {
+    public boolean changeGroupMember(final String groupName,final  String member,final  boolean isAdded) throws Exception {
     	Groups group = getGroup(groupName);    	    	    	
     	List<GroupMember> membersCollection = group.getGroupMemberCollection();
     	if (isAdded) {	// insert
@@ -138,7 +138,7 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
     @Secured(ROLE_ADMIN)
     @Transactional
     @Override
-    public boolean changeGroupMembers(String groupName, Map<String,Boolean> selectedUsersMap) throws Exception {
+    public boolean changeGroupMembers(final String groupName,final  Map<String,final Boolean> selectedUsersMap) throws Exception {
     	Groups group = getGroup(groupName);    	    	    	
     	List<GroupMember> membersCollection = group.getGroupMemberCollection();
     	for (Entry<String, Boolean> selectedUser : selectedUsersMap.entrySet()) {
@@ -179,7 +179,7 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
     	return true;
     }
     
-    private GroupMember getGroupMember(String userName) throws Exception {
+    private GroupMember getGroupMember(final String userName) throws Exception {
     	GroupMember gm = new GroupMember();
     	gm.setUser(usersService.getUser(userName));    	
     	return gm;
@@ -188,7 +188,7 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
     @Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
     @Override
     @Transactional(readOnly = true)
-    public Groups getGroup(String groupName) throws Exception {
+    public Groups getGroup(final String groupName) throws Exception {
     	Groups group = new Groups();
     	group.setGroupName(groupName);
     	List<Groups> groups = readByCriteria(group);
@@ -205,7 +205,7 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
     @Transactional(readOnly = true)
     @Override
     @Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
-	public String getTreeRootName(String userName, Properties props) throws Exception {
+	public String getTreeRootName(final String userName,final  Properties props) throws Exception {
     	// read all groups of this user
 		Users user = usersService.getUser(userName);
 		List<GroupMember> groupMembers = user.getGroupMemberCollection();

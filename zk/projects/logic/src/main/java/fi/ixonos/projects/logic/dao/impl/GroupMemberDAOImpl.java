@@ -15,7 +15,7 @@ import fi.ixonos.projects.logic.dao.GroupMemberDAO;
 public class GroupMemberDAOImpl extends GenericDAOImpl<GroupMember> implements GroupMemberDAO {
 
    @Autowired
-   public GroupMemberDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public GroupMemberDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
 }

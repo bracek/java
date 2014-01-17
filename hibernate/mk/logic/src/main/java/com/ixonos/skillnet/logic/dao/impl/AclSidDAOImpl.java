@@ -16,7 +16,7 @@ import com.ixonos.skillnet.logic.dao.AclSidDAO;
 public class AclSidDAOImpl extends GenericDAOImpl<AclSid> implements AclSidDAO {
 
    @Autowired
-   public AclSidDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public AclSidDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
 }

@@ -53,11 +53,11 @@ public class Base implements Serializable {
     public Base() {
     }
 
-    public Base(Long id) {
+    public Base(final Long id) {
         this.id = id;
     }
 
-    public Base(Long id, String name) {
+    public Base(final Long id,final  String name) {
         this.id = id;
         this.name = name;
     }
@@ -66,7 +66,7 @@ public class Base implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -74,7 +74,7 @@ public class Base implements Serializable {
         return icon;
     }
 
-    public void setIcon(byte[] icon) {
+    public void setIcon(final byte[] icon) {
         this.icon = icon;
     }
 
@@ -82,7 +82,7 @@ public class Base implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -90,7 +90,7 @@ public class Base implements Serializable {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(final Integer version) {
         this.version = version;
     }
 
@@ -99,7 +99,7 @@ public class Base implements Serializable {
         return pizzaCollection;
     }
 
-    public void setPizzaCollection(Collection<Pizza> pizzaCollection) {
+    public void setPizzaCollection(final Collection<Pizza> pizzaCollection) {
         this.pizzaCollection = pizzaCollection;
     }
 
@@ -111,7 +111,7 @@ public class Base implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Base)) {
             return false;

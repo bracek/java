@@ -40,7 +40,7 @@ public class GroupMember implements Serializable {
     public GroupMember() {
     }
 
-    public GroupMember(Integer groupMemberId) {
+    public GroupMember(final Integer groupMemberId) {
         this.groupMemberId = groupMemberId;
     }
 
@@ -48,7 +48,7 @@ public class GroupMember implements Serializable {
         return groupMemberId;
     }
 
-    public void setGroupMemberId(Integer groupMemberId) {
+    public void setGroupMemberId(final Integer groupMemberId) {
         this.groupMemberId = groupMemberId;
     }
 
@@ -56,7 +56,7 @@ public class GroupMember implements Serializable {
 		return group;
 	}
 
-	public void setGroup(Groups group) {
+	public void setGroup(final Groups group) {
 		this.group = group;
 	}
 
@@ -64,7 +64,7 @@ public class GroupMember implements Serializable {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(final Users user) {
 		this.user = user;
 	}
 
@@ -76,7 +76,7 @@ public class GroupMember implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof GroupMember)) {
             return false;

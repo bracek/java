@@ -38,61 +38,69 @@ public class UserManagementWindow extends Window {
 
 	private String lastEditedAuthoritiesUserName;
 	private List<String> lastEditedAuthorities;
-	
-	 /**
-     * Log4j logger for this class
-     */
-    private static Logger logger = Logger.getLogger(UserManagementWindow.class);
-    private static final long serialVersionUID = 1L;
-    private final MailService mailService = (MailService) SpringUtil.getApplicationContext().getBean("mailService");
-    
-	
-	public Users user;	
+
+	/**
+	 * Log4j logger for this class
+	 */
+	private static Logger logger = Logger.getLogger(UserManagementWindow.class);
+	private static final long serialVersionUID = 1L;
+	private final MailService mailService = (MailService) SpringUtil
+			.getApplicationContext().getBean("mailService");
+
+	public Users user;
 
 	public Users getUser() {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(final Users user) {
 		this.user = user;
 	}
-	
-	public void onAuthoritySelect(SelectEvent event) throws Exception {		
-		Set selectedItems = event.getSelectedItems();
-		Iterator selectedIterator = selectedItems.iterator();
-		List<String> selectedAuthorities = new ArrayList<String>();
-		while(selectedIterator.hasNext()) {
-			Listitem li = (Listitem)selectedIterator.next();
-			CodeTable selectedAuthority = (CodeTable)li.getValue();
+
+	public void onAuthoritySelect(final SelectEvent event) throws Exception {
+		final Set selectedItems = event.getSelectedItems();
+		final Iterator selectedIterator = selectedItems.iterator();
+		final List<String> selectedAuthorities = new ArrayList<String>();
+		while (selectedIterator.hasNext()) {
+			final Listitem li = (Listitem) selectedIterator.next();
+			final CodeTable selectedAuthority = (CodeTable) li.getValue();
 			selectedAuthorities.add(selectedAuthority.getCode());
 		}
-		Listbox lb = (Listbox)event.getTarget();
-		Users user = (Users)((Listitem)getParentComponent(lb, Listitem.class)).getValue();
-		String userName = user.getUsername();
-		if (!isLastEditedAuthorities(userName, selectedAuthorities)) {					
-			StringBuilder sb = new StringBuilder();
-			for (String selectedAuthority : selectedAuthorities) {
-				if (sb.length() > 0) sb.append(", ");
+		final Listbox lb = (Listbox) event.getTarget();
+		final Users user = (Users) ((Listitem) getParentComponent(lb,
+				Listitem.class)).getValue();
+		final String userName = user.getUsername();
+		if (!isLastEditedAuthorities(userName, selectedAuthorities)) {
+			final StringBuilder sb = new StringBuilder();
+			for (final String selectedAuthority : selectedAuthorities) {
+				if (sb.length() > 0)
+					sb.append(", ");
 				sb.append(selectedAuthority);
 			}
-			Bandbox bandbox = (Bandbox)getParentComponent(lb, Bandbox.class);
+			final Bandbox bandbox = (Bandbox) getParentComponent(lb,
+					Bandbox.class);
 			bandbox.setText(sb.toString());
 			user.setAuthorities(sb.toString());
-			this.lastEditedAuthorities = selectedAuthorities;
-			this.lastEditedAuthoritiesUserName = userName;
-			UsersService usersService = (UsersService)SkillnetApplicationContext.getApplicationContext().getBean("usersService");
+			lastEditedAuthorities = selectedAuthorities;
+			lastEditedAuthoritiesUserName = userName;
+			final UsersService usersService = (UsersService) SkillnetApplicationContext
+					.getApplicationContext().getBean("usersService");
 			try {
 				usersService.updateUser(userName, selectedAuthorities);
-			} catch(Exception e) {
-				Messagebox.show(Labels.getLabel(e.getMessage()), Labels.getLabel("userEdit.error"), Messagebox.OK, Messagebox.ERROR);
+			} catch (final Exception e) {
+				Messagebox.show(Labels.getLabel(e.getMessage()),
+						Labels.getLabel("userEdit.error"), Messagebox.OK,
+						Messagebox.ERROR);
 				refreshUsersListBox();
 			}
-		}		
+		}
 	}
-			
-	private Component getParentComponent(Component component, Class clazz) throws Exception {
-		int index = 0;				
-		while((component != null) && !clazz.isInstance((component = component.getParent()))) {
+
+	private Component getParentComponent(Component component, final Class clazz)
+			throws Exception {
+		int index = 0;
+		while (component != null
+				&& !clazz.isInstance(component = component.getParent())) {
 			index++;
 			if (index == 50) {
 				throw new Exception("No parent " + clazz + " found!");
@@ -103,12 +111,15 @@ public class UserManagementWindow extends Window {
 		}
 		return component;
 	}
-	
-	private boolean isLastEditedAuthorities(String userName, List<String> authorities) {
+
+	private boolean isLastEditedAuthorities(final String userName,
+			final List<String> authorities) {
 		boolean isLastEdited = false;
-		if (userName.equals(this.lastEditedAuthoritiesUserName) && this.lastEditedAuthorities != null && authorities.size() == this.lastEditedAuthorities.size()) {
-			for (String authority : authorities) {
-				if (!this.lastEditedAuthorities.contains(authority)) {					
+		if (userName.equals(lastEditedAuthoritiesUserName)
+				&& lastEditedAuthorities != null
+				&& authorities.size() == lastEditedAuthorities.size()) {
+			for (final String authority : authorities) {
+				if (!lastEditedAuthorities.contains(authority)) {
 					break;
 				}
 			}
@@ -117,135 +128,168 @@ public class UserManagementWindow extends Window {
 		return isLastEdited;
 	}
 
-	public void onAddUser() throws Exception
-	{
-		Map<String, Object> map = new HashMap<String, Object>();
+	public void onAddUser() throws Exception {
+		final Map<String, Object> map = new HashMap<String, Object>();
 		map.put("usersListbox", this.getFellow("usersListbox"));
-		Window win = (Window) Executions.createComponents("/WEB-INF/jsp/tiles/usermanagement/addNewUser.zul", null, map);
-		win.doModal();	
+		final Window win = (Window) Executions.createComponents(
+				"/WEB-INF/jsp/tiles/usermanagement/addNewUser.zul", null, map);
+		win.doModal();
 	}
-		
-	public void onDeleteUser(MouseEvent event) throws Exception
-	{
-		Listitem li = (Listitem)getParentComponent(event.getTarget(), Listitem.class);
-		Users user = (Users)li.getValue();
-		String userName = user.getUsername();
-		int answer = Messagebox.show(Labels.getLabel("userEdit.delete.question") + " '" + userName + "' ?", Labels.getLabel("userEdit.confirmation"), Messagebox.YES | Messagebox.NO, Messagebox.QUESTION);
-		if (answer == Messagebox.YES) {
-			UsersService usersService = (UsersService)SpringUtil.getApplicationContext().getBean("usersService");
-			try {
-				boolean deleted=usersService.removeUser(userName);
-				li.getListbox().removeItemAt(li.getIndex());
-				//sending email if user was deleted from list
-				if (deleted){
-					try{
-						String account = userName;
-				        String email =  user.getEmail();
-				        String name =  user.getName();
-				        String surname =  user.getSurname();
 
-				        //sending info mail to user with changed password
-				        List<String> textParameters = new ArrayList<String>();
-				        textParameters.add(account);
-				        textParameters.add(email);
-				        textParameters.add(name + " " + surname);
-				        mailService.sendUserAccountDeletedEmail(new InternetAddress(email, name + " " + surname), textParameters);
-					
-					} catch (Exception e) {
-	                    logger.error("#onDeleteUser: Error on sending email about deleted account", e);
-	                }
+	public void onDeleteUser(final MouseEvent event) throws Exception {
+		final Listitem li = (Listitem) getParentComponent(event.getTarget(),
+				Listitem.class);
+		final Users user = (Users) li.getValue();
+		final String userName = user.getUsername();
+		final int answer = Messagebox.show(
+				Labels.getLabel("userEdit.delete.question") + " '" + userName
+						+ "' ?", Labels.getLabel("userEdit.confirmation"),
+				Messagebox.YES | Messagebox.NO, Messagebox.QUESTION);
+		if (answer == Messagebox.YES) {
+			final UsersService usersService = (UsersService) SpringUtil
+					.getApplicationContext().getBean("usersService");
+			try {
+				final boolean deleted = usersService.removeUser(userName);
+				li.getListbox().removeItemAt(li.getIndex());
+				// sending email if user was deleted from list
+				if (deleted) {
+					try {
+						final String account = userName;
+						final String email = user.getEmail();
+						final String name = user.getName();
+						final String surname = user.getSurname();
+
+						// sending info mail to user with changed password
+						final List<String> textParameters = new ArrayList<String>();
+						textParameters.add(account);
+						textParameters.add(email);
+						textParameters.add(name + " " + surname);
+						mailService
+								.sendUserAccountDeletedEmail(
+										new InternetAddress(email, name + " "
+												+ surname), textParameters);
+
+					} catch (final Exception e) {
+						logger.error(
+								"#onDeleteUser: Error on sending email about deleted account",
+								e);
+					}
 				}
-			} catch(Exception e) {
-				Messagebox.show(Labels.getLabel(e.getMessage()), Labels.getLabel("userEdit.error"), Messagebox.OK, Messagebox.ERROR);
-			}										
-		}			
+			} catch (final Exception e) {
+				Messagebox.show(Labels.getLabel(e.getMessage()),
+						Labels.getLabel("userEdit.error"), Messagebox.OK,
+						Messagebox.ERROR);
+			}
+		}
 	}
-	
-	public void onChangePassword(MouseEvent event) throws Exception {
-		Users user = (Users)((Listitem)getParentComponent(event.getTarget(), Listitem.class)).getValue();
-		Map<String, Object> map = new HashMap<String, Object>();
+
+	public void onChangePassword(final MouseEvent event) throws Exception {
+		final Users user = (Users) ((Listitem) getParentComponent(
+				event.getTarget(), Listitem.class)).getValue();
+		final Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userName", user.getUsername());
 		map.put("showOldPassword", Boolean.FALSE);
-		Window win = (Window) Executions.createComponents("/WEB-INF/jsp/tiles/usermanagement/changePassword.zul", null, map);
-		win.doModal();		
-	}	
-	
-	public void onManagerOrEnabledChange(Event event) throws Exception {		
-		Users user = (Users)((Listitem)getParentComponent(event.getTarget(), Listitem.class)).getValue();		
-		String userName = user.getUsername();
-		Users manager = user.getManager();
-		Boolean enabled = user.getEnabled();
-		UsersService usersService = (UsersService)SpringUtil.getApplicationContext().getBean("usersService");
+		final Window win = (Window) Executions.createComponents(
+				"/WEB-INF/jsp/tiles/usermanagement/changePassword.zul", null,
+				map);
+		win.doModal();
+	}
+
+	public void onManagerOrEnabledChange(final Event event) throws Exception {
+		final Users user = (Users) ((Listitem) getParentComponent(
+				event.getTarget(), Listitem.class)).getValue();
+		final String userName = user.getUsername();
+		final Users manager = user.getManager();
+		final Boolean enabled = user.getEnabled();
+		final UsersService usersService = (UsersService) SpringUtil
+				.getApplicationContext().getBean("usersService");
 		try {
 			usersService.updateUser(userName, manager, enabled);
-		} catch(Exception e) {
-			Messagebox.show(Labels.getLabel(e.getMessage()), Labels.getLabel("userEdit.error"), Messagebox.OK, Messagebox.ERROR);
+		} catch (final Exception e) {
+			Messagebox.show(Labels.getLabel(e.getMessage()),
+					Labels.getLabel("userEdit.error"), Messagebox.OK,
+					Messagebox.ERROR);
 			refreshUsersListBox();
-		}	
+		}
 	}
-	
+
 	private void refreshUsersListBox() {
-		UsersService usersService = (UsersService)SkillnetApplicationContext.getApplicationContext().getBean("usersService");
-		List<Users> users = usersService.getAllUsers();	
-		((Listbox)this.getFellow("usersListbox")).setModel(new BindingListModelList(users, true));
+		final UsersService usersService = (UsersService) SkillnetApplicationContext
+				.getApplicationContext().getBean("usersService");
+		final List<Users> users = usersService.getAllUsers();
+		((Listbox) this.getFellow("usersListbox"))
+				.setModel(new BindingListModelList(users, true));
 	}
-	
-	public void onGroupSelect(Event event) throws Exception {
-		selectGroupMembers((Combobox)event.getTarget());
+
+	public void onGroupSelect(final Event event) throws Exception {
+		selectGroupMembers((Combobox) event.getTarget());
 	}
-	
-	private void selectGroupMembers(Combobox groupCombobox) throws Exception {
-		if (groupCombobox.getSelectedItem() == null || groupCombobox.getSelectedItem().getValue() == null) {
+
+	private void selectGroupMembers(final Combobox groupCombobox)
+			throws Exception {
+		if (groupCombobox.getSelectedItem() == null
+				|| groupCombobox.getSelectedItem().getValue() == null) {
 			return;
 		}
-		Groups group = (Groups)groupCombobox.getSelectedItem().getValue();
-		String groupName = group.getGroupName();			
-		GroupsService groupsService = (GroupsService)SpringUtil.getApplicationContext().getBean("groupsService");
+		final Groups group = (Groups) groupCombobox.getSelectedItem()
+				.getValue();
+		final String groupName = group.getGroupName();
+		final GroupsService groupsService = (GroupsService) SpringUtil
+				.getApplicationContext().getBean("groupsService");
 		List<String> members;
 		try {
 			members = groupsService.getGroupMembers(groupName);
-		} catch (Exception e) {
-			Messagebox.show(Labels.getLabel(e.getMessage()), Labels.getLabel("userEdit.error"), Messagebox.OK, Messagebox.ERROR);
+		} catch (final Exception e) {
+			Messagebox.show(Labels.getLabel(e.getMessage()),
+					Labels.getLabel("userEdit.error"), Messagebox.OK,
+					Messagebox.ERROR);
 			return;
 		}
-		Iterator childrenIterator = ((Listbox)this.getFellow("usersListbox")).getVisibleChildrenIterator();
-		while(childrenIterator.hasNext()) {
-			Object listItem = childrenIterator.next();
+		final Iterator childrenIterator = ((Listbox) this
+				.getFellow("usersListbox")).getVisibleChildrenIterator();
+		while (childrenIterator.hasNext()) {
+			final Object listItem = childrenIterator.next();
 			if (listItem instanceof Listitem) {
-				Users user = (Users)((Listitem)listItem).getValue();
-				String userName = user.getUsername();
-				((Listitem)listItem).setSelected(members.contains(userName));
+				final Users user = (Users) ((Listitem) listItem).getValue();
+				final String userName = user.getUsername();
+				((Listitem) listItem).setSelected(members.contains(userName));
 			}
 		}
 	}
-	
-	public void onUserSelect(SelectEvent event) throws Exception {		
-		Comboitem selectedItem = ((Combobox)this.getFellow("groupCombobox")).getSelectedItem();
+
+	public void onUserSelect(final SelectEvent event) throws Exception {
+		final Comboitem selectedItem = ((Combobox) this
+				.getFellow("groupCombobox")).getSelectedItem();
 		if (selectedItem == null || selectedItem.getValue() == null) {
 			return;
 		}
-		String groupName = ((Groups)selectedItem.getValue()).getGroupName();
-		Map<String, Boolean> selectedUsersMap = new HashMap<String, Boolean>();
-		Iterator childrenIterator = ((Listbox)this.getFellow("usersListbox")).getVisibleChildrenIterator();
-		while(childrenIterator.hasNext()) {
-			Object listItem = childrenIterator.next();
+		final String groupName = ((Groups) selectedItem.getValue())
+				.getGroupName();
+		final Map<String, Boolean> selectedUsersMap = new HashMap<String, Boolean>();
+		final Iterator childrenIterator = ((Listbox) this
+				.getFellow("usersListbox")).getVisibleChildrenIterator();
+		while (childrenIterator.hasNext()) {
+			final Object listItem = childrenIterator.next();
 			if (listItem instanceof Listitem) {
-				Users user = (Users)((Listitem)listItem).getValue();
-				String userName = user.getUsername();
-				Boolean selected = ((Listitem)listItem).isSelected();
+				final Users user = (Users) ((Listitem) listItem).getValue();
+				final String userName = user.getUsername();
+				final Boolean selected = ((Listitem) listItem).isSelected();
 				selectedUsersMap.put(userName, selected);
 			}
 		}
-		GroupsService groupsService = (GroupsService)SkillnetApplicationContext.getApplicationContext().getBean("groupsService");
+		final GroupsService groupsService = (GroupsService) SkillnetApplicationContext
+				.getApplicationContext().getBean("groupsService");
 		try {
 			groupsService.changeGroupMembers(groupName, selectedUsersMap);
-		} catch (Exception e) {
-			Messagebox.show(Labels.getLabel(e.getMessage()), Labels.getLabel("userEdit.error"), Messagebox.OK, Messagebox.ERROR);
+		} catch (final Exception e) {
+			Messagebox.show(Labels.getLabel(e.getMessage()),
+					Labels.getLabel("userEdit.error"), Messagebox.OK,
+					Messagebox.ERROR);
 			refreshUsersListBox();
 		}
 	}
-	
+
 	public void onPaging() throws Exception {
-		selectGroupMembers((Combobox)this.getFellow("groupCombobox"));
+		selectGroupMembers((Combobox) this.getFellow("groupCombobox"));
 	}
 }

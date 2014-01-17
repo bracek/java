@@ -22,7 +22,7 @@ public final class AclSidServiceImpl extends AbstractGenericService<AclSid> impl
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("aclSidDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("aclSidDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
 }

@@ -12,11 +12,11 @@ import java.util.List;
  */
 public interface UsersService extends HibernateGenericService<Users> {
 
-    public Users getUser(String username) throws Exception;
+    public Users getUser(final String username) throws Exception;
 
-    public boolean changePassword(String userName, String text) throws Exception;
+    public boolean changePassword(final String userName,final  String text) throws Exception;
 
-    public boolean isPasswordCorrect(String userName, String text) throws Exception;
+    public boolean isPasswordCorrect(final String userName,final  String text) throws Exception;
 
     /**
      * Removes the user.
@@ -27,7 +27,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public boolean removeUser(String userName) throws Exception;
+    public boolean removeUser(final String userName) throws Exception;
 
     /***
      *
@@ -43,7 +43,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * @return open project for its management
      * @throws Exception
      */
-    public void openProject(final String userName, Projects project) throws Exception;
+    public void openProject(final String userName,final  Projects project) throws Exception;
 
     /***
      *
@@ -51,7 +51,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * @return close project after its management
      * @throws Exception
      */
-    public void closeProject(final String userName, Projects project) throws Exception;
+    public void closeProject(final String userName,final  Projects project) throws Exception;
 
     /***
      *
@@ -73,7 +73,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * @param string column name
      * @return users list
      */
-    public List<Users> getSortedUsers(String string);
+    public List<Users> getSortedUsers(final String string);
 
     /**
      * Update curriculum.
@@ -83,7 +83,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public void updateCurriculum(String userName, byte[] cvByteArray) throws Exception;
+    public void updateCurriculum(final String userName,final  byte[] cvByteArray) throws Exception;
 
     /**
      * Update Photo.
@@ -103,7 +103,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public void updateUsersInfo(String username, Users user) throws Exception;
+    public void updateUsersInfo(final String username,final  Users user) throws Exception;
 
     /**
      * Update user.
@@ -115,7 +115,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public boolean updateUser(String userName, List<String> authorities) throws Exception;
+    public boolean updateUser(final String userName,final  List<String> authorities) throws Exception;
 
     /**
      * Gets the all group managers.
@@ -135,7 +135,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public boolean updateUser(String userName, Users manager, Boolean enabled) throws Exception;
+    public boolean updateUser(final String userName,final  Users manager,final  Boolean enabled) throws Exception;
 
 
     /**
@@ -146,7 +146,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      * @return true, if is user already registered
      */
 
-    public boolean isUserAlreadyRegistered(String login);
+    public boolean isUserAlreadyRegistered(final String login);
 
     /**
      * Adds the new user.
@@ -167,7 +167,7 @@ public interface UsersService extends HibernateGenericService<Users> {
      *
      * @throws Exception the exception
      */
-    public boolean addNewUser(String login, String password, String name, String surname, String email, String phoneNumber, String location, String position, Boolean enabled, Users manager, List<String> authorities) throws Exception;
+    public boolean addNewUser(final String login,final  String password,final  String name,final  String surname,final  String email,final  String phoneNumber,final  String location,final  String position,final  Boolean enabled,final  Users manager,final  List<String> authorities) throws Exception;
 
     /**
      * Hash password.

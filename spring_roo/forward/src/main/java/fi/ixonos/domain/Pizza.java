@@ -64,11 +64,11 @@ public class Pizza implements Serializable {
     public Pizza() {
     }
 
-    public Pizza(Long id) {
+    public Pizza(final Long id) {
         this.id = id;
     }
 
-    public Pizza(Long id, String name) {
+    public Pizza(final Long id,final  String name) {
         this.id = id;
         this.name = name;
     }
@@ -77,7 +77,7 @@ public class Pizza implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -85,7 +85,7 @@ public class Pizza implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -93,7 +93,7 @@ public class Pizza implements Serializable {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(final Float price) {
         this.price = price;
     }
 
@@ -101,7 +101,7 @@ public class Pizza implements Serializable {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(final Integer version) {
         this.version = version;
     }
 
@@ -110,7 +110,7 @@ public class Pizza implements Serializable {
         return toppingCollection;
     }
 
-    public void setToppingCollection(Collection<Topping> toppingCollection) {
+    public void setToppingCollection(final Collection<Topping> toppingCollection) {
         this.toppingCollection = toppingCollection;
     }
 
@@ -119,7 +119,7 @@ public class Pizza implements Serializable {
         return pizzaOrderCollection;
     }
 
-    public void setPizzaOrderCollection(Collection<PizzaOrder> pizzaOrderCollection) {
+    public void setPizzaOrderCollection(final Collection<PizzaOrder> pizzaOrderCollection) {
         this.pizzaOrderCollection = pizzaOrderCollection;
     }
 
@@ -127,7 +127,7 @@ public class Pizza implements Serializable {
         return base;
     }
 
-    public void setBase(Base base) {
+    public void setBase(final Base base) {
         this.base = base;
     }
 
@@ -139,7 +139,7 @@ public class Pizza implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Pizza)) {
             return false;

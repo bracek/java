@@ -1,193 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>sk.mka</groupId>
-    <artifactId>veloex</artifactId>
-    <packaging>jar</packaging>
-    <version>0.0.1</version>
-    <name>dizertacka_veloex</name>
-    <url>http://maven.apache.org</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>sk.mka</groupId>
+	<artifactId>veloex</artifactId>
+	<packaging>jar</packaging>
+	<version>0.0.1</version>
+	<name>dizertacka_veloex</name>
+	<url>http://maven.apache.org</url>
 
-    <properties>
-        <log4j.version>1.2.13</log4j.version>
-        <velocity.version>1.6.2</velocity.version>
-    </properties>
+	<properties>
+		<log4j.version>1.2.13</log4j.version>
+		<velocity.version>1.6.2</velocity.version>
+	</properties>
 
-    <profiles>
-        <profile>
-            <id>kemt_artifactory</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+	<profiles>
+		<profile>
+			<id>kemt_artifactory</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 
-            <properties>
-                <start.id>0</start.id>
-                <!--
-                <exp.results.folder.voiced>noDuplication-a0b0</exp.results.folder.voiced>
-                -->
-                <exp.results.folder.voiced>a0b0</exp.results.folder.voiced>
-                <exp.results.folder.unvoiced>ua0b1</exp.results.folder.unvoiced>
+			<properties>
+				<start.id>0</start.id>
+				<!-- <exp.results.folder.voiced>noDuplication-a0b0</exp.results.folder.voiced> -->
+				<exp.results.folder.voiced>a0b0</exp.results.folder.voiced>
+				<exp.results.folder.unvoiced>ua0b1</exp.results.folder.unvoiced>
 
-                <!-- Log4J Threshold   setup-->
-                <log4j.appender.Threshold>INFO</log4j.appender.Threshold>
-                <log4j.appender.console.Threshold>FATAL</log4j.appender.console.Threshold>
-            </properties>
+				<!-- Log4J Threshold setup -->
+				<log4j.appender.Threshold>INFO</log4j.appender.Threshold>
+				<log4j.appender.console.Threshold>FATAL</log4j.appender.console.Threshold>
+			</properties>
 
+			<repositories>
+				<!-- <repository> <id>central</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url> 
+					<snapshots> <enabled>false</enabled> </snapshots> </repository> <repository> 
+					<id>snapshots</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url> 
+					<releases> <enabled>false</enabled> </releases> </repository> -->
+			</repositories>
 
-            <repositories>
-                <repository>
-                    <id>central</id>
-                    <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>snapshots</id>
-                    <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>central</id>
-                    <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-releases</url>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </pluginRepository>
-                <pluginRepository>
-                    <id>snapshots</id>
-                    <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-snapshots</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-    </profiles>
+			<!-- <pluginRepositories> <pluginRepository> <id>central</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-releases</url> 
+				<snapshots> <enabled>false</enabled> </snapshots> </pluginRepository> <pluginRepository> 
+				<id>snapshots</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-snapshots</url> 
+				<releases> <enabled>false</enabled> </releases> </pluginRepository> </pluginRepositories> -->
+		</profile>
+	</profiles>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>http://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 
-        <repository>
-            <id>Ibiblio</id>
-            <name>Ibiblio mirror</name>
-            <layout>default</layout>
-            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
+		<repository>
+			<id>Ibiblio</id>
+			<name>Ibiblio mirror</name>
+			<layout>default</layout>
+			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 
-        <repository>
-            <id>wso2-maven2-repository</id>
-            <url>http://dist.wso2.org/maven2</url>
-        </repository>
+		<repository>
+			<id>wso2-maven2-repository</id>
+			<url>http://dist.wso2.org/maven2</url>
+		</repository>
 
-        <repository>
-            <id>codecafe.dev</id>
-            <url>http://codecafe.dev-hda.com/repository/</url>
-        </repository>
+		<repository>
+			<id>codecafe.dev</id>
+			<url>http://codecafe.dev-hda.com/repository/</url>
+		</repository>
 
-    </repositories>
+	</repositories>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>elca-services</id>
-            <url>http://el4.elca-services.ch/el4j/maven2repository</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
-    <!-- END OF REPOSITORIES -->
+	<!-- <pluginRepositories> <pluginRepository> <id>elca-services</id> <url>http://el4.elca-services.ch/el4j/maven2repository</url> 
+		<releases> <enabled>true</enabled> </releases> </pluginRepository> </pluginRepositories> -->
 
 
 
 
-    <dependencies>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity</artifactId>
-            <version>${velocity.version}</version>
-        </dependency>
-    </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity.version}</version>
+		</dependency>
+	</dependencies>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>config-logic.properties</include>
-                    <include>log4j.xml</include>
-                </includes>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>ISO-8859-2</encoding>
-                    <showWarnings>true</showWarnings>
-                </configuration>
-            </plugin>
-<!--
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.1.1</version>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                    </execution>
-                </executions>
-            </plugin>
--->
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>config-logic.properties</include>
+					<include>log4j.xml</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>ISO-8859-2</encoding>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.1.1</version> <executions> <execution> <phase>compile</phase> 
+				</execution> </executions> </plugin> -->
 
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <encoding>windows-1250</encoding>
-                </configuration>
-            </plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>windows-1250</encoding>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <configuration>
-                    <encoding>windows-1250</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>windows-1250</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-    <scm>
-        <connection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/dizertacka_veloex/</connection>
-        <developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/dizertacka_veloex/</developerConnection>
-        <url>http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/dizertacka_veloex/</url>
-        <!--
-        <tag>HEAD</tag>
-        -->
-    </scm>
+	<scm>
+		<connection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/dizertacka_veloex/</connection>
+		<developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/dizertacka_veloex/</developerConnection>
+		<url>http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/dizertacka_veloex/</url>
+		<!-- <tag>HEAD</tag> -->
+	</scm>
 
 
 </project>

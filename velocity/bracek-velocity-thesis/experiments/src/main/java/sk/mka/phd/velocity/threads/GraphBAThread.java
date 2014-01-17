@@ -13,7 +13,7 @@ import sk.mka.phd.matlab.cons.Const;
  */
 public class GraphBAThread extends Thread {
 
-    public GraphBAThread(String jmeno) {
+    public GraphBAThread(final String jmeno) {
         super(jmeno);
     }
 

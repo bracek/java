@@ -24,8 +24,10 @@ public class ImportSkillsInitiator extends AnnotateDataBinderInit {
 			.getApplicationContext().getBean("skillService");
 
 	@Override
-	public void doAfterCompose(Page page, Component[] comps) throws Exception {
-		page.setVariable("skillList", new ListModelList(getOrderedListOfSkills()));
+	public void doAfterCompose(final Page page, final Component[] comps)
+			throws Exception {
+		page.setVariable("skillList", new ListModelList(
+				getOrderedListOfSkills()));
 		page.setVariable("mergedMap", new HashMap<String, Skill>());
 		page.setVariable("lmlModel", new ListModelList());
 		page.setVariable("lmrModel", new ListModelList());
@@ -37,8 +39,8 @@ public class ImportSkillsInitiator extends AnnotateDataBinderInit {
 
 	@SuppressWarnings("unchecked")
 	private List<Skill> getOrderedListOfSkills() {
-		List<Skill> skills = skillService.readAll();
-		Skill[] skillsArray = skills.toArray(new Skill[skills.size()]);
+		final List<Skill> skills = skillService.readAll();
+		final Skill[] skillsArray = skills.toArray(new Skill[skills.size()]);
 		Arrays.sort(skillsArray, new SkillsComparator(true, "Name"));
 		return new ArrayList<Skill>(Arrays.asList(skillsArray));
 	}

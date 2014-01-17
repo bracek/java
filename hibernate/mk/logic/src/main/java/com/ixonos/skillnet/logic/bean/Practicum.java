@@ -57,11 +57,11 @@ public class Practicum implements Serializable {
     public Practicum() {
     }
 
-    public Practicum(Integer practicumId) {
+    public Practicum(final Integer practicumId) {
         this.practicumId = practicumId;
     }
 
-    public Practicum(Integer practicumId, Date dateFrom) {
+    public Practicum(final Integer practicumId,final  Date dateFrom) {
         this.practicumId = practicumId;
         this.dateFrom = dateFrom;
     }
@@ -70,7 +70,7 @@ public class Practicum implements Serializable {
         return practicumId;
     }
 
-    public void setPracticumId(Integer practicumId) {
+    public void setPracticumId(final Integer practicumId) {
         this.practicumId = practicumId;
     }
 
@@ -78,7 +78,7 @@ public class Practicum implements Serializable {
         return dateFrom;
     }
 
-    public void setDateFrom(Date dateFrom) {
+    public void setDateFrom(final Date dateFrom) {
         this.dateFrom = dateFrom;
     }
 
@@ -86,7 +86,7 @@ public class Practicum implements Serializable {
         return dateTo;
     }
 
-    public void setDateTo(Date dateTo) {
+    public void setDateTo(final Date dateTo) {
         this.dateTo = dateTo;
     }
 
@@ -94,7 +94,7 @@ public class Practicum implements Serializable {
         return level;
     }
 
-    public void setLevel(CodeTable level) {
+    public void setLevel(final CodeTable level) {
         this.level = level;
     }
 
@@ -102,7 +102,7 @@ public class Practicum implements Serializable {
         return skillId;
     }
 
-    public void setSkillId(Skill skillId) {
+    public void setSkillId(final Skill skillId) {
         this.skillId = skillId;
     }
 
@@ -110,7 +110,7 @@ public class Practicum implements Serializable {
         return userId;
     }
 
-    public void setUserId(Users userId) {
+    public void setUserId(final Users userId) {
         this.userId = userId;
     }
     
@@ -118,7 +118,7 @@ public class Practicum implements Serializable {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -130,7 +130,7 @@ public class Practicum implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Practicum)) {
             return false;

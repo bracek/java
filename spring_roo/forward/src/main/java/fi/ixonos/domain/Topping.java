@@ -62,11 +62,11 @@ public class Topping implements Serializable {
     public Topping() {
     }
 
-    public Topping(Long id) {
+    public Topping(final Long id) {
         this.id = id;
     }
 
-    public Topping(Long id, String name) {
+    public Topping(final Long id,final  String name) {
         this.id = id;
         this.name = name;
     }
@@ -75,7 +75,7 @@ public class Topping implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -83,7 +83,7 @@ public class Topping implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -91,7 +91,7 @@ public class Topping implements Serializable {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(final Integer version) {
         this.version = version;
     }
 
@@ -100,7 +100,7 @@ public class Topping implements Serializable {
         return pizzaCollection;
     }
 
-    public void setPizzaCollection(Collection<Pizza> pizzaCollection) {
+    public void setPizzaCollection(final Collection<Pizza> pizzaCollection) {
         this.pizzaCollection = pizzaCollection;
     }
 
@@ -112,7 +112,7 @@ public class Topping implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Topping)) {
             return false;

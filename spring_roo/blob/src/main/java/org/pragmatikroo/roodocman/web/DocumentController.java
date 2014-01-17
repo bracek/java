@@ -38,16 +38,14 @@ public class DocumentController {
 	transient EntityManager entityManager;
 
 	@InitBinder
-	protected void initBinder(HttpServletRequest request,
-			ServletRequestDataBinder binder) throws ServletException {
+	protected void initBinder(final HttpServletRequest request,final 			ServletRequestDataBinder binder) throws ServletException {
 		// Convert multipart object to byte[]
 		binder.registerCustomEditor(byte[].class,
 				new ByteArrayMultipartFileEditor());
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String create(@Valid Document document, BindingResult bindingResult,
-			Model uiModel, @RequestParam("content") MultipartFile content,
+	public String create(final @Valid Document document,final  BindingResult bindingResult,final 			Model uiModel,final  @RequestParam("content") MultipartFile content,
 			HttpServletRequest httpServletRequest) {
 
 		document.setContentType(content.getContentType());
@@ -67,8 +65,7 @@ public class DocumentController {
 	}
 
 	@RequestMapping(value = "savedoc", method = RequestMethod.POST)
-	public String createdoc(@Valid Document document, BindingResult result,
-			Model uiModel, @RequestParam("content") MultipartFile content,
+	public String createdoc(final @Valid Document document,final  BindingResult result,final 			Model uiModel,final  @RequestParam("content") MultipartFile content,
 			HttpServletRequest request) {
 
 		document.setContentType(content.getContentType());
@@ -93,8 +90,7 @@ public class DocumentController {
 	}
 
 	@RequestMapping(value = "updatedoc", method = RequestMethod.PUT)
-	public String updatedoc(@Valid Document document, BindingResult result,
-			Model uiModel, @RequestParam("content") MultipartFile content,
+	public String updatedoc(final @Valid Document document,final  BindingResult result,final 			Model uiModel,final  @RequestParam("content") MultipartFile content,
 			HttpServletRequest request) {
 
 		document.setContentType(content.getContentType());
@@ -119,7 +115,7 @@ public class DocumentController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String show(@PathVariable("id") Long id, Model model) {
+	public String show(final @PathVariable("id") Long id, Model model) {
 		Document doc = Document.findDocument(id);
 		doc.setUrl("http://localhost:8080/roodocman/documents/showdoc/" + id);
 		model.addAttribute("document", doc);
@@ -128,7 +124,7 @@ public class DocumentController {
 	}
 
 	@RequestMapping(value = "/showdoc/{id}", method = RequestMethod.GET)
-	public String showdoc(@PathVariable("id") Long id,
+	public String showdoc(final @PathVariable("id") Long id,
 			HttpServletResponse response, Model model) {
 
 		Document doc = Document.findDocument(id);
@@ -152,7 +148,7 @@ public class DocumentController {
 	}
 
 	@RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-	public String updateForm(@PathVariable("id") Long id, Model model) {
+	public String updateForm(final @PathVariable("id") Long id, Model model) {
 		Document document = Document.findDocument(id);
 		document.setUrl("http://localhost:8080/doctemplus/documents/showdoc/"
 				+ id);

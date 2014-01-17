@@ -15,7 +15,7 @@ import com.ixonos.skillnet.logic.dao.MessageDAO;
 public final class MessageDAOImpl extends GenericDAOImpl<Message> implements MessageDAO {
 
     @Autowired
-    public MessageDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+    public MessageDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
         setSessionFactory(sessionFactory);
     }
 }

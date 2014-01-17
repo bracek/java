@@ -18,7 +18,7 @@ import com.ixonos.skillnet.logic.dao.SkillDAO;
 public class SkillDAOImpl extends GenericDAOImpl<Skill> implements SkillDAO {
 
    @Autowired
-   public SkillDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public SkillDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
    

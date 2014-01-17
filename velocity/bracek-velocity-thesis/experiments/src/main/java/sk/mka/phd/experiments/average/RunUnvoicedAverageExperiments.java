@@ -16,7 +16,7 @@ public class RunUnvoicedAverageExperiments {
      * set folder, which contains subfolder for individual experiment. Each experiment has to contain result.txt file 
      * @param args 
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         try {
             String directorySuffix = null;
             directorySuffix = Mvn2tools.getPomValue(Mvn2tools.EXP_RESULTS_FOLDER_UNVOICED);

@@ -23,7 +23,7 @@ public class LoadVoicedVoicelessDataImpl extends AbstractLoadData implements Loa
     private static Logger log = Logger.getLogger(LoadVoicedVoicelessDataImpl.class);
 
     @Override
-    public Object[][] loadDataAsObjects(String filename) throws IOException {
+    public Object[][] loadDataAsObjects(final String filename) throws IOException {
         this.filename = filename;
 
         String[] subStr;

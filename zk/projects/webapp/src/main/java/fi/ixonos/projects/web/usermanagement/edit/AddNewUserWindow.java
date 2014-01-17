@@ -35,7 +35,7 @@ public class AddNewUserWindow extends Window {
         return user;
     }
 
-    public void setUser(Users user) {
+    public void setUser(final Users user) {
         this.user = user;
     }
 
@@ -86,7 +86,7 @@ public class AddNewUserWindow extends Window {
         this.getUsersListbox().setModel(new BindingListModelList(users, true));
     }
 
-    public void onAuthoritySelect(SelectEvent event) throws Exception {
+    public void onAuthoritySelect(final SelectEvent event) throws Exception {
         Set selectedItems = event.getSelectedItems();
         Iterator selectedIterator = selectedItems.iterator();
         List<String> selectedAuthorities = new ArrayList<String>();
@@ -109,7 +109,7 @@ public class AddNewUserWindow extends Window {
 
     }
 
-    private Component getParentComponent(Component component, Class clazz)
+    private Component getParentComponent(final Component component,final  Class clazz)
             throws Exception {
         int index = 0;
         while ((component != null)
@@ -125,7 +125,7 @@ public class AddNewUserWindow extends Window {
         return component;
     }
 
-    public void setUsersListbox(Listbox usersListbox) {
+    public void setUsersListbox(final Listbox usersListbox) {
         this.usersListbox = usersListbox;
     }
 

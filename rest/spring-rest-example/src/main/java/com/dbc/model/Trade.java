@@ -22,11 +22,11 @@ public class Trade {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(final long id) {
         this.id = id;
     }
 
-    public Trade(long id) {
+    public Trade(final long id) {
         this.id = id;
     }
 
@@ -34,7 +34,7 @@ public class Trade {
         return reference;
     }
 
-    public void setReference(String reference) {
+    public void setReference(final String reference) {
         this.reference = reference;
     }
 
@@ -42,7 +42,7 @@ public class Trade {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 }

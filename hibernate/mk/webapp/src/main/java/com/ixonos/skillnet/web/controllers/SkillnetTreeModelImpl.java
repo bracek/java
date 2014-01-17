@@ -20,33 +20,33 @@ import com.ixonos.skillnet.logic.util.NodesComparator;
 public class SkillnetTreeModelImpl implements SkillnetTreeModel {
 	private String rootName;
 	private Map<Integer, List<Node>> childrenMap = new HashMap<Integer, List<Node>>();
-	private Integer ROOT_KEY = Integer.valueOf(0);
+	private final Integer ROOT_KEY = Integer.valueOf(0);
 
 	@Resource
 	protected NodeService nodeService;
 
 	@Override
-	public void addTreeDataListener(TreeDataListener arg0) {
+	public void addTreeDataListener(final TreeDataListener arg0) {
 	}
 
 	@Override
 	@Transactional
-	public Object getChild(Object parent, int index) {
-		prepareChildrenInMap((Node)parent);
-		Integer parentId = ((Node)parent).getNodeId();
+	public Object getChild(final Object parent, final int index) {
+		prepareChildrenInMap((Node) parent);
+		final Integer parentId = ((Node) parent).getNodeId();
 		return childrenMap.get(parentId).get(index);
 	}
 
 	@Override
 	@Transactional
-	public int getChildCount(Object parent) {
-		prepareChildrenInMap((Node)parent);
-		Integer parentId = ((Node)parent).getNodeId();
+	public int getChildCount(final Object parent) {
+		prepareChildrenInMap((Node) parent);
+		final Integer parentId = ((Node) parent).getNodeId();
 		return childrenMap.get(parentId).size();
 	}
 
 	@Override
-	public int[] getPath(Object arg0, Object arg1) {
+	public int[] getPath(final Object arg0, final Object arg1) {
 		return null;
 	}
 
@@ -54,8 +54,8 @@ public class SkillnetTreeModelImpl implements SkillnetTreeModel {
 	@Transactional
 	public Object getRoot() {
 		if (!childrenMap.containsKey(ROOT_KEY)) {
-			Node root = nodeService.getRoot(rootName);
-			List<Node> nodeList = new ArrayList<Node>();
+			final Node root = nodeService.getRoot(rootName);
+			final List<Node> nodeList = new ArrayList<Node>();
 			nodeList.add(root);
 			childrenMap.put(ROOT_KEY, nodeList);
 		}
@@ -64,16 +64,16 @@ public class SkillnetTreeModelImpl implements SkillnetTreeModel {
 
 	@Override
 	@Transactional
-	public boolean isLeaf(Object node) {
+	public boolean isLeaf(final Object node) {
 		return getChildCount(node) == 0;
 	}
 
 	@Override
-	public void removeTreeDataListener(TreeDataListener arg0) {
+	public void removeTreeDataListener(final TreeDataListener arg0) {
 	}
 
 	@Override
-	public void setRootName(String rootName) {
+	public void setRootName(final String rootName) {
 		this.rootName = rootName;
 	}
 
@@ -81,26 +81,27 @@ public class SkillnetTreeModelImpl implements SkillnetTreeModel {
 	public String getRootName() {
 		return rootName;
 	}
-	
-	private void prepareChildrenInMap(Node parent) {
-		Integer parentId = (parent).getNodeId();
+
+	private void prepareChildrenInMap(final Node parent) {
+		final Integer parentId = parent.getNodeId();
 		if (!childrenMap.containsKey(parentId)) {
-			List<Node> children = nodeService.getChildren(parent);	
-			Node[] nodesArray = children.toArray(new Node[children.size()]);
-			Arrays.sort(nodesArray,new NodesComparator(true));
-			children = Arrays.asList(nodesArray); 
+			List<Node> children = nodeService.getChildren(parent);
+			final Node[] nodesArray = children
+					.toArray(new Node[children.size()]);
+			Arrays.sort(nodesArray, new NodesComparator(true));
+			children = Arrays.asList(nodesArray);
 			childrenMap.put(parentId, children);
 		}
 	}
 
 	@Override
 	public void cleanChildrenMap() {
-		childrenMap = new HashMap<Integer, List<Node>>();		
+		childrenMap = new HashMap<Integer, List<Node>>();
 	}
 
 	@Override
-	public void removeChildrenInfoFromMap(Object parent) {
-		Integer parentId = ((Node)parent).getNodeId();
-		childrenMap.remove(parentId);		
+	public void removeChildrenInfoFromMap(final Object parent) {
+		final Integer parentId = ((Node) parent).getNodeId();
+		childrenMap.remove(parentId);
 	}
 }

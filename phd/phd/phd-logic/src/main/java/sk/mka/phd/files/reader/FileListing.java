@@ -19,7 +19,7 @@ public abstract class FileListing implements IFileListing {
     protected List<File> files = null;
 
     @Override
-    public abstract List<File> getFiles(String directory);
+    public abstract List<File> getFiles(final String directory);
 
     /**
      * Recursively walk a directory tree and return a List of all
@@ -27,16 +27,14 @@ public abstract class FileListing implements IFileListing {
      *
      * @param aStartingDir is a valid directory, which can be read.
      */
-    protected List<File> getFileListing(
-            File aStartingDir) throws FileNotFoundException {
+    protected List<File> getFileListing(final             File aStartingDir) throws FileNotFoundException {
         validateDirectory(aStartingDir);
         List<File> result = getFileListingNoSort(aStartingDir);
         Collections.sort(result);
         return result;
     }
 
-    private List<File> getFileListingNoSort(
-            File aStartingDir) throws FileNotFoundException {
+    private List<File> getFileListingNoSort(final             File aStartingDir) throws FileNotFoundException {
         List<File> result = new ArrayList<File>();
         File[] filesAndDirs = aStartingDir.listFiles();
         List<File> filesDirs = Arrays.asList(filesAndDirs);
@@ -55,8 +53,7 @@ public abstract class FileListing implements IFileListing {
     /**
      * Directory is valid if it exists, does not represent a file, and can be read.
      */
-    private void validateDirectory(
-            File aDirectory) throws FileNotFoundException {
+    private void validateDirectory(final             File aDirectory) throws FileNotFoundException {
         if (aDirectory == null) {
             throw new IllegalArgumentException("Directory should not be null.");
         }

@@ -15,7 +15,7 @@ public class PrepareDataForNNApp {
 
     final static Logger log = Logger.getLogger(PrepareDataForNNApp.class);
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 
         PrepareData prepareData = new PrepareData();
         prepareData.writeDataToFile();

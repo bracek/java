@@ -36,7 +36,7 @@ public abstract class AbstractWebTest extends AbstractTransactionalDataSourceSpr
 
     @Autowired
     @Override
-    public void setDataSource(@Qualifier("dataSourceProjects") DataSource dataSource) {
+    public void setDataSource(final @Qualifier("dataSourceProjects") DataSource dataSource) {
         super.setDataSource(dataSource);
     }
 
@@ -47,7 +47,7 @@ public abstract class AbstractWebTest extends AbstractTransactionalDataSourceSpr
      */
     @Autowired
     @Override
-    public void setTransactionManager(@Qualifier("projectsTxManager") PlatformTransactionManager transactionManager) {
+    public void setTransactionManager(final @Qualifier("projectsTxManager") PlatformTransactionManager transactionManager) {
         super.setTransactionManager(transactionManager);
     }
 

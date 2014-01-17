@@ -40,8 +40,8 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
     private Listbox projectsListbox;
     private Listbox usersListbox;
     private Listbox updateProjectListbox;
-    private ProjectsService projectsService = (ProjectsService) SpringUtil.getApplicationContext().getBean("projectsService");
-    private UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    private ProjectsService projectsService = (final ProjectsService) SpringUtil.getApplicationContext().getBean("projectsService");
+    private UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
     private List<Users> addUsersList;
 
     public EditProjectWindow() {
@@ -50,7 +50,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
     }
 
     @Override
-    public void onAdd(Event event) throws Exception {
+    public void onAdd(final Event event) throws Exception {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("projectsListbox", this.getFellow("projectsListbox"));
         Window win = (Window) Executions.createComponents("/WEB-INF/jsp/tiles/projects/addProject.zul", null, map);
@@ -62,7 +62,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
      *
      */
     @Override
-    public void onUpdate(Event event) throws Exception {
+    public void onUpdate(final Event event) throws Exception {
         final Listitem li = (Listitem) getParentComponent(event.getTarget(),
                 Listitem.class);
 
@@ -76,7 +76,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
     }
 
     @Override
-    public void onDelete(Event event) throws Exception {
+    public void onDelete(final Event event) throws Exception {
         Listitem li = (Listitem) getParentComponent(event.getTarget(), Listitem.class);
         final Projects selectedProject = (Projects) (((Listbox) (li.getParent())).getModel().getElementAt(li.getIndex()));
         String projectName = selectedProject.getName();
@@ -95,7 +95,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         refreshView();
     }
 
-    public void onProjectSelected(Event event) throws Exception {
+    public void onProjectSelected(final Event event) throws Exception {
         Listbox psListbox = (Listbox) this.getFellow("projectsListbox");
         if (psListbox.getSelectedIndex() > -1) {
             List projects = (List) psListbox.getModel();
@@ -106,14 +106,14 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         }
     }
 
-    public void onFocus(Event event) throws Exception {
+    public void onFocus(final Event event) throws Exception {
         Listitem li = (Listitem) getParentComponent(event.getTarget(), Listitem.class);
         li.getListbox().setSelectedItem(li);
         Events.sendEvent(li.getListbox(), new SelectEvent(Events.ON_SELECT, li.getListbox(), Collections.singleton(li)));
     }
 
     @Override
-    public boolean checkValues(Projects project) throws Exception {
+    public boolean checkValues(final Projects project) throws Exception {
         StringBuilder error = new StringBuilder();
         if (project.getName() == null || "".equals(project.getName())) {
             error.append(Labels.getLabel("project.error.insertName"));
@@ -137,7 +137,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
     }
 
     @Override
-    public void onAddUserToProject(Event event) throws Exception {
+    public void onAddUserToProject(final Event event) throws Exception {
         if (project.getUsersCollection() == null) {
             project.setUsersCollection(new HashSet<Users>());
         }
@@ -151,7 +151,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
     }
 
     @Override
-    public void onDeleteUserFromProject(Event event) throws Exception {
+    public void onDeleteUserFromProject(final Event event) throws Exception {
         Listitem li = (Listitem) getParentComponent(event.getTarget(), Listitem.class);
         final Users selectedUser = (Users) (((Listbox) (li.getParent())).getModel().getElementAt(li.getIndex()));
         project.getUsersCollection().remove(selectedUser);
@@ -160,7 +160,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         refreshListOfUsersWhichAreNotInProject();
     }
 
-    public void onDropUserOnList(Event event) throws Exception {
+    public void onDropUserOnList(final Event event) throws Exception {
         Component dragged = ((DropEvent) event).getDragged();
         if (!"allUsersListbox".equals(dragged.getParent().getId()) && dragged instanceof Listitem) {
             Listitem li = (Listitem) dragged;
@@ -172,7 +172,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         }
     }
 
-    public void onDropUserOnProject(Event event) throws Exception {
+    public void onDropUserOnProject(final Event event) throws Exception {
         Component dragged = ((DropEvent) event).getDragged();
         if (!"usersListbox".equals(dragged.getParent().getId()) && dragged instanceof Listitem) {
             Listitem li = (Listitem) dragged;
@@ -229,7 +229,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         projectsList.addAll(projectsService.readAll());
     }
 
-    private Component getParentComponent(Component component, Class clazz) throws Exception {
+    private Component getParentComponent(final Component component,final  Class clazz) throws Exception {
         int index = 0;
         while ((component != null) && !clazz.isInstance((component = component.getParent()))) {
             index++;
@@ -247,7 +247,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         return project;
     }
 
-    public void setProject(Projects project) {
+    public void setProject(final Projects project) {
         this.project = project;
     }
 
@@ -264,7 +264,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         return updateProjectListbox;
     }
 
-    public void setUpdateProjectListbox(Listbox updateProjectListbox) {
+    public void setUpdateProjectListbox(final Listbox updateProjectListbox) {
         this.updateProjectListbox = updateProjectListbox;
 
     }
@@ -273,7 +273,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         return usersListbox;
     }
 
-    public void setUsersListbox(Listbox usersListbox) {
+    public void setUsersListbox(final Listbox usersListbox) {
         this.usersListbox = usersListbox;
     }
 
@@ -281,7 +281,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         return user;
     }
 
-    public void setUser(Users user) {
+    public void setUser(final Users user) {
         this.user = user;
     }
 
@@ -289,7 +289,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         return addUsersList;
     }
 
-    public void setAddUsersList(List<Users> addUsersList) {
+    public void setAddUsersList(final List<Users> addUsersList) {
         this.addUsersList = addUsersList;
 
     }

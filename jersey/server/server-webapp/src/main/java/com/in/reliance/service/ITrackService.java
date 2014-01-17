@@ -8,6 +8,6 @@ public interface ITrackService {
 
 	public Track getTrackInJSON();
 
-	public abstract Response createTrackInJSON(Track track);
+	public abstract Response createTrackInJSON(final Track track);
 
 }

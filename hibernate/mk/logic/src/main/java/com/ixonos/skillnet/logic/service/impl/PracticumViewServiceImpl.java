@@ -43,7 +43,7 @@ public final class PracticumViewServiceImpl extends AbstractGenericService<Pract
      */
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("practicumViewDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("practicumViewDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
 
@@ -56,7 +56,7 @@ public final class PracticumViewServiceImpl extends AbstractGenericService<Pract
     @Secured(ROLE_GM)
     @Override
     @Transactional(readOnly = true)
-    public List<PracticumView> getPracticumsWithSkills(List<String> skills, List<Integer> levels) {
+    public List<PracticumView> getPracticumsWithSkills(final List<String> skills,final  List<Integer> levels) {
 		DetachedCriteria practicumCriteria = DetachedCriteria.forClass(PracticumView.class);
 		practicumCriteria.add(Subqueries.propertyIn("username", getUsersWithSkillsCriteria(skills, levels)));
 		if (skills.size() > 0) practicumCriteria.add(Restrictions.in("skill", skills));
@@ -72,7 +72,7 @@ public final class PracticumViewServiceImpl extends AbstractGenericService<Pract
     @Secured(ROLE_GM)
     @Override
     @Transactional(readOnly = true)
-    public List<String> getUsersWithSkills(List<String> skills, List<Integer> levels) {
+    public List<String> getUsersWithSkills(final List<String> skills,final  List<Integer> levels) {
 		List<?> usersWithSkills = readByCriteria(getUsersWithSkillsCriteria(skills, levels));
 		List<String> users = new ArrayList<String>();
 		for (int i=0; i<usersWithSkills.size(); i++) {
@@ -90,7 +90,7 @@ public final class PracticumViewServiceImpl extends AbstractGenericService<Pract
      * @param levels
      * @return
      */
-    private DetachedCriteria getUsersWithSkillsCriteria(List<String> skills, List<Integer> levels) {		
+    private DetachedCriteria getUsersWithSkillsCriteria(final List<String> skills,final  List<Integer> levels) {		
 		DetachedCriteria criteria = DetachedCriteria.forClass(PracticumView.class);
 		if (skills.size() == 0) {
 			criteria.setProjection(Projections.property("username"));

@@ -45,11 +45,11 @@ public class CodeTable implements Serializable, Comparable<CodeTable> {
     public CodeTable() {
     }
 
-    public CodeTable(Integer codeTableId) {
+    public CodeTable(final Integer codeTableId) {
         this.codeTableId = codeTableId;
     }
 
-    public CodeTable(Integer codeTableId, String groupCode, String code, String description) {
+    public CodeTable(final Integer codeTableId,final  String groupCode,final  String code,final  String description) {
         this.codeTableId = codeTableId;
         this.groupCode = groupCode;
         this.code = code;
@@ -60,7 +60,7 @@ public class CodeTable implements Serializable, Comparable<CodeTable> {
         return codeTableId;
     }
 
-    public void setCodeTableId(Integer codeTableId) {
+    public void setCodeTableId(final Integer codeTableId) {
         this.codeTableId = codeTableId;
     }
 
@@ -68,7 +68,7 @@ public class CodeTable implements Serializable, Comparable<CodeTable> {
         return groupCode;
     }
 
-    public void setGroupCode(String groupCode) {
+    public void setGroupCode(final String groupCode) {
         this.groupCode = groupCode;
     }
 
@@ -76,7 +76,7 @@ public class CodeTable implements Serializable, Comparable<CodeTable> {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(final String code) {
         this.code = code;
     }
 
@@ -84,11 +84,11 @@ public class CodeTable implements Serializable, Comparable<CodeTable> {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
-    public void setIndex(Integer index) {
+    public void setIndex(final Integer index) {
         this.index = index;
     }
 
@@ -104,7 +104,7 @@ public class CodeTable implements Serializable, Comparable<CodeTable> {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof CodeTable)) {
             return false;
@@ -122,7 +122,7 @@ public class CodeTable implements Serializable, Comparable<CodeTable> {
     }
 
     @Override
-    public int compareTo(CodeTable codeTable) {
+    public int compareTo(final CodeTable codeTable) {
         if (getIndex() < (codeTable).getIndex()) {
             return -1;
         } else if (getIndex() > (codeTable).getIndex()) {

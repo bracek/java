@@ -21,7 +21,7 @@ public class Stock implements java.io.Serializable {
 	public Stock() {
 	}
 
-	public Stock(String stockCode, String stockName) {
+	public Stock(final String stockCode,final  String stockName) {
 		this.stockCode = stockCode;
 		this.stockName = stockName;
 	}
@@ -33,7 +33,7 @@ public class Stock implements java.io.Serializable {
 		return this.stockId;
 	}
 
-	public void setStockId(Integer stockId) {
+	public void setStockId(final Integer stockId) {
 		this.stockId = stockId;
 	}
 
@@ -42,7 +42,7 @@ public class Stock implements java.io.Serializable {
 		return this.stockCode;
 	}
 
-	public void setStockCode(String stockCode) {
+	public void setStockCode(final String stockCode) {
 		this.stockCode = stockCode;
 	}
 
@@ -51,7 +51,7 @@ public class Stock implements java.io.Serializable {
 		return this.stockName;
 	}
 
-	public void setStockName(String stockName) {
+	public void setStockName(final String stockName) {
 		this.stockName = stockName;
 	}
 

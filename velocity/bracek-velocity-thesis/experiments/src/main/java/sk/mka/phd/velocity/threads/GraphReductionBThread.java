@@ -13,7 +13,7 @@ import sk.mka.phd.matlab.cons.Const;
  */
 public class GraphReductionBThread extends Thread {
 
-    public GraphReductionBThread(String jmeno) {
+    public GraphReductionBThread(final String jmeno) {
         super(jmeno);
     }
 

@@ -66,7 +66,7 @@ public abstract class AbstractCriteriaTreeItem implements CriteriaTreeItem {
      * @param operator
      * @return
      */
-    public static String getOperatorAsString(int operator) {
+    public static String getOperatorAsString(final int operator) {
         switch (operator) {
         case AbstractCriteriaTreeItem.OP_EQ:
             return "=";

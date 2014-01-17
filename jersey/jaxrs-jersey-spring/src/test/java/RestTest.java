@@ -2,7 +2,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 
 public class RestTest {
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		Client c = Client.create();
 
 		// plain text

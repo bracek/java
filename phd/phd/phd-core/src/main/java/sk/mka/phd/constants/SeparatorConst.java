@@ -13,7 +13,7 @@ public class SeparatorConst {
     private Separator separator;
     private static final List<SeparatorConst> sepConstants = new ArrayList<SeparatorConst>();
 
-    private SeparatorConst(Separator separator) {
+    private SeparatorConst(final Separator separator) {
         this.separator = separator;
     }
 
@@ -32,7 +32,7 @@ public class SeparatorConst {
         return new HashSet<SeparatorConst>(sepConstants);
     }
 
-    public void setSeparator(Separator separator) {
+    public void setSeparator(final Separator separator) {
         this.separator = separator;
     }
 

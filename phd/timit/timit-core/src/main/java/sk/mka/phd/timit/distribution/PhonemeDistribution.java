@@ -13,7 +13,7 @@ public class PhonemeDistribution extends AbstractSquareDataLoadFile implements I
     private static PhonemeDistribution instancePhonemeDistribution;
     private HashMap<Integer, String> phonemeDistribution = new HashMap<Integer, String>();
 
-    public PhonemeDistribution(String finalPath, String separator) {
+    public PhonemeDistribution(String finalPath,final  String separator) {
         super(finalPath, separator);
         this.phonemeDistribution = getPhonemeDistribution();
     }

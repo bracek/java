@@ -1,7 +1,6 @@
 package com.ixonos.skillnet.web.controllers;
 
 import java.io.ByteArrayOutputStream;
-import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,7 +35,6 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.event.InputEvent;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
-import org.zkoss.zul.Button;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Image;
@@ -116,9 +114,9 @@ public class EditSkillsController extends GenericForwardComposer implements
 	private Thread taskThread;
 
 	@Override
-	public void render(final Treeitem item, Object data) throws Exception {
-		Node node = (Node) data;
-		Treecell tcSkillName = new Treecell(node.getSkill().getName());
+	public void render(final Treeitem item, final Object data) throws Exception {
+		final Node node = (Node) data;
+		final Treecell tcSkillName = new Treecell(node.getSkill().getName());
 		Treerow tr = null;
 		/*
 		 * Since only one treerow is allowed, if treerow is not null, append
@@ -133,70 +131,60 @@ public class EditSkillsController extends GenericForwardComposer implements
 
 				@Transactional
 				@Override
-				public void onEvent(Event e) throws Exception {
-					Component dragged = ((DropEvent) e).getDragged();
+				public void onEvent(final Event e) throws Exception {
+					final Component dragged = ((DropEvent) e).getDragged();
 					if (dragged instanceof Listitem) {
-						Listitem li = (Listitem) dragged;
-						Integer skillID = (Integer) li.getValue();
-						Treeitem ti = (Treeitem) ((Treerow) e.getTarget())
+						final Listitem li = (Listitem) dragged;
+						final Integer skillID = (Integer) li.getValue();
+						final Treeitem ti = (Treeitem) ((Treerow) e.getTarget())
 								.getParent();
-						Integer nodeID = (Integer) ti.getValue();
+						final Integer nodeID = (Integer) ti.getValue();
 						try {
 							nodeService.insertNode(nodeID, skillID);
 							// remove from model children map
-							Node node = new Node();
+							final Node node = new Node();
 							node.setNodeId(nodeID);
 							skillnetTreeModel.removeChildrenInfoFromMap(node);
 							// set not-cached flag
 							ti.unload();
 							ti.setOpen(true);
 							tree.renderItem(ti);
-						} catch (ConstraintViolationException ex) {
-							Messagebox
-									.show(
-											Labels
-													.getLabel("skillsEdit.warning.skillExists"),
-											Labels
-													.getLabel("skillsEdit.warning"),
-											1, "OK");
+						} catch (final ConstraintViolationException ex) {
+							Messagebox.show(
+									Labels.getLabel("skillsEdit.warning.skillExists"),
+									Labels.getLabel("skillsEdit.warning"), 1,
+									"OK");
 						}
 					} else if (dragged instanceof Treerow) {
-						Treeitem tisrc = (Treeitem) ((Treerow) dragged)
+						final Treeitem tisrc = (Treeitem) ((Treerow) dragged)
 								.getParent();
-						Treeitem tidest = (Treeitem) ((Treerow) e.getTarget())
-								.getParent();
-						Integer nodeIDsrc = (Integer) tisrc.getValue();
-						Integer nodeIDdest = (Integer) tidest.getValue();
+						final Treeitem tidest = (Treeitem) ((Treerow) e
+								.getTarget()).getParent();
+						final Integer nodeIDsrc = (Integer) tisrc.getValue();
+						final Integer nodeIDdest = (Integer) tidest.getValue();
 
 						try {
 							if (nodeService.moveNode(nodeIDsrc, nodeIDdest) != null) {
-								skillnetTreeModel
-										.setRootName(groupsService
-												.getTreeRootName(
-														((SkillnetUser) SecurityContextHolder
-																.getContext()
-																.getAuthentication()
-																.getPrincipal())
-																.getUsername(),
-														SkillnetInitServlet.props));
+								skillnetTreeModel.setRootName(groupsService
+										.getTreeRootName(
+												((SkillnetUser) SecurityContextHolder
+														.getContext()
+														.getAuthentication()
+														.getPrincipal())
+														.getUsername(),
+												SkillnetInitServlet.props));
 								tree.setModel(skillnetTreeModel);
 							} else {
-								Messagebox
-										.show(
-												Labels
-														.getLabel("skillsEdit.warning.notPossible"),
-												Labels
-														.getLabel("skillsEdit.warning"),
-												1, "OK");
+								Messagebox.show(
+										Labels.getLabel("skillsEdit.warning.notPossible"),
+										Labels.getLabel("skillsEdit.warning"),
+										1, "OK");
 							}
-						} catch (DataIntegrityViolationException ex) {
-							Messagebox
-									.show(
-											Labels
-													.getLabel("skillsEdit.warning.skillExists"),
-											Labels
-													.getLabel("skillsEdit.warning"),
-											1, "OK");
+						} catch (final DataIntegrityViolationException ex) {
+							Messagebox.show(
+									Labels.getLabel("skillsEdit.warning.skillExists"),
+									Labels.getLabel("skillsEdit.warning"), 1,
+									"OK");
 							;
 						}
 					}
@@ -205,7 +193,7 @@ public class EditSkillsController extends GenericForwardComposer implements
 			item.addEventListener("onOpen", new EventListener() {
 
 				@Override
-				public void onEvent(Event event) throws Exception {
+				public void onEvent(final Event event) throws Exception {
 					if (openedItems.containsKey(item.getValue())) {
 						openedItems.remove(item.getValue());
 					} else {
@@ -230,21 +218,22 @@ public class EditSkillsController extends GenericForwardComposer implements
 		item.setContext("expandPopup");
 	}
 
-	public void onClick$expandMenuItem(Event e) {
-		Treeitem selectedItem = tree.getSelectedItem();
+	public void onClick$expandMenuItem(final Event e) {
+		final Treeitem selectedItem = tree.getSelectedItem();
 		if (selectedItem != null) {
 			expandTreeItemsRecursively(selectedItem);
 		}
 	}
 
-	private void expandTreeItemsRecursively(Treeitem treeItem) {
+	private void expandTreeItemsRecursively(final Treeitem treeItem) {
 		if (!treeItem.isOpen()) {
 			treeItem.setOpen(true);
 		}
 		if (treeItem.getTreechildren() != null) {
-			Object[] items = treeItem.getTreechildren().getItems().toArray();
+			final Object[] items = treeItem.getTreechildren().getItems()
+					.toArray();
 			for (int i = 0; i < items.length; i++) {
-				Object item = items[i];
+				final Object item = items[i];
 				if (item instanceof Treeitem) {
 					expandTreeItemsRecursively((Treeitem) item);
 				}
@@ -253,17 +242,18 @@ public class EditSkillsController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(Listitem listItem, Object data) throws Exception {
-		Skill skill = (Skill) data;
+	public void render(final Listitem listItem, final Object data)
+			throws Exception {
+		final Skill skill = (Skill) data;
 		new Listcell(skill.getName()).setParent(listItem);
 		new Listcell(skill.getDescription()).setParent(listItem);
 		Image image = null;
-		if ((skill.getValuable().toString()).equals("true")) {
+		if (skill.getValuable().toString().equals("true")) {
 			image = new Image("/img/icons/true.png");
-		} else if ((skill.getValuable().toString()).equals("false")) {
+		} else if (skill.getValuable().toString().equals("false")) {
 			image = new Image("/img/icons/false.png");
 		}
-		Listcell lcIcon = new Listcell();
+		final Listcell lcIcon = new Listcell();
 		image.setParent(lcIcon);
 		lcIcon.setParent(listItem);
 
@@ -273,24 +263,25 @@ public class EditSkillsController extends GenericForwardComposer implements
 
 			@Transactional
 			@Override
-			public void onEvent(Event e) throws Exception {
-				Component dragged = ((DropEvent) e).getDragged();
+			public void onEvent(final Event e) throws Exception {
+				final Component dragged = ((DropEvent) e).getDragged();
 				if (dragged instanceof Treerow) {
-					Treerow tr = (Treerow) ((DropEvent) e).getDragged();
-					Treeitem ti = (Treeitem) tr.getParent();
-					Integer nodeID = (Integer) ti.getValue();
-					Component parent = ti.getParent();
+					final Treerow tr = (Treerow) ((DropEvent) e).getDragged();
+					final Treeitem ti = (Treeitem) tr.getParent();
+					final Integer nodeID = (Integer) ti.getValue();
+					final Component parent = ti.getParent();
 					nodeService.delete(nodeService.read(nodeID));
 					if (parent instanceof Treechildren) {
-						Component oparent = parent.getParent();
+						final Component oparent = parent.getParent();
 						if (oparent instanceof Tree) {
 							((Treechildren) parent).removeChild(ti);
 							tree.invalidate();
 						} else if (oparent instanceof Treeitem) {
-							Treeitem item = (Treeitem) oparent;
-							Integer nodeIdForRemove = (Integer) item.getValue();
+							final Treeitem item = (Treeitem) oparent;
+							final Integer nodeIdForRemove = (Integer) item
+									.getValue();
 							// remove from model children map
-							Node node = new Node();
+							final Node node = new Node();
 							node.setNodeId(nodeIdForRemove);
 							skillnetTreeModel.removeChildrenInfoFromMap(node);
 							// set not-cached flag
@@ -306,7 +297,7 @@ public class EditSkillsController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void doAfterCompose(Component comp) throws Exception {
+	public void doAfterCompose(final Component comp) throws Exception {
 		super.doAfterCompose(comp);
 
 		final String userName = ((SkillnetUser) SecurityContextHolder
@@ -317,7 +308,7 @@ public class EditSkillsController extends GenericForwardComposer implements
 
 			@Override
 			@Transactional(readOnly = true)
-			public void onEvent(Event e) throws Exception {
+			public void onEvent(final Event e) throws Exception {
 				skillnetTreeModel.setRootName(groupsService.getTreeRootName(
 						userName, SkillnetInitServlet.props));
 				skillnetTreeModel.cleanChildrenMap();
@@ -329,25 +320,25 @@ public class EditSkillsController extends GenericForwardComposer implements
 		list.addEventListener("onLoad", new EventListener() {
 
 			@Override
-			public void onEvent(Event e) throws Exception {
+			public void onEvent(final Event e) throws Exception {
 				list.setModel(listModelList);
 			}
 		});
 		list.addEventListener("onSelect", new EventListener() {
 
 			@Override
-			public void onEvent(Event e) throws Exception {
-				int index = list.getSelectedIndex();
+			public void onEvent(final Event e) throws Exception {
+				final int index = list.getSelectedIndex();
 				selectedSkill = (Skill) ((ListModelList) list.getModel())
 						.get(index);
 				name.setValue(selectedSkill.getName());
 				description.setValue(selectedSkill.getDescription());
 				evaluable.setChecked(selectedSkill.getValuable());
 
-				String rootName = ((SkillnetTreeModel) tree.getModel())
+				final String rootName = ((SkillnetTreeModel) tree.getModel())
 						.getRootName();
-				List<String> paths = skillService.getNodePaths(selectedSkill
-						.getSkillId(), rootName);
+				final List<String> paths = skillService.getNodePaths(
+						selectedSkill.getSkillId(), rootName);
 
 				if (paths != null) {
 					mappingList.setModel(new SimpleListModel(paths));
@@ -364,8 +355,8 @@ public class EditSkillsController extends GenericForwardComposer implements
 
 			@SuppressWarnings("unchecked")
 			@Override
-			public void onEvent(Event event) throws Exception {
-				String path = mappingList.getSelectedItem().getLabel();
+			public void onEvent(final Event event) throws Exception {
+				final String path = mappingList.getSelectedItem().getLabel();
 				selectSkillInTree(tree.getItems(), path.split("/"), 0);
 			}
 		});
@@ -380,12 +371,12 @@ public class EditSkillsController extends GenericForwardComposer implements
 	}
 
 	@SuppressWarnings("unchecked")
-	private void selectSkillInTree(Collection<Treeitem> items,
-			String[] pathArray, int i) {
+	private void selectSkillInTree(final Collection<Treeitem> items,
+			final String[] pathArray, final int i) {
 
-		for (Treeitem treeItem : items) {
+		for (final Treeitem treeItem : items) {
 			if (treeItem.getLabel().equals(pathArray[i])) {
-				if (i == (pathArray.length - 1)) {
+				if (i == pathArray.length - 1) {
 					treeItem.setSelected(true);
 				} else {
 					treeItem.setOpen(true);
@@ -398,49 +389,50 @@ public class EditSkillsController extends GenericForwardComposer implements
 	}
 
 	@Transactional
-	public void onClick$add(Event e) {
-		String nameValue = name.getValue();
-		String descriptionValue = description.getValue();
-		Boolean valuableValue = evaluable.isChecked();
+	public void onClick$add(final Event e) {
+		final String nameValue = name.getValue();
+		final String descriptionValue = description.getValue();
+		final Boolean valuableValue = evaluable.isChecked();
 		if (nameValue != null) {
-			Skill skill = new Skill();
+			final Skill skill = new Skill();
 			skill.setName(nameValue);
 			skill.setDescription(descriptionValue);
 			skill.setValuable(valuableValue);
 			skill.setCreated(new Date());
-			String userName = ((SkillnetUser) SecurityContextHolder
+			final String userName = ((SkillnetUser) SecurityContextHolder
 					.getContext().getAuthentication().getPrincipal())
 					.getUsername();
-			Users userCrit = new Users();
+			final Users userCrit = new Users();
 			userCrit.setUsername(userName);
-			List<Users> user = userService.readByCriteria(userCrit);
+			final List<Users> user = userService.readByCriteria(userCrit);
 			skill.setCreatedBy(user.get(0));
-			this.skillService.create(skill);
-			List<Skill> skills = this.skillService.readAll();
+			skillService.create(skill);
+			final List<Skill> skills = skillService.readAll();
 			listModelList.clear();
 			listModelList.addAll(skills);
 			selectedSkill = skill;
 			filterListModel(filter.getValue());
-			int index = ((ListModelList) list.getModel())
+			final int index = ((ListModelList) list.getModel())
 					.indexOf(selectedSkill);
 			list.setSelectedIndex(index);
 		}
 	}
 
 	@Transactional
-	public void onClick$update(Event e) throws InterruptedException {
+	public void onClick$update(final Event e) throws InterruptedException {
 		if (selectedSkill != null) {
 			boolean update = true;
 			if (selectedSkill.getValuable() == true
 					&& evaluable.isChecked() == false) {
-				int answer = Messagebox.show(Labels
-						.getLabel("skillsEdit.question.evaluable1")
-						+ " '"
-						+ selectedSkill.getName()
-						+ "' "
-						+ Labels.getLabel("skillsEdit.question.evaluable2"),
-						Labels.getLabel("skillsEdit.question.confirmation"),
-						Messagebox.YES | Messagebox.NO, Messagebox.QUESTION);
+				final int answer = Messagebox
+						.show(Labels.getLabel("skillsEdit.question.evaluable1")
+								+ " '"
+								+ selectedSkill.getName()
+								+ "' "
+								+ Labels.getLabel("skillsEdit.question.evaluable2"),
+								Labels.getLabel("skillsEdit.question.confirmation"),
+								Messagebox.YES | Messagebox.NO,
+								Messagebox.QUESTION);
 				if (answer == Messagebox.NO) {
 					update = false;
 				}
@@ -451,14 +443,14 @@ public class EditSkillsController extends GenericForwardComposer implements
 				selectedSkill.setValuable(evaluable.isChecked());
 				selectedSkill.setModified(new Date());
 
-				Users userCrit = new Users();
+				final Users userCrit = new Users();
 				userCrit.setUsername(username);
-				List<Users> user = userService.readByCriteria(userCrit);
+				final List<Users> user = userService.readByCriteria(userCrit);
 				selectedSkill.setModifiedBy(user.get(0));
 				try {
-					this.skillService.update(selectedSkill);
-				} catch (EntityNotFoundException exception) {
-					int index = listModelList.indexOf(selectedSkill);
+					skillService.update(selectedSkill);
+				} catch (final EntityNotFoundException exception) {
+					final int index = listModelList.indexOf(selectedSkill);
 					listModelList.remove(index);
 					alert("'" + selectedSkill.getName() + "'"
 							+ Labels.getLabel("skillsEdit.alert.skillDeleted"));
@@ -474,27 +466,28 @@ public class EditSkillsController extends GenericForwardComposer implements
 						selectedSkill = null;
 					}
 				}
-				List<Skill> skills = skillService.readAll();
+				final List<Skill> skills = skillService.readAll();
 				listModelList.clear();
 				listModelList.addAll(skills);
 				filterListModel(filter.getValue());
-				int index = ((ListModelList) list.getModel())
+				final int index = ((ListModelList) list.getModel())
 						.indexOf(selectedSkill);
 				list.setSelectedIndex(index);
 			}
 		}
 	}
 
-	public void onClick$import(Event e) throws InterruptedException {
+	public void onClick$import(final Event e) throws InterruptedException {
 		((Window) Executions.createComponents(
 				"/WEB-INF/jsp/tiles/skills/importSkills.zul", null, null))
 				.doModal();
 	}
 
 	@Transactional
-	public void onClick$exportSkills(Event evt) throws InterruptedException {
+	public void onClick$exportSkills(final Event evt)
+			throws InterruptedException {
 		try {
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
 			XMLEventWriter writer = null;
 			synchronized (xmlof) {
@@ -505,7 +498,7 @@ public class EditSkillsController extends GenericForwardComposer implements
 			writer.add(xmlef.createStartElement(qn_skills, null, null));
 			writer.add(xmlef.createNamespace("isn", SKILLNET_URI));
 
-			for (Object o : listModelList.toArray()) {
+			for (final Object o : listModelList.toArray()) {
 				if (o instanceof Skill) {
 					exportSkill(writer, (Skill) o, 1);
 				}
@@ -515,17 +508,17 @@ public class EditSkillsController extends GenericForwardComposer implements
 			writer.add(xmlef.createEndElement(qn_skills, null));
 			writer.add(xmlef.createEndDocument());
 
-			Filedownload.save(baos.toByteArray(), ContentTypes
-					.getContentType("xml"), "skill.xml");
+			Filedownload.save(baos.toByteArray(),
+					ContentTypes.getContentType("xml"), "skill.xml");
 
-		} catch (XMLStreamException xse) {
+		} catch (final XMLStreamException xse) {
 			Messagebox.show(xse.getLocalizedMessage(), "Error", 1, "OK");
 			xse.printStackTrace();
 		}
 	}
 
-	private void exportSkill(XMLEventWriter writer, Skill s, int lvl)
-			throws XMLStreamException {
+	private void exportSkill(final XMLEventWriter writer, final Skill s,
+			final int lvl) throws XMLStreamException {
 		writer.add(xmlef.createIgnorableSpace("\n"));
 		for (int i = 0; i < lvl; i++) {
 			writer.add(xmlef.createIgnorableSpace("\t"));
@@ -533,14 +526,15 @@ public class EditSkillsController extends GenericForwardComposer implements
 
 		writer.add(xmlef.createStartElement(qn_skill, null, null));
 
-		String name = (s.getName() != null) ? s.getName() : "";
+		final String name = s.getName() != null ? s.getName() : "";
 		writer.add(xmlef.createAttribute(qn_name, name));
 
-		String eval = (s.getValuable() != null) ? s.getValuable().toString()
-				: "";
+		final String eval = s.getValuable() != null ? s.getValuable()
+				.toString() : "";
 		writer.add(xmlef.createAttribute(qn_evaluable, eval));
 
-		String desc = (s.getDescription() != null) ? s.getDescription() : "";
+		final String desc = s.getDescription() != null ? s.getDescription()
+				: "";
 		writer.add(xmlef.createAttribute(qn_description, desc));
 
 		writer.add(xmlef.createIgnorableSpace("\n"));
@@ -552,9 +546,9 @@ public class EditSkillsController extends GenericForwardComposer implements
 	}
 
 	@Transactional
-	public void onClick$exportTrees(Event e) throws InterruptedException {
+	public void onClick$exportTrees(final Event e) throws InterruptedException {
 		try {
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
 			XMLEventWriter writer = null;
 			synchronized (xmlof) {
@@ -565,9 +559,9 @@ public class EditSkillsController extends GenericForwardComposer implements
 			writer.add(xmlef.createStartElement(qn_trees, null, null));
 			writer.add(xmlef.createNamespace("isn", SKILLNET_URI));
 
-			Node root = (Node) skillnetTreeModel.getRoot();
+			final Node root = (Node) skillnetTreeModel.getRoot();
 			for (int i = 0, c = skillnetTreeModel.getChildCount(root); i < c; i++) {
-				Node child = (Node) skillnetTreeModel.getChild(root, i);
+				final Node child = (Node) skillnetTreeModel.getChild(root, i);
 				exportChild(writer, child, 1);
 			}
 
@@ -575,17 +569,17 @@ public class EditSkillsController extends GenericForwardComposer implements
 			writer.add(xmlef.createEndElement(qn_trees, null));
 			writer.add(xmlef.createEndDocument());
 
-			Filedownload.save(baos.toByteArray(), ContentTypes
-					.getContentType("xml"), "tree.xml");
+			Filedownload.save(baos.toByteArray(),
+					ContentTypes.getContentType("xml"), "tree.xml");
 
-		} catch (XMLStreamException xse) {
+		} catch (final XMLStreamException xse) {
 			Messagebox.show(xse.getLocalizedMessage(), "Error", 1, "OK");
 			xse.printStackTrace();
 		}
 	}
 
-	private void exportChild(XMLEventWriter writer, Node node, int lvl)
-			throws XMLStreamException {
+	private void exportChild(final XMLEventWriter writer, final Node node,
+			final int lvl) throws XMLStreamException {
 
 		writer.add(xmlef.createIgnorableSpace("\n"));
 		for (int i = 0; i < lvl; i++) {
@@ -602,7 +596,7 @@ public class EditSkillsController extends GenericForwardComposer implements
 		writer.add(xmlef.createStartElement(qn_children, null, null));
 
 		for (int i = 0, c = skillnetTreeModel.getChildCount(node); i < c; i++) {
-			Node child = (Node) skillnetTreeModel.getChild(node, i);
+			final Node child = (Node) skillnetTreeModel.getChild(node, i);
 			exportChild(writer, child, lvl + 2);
 		}
 
@@ -620,20 +614,19 @@ public class EditSkillsController extends GenericForwardComposer implements
 	}
 
 	@Transactional
-	public void onClick$delete(Event e) throws InterruptedException {
+	public void onClick$delete(final Event e) throws InterruptedException {
 		if (null != selectedSkill) {
-			int answer = Messagebox.show(Labels
-					.getLabel("skillsEdit.question.delete")
-					+ " '" + selectedSkill.getName() + "' ?", Labels
-					.getLabel("skillsEdit.question.confirmation"),
+			final int answer = Messagebox.show(
+					Labels.getLabel("skillsEdit.question.delete") + " '"
+							+ selectedSkill.getName() + "' ?",
+					Labels.getLabel("skillsEdit.question.confirmation"),
 					Messagebox.YES | Messagebox.NO, Messagebox.QUESTION);
 			if (answer == Messagebox.YES) {
 				int index = list.getSelectedIndex();
 				try {
-					this.skillService.delete(selectedSkill);
-				} catch (EntityNotFoundException exception) {
-					logger
-							.error("This is harmless as someone else has already deleted this item.");
+					skillService.delete(selectedSkill);
+				} catch (final EntityNotFoundException exception) {
+					logger.error("This is harmless as someone else has already deleted this item.");
 				}
 				listModelList.remove(selectedSkill);
 				filterListModel(filter.getValue());
@@ -655,21 +648,21 @@ public class EditSkillsController extends GenericForwardComposer implements
 	}
 
 	@Transactional
-	public void onDrop$treepanel(DropEvent e) throws Exception {
-		String rootName = groupsService.getTreeRootName(
+	public void onDrop$treepanel(final DropEvent e) throws Exception {
+		final String rootName = groupsService.getTreeRootName(
 				((SkillnetUser) SecurityContextHolder.getContext()
 						.getAuthentication().getPrincipal()).getUsername(),
 				SkillnetInitServlet.props);
-		if (((DropEvent) e).getDragged() instanceof Listitem) {
-			Listitem li = (Listitem) ((DropEvent) e).getDragged();
-			Integer skillID = (Integer) li.getValue();
+		if (e.getDragged() instanceof Listitem) {
+			final Listitem li = (Listitem) e.getDragged();
+			final Integer skillID = (Integer) li.getValue();
 			nodeService.insertNode(nodeService.getRoot(rootName).getNodeId(),
 					skillID);
 		}
-		if (((DropEvent) e).getDragged() instanceof Treerow) {
-			Treeitem tisrc = (Treeitem) ((Treerow) ((DropEvent) e).getDragged())
+		if (e.getDragged() instanceof Treerow) {
+			final Treeitem tisrc = (Treeitem) ((Treerow) e.getDragged())
 					.getParent();
-			Integer nodeIDsrc = (Integer) tisrc.getValue();
+			final Integer nodeIDsrc = (Integer) tisrc.getValue();
 			nodeService.moveNode(nodeIDsrc, nodeService.getRoot(rootName)
 					.getNodeId());
 		}
@@ -679,11 +672,11 @@ public class EditSkillsController extends GenericForwardComposer implements
 	@SuppressWarnings("unchecked")
 	private void updateSorting() {
 		Boolean sorted = false;
-		Iterator<Listheader> iterator = list.getListhead().getChildren()
+		final Iterator<Listheader> iterator = list.getListhead().getChildren()
 				.iterator();
 		while (iterator.hasNext()) {
-			Listheader column = iterator.next();
-			String sortDirection = column.getSortDirection();
+			final Listheader column = iterator.next();
+			final String sortDirection = column.getSortDirection();
 			if ("ascending".equals(sortDirection)) {
 				((ListModelList) list.getModel()).sort(new SkillsComparator(
 						true, column.getLabel()), true);
@@ -702,7 +695,7 @@ public class EditSkillsController extends GenericForwardComposer implements
 		}
 	}
 
-	public void onChanging$filter(InputEvent e) {
+	public void onChanging$filter(final InputEvent e) {
 		filterListModel(e.getValue());
 		selectedSkill = null;
 		name.setValue(null);
@@ -712,7 +705,7 @@ public class EditSkillsController extends GenericForwardComposer implements
 		list.invalidate();
 	}
 
-	public void onClick$filterReset(Event e) {
+	public void onClick$filterReset(final Event e) {
 		if (!filter.getValue().equals("")) {
 			filter.setValue("");
 			Events.postEvent(new InputEvent("onChanging", filter, ""));
@@ -725,28 +718,29 @@ public class EditSkillsController extends GenericForwardComposer implements
 		if (filter.equals("") || filter.equals("*")) {
 			list.setModel(listModelList);
 		} else {
-			List<Skill> filteredSkills = new ArrayList<Skill>();
-			List<Skill> skills = listModelList.getInnerList();
+			final List<Skill> filteredSkills = new ArrayList<Skill>();
+			final List<Skill> skills = listModelList.getInnerList();
 			if (filter.endsWith("*")) {
 				filter = filter.substring(0, filter.length() - 1);
 			}
 			if (filter.startsWith("*")) {
 				filter = filter.substring(1);
 				for (int i = 0; i < skills.size(); i++) {
-					Skill skill = skills.get(i);
+					final Skill skill = skills.get(i);
 					if (skill.getName().toLowerCase().contains(filter)) {
 						filteredSkills.add(skill);
 					}
 				}
 			} else {
 				for (int i = 0; i < skills.size(); i++) {
-					Skill skill = skills.get(i);
+					final Skill skill = skills.get(i);
 					if (skill.getName().toLowerCase().startsWith(filter)) {
 						filteredSkills.add(skill);
 					}
 				}
 			}
-			ListModelList filteredModel = new ListModelList(filteredSkills);
+			final ListModelList filteredModel = new ListModelList(
+					filteredSkills);
 			list.setModel(filteredModel);
 		}
 		updateSorting();
@@ -771,9 +765,9 @@ public class EditSkillsController extends GenericForwardComposer implements
 					Events.postEvent(new Event("onLoad", list));
 					Executions.deactivate(desktop);
 				}
-			} catch (InterruptedException consumed) {
+			} catch (final InterruptedException consumed) {
 				// do nothing - interruption is consumed
-			} catch (Throwable e) {
+			} catch (final Throwable e) {
 				e.printStackTrace();
 			} finally {
 				desktop.enableServerPush(false);

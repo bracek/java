@@ -42,11 +42,11 @@ public class Groups implements Serializable {
     public Groups() {
     }
 
-    public Groups(Integer groupId) {
+    public Groups(final Integer groupId) {
         this.groupId = groupId;
     }
 
-    public Groups(Integer groupId, String groupName) {
+    public Groups(final Integer groupId,final  String groupName) {
         this.groupId = groupId;
         this.groupName = groupName;
     }
@@ -55,7 +55,7 @@ public class Groups implements Serializable {
         return groupId;
     }
 
-    public void setGroupId(Integer groupId) {
+    public void setGroupId(final Integer groupId) {
         this.groupId = groupId;
     }
 
@@ -63,7 +63,7 @@ public class Groups implements Serializable {
         return groupName;
     }
 
-    public void setGroupName(String groupName) {
+    public void setGroupName(final String groupName) {
         this.groupName = groupName;
     }
 
@@ -71,7 +71,7 @@ public class Groups implements Serializable {
         return groupMemberCollection;
     }
 
-    public void setGroupMemberCollection(List<GroupMember> groupMemberCollection) {
+    public void setGroupMemberCollection(final List<GroupMember> groupMemberCollection) {
         this.groupMemberCollection = groupMemberCollection;
     }
 
@@ -79,7 +79,7 @@ public class Groups implements Serializable {
         return groupAuthorityCollection;
     }
 
-    public void setGroupAuthorityCollection(List<GroupAuthority> groupAuthorityCollection) {
+    public void setGroupAuthorityCollection(final List<GroupAuthority> groupAuthorityCollection) {
         this.groupAuthorityCollection = groupAuthorityCollection;
     }
 
@@ -91,7 +91,7 @@ public class Groups implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Groups)) {
             return false;

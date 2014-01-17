@@ -15,7 +15,7 @@ import com.ixonos.skillnet.logic.dao.CodeTableDAO;
 public class CodeTableDAOImpl extends GenericDAOImpl<CodeTable> implements CodeTableDAO {
 
    @Autowired
-   public CodeTableDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public CodeTableDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
 }

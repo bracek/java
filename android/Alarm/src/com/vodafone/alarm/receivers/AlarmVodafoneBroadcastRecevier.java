@@ -58,8 +58,7 @@ public final class AlarmVodafoneBroadcastRecevier extends BroadcastReceiver {
 
 	}
 
-	public void setAlarmInFuture(final Context context, final int hour,
-			final int minute) {
+	public void setAlarmInFuture(final Context context, final int hour,			final int minute) {
 		final AlarmManager am = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
 		final Intent intent = new Intent(context,

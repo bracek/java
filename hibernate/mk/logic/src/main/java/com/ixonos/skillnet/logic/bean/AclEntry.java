@@ -73,11 +73,11 @@ public class AclEntry implements Serializable {
     public AclEntry() {
     }
 
-    public AclEntry(Integer id) {
+    public AclEntry(final Integer id) {
         this.id = id;
     }
 
-    public AclEntry(Integer id, Integer aceOrder, Integer mask, Boolean granting, Boolean auditSuccess, Boolean auditFailure) {
+    public AclEntry(final Integer id,final  Integer aceOrder,final  Integer mask,final  Boolean granting,final  Boolean auditSuccess,final  Boolean auditFailure) {
         this.id = id;
         this.aceOrder = aceOrder;
         this.mask = mask;
@@ -90,7 +90,7 @@ public class AclEntry implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -98,7 +98,7 @@ public class AclEntry implements Serializable {
         return aceOrder;
     }
 
-    public void setAceOrder(Integer aceOrder) {
+    public void setAceOrder(final Integer aceOrder) {
         this.aceOrder = aceOrder;
     }
 
@@ -106,7 +106,7 @@ public class AclEntry implements Serializable {
         return mask;
     }
 
-    public void setMask(Integer mask) {
+    public void setMask(final Integer mask) {
         this.mask = mask;
     }
 
@@ -114,7 +114,7 @@ public class AclEntry implements Serializable {
         return granting;
     }
 
-    public void setGranting(Boolean granting) {
+    public void setGranting(final Boolean granting) {
         this.granting = granting;
     }
 
@@ -122,7 +122,7 @@ public class AclEntry implements Serializable {
         return auditSuccess;
     }
 
-    public void setAuditSuccess(Boolean auditSuccess) {
+    public void setAuditSuccess(final Boolean auditSuccess) {
         this.auditSuccess = auditSuccess;
     }
 
@@ -130,7 +130,7 @@ public class AclEntry implements Serializable {
         return auditFailure;
     }
 
-    public void setAuditFailure(Boolean auditFailure) {
+    public void setAuditFailure(final Boolean auditFailure) {
         this.auditFailure = auditFailure;
     }
 
@@ -138,7 +138,7 @@ public class AclEntry implements Serializable {
         return aclObjectIdentity;
     }
 
-    public void setAclObjectIdentity(AclObjectIdentity aclObjectIdentity) {
+    public void setAclObjectIdentity(final AclObjectIdentity aclObjectIdentity) {
         this.aclObjectIdentity = aclObjectIdentity;
     }
 
@@ -146,7 +146,7 @@ public class AclEntry implements Serializable {
         return sid;
     }
 
-    public void setSid(AclSid sid) {
+    public void setSid(final AclSid sid) {
         this.sid = sid;
     }
 
@@ -158,7 +158,7 @@ public class AclEntry implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof AclEntry)) {
             return false;

@@ -37,7 +37,7 @@ public final class ConfigServiceImpl extends AbstractGenericService<Config> impl
 	 */
 	@Autowired
     @Override
-    public void setServiceDAO(@Qualifier("configDAO") GenericDAO<Config> genericDAO) {
+    public void setServiceDAO(final @Qualifier("configDAO") GenericDAO<Config> genericDAO) {
         super.setServiceDAO(genericDAO);
     }
 	
@@ -47,7 +47,7 @@ public final class ConfigServiceImpl extends AbstractGenericService<Config> impl
 	@Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
 	@Transactional(readOnly = true)
 	@Override
-	public Integer getIntProperty(String property) {
+	public Integer getIntProperty(final String property) {
 		return getIntProperty(property, null);
 	}
 
@@ -57,7 +57,7 @@ public final class ConfigServiceImpl extends AbstractGenericService<Config> impl
 	@Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
 	@Transactional(readOnly = true)
 	@Override
-	public Integer getIntProperty(String property, Integer defaultValue) {
+	public Integer getIntProperty(final String property,final  Integer defaultValue) {
 		try {
 			Config c = read(property);
 			return Integer.parseInt(c.getValue());
@@ -88,7 +88,7 @@ public final class ConfigServiceImpl extends AbstractGenericService<Config> impl
 	@Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
 	@Transactional(readOnly = true)
 	@Override
-	public String getStringProperty(String property) {
+	public String getStringProperty(final String property) {
 		return getStringProperty(property, null);
 	}
 
@@ -98,7 +98,7 @@ public final class ConfigServiceImpl extends AbstractGenericService<Config> impl
 	@Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
 	@Transactional(readOnly = true)
 	@Override
-	public String getStringProperty(String property, String defaultValue) {
+	public String getStringProperty(final String property,final  String defaultValue) {
 		try {
 			String result = read(property).getValue();
 			if (result != null && !result.isEmpty()) {
@@ -118,7 +118,7 @@ public final class ConfigServiceImpl extends AbstractGenericService<Config> impl
     @Secured(ROLE_ADMIN)
 	@Transactional
 	@Override
-	public void saveProperty(String property, Object value, String description) {
+	public void saveProperty(final String property,final  Object value,final  String description) {
 		Config c = null;
 		try {
 			c = find(property);

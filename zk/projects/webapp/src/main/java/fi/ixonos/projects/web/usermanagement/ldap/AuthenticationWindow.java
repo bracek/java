@@ -15,14 +15,14 @@ public class AuthenticationWindow extends Window {
     private String name;
     private String password;
 
-    public void continueLoad(Event event) throws Exception {
+    public void continueLoad(final Event event) throws Exception {
         canceled = false;
         name = ((Textbox) this.getFellow("name")).getValue();
         password = ((Textbox) this.getFellow("password")).getValue();
         this.detach();
     }
 
-    public void cancelLoad(Event event) throws Exception {
+    public void cancelLoad(final Event event) throws Exception {
         canceled = true;
         this.detach();
     }
@@ -37,7 +37,7 @@ public class AuthenticationWindow extends Window {
     /**
      * @param name the name to set
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
         ((Textbox) this.getFellow("name")).setValue(name);
     }
@@ -52,7 +52,7 @@ public class AuthenticationWindow extends Window {
     /**
      * @param password the password to set
      */
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -66,7 +66,7 @@ public class AuthenticationWindow extends Window {
     /**
      * @param canceled the canceled to set
      */
-    public void setCanceled(boolean canceled) {
+    public void setCanceled(final boolean canceled) {
         this.canceled = canceled;
     }
 

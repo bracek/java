@@ -17,14 +17,14 @@ public interface ProductDao {
      *
      * @param prod the prod
      */
-    public void updateProduct(Product prod);
+    public void updateProduct(final Product prod);
 
     /**
      * Adds the product.
      *
      * @param prod the prod
      */
-    public void addProduct(Product prod);
+    public void addProduct(final Product prod);
 
     /**
      * Find by id.
@@ -33,12 +33,12 @@ public interface ProductDao {
      *
      * @return the product
      */
-   public Product findById(Integer id);
+   public Product findById(final Integer id);
 
     /**
      * Delete product.
      *
      * @param id the id
      */
-    public void deleteProduct(Integer id);
+    public void deleteProduct(final Integer id);
 }

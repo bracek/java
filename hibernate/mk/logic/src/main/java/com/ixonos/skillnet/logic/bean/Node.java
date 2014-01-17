@@ -59,7 +59,7 @@ public class Node implements Serializable {
     public Node() {
     }
 
-    public Node(Integer nodeId) {
+    public Node(final Integer nodeId) {
         this.nodeId = nodeId;
     }
 
@@ -67,7 +67,7 @@ public class Node implements Serializable {
         return nodeId;
     }
 
-    public void setNodeId(Integer nodeId) {
+    public void setNodeId(final Integer nodeId) {
         this.nodeId = nodeId;
     }
 
@@ -75,7 +75,7 @@ public class Node implements Serializable {
         return children;
     }
 
-    public void setChildren(List<Node> children) {
+    public void setChildren(final List<Node> children) {
         this.children = children;
     }
 
@@ -83,7 +83,7 @@ public class Node implements Serializable {
         return parentNode;
     }
 
-    public void setParentNode(Node parentNode) {
+    public void setParentNode(final Node parentNode) {
         this.parentNode = parentNode;
     }
 
@@ -91,7 +91,7 @@ public class Node implements Serializable {
         return skill;
     }
 
-    public void setSkill(Skill skill) {
+    public void setSkill(final Skill skill) {
         this.skill = skill;
     }
 
@@ -103,7 +103,7 @@ public class Node implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Node)) {
             return false;

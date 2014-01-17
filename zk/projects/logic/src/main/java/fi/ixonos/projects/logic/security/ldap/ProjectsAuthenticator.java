@@ -35,20 +35,20 @@ public class ProjectsAuthenticator implements LdapAuthenticator {
 
     private static final Logger logger = Logger.getLogger(ProjectsAuthenticator.class);
 
-    private static final String LDAP_DefaultUSFilter = "(objectclass=person)";
+    private static final String LDAP_DefaultUSFilter = "(final objectclass=person)";
     private static final String LDAP_DefaultUSFormat = "CN={0},OU=Kosice,OU=Foreign,OU=People";
     private static final String LDAP_DefaultDNFormat = "CN={0},OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local";
 
-    private final UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private final UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
 
     private final ContextSource contextSource;
 
-    public ProjectsAuthenticator(ContextSource contextSource) {
+    public ProjectsAuthenticator(final ContextSource contextSource) {
         this.contextSource = contextSource;
     }
 
     @Override
-    public DirContextOperations authenticate(Authentication authentication) {
+    public DirContextOperations authenticate(final Authentication authentication) {
         NamingEnumeration results = null;
         DirContext ctx = null;
         try {
@@ -120,7 +120,7 @@ public class ProjectsAuthenticator implements LdapAuthenticator {
         }
     }
 
-    private Object getOptionalAttribute(Attributes attrs, String attrName) throws NamingException {
+    private Object getOptionalAttribute(final Attributes attrs,final  String attrName) throws NamingException {
         return attrs.get(attrName) != null ? attrs.get(attrName).get() : "";
     }
 }

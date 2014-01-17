@@ -80,7 +80,7 @@ public class ImportSkillsWindow extends Window {
 
 	private boolean changed = false;
 
-	public void setLmlSkill(Skill lmlSkill) {
+	public void setLmlSkill(final Skill lmlSkill) {
 		this.lmlSkill = lmlSkill;
 	}
 
@@ -88,7 +88,7 @@ public class ImportSkillsWindow extends Window {
 		return lmlSkill;
 	}
 
-	public void setLmrSkill(Skill lmrSkill) {
+	public void setLmrSkill(final Skill lmrSkill) {
 		this.lmrSkill = lmrSkill;
 	}
 
@@ -96,7 +96,7 @@ public class ImportSkillsWindow extends Window {
 		return lmrSkill;
 	}
 
-	public void setLolSkill(Skill lolSkill) {
+	public void setLolSkill(final Skill lolSkill) {
 		this.lolSkill = lolSkill;
 	}
 
@@ -104,7 +104,7 @@ public class ImportSkillsWindow extends Window {
 		return lolSkill;
 	}
 
-	public void setLorSkill(Skill lorSkill) {
+	public void setLorSkill(final Skill lorSkill) {
 		this.lorSkill = lorSkill;
 	}
 
@@ -112,27 +112,27 @@ public class ImportSkillsWindow extends Window {
 		return lorSkill;
 	}
 
-	public void onUpload(Event event) throws Exception {
+	public void onUpload(final Event event) throws Exception {
 		try {
 			try {
 				parseImportFile();
-			} catch (XMLStreamException xse) {
+			} catch (final XMLStreamException xse) {
 				Messagebox.show(xse.getLocalizedMessage(), "Error",
 						Messagebox.OK, Messagebox.ERROR);
 				xse.printStackTrace();
 			}
-		} catch (InterruptedException ie) {
+		} catch (final InterruptedException ie) {
 			ie.printStackTrace();
 		}
 	}
 
 	private void parseImportFile() throws Exception {
-		Media media = Fileupload.get();
+		final Media media = Fileupload.get();
 		if (media != null) {
 
 			XMLEventReader reader = null;
 			synchronized (xmlif) {
-				StringReader r = new StringReader(media.getStringData());
+				final StringReader r = new StringReader(media.getStringData());
 				reader = xmlif.createXMLEventReader(r);
 			}
 
@@ -142,10 +142,10 @@ public class ImportSkillsWindow extends Window {
 			nodesList.clear();
 
 			while (reader.hasNext()) {
-				XMLEvent nextEvent = reader.nextEvent();
-				int type = nextEvent.getEventType();
+				final XMLEvent nextEvent = reader.nextEvent();
+				final int type = nextEvent.getEventType();
 				if (type == XMLEvent.START_ELEMENT) {
-					StartElement elm = nextEvent.asStartElement();
+					final StartElement elm = nextEvent.asStartElement();
 					if (elm.getName().equals(qn_trees))
 						parseTrees(reader);
 					if (elm.getName().equals(qn_skills))
@@ -153,40 +153,40 @@ public class ImportSkillsWindow extends Window {
 				}
 			}
 
-			ListModelList lml = (ListModelList) getPage().getVariable(
+			final ListModelList lml = (ListModelList) getPage().getVariable(
 					"lmlModel");
 			lml.clear();
-			for (int i = 0; i < (int) (mergedList.size() / 2); i++) {
-				Skill impSkill = mergedList.get(i);
-				Skill actSkill = mergedMap.get(impSkill.getName());
+			for (int i = 0; i < mergedList.size() / 2; i++) {
+				final Skill impSkill = mergedList.get(i);
+				final Skill actSkill = mergedMap.get(impSkill.getName());
 				lml.add(new ImportSkillsListItem(impSkill, actSkill));
 			}
 			((Listbox) this.getFellow("listMergedLeft")).setModel(lml);
 
-			ListModelList lmr = (ListModelList) getPage().getVariable(
+			final ListModelList lmr = (ListModelList) getPage().getVariable(
 					"lmrModel");
 			lmr.clear();
-			for (int i = (int) (mergedList.size() / 2); i < mergedList.size(); i++) {
-				Skill impSkill = mergedList.get(i);
-				Skill actSkill = mergedMap.get(impSkill.getName());
+			for (int i = mergedList.size() / 2; i < mergedList.size(); i++) {
+				final Skill impSkill = mergedList.get(i);
+				final Skill actSkill = mergedMap.get(impSkill.getName());
 				lmr.add(new ImportSkillsListItem(impSkill, actSkill));
 			}
 			((Listbox) this.getFellow("listMergedRight")).setModel(lmr);
 
-			ListModelList lol = (ListModelList) getPage().getVariable(
+			final ListModelList lol = (ListModelList) getPage().getVariable(
 					"lolModel");
 			lol.clear();
-			for (int i = 0; i < (int) (otherList.size() / 2); i++) {
-				Skill impSkill = otherList.get(i);
+			for (int i = 0; i < otherList.size() / 2; i++) {
+				final Skill impSkill = otherList.get(i);
 				lol.add(new ImportSkillsListItem(impSkill, null));
 			}
 			((Listbox) this.getFellow("listOtherLeft")).setModel(lol);
 
-			ListModelList lor = (ListModelList) getPage().getVariable(
+			final ListModelList lor = (ListModelList) getPage().getVariable(
 					"lorModel");
 			lor.clear();
-			for (int i = (int) (otherList.size() / 2); i < otherList.size(); i++) {
-				Skill impSkill = otherList.get(i);
+			for (int i = otherList.size() / 2; i < otherList.size(); i++) {
+				final Skill impSkill = otherList.get(i);
 				lor.add(new ImportSkillsListItem(impSkill, null));
 			}
 			((Listbox) this.getFellow("listOtherRight")).setModel(lor);
@@ -195,17 +195,18 @@ public class ImportSkillsWindow extends Window {
 		}
 	}
 
-	private void parseTrees(XMLEventReader reader) throws Exception {
+	private void parseTrees(final XMLEventReader reader) throws Exception {
 		while (reader.hasNext()) {
-			XMLEvent nextEvent = reader.nextEvent();
-			int type = nextEvent.getEventType();
+			final XMLEvent nextEvent = reader.nextEvent();
+			final int type = nextEvent.getEventType();
 			if (type == XMLEvent.START_ELEMENT) {
-				StartElement elm = nextEvent.asStartElement();
+				final StartElement elm = nextEvent.asStartElement();
 				if (elm.getName().equals(qn_node)) {
 					parseNode(reader, nodeService.getRoot(groupsService
-							.getTreeRootName(getAttribute(
-									"SPRING_SECURITY_LAST_USERNAME",
-									SESSION_SCOPE).toString(),
+							.getTreeRootName(
+									getAttribute(
+											"SPRING_SECURITY_LAST_USERNAME",
+											SESSION_SCOPE).toString(),
 									SkillnetInitServlet.props)));
 				}
 			} else if (type == XMLEvent.END_ELEMENT) {
@@ -215,17 +216,17 @@ public class ImportSkillsWindow extends Window {
 		}
 	}
 
-	private void parseNode(XMLEventReader reader, Node parent)
+	private void parseNode(final XMLEventReader reader, final Node parent)
 			throws XMLStreamException {
-		Node node = new Node();
+		final Node node = new Node();
 		node.setParentNode(parent);
 
 		boolean childrenDone = false;
 		while (reader.hasNext()) {
-			XMLEvent nextEvent = reader.nextEvent();
-			int type = nextEvent.getEventType();
+			final XMLEvent nextEvent = reader.nextEvent();
+			final int type = nextEvent.getEventType();
 			if (type == XMLEvent.START_ELEMENT) {
-				StartElement elm = nextEvent.asStartElement();
+				final StartElement elm = nextEvent.asStartElement();
 				if (elm.getName().equals(qn_skill)) {
 					node.setSkill(parseSkill(elm));
 					nodesList.add(node);
@@ -242,12 +243,13 @@ public class ImportSkillsWindow extends Window {
 		}
 	}
 
-	private void parseSkills(XMLEventReader reader) throws XMLStreamException {
+	private void parseSkills(final XMLEventReader reader)
+			throws XMLStreamException {
 		while (reader.hasNext()) {
-			XMLEvent nextEvent = reader.nextEvent();
-			int type = nextEvent.getEventType();
+			final XMLEvent nextEvent = reader.nextEvent();
+			final int type = nextEvent.getEventType();
 			if (type == XMLEvent.START_ELEMENT) {
-				StartElement elm = nextEvent.asStartElement();
+				final StartElement elm = nextEvent.asStartElement();
 				if (elm.getName().equals(qn_skill)) {
 					parseSkill(elm);
 				}
@@ -258,13 +260,14 @@ public class ImportSkillsWindow extends Window {
 		}
 	}
 
-	private Skill parseSkill(StartElement elm) {
-		String name = elm.getAttributeByName(qn_name).getValue();
-		String eval = elm.getAttributeByName(qn_evaluable).getValue();
-		Skill skill = new Skill(null, name, new Date(), Boolean.valueOf(eval));
+	private Skill parseSkill(final StartElement elm) {
+		final String name = elm.getAttributeByName(qn_name).getValue();
+		final String eval = elm.getAttributeByName(qn_evaluable).getValue();
+		final Skill skill = new Skill(null, name, new Date(),
+				Boolean.valueOf(eval));
 		skill.setDescription(elm.getAttributeByName(qn_description).getValue());
 
-		List<Skill> skills = skillService.findAlike(name);
+		final List<Skill> skills = skillService.findAlike(name);
 
 		if (skills.size() > 0) {
 			mergedList.add(skill);
@@ -277,16 +280,16 @@ public class ImportSkillsWindow extends Window {
 	}
 
 	@Transactional
-	public void onImport(Event event) throws Exception {
+	public void onImport(final Event event) throws Exception {
 		if (nodesList.isEmpty())
 			importSkills();
 		else
 			importTrees();
 
-		int imported = mergedList.size() + otherList.size();
-		int merged = mergedMap.size();
-		int created = imported - merged;
-		String msg = Labels.getLabel("skillsImport.information");
+		final int imported = mergedList.size() + otherList.size();
+		final int merged = mergedMap.size();
+		final int created = imported - merged;
+		final String msg = Labels.getLabel("skillsImport.information");
 		Messagebox.show(MessageFormat.format(msg, imported, merged, created),
 				Labels.getLabel("skillsImport.info"), Messagebox.OK,
 				Messagebox.INFORMATION);
@@ -296,23 +299,28 @@ public class ImportSkillsWindow extends Window {
 	}
 
 	private void importSkills() throws Exception {
-		for (Object object : ((ListModelList) getPage().getVariable("lmlModel")))
+		for (final Object object : (ListModelList) getPage().getVariable(
+				"lmlModel"))
 			createSkill((ImportSkillsListItem) object);
-		for (Object object : ((ListModelList) getPage().getVariable("lmrModel")))
+		for (final Object object : (ListModelList) getPage().getVariable(
+				"lmrModel"))
 			createSkill((ImportSkillsListItem) object);
-		for (Object object : ((ListModelList) getPage().getVariable("lolModel")))
+		for (final Object object : (ListModelList) getPage().getVariable(
+				"lolModel"))
 			createSkill((ImportSkillsListItem) object);
-		for (Object object : ((ListModelList) getPage().getVariable("lorModel")))
+		for (final Object object : (ListModelList) getPage().getVariable(
+				"lorModel"))
 			createSkill((ImportSkillsListItem) object);
 	}
 
-	private Skill createSkill(ImportSkillsListItem impItem) throws Exception {
-		Skill skill = mergedMap.get(impItem.getImpSkill().getName());
+	private Skill createSkill(final ImportSkillsListItem impItem)
+			throws Exception {
+		final Skill skill = mergedMap.get(impItem.getImpSkill().getName());
 		if (skill == null) {
-			Skill impSkill = impItem.getImpSkill();
+			final Skill impSkill = impItem.getImpSkill();
 			impSkill.setSkillId(null);
 			impSkill.setCreated(new Date());
-			String login = getAttribute("SPRING_SECURITY_LAST_USERNAME",
+			final String login = getAttribute("SPRING_SECURITY_LAST_USERNAME",
 					SESSION_SCOPE).toString();
 			impSkill.setCreatedBy(usersService.getUser(login));
 			skillService.create(impSkill);
@@ -322,38 +330,38 @@ public class ImportSkillsWindow extends Window {
 	}
 
 	private void importTrees() throws Exception {
-		for (Node node : nodesList) {
-			Skill impSkill = node.getSkill();
-			Skill actSkill = mergedMap.get(impSkill.getName());
+		for (final Node node : nodesList) {
+			final Skill impSkill = node.getSkill();
+			final Skill actSkill = mergedMap.get(impSkill.getName());
 			node.setSkill(createSkill(new ImportSkillsListItem(impSkill,
 					actSkill)));
 			nodeService.create(node);
 		}
 	}
 
-	public void onCancel(Event event) {
+	public void onCancel(final Event event) {
 		try {
 			if (changed) {
-				int response = Messagebox.show(Labels
-						.getLabel("skillsImport.confirmation"), Labels
-						.getLabel("skillsImport.confirm"), Messagebox.YES
-						| Messagebox.NO, Messagebox.QUESTION);
+				final int response = Messagebox.show(
+						Labels.getLabel("skillsImport.confirmation"),
+						Labels.getLabel("skillsImport.confirm"), Messagebox.YES
+								| Messagebox.NO, Messagebox.QUESTION);
 				if (response == Messagebox.NO)
 					return;
 			}
 
 			this.detach();
-		} catch (InterruptedException ie) {
+		} catch (final InterruptedException ie) {
 			ie.printStackTrace();
 		}
 	}
 
-	public void onCheck(Event event) throws Exception {
-		Checkbox cb = (Checkbox) event.getTarget();
-		Bandbox bb = (Bandbox) cb.getParent().getChildren().get(1);
-		Listitem li = (Listitem) getParentComponent(cb, Listitem.class);
+	public void onCheck(final Event event) throws Exception {
+		final Checkbox cb = (Checkbox) event.getTarget();
+		final Bandbox bb = (Bandbox) cb.getParent().getChildren().get(1);
+		final Listitem li = (Listitem) getParentComponent(cb, Listitem.class);
 
-		ImportSkillsListItem item = (ImportSkillsListItem) li.getValue();
+		final ImportSkillsListItem item = (ImportSkillsListItem) li.getValue();
 
 		if (!cb.isChecked())
 			mergedMap.remove(item.getImpSkill().getName());
@@ -364,25 +372,24 @@ public class ImportSkillsWindow extends Window {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void onSearch(Event event) {
-		Textbox tb = (Textbox) event.getTarget();
-		Listbox lb = (Listbox) tb.getParent().getParent().getChildren().get(1);
+	public void onSearch(final Event event) {
+		final Textbox tb = (Textbox) event.getTarget();
+		final Listbox lb = (Listbox) tb.getParent().getParent().getChildren()
+				.get(1);
 		if (tb.getValue() != null && !"".equals(tb.getValue()))
-			lb
-					.setModel(new ListModelList(skillService.findAlike(tb
-							.getValue())));
+			lb.setModel(new ListModelList(skillService.findAlike(tb.getValue())));
 		else
 			lb.setModel(new ListModelList((List<Skill>) getPage().getVariable(
 					"skillList")));
 	}
 
-	public void onSkillSelect(Event event) throws Exception {
-		Listbox lb = (Listbox) event.getTarget();
-		Bandbox bb = (Bandbox) getParentComponent(lb, Bandbox.class);
-		Listitem li = (Listitem) getParentComponent(lb, Listitem.class);
+	public void onSkillSelect(final Event event) throws Exception {
+		final Listbox lb = (Listbox) event.getTarget();
+		final Bandbox bb = (Bandbox) getParentComponent(lb, Bandbox.class);
+		final Listitem li = (Listitem) getParentComponent(lb, Listitem.class);
 
-		ImportSkillsListItem item = (ImportSkillsListItem) li.getValue();
-		Skill skill = (Skill) lb.getSelectedItem().getValue();
+		final ImportSkillsListItem item = (ImportSkillsListItem) li.getValue();
+		final Skill skill = (Skill) lb.getSelectedItem().getValue();
 
 		item.setActSkill(skill);
 		mergedMap.put(item.getImpSkill().getName(), item.getActSkill());
@@ -391,11 +398,11 @@ public class ImportSkillsWindow extends Window {
 		bb.close();
 	}
 
-	private Component getParentComponent(Component component, Class<?> clazz)
-			throws Exception {
+	private Component getParentComponent(Component component,
+			final Class<?> clazz) throws Exception {
 		int index = 0;
-		while ((component != null)
-				&& !clazz.isInstance((component = component.getParent()))) {
+		while (component != null
+				&& !clazz.isInstance(component = component.getParent())) {
 			index++;
 			if (index == 50) {
 				throw new Exception("No parent " + clazz + " found!");
@@ -412,7 +419,7 @@ public class ImportSkillsWindow extends Window {
 		private Skill impSkill;
 		private Skill actSkill;
 
-		public ImportSkillsListItem(Skill impSkill, Skill actSkill) {
+		public ImportSkillsListItem(final Skill impSkill, final Skill actSkill) {
 			this.impSkill = impSkill;
 			this.actSkill = actSkill;
 		}
@@ -425,11 +432,11 @@ public class ImportSkillsWindow extends Window {
 			return actSkill;
 		}
 
-		public void setActSkill(Skill actSkill) {
+		public void setActSkill(final Skill actSkill) {
 			this.actSkill = actSkill;
 		}
 
-		public void setImpSkill(Skill impSkill) {
+		public void setImpSkill(final Skill impSkill) {
 			this.impSkill = impSkill;
 		}
 

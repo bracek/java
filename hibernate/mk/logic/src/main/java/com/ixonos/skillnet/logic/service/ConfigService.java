@@ -10,15 +10,15 @@ import com.ixonos.skillnet.logic.bean.Config;
  */
 public interface ConfigService {
 
-	public void saveProperty(String property, Object value, String description);
+	public void saveProperty(final String property,final  Object value,final  String description);
 	
 	public Map<String, Config> getProperties();
 	
-	public String getStringProperty(String property);
+	public String getStringProperty(final String property);
 	
-	public String getStringProperty(String property, String defaultValue);
+	public String getStringProperty(final String property,final  String defaultValue);
 	
-	public Integer getIntProperty(String property);
+	public Integer getIntProperty(final String property);
 	
-	public Integer getIntProperty(String property, Integer defaultValue);
+	public Integer getIntProperty(final String property,final  Integer defaultValue);
 }

@@ -23,7 +23,7 @@ public class FundService {
 	 *            the fund id_p
 	 * @return the fund by id
 	 */
-	public Fund getFundById(String fundId_p) {
+	public Fund getFundById(final String fundId_p) {
 		Fund fund = new Fund();
 
 		fund.setFundId(fundId_p);
@@ -65,7 +65,7 @@ public class FundService {
 	 *            the fund_p
 	 * @return the fund
 	 */
-	public Fund createFund(Fund fund_p) {
+	public Fund createFund(final Fund fund_p) {
 
 		logger_c.debug("Persisting fund in database: " + fund_p.toString());
 
@@ -83,7 +83,7 @@ public class FundService {
 	 *            the fund_p
 	 * @return the fund
 	 */
-	public Fund updateFund(Fund fund_p) {
+	public Fund updateFund(final Fund fund_p) {
 
 		logger_c.debug("Updating fund in database: " + fund_p.toString());
 
@@ -99,7 +99,7 @@ public class FundService {
 	 * @param fundId_p
 	 *            the fund id_p
 	 */
-	public void deleteFund(String fundId_p) {
+	public void deleteFund(final String fundId_p) {
 		logger_c.debug("Deleting fund from database: " + fundId_p.toString());
 
 	}

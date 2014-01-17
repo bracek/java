@@ -18,7 +18,7 @@ public class QueryModel implements Comparable<QueryModel>{
 		return skill;
 	}
 	
-	public void setSkill(Skill skill) {
+	public void setSkill(final Skill skill) {
 		this.skill = skill;
 	}
 	
@@ -26,7 +26,7 @@ public class QueryModel implements Comparable<QueryModel>{
 		return level;
 	}
 	
-	public void setLevel(CodeTable level) {
+	public void setLevel(final CodeTable level) {
 		this.level = level;
 	}
 	
@@ -34,7 +34,7 @@ public class QueryModel implements Comparable<QueryModel>{
 		return length;
 	}
 	
-	public void setLength(Integer length) {
+	public void setLength(final Integer length) {
 		this.length = length;
 	}
 	
@@ -42,7 +42,7 @@ public class QueryModel implements Comparable<QueryModel>{
 		return dateFrom;
 	}
 	
-	public void setDateFrom(Date dateFrom) {
+	public void setDateFrom(final Date dateFrom) {
 		this.dateFrom = dateFrom;
 	}
 	
@@ -50,7 +50,7 @@ public class QueryModel implements Comparable<QueryModel>{
 		return dateTo;
 	}
 	
-	public void setDateTo(Date dateTo) {
+	public void setDateTo(final Date dateTo) {
 		this.dateTo = dateTo;
 	}
 	
@@ -61,7 +61,7 @@ public class QueryModel implements Comparable<QueryModel>{
     }
 	
 	@Override
-	public int compareTo(QueryModel qModel) {
+	public int compareTo(final QueryModel qModel) {
 		return getSkill().getName().compareTo(qModel.getSkill().getName());
 	}
 }

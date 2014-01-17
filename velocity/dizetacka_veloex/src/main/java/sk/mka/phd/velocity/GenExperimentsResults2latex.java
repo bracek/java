@@ -24,7 +24,7 @@ public class GenExperimentsResults2latex extends AbstractGenerateExperimentsAver
     public static final String INPUT_EXPERIMENTS_TEX_VM = "input/experiments/table_tex_experiments.vm";
     private static org.apache.log4j.Logger logger = Logger.getLogger(GenExperimentsResults2latex.class);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
         GenExperimentsResults2latex x = new GenExperimentsResults2latex();
         x.start();
     }
@@ -47,12 +47,12 @@ public class GenExperimentsResults2latex extends AbstractGenerateExperimentsAver
     }
 
     @Override
-    public void setUpFolderPath(String lastFolder) {
+    public void setUpFolderPath(final String lastFolder) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void extracPopClassBFromFolderName(String folderName, ArrayList expArrayList) {
+    public void extracPopClassBFromFolderName(final String folderName,final  ArrayList expArrayList) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

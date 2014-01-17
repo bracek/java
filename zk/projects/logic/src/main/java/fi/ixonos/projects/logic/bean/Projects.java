@@ -70,7 +70,7 @@ public class Projects implements Serializable {
     public Projects() {
     }
 
-    public Projects(Integer projectsId) {
+    public Projects(final Integer projectsId) {
         this.projectsId = projectsId;
     }
 
@@ -78,7 +78,7 @@ public class Projects implements Serializable {
         return projectsId;
     }
 
-    public void setProjectsId(Integer projectsId) {
+    public void setProjectsId(final Integer projectsId) {
         this.projectsId = projectsId;
     }
 
@@ -86,7 +86,7 @@ public class Projects implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -94,7 +94,7 @@ public class Projects implements Serializable {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -102,7 +102,7 @@ public class Projects implements Serializable {
         return dateFrom;
     }
 
-    public void setDateFrom(Date dateFrom) {
+    public void setDateFrom(final Date dateFrom) {
         this.dateFrom = dateFrom;
     }
 
@@ -110,7 +110,7 @@ public class Projects implements Serializable {
         return dateTo;
     }
 
-    public void setDateTo(Date dateTo) {
+    public void setDateTo(final Date dateTo) {
         this.dateTo = dateTo;
     }
 
@@ -118,7 +118,7 @@ public class Projects implements Serializable {
         return usersCollection;
     }
 
-    public void setUsersCollection(Collection<Users> usersCollection) {
+    public void setUsersCollection(final Collection<Users> usersCollection) {
         this.usersCollection = usersCollection;
     }
 
@@ -126,11 +126,11 @@ public class Projects implements Serializable {
         return usersOpenedCollection;
     }
 
-    public void setUsersOpenedCollection(Collection<Users> usersOpenedCollection) {
+    public void setUsersOpenedCollection(final Collection<Users> usersOpenedCollection) {
         this.usersOpenedCollection = usersOpenedCollection;
     }
 
-    public void setDirty(boolean dirty) {
+    public void setDirty(final boolean dirty) {
         this.dirty = dirty;
     }
 
@@ -146,7 +146,7 @@ public class Projects implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Projects)) {
             return false;

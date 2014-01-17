@@ -24,7 +24,7 @@ public class GenerateResults2latex {
 
     private static org.apache.log4j.Logger log = Logger.getLogger(GenerateResults2latex.class);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
 
         final LoadData loadInputData = new LoadInputDataImpl();
         final String numbers[][] = loadInputData.loadData(Const.INPUT.RESULTS);

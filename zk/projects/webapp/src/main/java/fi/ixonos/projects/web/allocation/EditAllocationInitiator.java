@@ -17,16 +17,16 @@ import org.zkoss.zul.ListModelList;
  */
 public class EditAllocationInitiator extends AnnotateDataBinderInit {
 
-    private UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
 
     @Override
-    public void doAfterCompose(Page page, Component[] comps) throws Exception {
+    public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {
         getWindow(comps).init();
 	page.setVariable("userSourceList", new ListModelList(usersService.getSortedUsers("surname")));
         super.doAfterCompose(page, comps);
     }
 
-    private EditAllocationWindow getWindow(Component[] comps) {
+    private EditAllocationWindow getWindow(final Component[] comps) {
         for (Component comp : comps)
             if (comp instanceof EditAllocationWindow)
                 return (EditAllocationWindow) comp;

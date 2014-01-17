@@ -49,11 +49,11 @@ public class AclClass implements Serializable {
     public AclClass() {
     }
 
-    public AclClass(Integer id) {
+    public AclClass(final Integer id) {
         this.id = id;
     }
 
-    public AclClass(Integer id, String class1) {
+    public AclClass(final Integer id,final  String class1) {
         this.id = id;
         this.class1 = class1;
     }
@@ -62,7 +62,7 @@ public class AclClass implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -70,7 +70,7 @@ public class AclClass implements Serializable {
         return class1;
     }
 
-    public void setClass1(String class1) {
+    public void setClass1(final String class1) {
         this.class1 = class1;
     }
 
@@ -78,7 +78,7 @@ public class AclClass implements Serializable {
         return aclObjectIdentityCollection;
     }
 
-    public void setAclObjectIdentityCollection(List<AclObjectIdentity> aclObjectIdentityCollection) {
+    public void setAclObjectIdentityCollection(final List<AclObjectIdentity> aclObjectIdentityCollection) {
         this.aclObjectIdentityCollection = aclObjectIdentityCollection;
     }
 
@@ -90,7 +90,7 @@ public class AclClass implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof AclClass)) {
             return false;

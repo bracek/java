@@ -31,22 +31,22 @@ public class CriteriaTreeModel implements TreeModel {
      */
     private CriteriaTreeNode root = new CriteriaTreeNode(-1);
     
-    public void setRoot(CriteriaTreeItem item) {
+    public void setRoot(final CriteriaTreeItem item) {
         root.setChild(item);
     }
     
     @Override
-    public void addTreeDataListener(TreeDataListener l) {
+    public void addTreeDataListener(final TreeDataListener l) {
         listenerList.add(l);        
     }
     
     @Override
-    public void removeTreeDataListener(TreeDataListener l) {
+    public void removeTreeDataListener(final TreeDataListener l) {
         listenerList.remove(l);        
     }
     
     @Override
-    public Object getChild(Object parent, int index) {
+    public Object getChild(final Object parent,final  int index) {
         if (parent instanceof CriteriaTreeNode) {
             return ((CriteriaTreeNode)parent).getChild(index);
         }
@@ -55,7 +55,7 @@ public class CriteriaTreeModel implements TreeModel {
     }
     
     @Override
-    public int getChildCount(Object parent) {
+    public int getChildCount(final Object parent) {
         if (parent instanceof CriteriaTreeNode) {
             return ((CriteriaTreeNode)parent).getChildCount();
         }
@@ -64,7 +64,7 @@ public class CriteriaTreeModel implements TreeModel {
     }
     
     @Override
-    public int[] getPath(Object parent, Object lastNode) {
+    public int[] getPath(final Object parent,final  Object lastNode) {
         if (parent instanceof CriteriaTreeNode && lastNode instanceof CriteriaTreeItem) {
             List<Integer> retList = ((CriteriaTreeNode)parent).getChildPath((CriteriaTreeItem)lastNode);
             if (retList!=null) {
@@ -85,7 +85,7 @@ public class CriteriaTreeModel implements TreeModel {
      * @param path
      * @return
      */
-    private static int[] revertPath(int[] path) {
+    private static int[] revertPath(final int[] path) {
         if (path==null || path.length==0) {
             return new int[0];
         }
@@ -129,7 +129,7 @@ public class CriteriaTreeModel implements TreeModel {
      * @param destItem the destination tree node or the destination tree node's child
      * @return reference to the moved item, or null in case of fail
      */
-    public CriteriaTreeItem moveItem(CriteriaTreeItem srcItem, CriteriaTreeItem destItem) {
+    public CriteriaTreeItem moveItem(final CriteriaTreeItem srcItem,final  CriteriaTreeItem destItem) {
         CriteriaTreeNode destNode = null;
         if (destItem instanceof CriteriaTreeNode){
             destNode = (CriteriaTreeNode) destItem;
@@ -155,7 +155,7 @@ public class CriteriaTreeModel implements TreeModel {
      * @param childNode
      * @return true if <code>childNode</code>'s parent is <code>parentNode</code>
      */
-    public boolean isInSubTree(CriteriaTreeNode parentNode, CriteriaTreeItem childNode) {
+    public boolean isInSubTree(final CriteriaTreeNode parentNode,final  CriteriaTreeItem childNode) {
         CriteriaTreeItem parent = parentNode;
                 
         if (((CriteriaTreeNode)parent).getChildIndex(childNode)!=-1) {
@@ -178,7 +178,7 @@ public class CriteriaTreeModel implements TreeModel {
      * @param parentNode
      * @param childItem
      */
-    public void addChild(CriteriaTreeNode parentNode, CriteriaTreeItem childItem) {
+    public void addChild(final CriteriaTreeNode parentNode,final  CriteriaTreeItem childItem) {
         parentNode.addChild(childItem);     
     }
     
@@ -188,7 +188,7 @@ public class CriteriaTreeModel implements TreeModel {
      * @param parentNode
      * @param childItem
      */
-    public void removeChild(CriteriaTreeNode parentNode, CriteriaTreeItem childItem) {
+    public void removeChild(final CriteriaTreeNode parentNode,final  CriteriaTreeItem childItem) {
         if (parentNode!=null) {
             parentNode.removeChild(childItem);
         }
@@ -203,7 +203,7 @@ public class CriteriaTreeModel implements TreeModel {
      * @param childItem
      * @return reference to the deleted node's parent
      */
-    public CriteriaTreeItem removeChild(CriteriaTreeItem childItem) {
+    public CriteriaTreeItem removeChild(final CriteriaTreeItem childItem) {
         CriteriaTreeNode parentNode = getParent(childItem);
         removeChild(parentNode, childItem);
         return parentNode;
@@ -215,7 +215,7 @@ public class CriteriaTreeModel implements TreeModel {
      * @param child
      * @return
      */
-    public CriteriaTreeNode getParent(CriteriaTreeItem child) {
+    public CriteriaTreeNode getParent(final CriteriaTreeItem child) {
         int[] pathToChild = getPath(root, child);        
         int[] pathToParent = Arrays.copyOfRange(pathToChild, 0, pathToChild.length-1);
         CriteriaTreeNode parent = root;
@@ -240,7 +240,7 @@ public class CriteriaTreeModel implements TreeModel {
      * @param wrappingTreeNode the wrapping node
      * @return reference to the wrapped item (<code>treeItem</code>), or null in case of fail
      */
-    public CriteriaTreeItem wrapItem(CriteriaTreeItem treeItem, CriteriaTreeNode wrappingTreeNode) {
+    public CriteriaTreeItem wrapItem(final CriteriaTreeItem treeItem,final  CriteriaTreeNode wrappingTreeNode) {
         CriteriaTreeNode treeItemParent = getParent(treeItem);
         if (treeItemParent==null) {
             logger.error("Can't find parent of " + treeItem + "!");
@@ -258,7 +258,7 @@ public class CriteriaTreeModel implements TreeModel {
     }
     
     @Override
-    public boolean isLeaf(Object node) {
+    public boolean isLeaf(final Object node) {
         return (node instanceof CriteriaTreeLeaf);
     }   
 

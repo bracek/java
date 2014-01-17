@@ -15,7 +15,7 @@ import com.ixonos.skillnet.logic.dao.GroupsDAO;
 public class GroupsDAOImpl extends GenericDAOImpl<Groups> implements GroupsDAO {
 
    @Autowired
-   public GroupsDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public GroupsDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
 }

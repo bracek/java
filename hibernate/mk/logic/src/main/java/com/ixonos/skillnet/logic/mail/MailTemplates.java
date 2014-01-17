@@ -27,11 +27,11 @@ public class MailTemplates {
 		return mailTemplates;
 	}
 	
-	public void addTemplate(String templateName, String templateText) {
+	public void addTemplate(final String templateName,final  String templateText) {
 		templatesMap.put(templateName, templateText);
 	}
 	
-	public String getTemplate(Template template) throws Exception {
+	public String getTemplate(final Template template) throws Exception {
 		String templateText = templatesMap.get(template.toString());
 		if (templateText == null) {
 			throw new Exception("Template " + template.toString() + " not found!");
@@ -40,7 +40,7 @@ public class MailTemplates {
 		}
 	}
 	
-	public String getSubjectFromTemplate(String templateText) {
+	public String getSubjectFromTemplate(final String templateText) {
 		String titleStart = "<title>";
 		int startIndex = templateText.indexOf(titleStart);
 		int endIndex = templateText.indexOf("</title>");

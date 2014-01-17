@@ -21,11 +21,11 @@ import org.springframework.security.userdetails.User;
  */
 public class UsersEditDetailInitiator extends AnnotateDataBinderInit {
 
-	protected UsersService usersService = (UsersService) SpringUtil
+	protected UsersService usersService = (final UsersService) SpringUtil
 			.getApplicationContext().getBean("usersService");
 
 	@Override
-	public void doAfterCompose(Page page, Component[] comps) throws Exception {
+	public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {
 
 		final String userName = ((User) SecurityContextHolder
 				.getContext().getAuthentication().getPrincipal()).getUsername();

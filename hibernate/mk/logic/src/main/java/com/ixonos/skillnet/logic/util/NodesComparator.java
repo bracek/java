@@ -10,11 +10,11 @@ public class NodesComparator implements Comparator {
 	private boolean _asc;
 
 
-	public NodesComparator(boolean asc) {
+	public NodesComparator(final boolean asc) {
 		_asc = asc;
 	}
 
-	public int compare(Object o1, Object o2) {
+	public int compare(final Object o1,final  Object o2) {
 		Node node1 = (Node) o1;
 		Node node2 = (Node) o2;
 		String node1SkillName = node1.getSkill().getName();

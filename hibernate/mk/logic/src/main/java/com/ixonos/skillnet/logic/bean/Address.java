@@ -62,7 +62,7 @@ public class Address implements Serializable {
     /**
      * Sets id (primary key).
      */
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
     
@@ -76,7 +76,7 @@ public class Address implements Serializable {
     /**
      * Sets address.
      */
-	public void setAddress(String address) {
+	public void setAddress(final String address) {
 		this.address = address;
 	}
 
@@ -90,7 +90,7 @@ public class Address implements Serializable {
     /**
      * Sets city.
      */
-	public void setCity(String city) {
+	public void setCity(final String city) {
 		this.city = city;
 	}
 
@@ -104,7 +104,7 @@ public class Address implements Serializable {
     /**
      * Sets state.
      */
-	public void setState(String state) {
+	public void setState(final String state) {
 		this.state = state;
 	}
 
@@ -119,7 +119,7 @@ public class Address implements Serializable {
     /**
      * Sets zip or postal code.
      */
-	public void setZipPostal(String zipPostal) {
+	public void setZipPostal(final String zipPostal) {
 		this.zipPostal = zipPostal;
 	}
 
@@ -133,7 +133,7 @@ public class Address implements Serializable {
     /**
      * Sets country.
      */
-    public void setCountry(String country) {
+    public void setCountry(final String country) {
         this.country = country;
     }
 
@@ -147,7 +147,7 @@ public class Address implements Serializable {
     /**
      * Sets date created.
      */
-	public void setCreated(Date created) {
+	public void setCreated(final Date created) {
 		this.created = created;
 	}
 	
@@ -187,7 +187,7 @@ public class Address implements Serializable {
      * Indicates whether some other object is equal to this one.
      */
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -214,7 +214,7 @@ public class Address implements Serializable {
      * Validates 'addressForm' view state after binding to address.
      * Spring Web Flow activated validation ('validate' + ${state}).
      */
-    public void validateAddressForm(MessageContext context) {
+    public void validateAddressForm(final MessageContext context) {
         if (!StringUtils.hasText(address)) {
             context.addMessage(new MessageBuilder().error().source("address").code("address.form.address.error").build());
         }

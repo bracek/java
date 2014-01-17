@@ -12,7 +12,7 @@ import sk.mka.phd.tools.maven2.Mvn2tools;
  */
 public class RunBpMomentumFonikAverageExperiments {
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         try {
             String directorySuffix = null;
             directorySuffix = Mvn2tools.getPomValue(Mvn2tools.EXP_BPMOMENTUM_FONIK);

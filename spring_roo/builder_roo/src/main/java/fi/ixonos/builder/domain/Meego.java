@@ -43,7 +43,7 @@ public class Meego {
 		return project;
 	}
 
-	public void setProject(Projects project) {
+	public void setProject(final Projects project) {
 		this.project = project;
 	}
 

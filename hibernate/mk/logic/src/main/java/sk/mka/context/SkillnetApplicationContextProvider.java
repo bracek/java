@@ -14,7 +14,7 @@ import org.springframework.beans.BeansException;
 public class SkillnetApplicationContextProvider implements ApplicationContextAware {
 
     @Override
-    public void setApplicationContext(ApplicationContext ctx) throws BeansException {
+    public void setApplicationContext(final ApplicationContext ctx) throws BeansException {
          SkillnetApplicationContext.setApplicationContext(ctx);
      }
 

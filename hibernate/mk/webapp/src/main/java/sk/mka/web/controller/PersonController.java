@@ -29,7 +29,7 @@ public class PersonController {
      * Deletes a person.
      */
     @RequestMapping(value = "/person/delete.do")
-    public ModelAndView delete(@RequestParam("id") Integer id) {
+    public ModelAndView delete(final @RequestParam("id") Integer id) {
         Person person = new Person();
         person.setId(id);
 

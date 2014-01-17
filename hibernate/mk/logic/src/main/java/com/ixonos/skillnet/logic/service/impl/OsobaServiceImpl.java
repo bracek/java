@@ -24,7 +24,7 @@ public class OsobaServiceImpl extends AbstractGenericService<Osoba> implements O
     private static final Log logger = LogFactory.getLog(BookServiceImpl.class);
 
     @Override
-    public Collection<Osoba> findPersonsByLastName(String lastName) {
+    public Collection<Osoba> findPersonsByLastName(final String lastName) {
        return osobaDao.findPersonsByLastName(lastName);
     }
 

@@ -13,7 +13,7 @@ import sk.mka.phd.matlab.cons.Const;
  */
 public class GraphAPatternSuccessThread extends Thread {
 
-    public GraphAPatternSuccessThread(String jmeno) {
+    public GraphAPatternSuccessThread(final String jmeno) {
         super(jmeno);
     }
 

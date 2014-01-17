@@ -90,11 +90,11 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
     public Skill() {
     }
 
-    public Skill(Integer skillId) {
+    public Skill(final Integer skillId) {
         this.skillId = skillId;
     }
 
-    public Skill(Integer skillId, String name, Date created, Boolean valuable) {
+    public Skill(final Integer skillId,final  String name,final  Date created,final  Boolean valuable) {
         this.skillId = skillId;
         this.name = name;
         this.created = created;
@@ -105,7 +105,7 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         return skillId;
     }
 
-    public void setSkillId(Integer skillId) {
+    public void setSkillId(final Integer skillId) {
         this.skillId = skillId;
     }
 
@@ -113,7 +113,7 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -121,7 +121,7 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -129,7 +129,7 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(final Date created) {
         this.created = created;
     }
 
@@ -137,7 +137,7 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         return modified;
     }
 
-    public void setModified(Date modified) {
+    public void setModified(final Date modified) {
         this.modified = modified;
     }
 
@@ -145,7 +145,7 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         return valuable;
     }
 
-    public void setValuable(Boolean valuable) {
+    public void setValuable(final Boolean valuable) {
         this.valuable = valuable;
     }
 
@@ -153,7 +153,7 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         return nodeCollection;
     }
 
-    public void setNodeCollection(List<Node> nodeCollection) {
+    public void setNodeCollection(final List<Node> nodeCollection) {
         this.nodeCollection = nodeCollection;
     }
 
@@ -161,7 +161,7 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         return createdBy;
     }
 
-    public void setCreatedBy(Users createdBy) {
+    public void setCreatedBy(final Users createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -169,7 +169,7 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         return modifiedBy;
     }
 
-    public void setModifiedBy(Users modifiedBy) {
+    public void setModifiedBy(final Users modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
 
@@ -177,11 +177,11 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         return practicumCollection;
     }
 
-    public void setPracticumCollection(List<Practicum> practicumCollection) {
+    public void setPracticumCollection(final List<Practicum> practicumCollection) {
         this.practicumCollection = practicumCollection;
     }
 
-    public void setKeyWord(String keyWord) {
+    public void setKeyWord(final String keyWord) {
 		this.keyWord = keyWord;
 	}
 
@@ -197,7 +197,7 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Skill)) {
             return false;

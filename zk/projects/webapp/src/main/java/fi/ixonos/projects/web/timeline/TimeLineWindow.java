@@ -61,7 +61,7 @@ public class TimeLineWindow extends Window {
         setProjectsTimelineModel((Listbox) getFellow("select"));
     }
 
-    public void onTimelineListboxSelected(Event event) throws InterruptedException, Exception {
+    public void onTimelineListboxSelected(final Event event) throws InterruptedException, Exception {
         Combobox timeline = (Combobox) getFellow("timelineCombobox");
         Listbox listbox = (Listbox) getFellow("select");
         for (Object object : listbox.getItems()) {
@@ -86,7 +86,7 @@ public class TimeLineWindow extends Window {
         }
     }
 
-    public void onTimelineComboboxSelected(Event event) {
+    public void onTimelineComboboxSelected(final Event event) {
         Combobox timeline = (Combobox) getFellow("timelineCombobox");
         Listbox listbox = (Listbox) getFellow("select");
         assignedColors.clear(); // release allocated color resources
@@ -97,7 +97,7 @@ public class TimeLineWindow extends Window {
         }
     }
 
-    private void setProjectsTimelineModel(Listbox listbox) {
+    private void setProjectsTimelineModel(final Listbox listbox) {
         final ProjectsService projectService = (ProjectsService) SpringUtil.getApplicationContext().getBean("projectsService");
         List<Projects> projectList = projectService.readAll();
         listbox.getChildren().clear();
@@ -110,7 +110,7 @@ public class TimeLineWindow extends Window {
         listbox.setModel(new ListModelList(projectList));
         listbox.setItemRenderer(new ListitemRenderer() {
             @Override
-            public void render(Listitem item, Object data) throws Exception {
+            public void render(final Listitem item,final  Object data) throws Exception {
                 Listcell colorCell = new Listcell();
                 Panel panel = new Panel();
                 panel.setWidth("20px");
@@ -127,7 +127,7 @@ public class TimeLineWindow extends Window {
         //listbox.setSelectedItems(null);
     }
 
-    private void setUsersTimelineModel(Listbox listbox) {
+    private void setUsersTimelineModel(final Listbox listbox) {
         final UsersService userService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
         List<Users> userList = userService.getSortedUsers("surname");
         listbox.getChildren().clear();
@@ -140,7 +140,7 @@ public class TimeLineWindow extends Window {
         listbox.setModel(new ListModelList(userList));
         listbox.setItemRenderer(new ListitemRenderer() {
             @Override
-            public void render(Listitem item, Object data) throws Exception {
+            public void render(final Listitem item,final  Object data) throws Exception {
                 Listcell colorCell = new Listcell();
                 Panel panel = new Panel();
                 panel.setWidth("20px");
@@ -165,7 +165,7 @@ public class TimeLineWindow extends Window {
      * 
      * @return get timeline for all users
      */
-    public static ListModelList getUsersTimeLineModel(List<Listitem> itemsList) throws Exception {
+    public static ListModelList getUsersTimeLineModel(final List<Listitem> itemsList) throws Exception {
         final UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
 
         final ListModelList model = new ListModelList();
@@ -209,7 +209,7 @@ public class TimeLineWindow extends Window {
      *
      * @return timeline for all available projects
      */
-    public ListModelList getProjectsTimeLineModel(List<Listitem> itemsList) {
+    public ListModelList getProjectsTimeLineModel(final List<Listitem> itemsList) {
         ListModelList model = new ListModelList();
 
         for (Listitem listitem : itemsList) {
@@ -247,7 +247,7 @@ public class TimeLineWindow extends Window {
 
     }
 
-    private void setTimeline(ListModelList model) {
+    private void setTimeline(final ListModelList model) {
         Bandinfo bandinfo = (Bandinfo) this.getFellow("bandTimeline");
         bandinfo.setModel(new BindingListModelList(model, true));
         Iterator<OccurEvent> iterator = model.iterator();
@@ -274,11 +274,11 @@ public class TimeLineWindow extends Window {
         return color;
     }
 
-    private void releaseColor(String color) {
+    private void releaseColor(final String color) {
         assignedColors.remove(color);
     }
 
-    private String generateColor(int threshold) {
+    private String generateColor(final int threshold) {
         StringBuilder sb = new StringBuilder("#");
         sb.append(Integer.toHexString(random.nextInt(threshold))); // red
         sb.append(Integer.toHexString(random.nextInt(threshold))); // green

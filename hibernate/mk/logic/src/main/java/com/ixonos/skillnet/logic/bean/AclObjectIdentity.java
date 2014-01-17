@@ -71,11 +71,11 @@ public class AclObjectIdentity implements Serializable {
     public AclObjectIdentity() {
     }
 
-    public AclObjectIdentity(Integer id) {
+    public AclObjectIdentity(final Integer id) {
         this.id = id;
     }
 
-    public AclObjectIdentity(Integer id, Long objectIdIdentity, Boolean entriesInheriting) {
+    public AclObjectIdentity(final Integer id,final  Long objectIdIdentity,final  Boolean entriesInheriting) {
         this.id = id;
         this.objectIdIdentity = objectIdIdentity;
         this.entriesInheriting = entriesInheriting;
@@ -85,7 +85,7 @@ public class AclObjectIdentity implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -93,7 +93,7 @@ public class AclObjectIdentity implements Serializable {
         return objectIdIdentity;
     }
 
-    public void setObjectIdIdentity(Long objectIdIdentity) {
+    public void setObjectIdIdentity(final Long objectIdIdentity) {
         this.objectIdIdentity = objectIdIdentity;
     }
 
@@ -101,7 +101,7 @@ public class AclObjectIdentity implements Serializable {
         return entriesInheriting;
     }
 
-    public void setEntriesInheriting(Boolean entriesInheriting) {
+    public void setEntriesInheriting(final Boolean entriesInheriting) {
         this.entriesInheriting = entriesInheriting;
     }
 
@@ -109,7 +109,7 @@ public class AclObjectIdentity implements Serializable {
         return objectIdClass;
     }
 
-    public void setObjectIdClass(AclClass objectIdClass) {
+    public void setObjectIdClass(final AclClass objectIdClass) {
         this.objectIdClass = objectIdClass;
     }
 
@@ -117,7 +117,7 @@ public class AclObjectIdentity implements Serializable {
         return aclObjectIdentityCollection;
     }
 
-    public void setAclObjectIdentityCollection(List<AclObjectIdentity> aclObjectIdentityCollection) {
+    public void setAclObjectIdentityCollection(final List<AclObjectIdentity> aclObjectIdentityCollection) {
         this.aclObjectIdentityCollection = aclObjectIdentityCollection;
     }
 
@@ -125,7 +125,7 @@ public class AclObjectIdentity implements Serializable {
         return parentObject;
     }
 
-    public void setParentObject(AclObjectIdentity parentObject) {
+    public void setParentObject(final AclObjectIdentity parentObject) {
         this.parentObject = parentObject;
     }
 
@@ -133,7 +133,7 @@ public class AclObjectIdentity implements Serializable {
         return ownerSid;
     }
 
-    public void setOwnerSid(AclSid ownerSid) {
+    public void setOwnerSid(final AclSid ownerSid) {
         this.ownerSid = ownerSid;
     }
 
@@ -141,7 +141,7 @@ public class AclObjectIdentity implements Serializable {
         return aclEntryCollection;
     }
 
-    public void setAclEntryCollection(List<AclEntry> aclEntryCollection) {
+    public void setAclEntryCollection(final List<AclEntry> aclEntryCollection) {
         this.aclEntryCollection = aclEntryCollection;
     }
 
@@ -153,7 +153,7 @@ public class AclObjectIdentity implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof AclObjectIdentity)) {
             return false;

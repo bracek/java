@@ -17,5 +17,5 @@ public interface UsersDAO extends GenericDAO<Users> {
 	 * 
 	 * @return the users with few skills
 	 */
-	public List<Users> getUsersWithFewSkills(Integer minimumSkills);
+	public List<Users> getUsersWithFewSkills(final Integer minimumSkills);
 }

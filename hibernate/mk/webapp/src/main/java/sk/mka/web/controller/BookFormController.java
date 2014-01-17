@@ -42,7 +42,7 @@ public class BookFormController {
      * Gets a person based on it's id.
      */
     @RequestMapping(value = "/book/edit.do")
-    public ModelAndView info(@RequestParam("id") Integer id) {
+    public ModelAndView info(final @RequestParam("id") Integer id) {
         Book result = bookService.load(id);
         return new ModelAndView(FORM_VIEW_KEY, FORM_MODEL_KEY, result);
     }
@@ -51,7 +51,7 @@ public class BookFormController {
      * Saves a person.
      */
     @RequestMapping(value = "/book/save.do")
-    public ModelAndView save(Book book) {
+    public ModelAndView save(final Book book) {
         bookService.create(book);
         return new ModelAndView(SEARCH_VIEW_KEY, search());
     }
@@ -71,7 +71,7 @@ public class BookFormController {
      * Deletes a person.
      */
     @RequestMapping(value = "/book/delete.do")
-    public ModelAndView delete(@RequestParam("id") Integer id) {
+    public ModelAndView delete(final @RequestParam("id") Integer id) {
         Book book = bookService.load(id);
         bookService.delete(book);
         return new ModelAndView(SEARCH_VIEW_KEY, search());

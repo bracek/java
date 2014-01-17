@@ -51,7 +51,7 @@ public class PracticumView implements Serializable {
     @Column(name = "location")
     private String location;
 
-	public void setUsername(String username) {
+	public void setUsername(final String username) {
 		this.username = username;
 	}
 
@@ -59,7 +59,7 @@ public class PracticumView implements Serializable {
 		return username;
 	}
 
-	public void setSkill(String skill) {
+	public void setSkill(final String skill) {
 		this.skill = skill;
 	}
 
@@ -67,7 +67,7 @@ public class PracticumView implements Serializable {
 		return skill;
 	}
 
-	public void setLevel(String level) {
+	public void setLevel(final String level) {
 		this.level = level;
 	}
 
@@ -75,7 +75,7 @@ public class PracticumView implements Serializable {
 		return level;
 	}
 
-	public void setLevel_index(Integer level_index) {
+	public void setLevel_index(final Integer level_index) {
 		this.level_index = level_index;
 	}
 
@@ -83,7 +83,7 @@ public class PracticumView implements Serializable {
 		return level_index;
 	}
 
-	public void setId(Integer id) {
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 
@@ -91,7 +91,7 @@ public class PracticumView implements Serializable {
 		return id;
 	}
 	
-	public void setFirst_name(String first_name) {
+	public void setFirst_name(final String first_name) {
         this.first_name = first_name;
     }
 
@@ -99,7 +99,7 @@ public class PracticumView implements Serializable {
         return first_name;
     }
     
-    public void setLast_name(String last_name) {
+    public void setLast_name(final String last_name) {
         this.last_name = last_name;
     }
 
@@ -107,7 +107,7 @@ public class PracticumView implements Serializable {
         return last_name;
     }
     
-    public void setFull_name(String full_name) {
+    public void setFull_name(final String full_name) {
         this.full_name = full_name;
     }
 
@@ -115,7 +115,7 @@ public class PracticumView implements Serializable {
         return full_name;
     }
     
-    public void setLocation(String location) {
+    public void setLocation(final String location) {
         this.location = location;
     }
 
@@ -123,7 +123,7 @@ public class PracticumView implements Serializable {
         return location;
     }
     
-    public void setPosition(String position) {
+    public void setPosition(final String position) {
         this.position = position;
     }
 

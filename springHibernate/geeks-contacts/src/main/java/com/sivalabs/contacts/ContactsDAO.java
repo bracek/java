@@ -20,13 +20,13 @@ public class ContactsDAO
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public Contact getById(int id)
+	public Contact getById(final int id)
 	{
 		return (Contact) sessionFactory.getCurrentSession().get(Contact.class, id);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Contact> searchContacts(String name)
+	public List<Contact> searchContacts(final String name)
 	{
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Contact.class);
 		criteria.add(Restrictions.ilike("name", name+"%"));
@@ -40,17 +40,17 @@ public class ContactsDAO
 		return criteria.list();
 	}
 	
-	public int save(Contact contact)
+	public int save(final Contact contact)
 	{
 		return (Integer) sessionFactory.getCurrentSession().save(contact);
 	}
 	
-	public void update(Contact contact)
+	public void update(final Contact contact)
 	{
 		sessionFactory.getCurrentSession().merge(contact);
 	}
 	
-	public void delete(int id)
+	public void delete(final int id)
 	{
 		Contact c = getById(id);
 		sessionFactory.getCurrentSession().delete(c);

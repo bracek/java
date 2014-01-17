@@ -110,7 +110,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 	private Thread taskThread;
 
 	@Override
-	public void doAfterCompose(Component comp) throws Exception {
+	public void doAfterCompose(final Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		prepareIcons();
 		skillnetTreeModel.setRootName(groupsService.getTreeRootName(
@@ -128,7 +128,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		listModelCombobox = new ListModelList();
 		listModelCombobox.addAll(codes);
 		tree.addEventListener("onSelect", new EventListener() {
-			public void onEvent(Event e) throws Exception {
+			public void onEvent(final Event e) throws Exception {
 				onTreeItemSelect();
 				listSkill.setSelectedItem(null);
 			}
@@ -137,13 +137,13 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		listSkill.setItemRenderer(this);
 		listSkill.addEventListener("onLoad", new EventListener() {
 			@Override
-			public void onEvent(Event e) throws Exception {
+			public void onEvent(final Event e) throws Exception {
 				listSkill.setModel(listModelList);
 			}
 		});
 		listSkill.addEventListener("onSelect", new EventListener() {
 			@SuppressWarnings("unchecked")
-			public void onEvent(Event e) throws Exception {
+			public void onEvent(final Event e) throws Exception {
 				int index = listSkill.getSelectedIndex();
 				selectedSkill =  (Skill) ((ListModelList) listSkill.getModel()).get(index);
 				//if panel is opened
@@ -234,7 +234,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		setPracticumTable(selectedSkill);
 	}
 	
-	private void setPracticumTable(Skill skill) {
+	private void setPracticumTable(final Skill skill) {
 		skillabel.setValue(skill.getName());
 		listModelPracticumGrid.clear();
 		listModelPracticumGrid.addAll(practicumService.getPracticum(user,
@@ -281,7 +281,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		icons.put("advanced", image);
 	}
 
-	private Image getImage(Integer level) {
+	private Image getImage(final Integer level) {
 		if (0 == level)
 			return (Image) icons.get("beginner").clone();
 		else if (1 == level)
@@ -298,7 +298,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 			return (Image) icons.get("empty").clone();
 	}
 
-	private Practicum getYoungestPracticum(Users user, Skill skill) {
+	private Practicum getYoungestPracticum(final Users user,final  Skill skill) {
 		List<Practicum> practicumList = practicumService.getPracticum(user,
 				skill);
 		if (practicumList.size() != 0) {
@@ -360,7 +360,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 	}
 
 	@SuppressWarnings("unchecked")
-	public void onChanging$filter(InputEvent e) {		
+	public void onChanging$filter(final InputEvent e) {		
 		System.out.println("onChanging$filter -> START");
 		String filter = e.getValue();
 		filter = filter.toLowerCase();
@@ -397,7 +397,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		System.out.println("onChanging$filter -> END");
 	}
 
-	private void updateTreeItemMap(Treeitem item, Integer skillId) {
+	private void updateTreeItemMap(final Treeitem item,final  Integer skillId) {
 		ArrayList<Treeitem> ti = treeItems.get(skillId);
 		if (ti == null)
 			ti = new ArrayList<Treeitem>();
@@ -406,7 +406,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		treeItems.put(skillId, ti);
 	}
 
-	private void showErrorMessage(String errorMessage) {
+	private void showErrorMessage(final String errorMessage) {
 		try {
 			Messagebox.show(errorMessage, "Error", Messagebox.OK,
 					Messagebox.ERROR);
@@ -417,7 +417,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(final Treeitem item, Object data) throws Exception {
+	public void render(final Treeitem item,final  Object data) throws Exception {
 		Node node = (Node) data;
 		Treecell tcSkillName = new Treecell(node.getSkill().getName());
 		Treecell tcIcon = new Treecell();
@@ -436,7 +436,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		}
 		item.addEventListener("onOpen", new EventListener() {
 			@Override
-			public void onEvent(Event event) throws Exception {
+			public void onEvent(final Event event) throws Exception {
 				if (openedItems.containsKey(item.getValue()))
 					openedItems.remove(item.getValue());
 				else
@@ -476,13 +476,13 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		item.setContext("expandPopup");
 	}
 
-	public void onClick$expandMenuItem(Event e) {
+	public void onClick$expandMenuItem(final Event e) {
 		Treeitem selectedItem = tree.getSelectedItem();
 		if (selectedItem != null)
 			expandTreeItemsRecursively(selectedItem);
 	}
 
-	private void expandTreeItemsRecursively(Treeitem treeItem) {
+	private void expandTreeItemsRecursively(final Treeitem treeItem) {
 		if (!treeItem.isOpen()) {
 			treeItem.setOpen(true);
 		}
@@ -498,7 +498,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(Row row, Object data) throws Exception {
+	public void render(final Row row,final  Object data) throws Exception {
 		Practicum practicum = (Practicum) data;
 		boolean practicumIsNull = false;
 		if (practicum.getSkillId() == null)
@@ -506,7 +506,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		row.setValue(practicum);
 		final Datebox dateFrom = new Datebox(practicum.getDateFrom());
 		dateFrom.addEventListener("onChange", new EventListener() {
-			public void onEvent(Event e) {
+			public void onEvent(final Event e) {
 				Row row = (Row) dateFrom.getParent();
 				Practicum practicum = (Practicum) row.getValue();
 				if (practicum.getSkillId() != null) {
@@ -531,7 +531,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		});
 		final Datebox dateTo = new Datebox(practicum.getDateTo());
 		dateTo.addEventListener("onChange", new EventListener() {
-			public void onEvent(Event e) {
+			public void onEvent(final Event e) {
 				Row row = (Row) dateTo.getParent();
 				Practicum practicum = (Practicum) row.getValue();
 				if (practicum.getSkillId() != null) {
@@ -569,7 +569,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		
 		codeCombobox.setReadonly(true);
 		codeCombobox.addEventListener("onChange", new EventListener() {
-			public void onEvent(Event e) {
+			public void onEvent(final Event e) {
 				Row row = (Row) codeCombobox.getParent();
 				Practicum practicum = (Practicum) row.getValue();
 				practicum.setLevel((CodeTable) codeCombobox.getSelectedItem()
@@ -593,7 +593,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		descriptionTextbox.setWidth("97%");
 		descriptionTextbox.setParent(row);
 		descriptionTextbox.addEventListener("onChange", new EventListener() {
-			public void onEvent(Event e) {
+			public void onEvent(final Event e) {
 				Row row = (Row) descriptionTextbox.getParent();
 				Practicum practicum = (Practicum) row.getValue();
 				practicum.setDescription(descriptionTextbox.getText());
@@ -613,7 +613,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 				: Labels.getLabel("skillsPracticum.delete"));
 		if (!practicumIsNull) {
 			addDeleteButton.addEventListener("onClick", new EventListener() {
-				public void onEvent(Event e) {
+				public void onEvent(final Event e) {
 					Row row = (Row) addDeleteButton.getParent();
 					Practicum practicum = (Practicum) row.getValue();
 					practicumService.delete(practicum);
@@ -623,7 +623,7 @@ public class PracticumTreeController extends GenericForwardComposer implements
 			});
 		} else {
 			addDeleteButton.addEventListener("onClick", new EventListener() {
-				public void onEvent(Event e) {
+				public void onEvent(final Event e) {
 					Row row = (Row) addDeleteButton.getParent();
 					Practicum practicum = (Practicum) row.getValue();
 					StringBuffer errorMessage = new StringBuffer();
@@ -686,14 +686,14 @@ public class PracticumTreeController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(Comboitem comboItem, Object data) throws Exception {
+	public void render(final Comboitem comboItem,final  Object data) throws Exception {
 		CodeTable item = (CodeTable) data;
 		comboItem.setLabel(item.getCode());
 		comboItem.setValue(item);
 	}
 
 	@Override
-	public void render(Listitem listItem, Object data) throws Exception {
+	public void render(final Listitem listItem,final  Object data) throws Exception {
 		Skill skill = (Skill) data;
 		new Listcell(skill.getName()).setParent(listItem);
 		new Listcell(skill.getDescription()).setParent(listItem);

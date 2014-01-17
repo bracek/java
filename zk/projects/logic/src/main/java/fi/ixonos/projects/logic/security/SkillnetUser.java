@@ -35,26 +35,24 @@ public class SkillnetUser extends User {
     private final Logger logger = Logger.getLogger(SkillnetUser.class);
 
     @Deprecated
-    public SkillnetUser(String username, String password, boolean enabled, GrantedAuthority[] authorities)
+    public SkillnetUser(final String username,final  String password,final  boolean enabled,final  GrantedAuthority[] authorities)
             throws IllegalArgumentException {
         this(username, password, enabled, true, true, authorities);
         logger.debug("deprecated constructor");
     }
 
-    public SkillnetUser(UserDetails userDetails) {
+    public SkillnetUser(final UserDetails userDetails) {
         this(userDetails.getUsername(), userDetails.getPassword(), userDetails.isEnabled(), userDetails.isAccountNonExpired(), userDetails.isCredentialsNonExpired(), userDetails.isAccountNonLocked(), userDetails.getAuthorities());
         logger.debug("creating SkillnetUser from UserDetails:" + userDetails);
     }
 
-    public SkillnetUser(String username, String password, boolean enabled, boolean accountNonExpired,
-            boolean credentialsNonExpired, GrantedAuthority[] authorities)
+    public SkillnetUser(final String username,final  String password,final  boolean enabled,final  boolean accountNonExpired,final             boolean credentialsNonExpired,final  GrantedAuthority[] authorities)
             throws IllegalArgumentException {
         this(username, password, enabled, accountNonExpired, credentialsNonExpired, true, authorities);
         logger.debug("constructor");
     }
 
-    public SkillnetUser(String username, String password, boolean enabled, boolean accountNonExpired,
-            boolean credentialsNonExpired, boolean accountNonLocked, GrantedAuthority[] authorities)
+    public SkillnetUser(final String username,final  String password,final  boolean enabled,final  boolean accountNonExpired,final             boolean credentialsNonExpired,final  boolean accountNonLocked,final  GrantedAuthority[] authorities)
             throws IllegalArgumentException {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
         logger.debug("constructor");
@@ -77,7 +75,7 @@ public class SkillnetUser extends User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
@@ -85,7 +83,7 @@ public class SkillnetUser extends User {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
@@ -93,7 +91,7 @@ public class SkillnetUser extends User {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -101,7 +99,7 @@ public class SkillnetUser extends User {
         return manager;
     }
 
-    public void setManager(Users manager) {
+    public void setManager(final Users manager) {
         this.manager = manager;
     }
 
@@ -109,7 +107,7 @@ public class SkillnetUser extends User {
         return customUserDetails;
     }
 
-    public void setCustomUserDetails(HashMap<Object, Object> customUserDetails) {
+    public void setCustomUserDetails(final HashMap<Object,final  Object> customUserDetails) {
         this.customUserDetails = customUserDetails;
     }
 

@@ -16,7 +16,7 @@ public class PhonemaGroup implements Comparable<PhonemaGroup> {
     private boolean activatedDesiredOutput;
     private int index;
 
-    public PhonemaGroup(ArrayList<Object> col) {
+    public PhonemaGroup(final ArrayList<Object> col) {
         this.index = -1;
         this.phoneme = col;
     }
@@ -29,7 +29,7 @@ public class PhonemaGroup implements Comparable<PhonemaGroup> {
         return activatedDesiredOutput;
     }
 
-    public void setActivatedDesiredOutput(boolean activatedDesiredOutput) {
+    public void setActivatedDesiredOutput(final boolean activatedDesiredOutput) {
         this.activatedDesiredOutput = activatedDesiredOutput;
     }
 
@@ -37,12 +37,12 @@ public class PhonemaGroup implements Comparable<PhonemaGroup> {
         return index;
     }
 
-    public void setIndex(int index) {
+    public void setIndex(final int index) {
         this.index = index;
     }
 
     @Override
-    public int compareTo(PhonemaGroup o) {
+    public int compareTo(final PhonemaGroup o) {
         return this.index - o.index;
     }
 }

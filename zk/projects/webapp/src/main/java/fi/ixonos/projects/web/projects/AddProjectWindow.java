@@ -18,13 +18,13 @@ import org.zkoss.zul.Window;
 public final class AddProjectWindow extends Window {
 
     private Projects project;
-    private ProjectsService projectsService = (ProjectsService) ProjectsApplicationContext.getApplicationContext().getBean("projectsService");
+    private ProjectsService projectsService = (final ProjectsService) ProjectsApplicationContext.getApplicationContext().getBean("projectsService");
 
     public AddProjectWindow() {
         this.project = new Projects();
     }
 
-    public void addProject(Event event) throws Exception {
+    public void addProject(final Event event) throws Exception {
         if (checkValues(project)) {
             return;
         }
@@ -42,7 +42,7 @@ public final class AddProjectWindow extends Window {
         this.detach();
     }
 
-    public boolean checkValues(Projects project) throws Exception {
+    public boolean checkValues(final Projects project) throws Exception {
 
         StringBuilder error = new StringBuilder();
         if (project.getName() == null || "".equals(project.getName())) {
@@ -83,7 +83,7 @@ public final class AddProjectWindow extends Window {
         return project;
     }
 
-    public void setProject(Projects project) {
+    public void setProject(final Projects project) {
         this.project = project;
     }
 }

@@ -22,7 +22,7 @@ public class LoadTopologyImpl extends AbstractFileLoadData {
      * @return
      */
     @Override
-    public String[][] loadData(String filename) {
+    public String[][] loadData(final String filename) {
 
 
         String[][] values = null;

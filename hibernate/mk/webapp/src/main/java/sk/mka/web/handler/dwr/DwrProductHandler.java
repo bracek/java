@@ -41,7 +41,7 @@ public class DwrProductHandler {
 	 * @param id the id
 	 */
 	@RemoteMethod
-	public void deleteProduct(Integer id) {
+	public void deleteProduct(final Integer id) {
 		logger.debug("deleteProduct(): Has just been started. Product Id = " + id);
 		
 		if (id != null && id > 0) {

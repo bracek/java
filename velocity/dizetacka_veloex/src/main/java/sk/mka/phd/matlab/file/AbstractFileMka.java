@@ -31,7 +31,7 @@ public class AbstractFileMka implements FileMka {
      * @throws FileNotFoundException
      */
     @Override
-    public List<File> getFileListing(File aStartingDir) throws FileNotFoundException {
+    public List<File> getFileListing(final File aStartingDir) throws FileNotFoundException {
         validateDirectory(aStartingDir);
         List<File> result = getFileListingNoSort(aStartingDir);
         Collections.sort(result);
@@ -39,7 +39,7 @@ public class AbstractFileMka implements FileMka {
     }
 
     @Override
-    public List<File> getFileListingNoSort(File aStartingDir) throws FileNotFoundException {
+    public List<File> getFileListingNoSort(final File aStartingDir) throws FileNotFoundException {
         List<File> result = new ArrayList<File>();
         File[] filesAndDirs = aStartingDir.listFiles();
         List<File> filesDirs = Arrays.asList(filesAndDirs);
@@ -61,7 +61,7 @@ public class AbstractFileMka implements FileMka {
      * @throws FileNotFoundException
      */
     @Override
-    public void validateDirectory(File aDirectory) throws FileNotFoundException {
+    public void validateDirectory(final File aDirectory) throws FileNotFoundException {
         if (aDirectory == null) {
             throw new IllegalArgumentException("Directory should not be null.");
         }
@@ -81,7 +81,7 @@ public class AbstractFileMka implements FileMka {
     protected String filename;
 
     @Override
-    public Writer openFileForWriting(String fileName) {
+    public Writer openFileForWriting(final String fileName) {
         this.filename = fileName;
         Writer output = null;
         try {
@@ -98,7 +98,7 @@ public class AbstractFileMka implements FileMka {
         return filename;
     }
 
-    public void setFilename(String filename) {
+    public void setFilename(final String filename) {
         this.filename = filename;
     }
 }

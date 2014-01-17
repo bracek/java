@@ -23,7 +23,7 @@ public class SkillnetUserDetailsService extends JdbcDaoImpl implements UserDetai
     private static final Logger logger = Logger.getLogger(SkillnetUserDetailsService.class);
 
     @Override
-    public UserDetails loadUserByUsername(String username) {
+    public UserDetails loadUserByUsername(final String username) {
         UserDetails userDetails = super.loadUserByUsername(username);
         SkillnetUser skillnetUser = new SkillnetUser(userDetails);
         logger.info("Skillnet user: " + skillnetUser);

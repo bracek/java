@@ -27,7 +27,7 @@ public class GenPhonemeList {
     private static final String TRAIN_PHONELIST_VM = "input/train_phonelist.vm";
     private static org.apache.log4j.Logger log = Logger.getLogger(GenerateTableVoicedUnvoiced.class);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
 
         final PhonemeLoadData loadInputData = new PhonemeLoadDataImpl();
         final List<String> phoneList = loadInputData.loadPhonemaList(Const.INPUT.PHONELIST);

@@ -7,14 +7,24 @@ import java.util.Properties;
 import com.ixonos.skillnet.logic.bean.Groups;
 
 /**
- *
+ * 
  * @author magurja
  */
 public interface GroupsService extends HibernateGenericService<Groups> {
-	public List<String> getGroupMembers(String groupName) throws Exception;
-	public boolean changeGroupMembers(String groupName, List<String> members) throws Exception;
-    public Groups getGroup(String groupName) throws Exception;
-    public String getTreeRootName(String userName, Properties props) throws Exception;
-    public boolean changeGroupMember(String groupName, String member, boolean isAdded) throws Exception;
-    public boolean changeGroupMembers(String groupName, Map<String,Boolean> selectedUsersMap) throws Exception;
+	public List<String> getGroupMembers(final String groupName)
+			throws Exception;
+
+	public boolean changeGroupMembers(final String groupName,
+			final List<String> members) throws Exception;
+
+	public Groups getGroup(final String groupName) throws Exception;
+
+	public String getTreeRootName(final String userName, final Properties props)
+			throws Exception;
+
+	public boolean changeGroupMember(final String groupName,
+			final String member, final boolean isAdded) throws Exception;
+
+	public boolean changeGroupMembers(final String groupName,
+			final Map<String, Boolean> selectedUsersMap) throws Exception;
 }

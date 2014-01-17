@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service("bookService")
 public final class BookServiceImpl extends AbstractGenericService<Book> implements BookService {
 
-    public Book load(Serializable id) {
+    public Book load(final Serializable id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -26,7 +26,7 @@ public final class BookServiceImpl extends AbstractGenericService<Book> implemen
     }
 
     @Override
-    public Book load(Integer id) {
+    public Book load(final Integer id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

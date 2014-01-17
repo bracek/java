@@ -32,7 +32,7 @@ public class CriteriaTreeNode extends AbstractCriteriaTreeItem {
      * 
      * @param operator operator
      */
-    public CriteriaTreeNode(int operator) {
+    public CriteriaTreeNode(final int operator) {
         super();
         this.operator = operator;
     }
@@ -43,7 +43,7 @@ public class CriteriaTreeNode extends AbstractCriteriaTreeItem {
      * @param operator
      * @throws IllegalArgumentException in case of illegal operator argument
      */
-    public void setOperator(int operator) throws IllegalArgumentException {
+    public void setOperator(final int operator) throws IllegalArgumentException {
         if (OP_AND!=operator && OP_OR!=operator) {
             throw new IllegalArgumentException("Only AND and OR operators are supported in tree nodes!");
         }        
@@ -63,7 +63,7 @@ public class CriteriaTreeNode extends AbstractCriteriaTreeItem {
      * @param index child index
      * @return child item at the given index
      */
-    public CriteriaTreeItem getChild(int index) {
+    public CriteriaTreeItem getChild(final int index) {
         try {
             return children.get(index);
         }
@@ -76,7 +76,7 @@ public class CriteriaTreeNode extends AbstractCriteriaTreeItem {
     /**
      * Returns the index of the child item with the same id, or -1 in case of not found child with the same id.
      */
-    public int getChildIndex(CriteriaTreeItem child) {
+    public int getChildIndex(final CriteriaTreeItem child) {
         for (CriteriaTreeItem item : children) {
             if (item.getId()==child.getId()) {
                 return children.indexOf(item);
@@ -88,21 +88,21 @@ public class CriteriaTreeNode extends AbstractCriteriaTreeItem {
     /**
      * Add a new child to the list of children.
      */
-    public void addChild(CriteriaTreeItem child) {
+    public void addChild(final CriteriaTreeItem child) {
         children.add(child);
     }
     
     /**
      * Removes the child from the list of children.
      */
-    public void removeChild(CriteriaTreeItem child) {
+    public void removeChild(final CriteriaTreeItem child) {
         children.remove(child);
     }    
     
     /**
      * Sets the list of children.
      */
-    public void setChildren(List<CriteriaTreeItem> children) {
+    public void setChildren(final List<CriteriaTreeItem> children) {
         this.children = children;
     }
     
@@ -111,7 +111,7 @@ public class CriteriaTreeNode extends AbstractCriteriaTreeItem {
      * 
      * @param child
      */
-    public void setChild(CriteriaTreeItem child) {
+    public void setChild(final CriteriaTreeItem child) {
         if (children==null) {
             children = new ArrayList<CriteriaTreeItem>();
         }
@@ -135,7 +135,7 @@ public class CriteriaTreeNode extends AbstractCriteriaTreeItem {
      * @param child
      * @return null if the given item was not found in the given subtree, otherwise the path to the child item. 
      */
-    public List<Integer> getChildPath(CriteriaTreeItem child) {
+    public List<Integer> getChildPath(final CriteriaTreeItem child) {
         int childIndex = getChildIndex(child);
         if (childIndex!=-1) {
             List<Integer> ret = new ArrayList<Integer>();

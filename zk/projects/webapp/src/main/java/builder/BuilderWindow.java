@@ -112,7 +112,7 @@ public final class BuilderWindow extends Window {
         }
     }
 
-    private void saveFile(Media media) {
+    private void saveFile(final Media media) {
         BufferedInputStream in = null;
         BufferedOutputStream out = null;
         try {
@@ -166,7 +166,7 @@ public final class BuilderWindow extends Window {
         return builder;
     }
 
-    public void setBuilder(Builder builder) {
+    public void setBuilder(final Builder builder) {
         this.builder = builder;
     }
 }

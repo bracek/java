@@ -41,8 +41,7 @@ public class Contact {
 	}
 	
 
-	public Contact(int id, String name, String address, String gender,
-			Date dob, String email, String mobile, String phone) {
+	public Contact(final int id,final  String name,final  String address,final  String gender,final 			Date dob,final  String email,final  String mobile,final  String phone) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -63,7 +62,7 @@ public class Contact {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(final int id) {
 		this.id = id;
 	}
 
@@ -71,7 +70,7 @@ public class Contact {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -79,7 +78,7 @@ public class Contact {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(final String address) {
 		this.address = address;
 	}
 
@@ -87,7 +86,7 @@ public class Contact {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(final String gender) {
 		this.gender = gender;
 	}
 
@@ -95,7 +94,7 @@ public class Contact {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(final Date dob) {
 		this.dob = dob;
 	}
 
@@ -103,7 +102,7 @@ public class Contact {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 
@@ -111,7 +110,7 @@ public class Contact {
 		return mobile;
 	}
 
-	public void setMobile(String mobile) {
+	public void setMobile(final String mobile) {
 		this.mobile = mobile;
 	}
 
@@ -119,7 +118,7 @@ public class Contact {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(final String phone) {
 		this.phone = phone;
 	}
 }

@@ -11,7 +11,7 @@ import org.springframework.roo.addon.web.mvc.controller.converter.RooConversionS
 public class ApplicationConversionServiceFactoryBean extends FormattingConversionServiceFactoryBean {
 
 	@Override
-	protected void installFormatters(FormatterRegistry registry) {
+	protected void installFormatters(final FormatterRegistry registry) {
 		super.installFormatters(registry);
 		// Register application converters and formatters
 	}

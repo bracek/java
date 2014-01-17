@@ -13,7 +13,7 @@ public interface PhonemeLoadData {
      * @param filename
      * @return list of phonema, which is used in database TIMIT 
      */
-    public List loadPhonemaList(String filename);
+    public List loadPhonemaList(final String filename);
 
    /**
     *
@@ -33,5 +33,5 @@ public interface PhonemeLoadData {
      * @param cols define, how many colums will be generated for phone
      * @return array of array in following pattern: id phoneme id phoneme (
      */
-    public Object[][] modifyList(List<String> phone, int cols);
+    public Object[][] modifyList(final List<String> phone,final  int cols);
 }

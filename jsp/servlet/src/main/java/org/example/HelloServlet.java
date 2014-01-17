@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class HelloServlet extends HttpServlet
 {
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+  protected void doGet(final HttpServletRequest request,final  HttpServletResponse response) throws ServletException, IOException
   {
     response.setContentType("text/html");
     response.setStatus(HttpServletResponse.SC_OK);

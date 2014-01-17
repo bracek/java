@@ -8,7 +8,7 @@ import java.io.IOException;
  */
 public class GenerateIterator {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
         final HelperGenerateIterator helper = new HelperGenerateIterator();
         helper.main();
     }

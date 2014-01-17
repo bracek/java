@@ -13,7 +13,7 @@ import sk.mka.phd.tools.filesystem.FileSystem;
  */
 public class GenerateAvarageUnvoicedExperimentsImpl extends AbstractGenerateExperimentsAverage implements GenerateExperimentsAverageInterface {
 
-    public GenerateAvarageUnvoicedExperimentsImpl(String directorySuffix) {
+    public GenerateAvarageUnvoicedExperimentsImpl(final String directorySuffix) {
         this.setTemplateVelocityFileForAverageListExperiments(Const.INPUT.VM.TEMPLATE_AVERAGE_LIST_VOICED_EXPERIMENTS);
         setUpFolderPath(directorySuffix);
     }
@@ -24,8 +24,7 @@ public class GenerateAvarageUnvoicedExperimentsImpl extends AbstractGenerateExpe
      * @param expArrayList
      */
     @Override
-    public void extracPopClassBFromFolderName(final String folderName,
-            ArrayList expArrayList) {
+    public void extracPopClassBFromFolderName(final String folderName,final             ArrayList expArrayList) {
         String excludeBadCharacter = folderName.replace(CHARACTER_, "\\_");
         int beggin = excludeBadCharacter.indexOf('u');
         int end = excludeBadCharacter.indexOf('p');
@@ -34,7 +33,7 @@ public class GenerateAvarageUnvoicedExperimentsImpl extends AbstractGenerateExpe
     }
 
     @Override
-    public void setUpFolderPath(String lastFolder) {
+    public void setUpFolderPath(final String lastFolder) {
         final String user = FileSystem.getLoggedUser();
         final String path = "/home/" + user + EXPERIMENTS_PATH_RELATIVE + "unvoiced/" + lastFolder + "/";
         this.experimentStartFolder = path;

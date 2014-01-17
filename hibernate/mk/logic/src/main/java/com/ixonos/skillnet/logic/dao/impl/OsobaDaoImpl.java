@@ -24,14 +24,14 @@ public class OsobaDaoImpl implements OsobaDao {
      * @param SessionFactory sessionFactory
      */
     @Autowired
-    public OsobaDaoImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+    public OsobaDaoImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
         setSessionFactory(sessionFactory);
     }
 
     /**
      * Sets Hibernate session factory.
      */
-    public void setSessionFactory(SessionFactory sessionFactory) {
+    public void setSessionFactory(final SessionFactory sessionFactory) {
         template = new HibernateTemplate(sessionFactory);
     }
 
@@ -39,7 +39,7 @@ public class OsobaDaoImpl implements OsobaDao {
      * Find persons.
      */
     @SuppressWarnings("unchecked")
-    public Osoba findPersonById(Integer id) throws DataAccessException {
+    public Osoba findPersonById(final Integer id) throws DataAccessException {
         return (Osoba) template.get(Osoba.class, id);
     }
 
@@ -61,7 +61,7 @@ public class OsobaDaoImpl implements OsobaDao {
      * Saves person.
      */
     @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
-    public void save(Osoba person) {
+    public void save(final Osoba person) {
         template.saveOrUpdate(person);
     }
 
@@ -69,7 +69,7 @@ public class OsobaDaoImpl implements OsobaDao {
      * Deletes person.
      */
     @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
-    public void delete(Osoba person) {
+    public void delete(final Osoba person) {
         template.delete(person);
     }
 
@@ -79,7 +79,7 @@ public class OsobaDaoImpl implements OsobaDao {
     }
 
     @Override
-    public Collection<com.ixonos.skillnet.logic.bean.Osoba> findPersonsByLastName(String lastName) throws DataAccessException {
+    public Collection<com.ixonos.skillnet.logic.bean.Osoba> findPersonsByLastName(final String lastName) throws DataAccessException {
         return template.find("from Person p where p.lastName = ? order by p.lastName, p.firstName", lastName);
     }
 }

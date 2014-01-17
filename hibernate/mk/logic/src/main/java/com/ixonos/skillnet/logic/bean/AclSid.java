@@ -57,11 +57,11 @@ public class AclSid implements Serializable {
     public AclSid() {
     }
 
-    public AclSid(Integer id) {
+    public AclSid(final Integer id) {
         this.id = id;
     }
 
-    public AclSid(Integer id, Boolean principal, String sid) {
+    public AclSid(final Integer id,final  Boolean principal,final  String sid) {
         this.id = id;
         this.principal = principal;
         this.sid = sid;
@@ -71,7 +71,7 @@ public class AclSid implements Serializable {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -79,7 +79,7 @@ public class AclSid implements Serializable {
         return principal;
     }
 
-    public void setPrincipal(Boolean principal) {
+    public void setPrincipal(final Boolean principal) {
         this.principal = principal;
     }
 
@@ -87,7 +87,7 @@ public class AclSid implements Serializable {
         return sid;
     }
 
-    public void setSid(String sid) {
+    public void setSid(final String sid) {
         this.sid = sid;
     }
 
@@ -95,7 +95,7 @@ public class AclSid implements Serializable {
         return aclObjectIdentityCollection;
     }
 
-    public void setAclObjectIdentityCollection(List<AclObjectIdentity> aclObjectIdentityCollection) {
+    public void setAclObjectIdentityCollection(final List<AclObjectIdentity> aclObjectIdentityCollection) {
         this.aclObjectIdentityCollection = aclObjectIdentityCollection;
     }
 
@@ -103,7 +103,7 @@ public class AclSid implements Serializable {
         return aclEntryCollection;
     }
 
-    public void setAclEntryCollection(List<AclEntry> aclEntryCollection) {
+    public void setAclEntryCollection(final List<AclEntry> aclEntryCollection) {
         this.aclEntryCollection = aclEntryCollection;
     }
 
@@ -115,7 +115,7 @@ public class AclSid implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof AclSid)) {
             return false;

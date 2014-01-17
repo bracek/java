@@ -26,7 +26,7 @@ public class RunVoicedAverageExperiments {
      * @param args 
      */
 //    private static final String directoryPath = "/home/" + user + "/subversion/kemt/katrak/matlab/results/expertSystems/voiced/" + suffix + "/";
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         try {
             String directorySuffix = null;
 //        noDuplication-a0b0

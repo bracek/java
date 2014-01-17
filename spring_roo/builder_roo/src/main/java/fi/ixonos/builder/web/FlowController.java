@@ -20,7 +20,7 @@ import fi.ixonos.builder.domain.Symbian;
 public class FlowController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getProjects(Model uiModel) {
+	public String getProjects(final Model uiModel) {
 
 		List<Projects> projects = Projects.findAllProjectses();
 		for (int i = 0; i < projects.size(); i++) {
@@ -33,9 +33,7 @@ public class FlowController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String setProject(@Valid Projects projects,
-			BindingResult bindingResult, Model uiModel,
-			HttpServletRequest httpServletRequest) {
+	public String setProject(final @Valid Projects projects,final 			BindingResult bindingResult,final  Model uiModel,final 			HttpServletRequest httpServletRequest) {
 
 		boolean hasID = false;
 		hasID = uiModel.containsAttribute("hiddenId1");

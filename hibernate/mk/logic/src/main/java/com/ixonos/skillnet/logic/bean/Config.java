@@ -53,7 +53,7 @@ public class Config implements Serializable {
 	 * @param value
 	 * @param description
 	 */
-	public Config(String property, String value, String description) {
+	public Config(final String property,final  String value,final  String description) {
 		super();
 		this.property = property;
 		this.value = value;
@@ -69,7 +69,7 @@ public class Config implements Serializable {
 	/**
 	 * @param property the property to set
 	 */
-	public void setProperty(String property) {
+	public void setProperty(final String property) {
 		this.property = property;
 	}
 	/**
@@ -81,7 +81,7 @@ public class Config implements Serializable {
 	/**
 	 * @param value the value to set
 	 */
-	public void setValue(String value) {
+	public void setValue(final String value) {
 		this.value = value;
 	}
 	/**
@@ -93,7 +93,7 @@ public class Config implements Serializable {
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = description;
 	}
 	

@@ -26,10 +26,7 @@
 
 		<profile>
 			<id>kemt_artifactory</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-
+			<!-- <activation> <activeByDefault>true</activeByDefault> </activation> -->
 			<properties>
 				<start.id>0</start.id>
 				<exp.bpMomentumfonik>5000</exp.bpMomentumfonik>
@@ -41,15 +38,6 @@
 				<log4j.appender.Threshold>INFO</log4j.appender.Threshold>
 				<log4j.appender.console.Threshold>FATAL</log4j.appender.console.Threshold>
 			</properties>
-
-			<!-- <repositories> <repository> <id>central</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url> 
-				<snapshots> <enabled>false</enabled> </snapshots> </repository> <repository> 
-				<id>snapshots</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url> 
-				<releases> <enabled>false</enabled> </releases> </repository> </repositories> 
-				<pluginRepositories> <pluginRepository> <id>central</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-releases</url> 
-				<snapshots> <enabled>false</enabled> </snapshots> </pluginRepository> <pluginRepository> 
-				<id>snapshots</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-snapshots</url> 
-				<releases> <enabled>false</enabled> </releases> </pluginRepository> </pluginRepositories> -->
 		</profile>
 	</profiles>
 
@@ -59,6 +47,14 @@
 		<dependency>
 			<artifactId>phd-logic</artifactId>
 			<groupId>sk.mka</groupId>
+			<!-- <repositories> <repository> <id>central</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url> 
+				<snapshots> <enabled>false</enabled> </snapshots> </repository> <repository> 
+				<id>snapshots</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url> 
+				<releases> <enabled>false</enabled> </releases> </repository> </repositories> 
+				<pluginRepositories> <pluginRepository> <id>central</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-releases</url> 
+				<snapshots> <enabled>false</enabled> </snapshots> </pluginRepository> <pluginRepository> 
+				<id>snapshots</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-snapshots</url> 
+				<releases> <enabled>false</enabled> </releases> </pluginRepository> </pluginRepositories> -->
 			<version>0.0.4</version>
 		</dependency>
 
@@ -183,7 +179,6 @@
 				<version>2.7</version>
 				<configuration>
 					<!-- Default configuration for all reports -->
-					...
 				</configuration>
 				<executions>
 					<execution>
@@ -260,23 +255,11 @@
 	</reporting>
 
 
-	<ciManagement>
-		<system>Hudson</system>
-		<url>http://kemt.fei.tuke.sk:9001/job/velocity_bpMomentumFonik/</url>
-		<notifiers>
-			<notifier>
-				<type>mail</type>
-				<sendOnError>true</sendOnError>
-				<sendOnFailure>true</sendOnFailure>
-				<sendOnSuccess>true</sendOnSuccess>
-				<sendOnWarning>false</sendOnWarning>
-				<configuration>
-					<address>miroslav.katrak@gmail.com</address>
-				</configuration>
-			</notifier>
-		</notifiers>
-	</ciManagement>
-
+	<!-- <ciManagement> <system>Hudson</system> <url>http://kemt.fei.tuke.sk:9001/job/velocity_bpMomentumFonik/</url> 
+		<notifiers> <notifier> <type>mail</type> <sendOnError>true</sendOnError> 
+		<sendOnFailure>true</sendOnFailure> <sendOnSuccess>true</sendOnSuccess> <sendOnWarning>false</sendOnWarning> 
+		<configuration> <address>miroslav.katrak@gmail.com</address> </configuration> 
+		</notifier> </notifiers> </ciManagement> -->
 	<developers>
 		<developer>
 			<id>bracek</id>

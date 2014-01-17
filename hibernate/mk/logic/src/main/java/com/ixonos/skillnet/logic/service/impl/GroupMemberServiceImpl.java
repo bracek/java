@@ -22,7 +22,7 @@ public final class GroupMemberServiceImpl extends AbstractGenericService<GroupMe
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("groupMemberDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("groupMemberDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
 }

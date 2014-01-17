@@ -39,7 +39,7 @@ public class ContactsControllers
 	}
 	
 	@InitBinder
-	public void initBinder(WebDataBinder binder) 
+	public void initBinder(final WebDataBinder binder) 
 	{
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		dateFormat.setLenient(false);
@@ -47,7 +47,7 @@ public class ContactsControllers
 	}
 		
 	@RequestMapping("/searchContacts")
-	public ModelAndView searchContacts(@RequestParam(required= false, defaultValue="") String name)
+	public ModelAndView searchContacts(final @RequestParam(required= false,final  defaultValue="") String name)
 	{
 		ModelAndView mav = new ModelAndView("showContacts");
 		List<Contact> contacts = contactsDAO.searchContacts(name.trim());
@@ -87,7 +87,7 @@ public class ContactsControllers
 	}
 	
 	@RequestMapping(value="/updateContact", method=RequestMethod.GET)
-	public ModelAndView edit(@RequestParam("id")Integer id)
+	public ModelAndView edit(final @RequestParam("id")Integer id)
 	{
 		ModelAndView mav = new ModelAndView("editContact");
 		Contact contact = contactsDAO.getById(id);
@@ -96,7 +96,7 @@ public class ContactsControllers
 	}
 	
 	@RequestMapping(value="/updateContact", method=RequestMethod.POST)
-	public String update(@ModelAttribute("editContact") Contact contact, BindingResult result, SessionStatus status)
+	public String update(final @ModelAttribute("editContact") Contact contact, BindingResult result, SessionStatus status)
 	{
 		validator.validate(contact, result);
 		if (result.hasErrors()) {
@@ -109,7 +109,7 @@ public class ContactsControllers
 	
 	
 	@RequestMapping("deleteContact")
-	public ModelAndView delete(@RequestParam("id")Integer id)
+	public ModelAndView delete(final @RequestParam("id")Integer id)
 	{
 		ModelAndView mav = new ModelAndView("redirect:viewAllContacts.do");
 		contactsDAO.delete(id);

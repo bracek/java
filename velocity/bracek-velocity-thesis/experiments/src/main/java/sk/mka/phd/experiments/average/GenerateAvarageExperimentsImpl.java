@@ -20,7 +20,7 @@ public final class GenerateAvarageExperimentsImpl extends AbstractGenerateExperi
      * @param directorySuffix
      * @param desiredColumn if results.txt contains also AB,BA results, than desiredColumn is 5 else 3 
      */
-    public GenerateAvarageExperimentsImpl(String directorySuffix, final BBColums desiredColumn) {
+    public GenerateAvarageExperimentsImpl(final String directorySuffix, final BBColums desiredColumn) {
         super(desiredColumn);
         this.setTemplateVelocityFileForAverageListExperiments(TEMPLATE_AVERAGE_LIST_VOICED_EXPERIMENTS);
         setUpFolderPath(directorySuffix);
@@ -33,13 +33,13 @@ public final class GenerateAvarageExperimentsImpl extends AbstractGenerateExperi
      * @param expArrayList
      */
     @Override
-    public void extracPopClassBFromFolderName(final String folderName, ArrayList expArrayList) {
+    public void extracPopClassBFromFolderName(final String folderName,final  ArrayList expArrayList) {
         expArrayList.add(index);
         index++;
     }
 
     @Override
-    public void setUpFolderPath(String lastFolder) {
+    public void setUpFolderPath(final String lastFolder) {
         setExperimentStartFolder(lastFolder);
     }
 }

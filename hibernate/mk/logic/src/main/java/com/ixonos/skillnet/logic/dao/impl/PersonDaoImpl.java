@@ -28,12 +28,12 @@ public class PersonDaoImpl implements PersonDao {
     /**
      * Sets Hibernate session factory.
      */
-    public void setSessionFactory(SessionFactory sessionFactory) {
+    public void setSessionFactory(final SessionFactory sessionFactory) {
         template = new HibernateTemplate(sessionFactory);
     }
 
     @Autowired
-    public PersonDaoImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+    public PersonDaoImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
         setSessionFactory(sessionFactory);
     }
 
@@ -42,7 +42,7 @@ public class PersonDaoImpl implements PersonDao {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public Person findPersonById(Integer id) throws DataAccessException {
+    public Person findPersonById(final Integer id) throws DataAccessException {
         return (Person) template.get(Person.class, id);
     }
 
@@ -60,7 +60,7 @@ public class PersonDaoImpl implements PersonDao {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public Collection<Person> findPersonsByLastName(String lastName) throws DataAccessException {
+    public Collection<Person> findPersonsByLastName(final String lastName) throws DataAccessException {
         return template.find("from Person p where p.lastName = ? order by p.lastName, p.firstName", lastName);
     }
 
@@ -69,7 +69,7 @@ public class PersonDaoImpl implements PersonDao {
      */
     @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
     @Override
-    public Person save(Person person) {
+    public Person save(final Person person) {
         Person result = (Person) template.merge(person);
 
         return result;
@@ -80,7 +80,7 @@ public class PersonDaoImpl implements PersonDao {
      */
     @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
     @Override
-    public void delete(Person person) {
+    public void delete(final Person person) {
         template.delete(person);
     }
 
@@ -89,7 +89,7 @@ public class PersonDaoImpl implements PersonDao {
      */
     @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
     @Override
-    public Person saveAddress(Integer id, Address address) {
+    public Person saveAddress(final Integer id,final  Address address) {
         Person person = findPersonById(id);
 
         if (person.getAddresses().contains(address)) {
@@ -106,7 +106,7 @@ public class PersonDaoImpl implements PersonDao {
      */
     @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
     @Override
-    public Person deleteAddress(Integer id, Integer addressId) {
+    public Person deleteAddress(final Integer id,final  Integer addressId) {
         Person person = findPersonById(id);
 
         Address address = new Address();

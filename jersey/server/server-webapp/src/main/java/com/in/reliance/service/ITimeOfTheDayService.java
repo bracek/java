@@ -6,10 +6,10 @@ import com.in.reliance.domain.Time;
 
 public interface ITimeOfTheDayService {
 
-	public abstract String getTimeOfTheDay(@PathParam("name") String name);
+	public abstract String getTimeOfTheDay(final @PathParam("name") String name);
 
-	public abstract Time getTimeOfTheDayInXML(@PathParam("name") String name);
+	public abstract Time getTimeOfTheDayInXML(final @PathParam("name") String name);
 
-	public abstract Time getTimeOfTheDayInJSON(@PathParam("name") String name);
+	public abstract Time getTimeOfTheDayInJSON(final @PathParam("name") String name);
 
 }

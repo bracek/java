@@ -18,10 +18,10 @@ import org.zkoss.zul.Listbox;
  */
 public final class EditUsersInitiator extends AnnotateDataBinderInit {
 
-    private UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
 
     @Override
-    public void doAfterCompose(Page page, Component[] comps) throws Exception {
+    public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {
         List<Users> users = usersService.readAll();
         page.setVariable("usersList", users);
 

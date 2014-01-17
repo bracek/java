@@ -57,7 +57,7 @@ public class SkillsController extends GenericForwardComposer implements
 	protected ListModelList listModelList;
 
 	@Override
-	public void doAfterCompose(Component comp) throws Exception {
+	public void doAfterCompose(final Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		listModelList = new ListModelList();
 		List<Skill> skills = skillService.readAll();
@@ -65,7 +65,7 @@ public class SkillsController extends GenericForwardComposer implements
 		list.setModel(listModelList);
 		list.setItemRenderer(this);
 		list.addEventListener("onSelect", new EventListener() {
-			public void onEvent(Event e) throws Exception {
+			public void onEvent(final Event e) throws Exception {
 				int index = list.getSelectedIndex();
 				selectedSkill = (Skill) listModelList.get(index);
 				Name.setValue(selectedSkill.getName());
@@ -77,7 +77,7 @@ public class SkillsController extends GenericForwardComposer implements
 	}
 
 	@Transactional
-	public void onClick$add(Event e) {
+	public void onClick$add(final Event e) {
 		String nameValue = Name.getValue();
 		String descriptionValue = Description.getValue();
 		Boolean valuableValue = Valuable.isChecked();
@@ -100,7 +100,7 @@ public class SkillsController extends GenericForwardComposer implements
 	}
 
 	@Transactional
-	public void onClick$update(Event e) {
+	public void onClick$update(final Event e) {
 		if (selectedSkill != null) {
 			selectedSkill.setName(Name.getValue());
 			selectedSkill.setDescription(Description.getValue());
@@ -131,7 +131,7 @@ public class SkillsController extends GenericForwardComposer implements
 	}
 
 	@Transactional
-	public void onClick$delete(Event e) {
+	public void onClick$delete(final Event e) {
 		if (null != selectedSkill) {
 			int index = listModelList.indexOf(selectedSkill);
 			try {
@@ -158,7 +158,7 @@ public class SkillsController extends GenericForwardComposer implements
 
 	protected SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
 
-	public void render(Listitem listItem, Object data) throws Exception {
+	public void render(final Listitem listItem,final  Object data) throws Exception {
 		Skill skill = (Skill) data;
 		new Listcell(skill.getName()).setParent(listItem);
 		new Listcell(skill.getDescription()).setParent(listItem);

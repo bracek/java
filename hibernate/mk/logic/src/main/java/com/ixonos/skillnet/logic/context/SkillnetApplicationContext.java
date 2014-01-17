@@ -17,7 +17,7 @@ public class SkillnetApplicationContext {
         return applicationContext;
     }
 
-    public static void setApplicationContext(ApplicationContext applicationCtx) {
+    public static void setApplicationContext(final ApplicationContext applicationCtx) {
         applicationContext = applicationCtx;
     }
 

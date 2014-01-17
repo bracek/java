@@ -18,7 +18,7 @@ public class RunUnvoicedAverageExperiments {
 //    private static final String directorySuffix = "uA1B0";
 //    private static final String directorySuffix = "ua0b1";
 //    private static final String directorySuffix = "ua0b1";
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         try {
             String directorySuffix = null;
 //        noDuplication-a0b0

@@ -15,12 +15,12 @@ public class LoadFirstLineImpl extends AbstractLoadData implements IFileLoadData
     private static Logger log = Logger.getLogger(LoadFirstLineImpl.class);
 
     @Override
-    public Object[][] loadDataAsObjects(String filename) throws IOException {
+    public Object[][] loadDataAsObjects(final String filename) throws IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public String[][] getFileContent(String filename) throws IOException {
+    public String[][] getFileContent(final String filename) throws IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

@@ -44,7 +44,7 @@ public class SymbianGeneral implements Serializable {
     public SymbianGeneral() {
     }
 
-    public SymbianGeneral(Long id) {
+    public SymbianGeneral(final Long id) {
         this.id = id;
     }
 
@@ -52,7 +52,7 @@ public class SymbianGeneral implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -60,7 +60,7 @@ public class SymbianGeneral implements Serializable {
         return applicationIcon;
     }
 
-    public void setApplicationIcon(byte[] applicationIcon) {
+    public void setApplicationIcon(final byte[] applicationIcon) {
         this.applicationIcon = applicationIcon;
     }
 
@@ -68,7 +68,7 @@ public class SymbianGeneral implements Serializable {
         return version;
     }
 
-    public void setVersion(Integer version) {
+    public void setVersion(final Integer version) {
         this.version = version;
     }
 
@@ -80,7 +80,7 @@ public class SymbianGeneral implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof SymbianGeneral)) {
             return false;

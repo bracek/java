@@ -1,16 +1,10 @@
 package sk.mka.app.finalizer.addfinal;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import sk.mka.app.finalizer.AbstractAction;
 import sk.mka.app.finalizer.IAction;
 import sk.mka.app.finalizer.Utils;
+
+import java.io.*;
 
 public final class AddMissingFinalImpl extends AbstractAction implements
         IAction {
@@ -83,8 +77,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     }
 
     @Override
-    protected void modify(StringBuffer stringBuffer,
-                          StringBuffer paramsTemporaryBuffer, String line) {
+    protected void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {
         if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC)
                 || line.contains("static") || line.contains(Utils.PROTECTED)) {
             if (!line.contains(Utils.NEW) && !line.contains(".class") && !line.contains("getClass()")) {
@@ -146,8 +139,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
         }
     }
 
-    private void appendFinalToParams(StringBuffer stringBuffer,
-                                     final String beg, final String middle, final String end) {
+    private void appendFinalToParams(final StringBuffer stringBuffer, final String beg, final String middle, final String end) {
         final String[] split = middle.split(",");
         for (int i = 0; i < split.length; i++) {
             if (i == 0) {
@@ -169,7 +161,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
         stringBuffer.append(Utils.NEWLINE);
     }
 
-    private void appendLine(StringBuffer stringBuffer, String line) {
+    private void appendLine(final StringBuffer stringBuffer, final String line) {
         stringBuffer.append(line);
         stringBuffer.append(Utils.NEWLINE);
     }

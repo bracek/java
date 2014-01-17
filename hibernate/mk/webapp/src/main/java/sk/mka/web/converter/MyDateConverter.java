@@ -16,7 +16,7 @@ import javax.faces.convert.ConverterException;
  */
 public class MyDateConverter implements Converter {
 
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+    public Object getAsObject(final FacesContext context,final  UIComponent component,final  String value) {
         String pattern = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         Date nDate;
@@ -40,7 +40,7 @@ public class MyDateConverter implements Converter {
 
     }
 
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
+    public String getAsString(final FacesContext context,final  UIComponent component,final  Object value) {
         return value.toString();
 
     }

@@ -26,7 +26,7 @@ public interface IFileLoadData {
      * @returna array of array
      * @throws IOException
      */
-    public Object[][] loadDataAsObjects(String filename) throws IOException;
+    public Object[][] loadDataAsObjects(final String filename) throws IOException;
 
     /**
      *

@@ -21,7 +21,7 @@ public abstract class AbstractPhonemeLoadData extends AbstractLoadData implement
     private static Logger log = Logger.getLogger(AbstractPhonemeLoadData.class);
 
     @Override
-    public List loadPhonemaList(String filename) {
+    public List loadPhonemaList(final String filename) {
         String[] subStr;
         try {
             // Open the file that is the first

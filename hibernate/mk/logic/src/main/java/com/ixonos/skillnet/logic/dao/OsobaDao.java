@@ -14,7 +14,7 @@ public interface OsobaDao {
     /**
      * Find persons by last name.
      */
-    public Collection<Osoba> findPersonsByLastName(String lastName) throws DataAccessException;
+    public Collection<Osoba> findPersonsByLastName(final String lastName) throws DataAccessException;
 
     
 }

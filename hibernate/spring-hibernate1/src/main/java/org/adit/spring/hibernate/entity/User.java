@@ -30,7 +30,7 @@ public class User implements Serializable {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(final String userId) {
 		this.userId = userId;
 	}
 
@@ -39,7 +39,7 @@ public class User implements Serializable {
 		return userName;
 	}
 
-	public void setUserName(String userName) {
+	public void setUserName(final String userName) {
 		this.userName = userName;
 	}
 
@@ -48,7 +48,7 @@ public class User implements Serializable {
 		return age;
 	}
 
-	public void setAge(Integer age) {
+	public void setAge(final Integer age) {
 		this.age = age;
 	}
 
@@ -57,7 +57,7 @@ public class User implements Serializable {
 		return registered;
 	}
 
-	public void setRegistered(Boolean registered) {
+	public void setRegistered(final Boolean registered) {
 		this.registered = registered;
 	}
 

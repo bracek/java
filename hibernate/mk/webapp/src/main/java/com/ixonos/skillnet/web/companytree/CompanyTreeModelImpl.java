@@ -25,14 +25,14 @@ public class CompanyTreeModelImpl implements CompanyTreeModel {
 	private HashMap<Users, List<Users>> mapUser = new HashMap<Users, List<Users>>();
 
 	@Override
-	public void addTreeDataListener(TreeDataListener arg0) {
+	public void addTreeDataListener(final TreeDataListener arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	@Transactional
-	public Object getChild(Object parent, int index) {
+	public Object getChild(final Object parent,final  int index) {
 		if (((Users)parent).getUserId()==null)
 			try {
 				return getRootUser(index);
@@ -44,14 +44,14 @@ public class CompanyTreeModelImpl implements CompanyTreeModel {
 
 	@Override
 	@Transactional
-	public int getChildCount(Object parent) {
+	public int getChildCount(final Object parent) {
 		if (((Users)parent).getUserId()==null)
 			return getRootUserCount();
 		return getUsersChildCount((Users) parent);
 	}
 
 	@Override
-	public int[] getPath(Object arg0, Object arg1) {
+	public int[] getPath(final Object arg0,final  Object arg1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -64,17 +64,17 @@ public class CompanyTreeModelImpl implements CompanyTreeModel {
 
 	@Override
 	@Transactional
-	public boolean isLeaf(Object user) {
+	public boolean isLeaf(final Object user) {
 		return getChildCount(user) == 0;
 	}
 
 	@Override
-	public void removeTreeDataListener(TreeDataListener arg0) {
+	public void removeTreeDataListener(final TreeDataListener arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private Users getRootUser(int index) throws Exception {
+	private Users getRootUser(final int index) throws Exception {
 		if (mapUser.containsKey(new Users())) {
 			return mapUser.get(new Users()).get(index);
 		}
@@ -100,7 +100,7 @@ public class CompanyTreeModelImpl implements CompanyTreeModel {
     	return users.size();    		
     }
 	
-	private Users getUsersChild(Users parent, int index) {
+	private Users getUsersChild(final Users parent,final  int index) {
 		if (mapUser.containsKey(parent)) {
 			return mapUser.get(parent).get(index);
 		}
@@ -111,7 +111,7 @@ public class CompanyTreeModelImpl implements CompanyTreeModel {
    		return users.get(index);    		 
     }
 	
-	private int getUsersChildCount(Users parent) {
+	private int getUsersChildCount(final Users parent) {
 		if (mapUser.containsKey(parent)) {
 			return mapUser.get(parent).size();
 		}

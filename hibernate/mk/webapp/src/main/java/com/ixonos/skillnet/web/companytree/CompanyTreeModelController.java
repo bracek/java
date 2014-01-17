@@ -91,7 +91,7 @@ public class CompanyTreeModelController extends GenericForwardComposer implement
         tree.addEventListener("onSelect", new EventListener() {
 
             @Override
-            public void onEvent(Event e)
+            public void onEvent(final Event e)
                     throws Exception {
 
                 Users user = (Users) tree.getSelectedItem().getValue();
@@ -140,7 +140,7 @@ public class CompanyTreeModelController extends GenericForwardComposer implement
     }
 
     @Override
-    public void render(Treeitem item, Object data) throws Exception {
+    public void render(final Treeitem item,final  Object data) throws Exception {
         Users user = (Users) data;
         Treecell tcUserName = new Treecell(user.getHumanReadableUsername());
         Treerow tr = null;
@@ -162,14 +162,14 @@ public class CompanyTreeModelController extends GenericForwardComposer implement
         item.setContext("expandPopup");
     }
 
-    public void onClick$expandMenuItem(Event e) {
+    public void onClick$expandMenuItem(final Event e) {
         Treeitem selectedItem = tree.getSelectedItem();
         if (selectedItem != null) {
             expandTreeItemsRecursively(selectedItem);
         }
     }
 
-    private void expandTreeItemsRecursively(Treeitem treeItem) {
+    private void expandTreeItemsRecursively(final Treeitem treeItem) {
         if (!treeItem.isOpen()) {
             treeItem.setOpen(true);
         }
@@ -185,7 +185,7 @@ public class CompanyTreeModelController extends GenericForwardComposer implement
     }
 
     @Override
-    public void render(Row row, Object data) throws Exception {
+    public void render(final Row row,final  Object data) throws Exception {
         String[] userData = (String[]) data;
         Label label = new Label(userData[0]);
         Textbox textbox = new Textbox(userData[1]);
@@ -200,12 +200,12 @@ public class CompanyTreeModelController extends GenericForwardComposer implement
      * @{@inheritDoc}
      */
     @Override
-    public void onClick$downloadCV(Event event) throws Exception {
+    public void onClick$downloadCV(final Event event) throws Exception {
         CurriculumWindow.downloadCV(event, selectedUser);
     }
 
     @Override
-    public void render(Listitem listItem, Object data) throws Exception {
+    public void render(final Listitem listItem,final  Object data) throws Exception {
         if (data != null) {
             if (data instanceof Users) {
                 listItem.setValue(data);
@@ -232,7 +232,7 @@ public class CompanyTreeModelController extends GenericForwardComposer implement
         return possibleDownloadCv;
     }
 
-    public void setPossibleDownloadCv(boolean possibleDownloadCv) {
+    public void setPossibleDownloadCv(final boolean possibleDownloadCv) {
         this.possibleDownloadCv = possibleDownloadCv;
     }
 }

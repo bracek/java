@@ -20,7 +20,7 @@ public class GenerateTableVoicedUnvoiced {
 
     private static org.apache.log4j.Logger log = Logger.getLogger(GenerateTableVoicedUnvoiced.class);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
 
         final LoadData voicedVocelessList = new LoadVoicedVoicelessDataImpl();
         final Object oldInfo[][] = voicedVocelessList.loadDataAsObjects(Const.VOICED_UNVOICED_LIST);
@@ -59,7 +59,7 @@ public class GenerateTableVoicedUnvoiced {
      * @param info
      * @return
      */
-    private static String[][] modifyList(String[][] info) {
+    private static String[][] modifyList(final String[][] info) {
         String[][] newInfo = new String[30][6];
 
         int row = 0;
@@ -92,7 +92,7 @@ public class GenerateTableVoicedUnvoiced {
      * @param oldInfo
      * @return
      */
-    private static Object[][] modifyList(Object[][] oldInfo) {
+    private static Object[][] modifyList(final Object[][] oldInfo) {
         Object[][] newInfo = new Object[30][6];
 
         int row = 0;

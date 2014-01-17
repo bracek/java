@@ -28,7 +28,7 @@ public class ProjectsInitServlet extends HttpServlet {
     private static TrustManager[] _trustManagers;
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
+    public void init(final ServletConfig config) throws ServletException {
         logger.info("#init: Method has just been started.");
         super.init(config);
         initProperties(config);
@@ -36,7 +36,7 @@ public class ProjectsInitServlet extends HttpServlet {
         trustIxonosTlsCertificates();
     }
 
-    private void initProperties(ServletConfig config) {
+    private void initProperties(final ServletConfig config) {
         InputStream propStream = ProjectsInitServlet.class.getClassLoader().getResourceAsStream(CONFIG_FILENAME);
         props = new Properties();
         try {

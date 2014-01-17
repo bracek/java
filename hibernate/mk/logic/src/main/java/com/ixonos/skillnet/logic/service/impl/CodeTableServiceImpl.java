@@ -33,14 +33,14 @@ public final class CodeTableServiceImpl extends AbstractGenericService<CodeTable
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("codeTableDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("codeTableDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
     
     @Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
     @Override
     @Transactional(readOnly = true)
-    public CodeTable getCode(String groupCode, String code) throws Exception {
+    public CodeTable getCode(final String groupCode,final  String code) throws Exception {
         CodeTable codeTable = new CodeTable();
         codeTable.setGroupCode(groupCode);
         codeTable.setCode(code);
@@ -56,7 +56,7 @@ public final class CodeTableServiceImpl extends AbstractGenericService<CodeTable
     @Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
     @Override
     @Transactional(readOnly = true)
-    public List<CodeTable> getCodes(String groupCode) throws Exception {
+    public List<CodeTable> getCodes(final String groupCode) throws Exception {
         CodeTable codeTable = new CodeTable();
         codeTable.setGroupCode(groupCode);
         List<CodeTable> codeTables = codeTableDAO.readByCriteria(codeTable);

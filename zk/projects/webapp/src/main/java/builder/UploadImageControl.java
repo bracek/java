@@ -27,7 +27,7 @@ public class UploadImageControl extends GenericForwardComposer {
         return builder;
     }
 
-    public void setBuilder(Builder builder) {
+    public void setBuilder(final Builder builder) {
         this.builder = builder;
     }
 
@@ -51,7 +51,7 @@ public class UploadImageControl extends GenericForwardComposer {
     }          
     
     @Override
-    public void doAfterCompose(Component comp) throws Exception {
+    public void doAfterCompose(final Component comp) throws Exception {
         super.doAfterCompose(comp);
     }
 
@@ -84,7 +84,7 @@ public class UploadImageControl extends GenericForwardComposer {
     
      
 
-    private void saveFile(Media media) {
+    private void saveFile(final Media media) {
         BufferedInputStream in = null;
         BufferedOutputStream out = null;
         try {

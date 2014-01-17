@@ -86,7 +86,7 @@ public class PhonemeLoadDataImpl extends AbstractPhonemeLoadData implements Phon
     }
 
     @Override
-    public Object[][] modifyList(List<String> phone, int cols) {
+    public Object[][] modifyList(final List<String> phone,final  int cols) {
 
         int numberOfLines = phone.size();  //get number of phonema
         int nRows = numberOfLines / cols;
@@ -126,7 +126,7 @@ public class PhonemeLoadDataImpl extends AbstractPhonemeLoadData implements Phon
     }
 
     @Override
-    public String[][] loadData(String filename) throws IOException {
+    public String[][] loadData(final String filename) throws IOException {
         String[] subStr;
         try {
             // Open the file that is the first
@@ -228,7 +228,7 @@ public class PhonemeLoadDataImpl extends AbstractPhonemeLoadData implements Phon
     }
 
     @Override
-    public void setSeparator(String separator) {
+    public void setSeparator(final String separator) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

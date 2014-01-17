@@ -37,8 +37,7 @@ public class SymbianController {
 	private static final String imageUrl = "http://localhost:8080/builder/symbians/showdoc/";
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String list(
-			@RequestParam(value = "page", required = false) Integer page,
+	public String list(final 			@RequestParam(value = "page",final  required = false) Integer page,
 			@RequestParam(value = "size", required = false) Integer size,
 			Model uiModel) {
 		if (page != null || size != null) {
@@ -64,16 +63,14 @@ public class SymbianController {
 	}
 
 	@InitBinder
-	protected void initBinder(HttpServletRequest request,
-			ServletRequestDataBinder binder) throws ServletException {
+	protected void initBinder(final HttpServletRequest request,final 			ServletRequestDataBinder binder) throws ServletException {
 		// Convert multipart object to byte[]
 		binder.registerCustomEditor(byte[].class,
 				new ByteArrayMultipartFileEditor());
 	}
 
 	@RequestMapping(value = "savedoc", method = RequestMethod.POST)
-	public String createdoc(@Valid Symbian symbian, BindingResult result,
-			Model model, @RequestParam("content") MultipartFile content,
+	public String createdoc(final @Valid Symbian symbian,final  BindingResult result,final 			Model model,final  @RequestParam("content") MultipartFile content,
 			HttpServletRequest request) {
 
 		// symbian.setContentType(content.getContentType());
@@ -96,7 +93,7 @@ public class SymbianController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String show(@PathVariable("id") Long id, Model model) {
+	public String show(final @PathVariable("id") Long id, Model model) {
 		Symbian doc = Symbian.findSymbian(id);
 		doc.setUrl("http://localhost:8080/builder/symbians/showdoc/" + id);
 		model.addAttribute("symbian", Symbian.findSymbian(id));
@@ -105,7 +102,7 @@ public class SymbianController {
 	}
 
 	@RequestMapping(value = "/showdoc/{id}", method = RequestMethod.GET)
-	public String showdoc(@PathVariable("id") Long id,
+	public String showdoc(final @PathVariable("id") Long id,
 			HttpServletResponse response, Model model) {
 
 		Symbian doc = Symbian.findSymbian(id);
@@ -126,7 +123,7 @@ public class SymbianController {
 	}
 
 	@RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-	public String updateForm(@PathVariable("id") Long id, Model model) {
+	public String updateForm(final @PathVariable("id") Long id, Model model) {
 		Symbian symbian = Symbian.findSymbian(id);
 		symbian.setUrl("http://localhost:8080/builder/symbians/showdoc/" + id);
 		model.addAttribute("symbian", symbian);

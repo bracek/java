@@ -17,14 +17,14 @@ public class TradeController {
     TradeService service;
 
     @RequestMapping(value = "/find/trade/{id}")
-    public ModelAndView findTradeById(@PathVariable Long id) {
+    public ModelAndView findTradeById(final @PathVariable Long id) {
         Trade trade = service.getTradeById(id);
         ModelAndView mav = new ModelAndView("tradeView", BindingResult.MODEL_KEY_PREFIX + "trade", trade);
         return mav;
     }
 
     @RequestMapping(value = "/create/trade/{id}")
-    public ModelAndView createTrade(@PathVariable Long id) {
+    public ModelAndView createTrade(final @PathVariable Long id) {
         Trade trade = new Trade(id);
         service.createTrade(trade);
         ModelAndView mav = new ModelAndView("tradeView", BindingResult.MODEL_KEY_PREFIX + "trade", trade);

@@ -1,7 +1,7 @@
 clean.install:
-	cd dizetacka_veloex/ && mvn clean install && cd ..
-#	cd bracek-velocity-thesis/ && mvn clean install && cd ..
 	cd veloex/ && mvn clean install && cd ..
+#	cd dizetacka_veloex/ && mvn clean install && cd ..
+#	cd bracek-velocity-thesis/ && mvn clean install && cd ..
 run.sonar:
 	cd dizetacka_veloex/ && mvn sonar:sonar && cd ..
 	#cd bracek-velocity-thesis/ && mvn sonar:sonar && cd ..

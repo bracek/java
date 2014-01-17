@@ -31,14 +31,14 @@ public class TradeServiceIntegrationTest {
         assertEquals(trade.getId(), id);
     }
 
-    private Trade getTradeFromXml(String trade) {
+    private Trade getTradeFromXml(final String trade) {
         XStream xstream = new XStream();
         xstream.processAnnotations(Trade.class);
         Trade t = (Trade) xstream.fromXML(trade);
         return t;
     }
 
-    private String createTrade(Long id) {
+    private String createTrade(final Long id) {
         String tradeXml = new RestTemplate().getForObject(endpoint + "/create/trade/{id}", String.class, id);
         return tradeXml;
     }

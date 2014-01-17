@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 public class ProjectsDAOImpl extends GenericDAOImpl<Projects> implements ProjectsDAO {
 
    @Autowired
-   public ProjectsDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public ProjectsDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
 }

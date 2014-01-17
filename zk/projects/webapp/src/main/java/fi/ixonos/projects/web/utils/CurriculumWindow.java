@@ -20,7 +20,7 @@ import static fi.ixonos.projects.logic.enumeration.ProjectsRole.ROLE_GM;
  */
 public final class CurriculumWindow {
 
-    final static protected UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    final static protected UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
     public static final String CURRICULUM_DOC_SUFFIX = "_cv.doc";
 
     /**
@@ -29,7 +29,7 @@ public final class CurriculumWindow {
      * @throws java.lang.Exception
      */
     @Secured(ROLE_GM)
-    public static void downloadCV(org.zkoss.zk.ui.event.Event event, Users user) {
+    public static void downloadCV(final org.zkoss.zk.ui.event.Event event,final  Users user) {
         try {
             Users readUser = usersService.getUser(user.getUsername());
             final byte[] curricullumByteArray = readUser.getCurriculum();

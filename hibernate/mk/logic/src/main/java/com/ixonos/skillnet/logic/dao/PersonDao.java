@@ -20,7 +20,7 @@ public interface PersonDao {
     /**
      * Find person by id.
      */
-    public Person findPersonById(Integer id) throws DataAccessException;
+    public Person findPersonById(final Integer id) throws DataAccessException;
 
     /**
      * Find persons.
@@ -30,28 +30,28 @@ public interface PersonDao {
     /**
      * Find persons by last name.
      */
-    public Collection<Person> findPersonsByLastName(String lastName) throws DataAccessException;
+    public Collection<Person> findPersonsByLastName(final String lastName) throws DataAccessException;
 
     /**
      * Saves person.
      */
-    public Person save(Person person);
+    public Person save(final Person person);
 
     /**
      * Deletes person.
      */
     @Secured ({"ROLE_ADMIN"})
-    public void delete(Person person);
+    public void delete(final Person person);
 
     /**
      * Saves address to person by adding or updating record.
      */
-    public Person saveAddress(Integer id, Address address);
+    public Person saveAddress(final Integer id,final  Address address);
 
     /**
      * Deletes address.
      */
     @Secured ({"ROLE_ADMIN"})
-    public Person deleteAddress(Integer id, Integer addressId);
+    public Person deleteAddress(final Integer id,final  Integer addressId);
 
 }

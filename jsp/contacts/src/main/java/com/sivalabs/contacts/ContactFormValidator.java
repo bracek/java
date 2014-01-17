@@ -14,13 +14,13 @@ import org.springframework.validation.Validator;
 public class ContactFormValidator implements Validator
 {
 	@Override
-	public boolean supports(Class<?> clazz)
+	public boolean supports(final Class<?> clazz)
 	{
 		return Contact.class.isAssignableFrom(clazz);
 	}
 
 	@Override
-	public void validate(Object model, Errors errors)
+	public void validate(final Object model,final  Errors errors)
 	{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name","required.name", "Name is required.");
 	}

@@ -33,7 +33,7 @@ public class GenExperimentsResults2latex {
     public static final String INPUT_EXPERIMENTS_TEX_VM = "input/experiments/table_tex_experiments.vm";
     private static org.apache.log4j.Logger log = Logger.getLogger(GenExperimentsResults2latex.class);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
 
         final ILoadData loadInputData = new LoadInputDataImpl();
         ArrayList<SeparatorConst> sepConstant = SeparatorConst.newSepConstants();

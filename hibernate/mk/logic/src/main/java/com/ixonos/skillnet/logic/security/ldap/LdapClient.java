@@ -43,7 +43,7 @@ public class LdapClient {
      * @return List of strings, each strings like: "CN=Marek Menhert,OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local";
      **/
 	@SuppressWarnings("unchecked")
-	public List<String> getUsersFullNameList(String searchExpression, String ldapProviderUrl, String ldapSecurityAuthentication, String ldapManagerPrincipal, String ldapManagerPassword) {
+	public List<String> getUsersFullNameList(final String searchExpression,final  String ldapProviderUrl,final  String ldapSecurityAuthentication,final  String ldapManagerPrincipal,final  String ldapManagerPassword) {
         Hashtable env = new Hashtable();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
         env.put(Context.PROVIDER_URL, ldapProviderUrl);
@@ -87,7 +87,7 @@ public class LdapClient {
 		return users;
 	}
     	
-    public List<Map<String,Object>> findUsersByCN(String searchExpression, String ldapProviderUrl, String ldapSecurityAuthentication, String ldapManagerPrincipal, String ldapManagerPassword) {
+    public List<Map<String,Object>> findUsersByCN(final String searchExpression,final  String ldapProviderUrl,final  String ldapSecurityAuthentication,final  String ldapManagerPrincipal,final  String ldapManagerPassword) {
         Hashtable env = new Hashtable();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
         env.put(Context.PROVIDER_URL, ldapProviderUrl /*"ldap://hkidc01:389/dc=ixonos,dc=local"*/ );
@@ -156,7 +156,7 @@ public class LdapClient {
     }
 
     @Deprecated
-    public boolean importUserByCN(String cn) {
+    public boolean importUserByCN(final String cn) {
         String ldapProviderUrl = "ldap://hkidc01:389/dc=ixonos,dc=local";
         String ldapSecurityAuthentication = "simple";
         String ldapManagerPrincipal = "CN=Slavomir Hustaty,OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local";

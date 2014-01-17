@@ -14,7 +14,7 @@ public final class BuilderInitiator extends AnnotateDataBinderInit {
 
     //TODO napln list 
     @Override
-    public void doAfterCompose(Page page, Component[] comps) throws Exception {
+    public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {
 //        List<Users> users = usersService.getAllUsers();
 //        List<CodeTable> authorities = new ArrayList<CodeTable>();
 //        try {

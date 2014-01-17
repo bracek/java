@@ -18,12 +18,12 @@ import com.ixonos.skillnet.logic.dao.BookDAO;
 public final class BookDaoImpl extends GenericDAOImpl<Book> implements BookDAO {
 
     @Autowired
-    public BookDaoImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+    public BookDaoImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
         setSessionFactory(sessionFactory);
     }
 
     @Override
-    public Book read(Serializable id) {
+    public Book read(final Serializable id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

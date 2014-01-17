@@ -23,7 +23,7 @@ public class MovieService implements IMovieService {
 	@GET
 	@Produces("application/xml")
 	@Path("/{name}/")
-	public Time getTimeOfTheDayInXML(@PathParam("name") final String name) {
+	public Time getTimeOfTheDayInXML(final @PathParam("name") String name) {
 		final SimpleDateFormat df = new SimpleDateFormat(PATTERN);
 		final Time t = new Time();
 		t.setName(name);

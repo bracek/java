@@ -24,7 +24,7 @@ public interface MailService {
      * @param deletedUser
      * @return
      */
-    public boolean sendUserAccountDeletedEmail(InternetAddress deletedUser, List<String> textParameters);
+    public boolean sendUserAccountDeletedEmail(final InternetAddress deletedUser,final  List<String> textParameters);
     
     
     /**
@@ -32,14 +32,14 @@ public interface MailService {
      * @param user
      * @return
      */
-    public boolean sendChangedPasswordEmail(InternetAddress user, List<String> textParameters);
+    public boolean sendChangedPasswordEmail(final InternetAddress user,final  List<String> textParameters);
 
     /**
      * sends nightly notification
      * @param textParameters
      * @return
      */
-    public boolean sendAdminNightlyNotification(List<String> textParameters);
+    public boolean sendAdminNightlyNotification(final List<String> textParameters);
     
     /**
      * Method sends notification to users with few skills recorded in Skillnet.

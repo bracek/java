@@ -12,13 +12,13 @@ public class UsersComparator implements Comparator {
     private boolean _asc;
     private String _column;
 
-    public UsersComparator(boolean asc, String column) {
+    public UsersComparator(final boolean asc,final  String column) {
         _asc = asc;
         _column = column;
     }
 
     @Override
-    public int compare(Object o1, Object o2) {
+    public int compare(final Object o1,final  Object o2) {
         Users user1 = (Users) o1;
         Users user2 = (Users) o2;
         int v = 0;

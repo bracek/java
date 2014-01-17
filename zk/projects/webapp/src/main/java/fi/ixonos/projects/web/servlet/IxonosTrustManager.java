@@ -27,12 +27,12 @@ public class IxonosTrustManager implements javax.net.ssl.X509TrustManager {
     }
 
     @Override
-    public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) throws CertificateException {
+    public void checkClientTrusted(final java.security.cert.X509Certificate[] certs,final  String authType) throws CertificateException {
         // do nothing
     }
 
     @Override
-    public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) throws CertificateException {
+    public void checkServerTrusted(final java.security.cert.X509Certificate[] certs,final  String authType) throws CertificateException {
         boolean trusted = false;
         for (java.security.cert.X509Certificate c : certs) {
             logger.info(MessageFormat.format("Check server trust: {0} - {1}", authType, c.getIssuerDN().getName()));

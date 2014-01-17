@@ -23,7 +23,7 @@ public class LoadInputParamsImpl extends AbstractFileLoadData implements IFileLo
      * @return
      */
     @Override
-    public String[][] loadData(String filename) {
+    public String[][] loadData(final String filename) {
 
         String[][] values = null;
         String[][] numbers = null;

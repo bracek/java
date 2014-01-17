@@ -17,7 +17,7 @@ public class PasswordGenerator {
      * @param length
      * @return
      */
-    public static String getPassword(String saltSource, int length) {
+    public static String getPassword(final String saltSource,final  int length) {
         String time = (new Long(System.nanoTime())).toString();
         MessageDigestPasswordEncoder mdpe = new MessageDigestPasswordEncoder("SHA-256");
         String generatedPassword = mdpe.encodePassword(time, saltSource);

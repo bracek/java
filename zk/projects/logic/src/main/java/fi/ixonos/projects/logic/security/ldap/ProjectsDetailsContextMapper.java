@@ -25,12 +25,12 @@ public class ProjectsDetailsContextMapper implements UserDetailsContextMapper {
     private static final Logger logger = Logger.getLogger(ProjectsDetailsContextMapper.class);
     private UserDetailsService userDetailsService;
 
-    public ProjectsDetailsContextMapper(UserDetailsService userDetailsService) {
+    public ProjectsDetailsContextMapper(final UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
     @Override
-    public UserDetails mapUserFromContext(DirContextOperations ctx, String username, GrantedAuthority[] authority) {
+    public UserDetails mapUserFromContext(final DirContextOperations ctx,final  String username,final  GrantedAuthority[] authority) {
         try {
             String accountName = (String) ctx.getAttributes().get("sAMAccountName").get();
             logger.debug(MessageFormat.format("Loading user details for account: {0}", accountName));
@@ -41,7 +41,7 @@ public class ProjectsDetailsContextMapper implements UserDetailsContextMapper {
     }
 
     @Override
-    public void mapUserToContext(UserDetails user, DirContextAdapter ctx) {
+    public void mapUserToContext(final UserDetails user,final  DirContextAdapter ctx) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

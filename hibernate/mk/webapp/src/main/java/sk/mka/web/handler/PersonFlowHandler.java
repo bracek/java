@@ -22,8 +22,7 @@ public class PersonFlowHandler extends AbstractFlowHandler {
      * Where the flow should go when it ends.
      */
     @Override
-    public String handleExecutionOutcome(FlowExecutionOutcome outcome,
-            HttpServletRequest request, HttpServletResponse response) {
+    public String handleExecutionOutcome(final FlowExecutionOutcome outcome,final             HttpServletRequest request,final  HttpServletResponse response) {
         return getContextRelativeUrl(PersonController.SEARCH_VIEW_KEY);
     }
 
@@ -31,8 +30,7 @@ public class PersonFlowHandler extends AbstractFlowHandler {
      * Where to redirect if there is an exception not handled by the flow.
      */
     @Override
-    public String handleException(FlowException e,
-            HttpServletRequest request, HttpServletResponse response) {
+    public String handleException(final FlowException e,final             HttpServletRequest request,final  HttpServletResponse response) {
         if (e instanceof NoSuchFlowExecutionException) {
             return getContextRelativeUrl(PersonController.SEARCH_VIEW_KEY);
         } else {
@@ -43,7 +41,7 @@ public class PersonFlowHandler extends AbstractFlowHandler {
     /**
      * Gets context relative url with an '.html' extension.
      */
-    private String getContextRelativeUrl(String view) {
+    private String getContextRelativeUrl(final String view) {
         return "contextRelative:" + view + ".do";
     }
 }

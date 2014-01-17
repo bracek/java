@@ -29,7 +29,7 @@ public final class MessageServiceImpl extends AbstractGenericService<Message> im
 
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     @Override
-    public void save(Message mess) {
+    public void save(final Message mess) {
         if (mess != null) {
             if (mess.getId() == null) {
                 messageDAO.create(mess);
@@ -40,13 +40,13 @@ public final class MessageServiceImpl extends AbstractGenericService<Message> im
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(final Integer id) {
         Message message = messageDAO.read(id);
         messageDAO.delete(message);
     }
 
     @Override
-    public Message load(Integer id) {
+    public Message load(final Integer id) {
         return messageDAO.read(id);
     }
 

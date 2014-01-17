@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContextAware;
 public class ProjectsApplicationContextProvider implements ApplicationContextAware {
 
     @Override
-    public void setApplicationContext(ApplicationContext ctx) throws BeansException {
+    public void setApplicationContext(final ApplicationContext ctx) throws BeansException {
         ProjectsApplicationContext.setApplicationContext(ctx);
     }
 }

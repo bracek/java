@@ -8,10 +8,9 @@ import java.util.List;
 
 public abstract class AbstractAction implements IAction {
 
-    protected abstract void modify(StringBuffer stringBuffer,
-                                   StringBuffer paramsTemporaryBuffer, String line);
+    protected abstract void modify(final StringBuffer stringBuffer,final                                    StringBuffer paramsTemporaryBuffer,final  String line);
 
-    static List<File> getFileListingNoSort(File aStartingDir)
+    static List<File> getFileListingNoSort(final File aStartingDir)
             throws FileNotFoundException {
         final List<File> result = new ArrayList<File>();
         final File[] filesAndDirs = aStartingDir.listFiles();
@@ -32,7 +31,7 @@ public abstract class AbstractAction implements IAction {
      * Directory is valid if it exists, does not represent a file, and can be
      * read.
      */
-    public void validateDirectory(File aDirectory) throws FileNotFoundException {
+    public void validateDirectory(final File aDirectory) throws FileNotFoundException {
         if (aDirectory == null) {
             throw new IllegalArgumentException("Directory should not be null.");
         }
@@ -56,7 +55,7 @@ public abstract class AbstractAction implements IAction {
      *
      * @param aStartingDir is a valid directory, which can be read.
      */
-    public List<File> getFileListing(File aStartingDir)
+    public List<File> getFileListing(final File aStartingDir)
             throws FileNotFoundException {
         validateDirectory(aStartingDir);
         getFileListingNoSort(aStartingDir);

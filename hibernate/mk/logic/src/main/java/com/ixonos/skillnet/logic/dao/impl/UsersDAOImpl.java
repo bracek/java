@@ -20,7 +20,7 @@ import com.ixonos.skillnet.logic.dao.UsersDAO;
 public class UsersDAOImpl extends GenericDAOImpl<Users> implements UsersDAO {
 
    @Autowired
-   public UsersDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public UsersDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
    
@@ -29,7 +29,7 @@ public class UsersDAOImpl extends GenericDAOImpl<Users> implements UsersDAO {
     */
    @SuppressWarnings("unchecked")
    @Override
-   public List<Users> getUsersWithFewSkills(Integer minimumSkills) {
+   public List<Users> getUsersWithFewSkills(final Integer minimumSkills) {
 	   
 	   StringBuilder sql = new StringBuilder();
 	   sql.append("select distinct u.* ");

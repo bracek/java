@@ -14,7 +14,7 @@ import org.springframework.security.userdetails.jdbc.JdbcDaoImpl;
 public class SkillnetUserDetailsService extends JdbcDaoImpl implements UserDetailsService {
 
     @Override
-    public UserDetails loadUserByUsername(String username) {
+    public UserDetails loadUserByUsername(final String username) {
         UserDetails userDetails = super.loadUserByUsername(username);
         SkillnetUser skillnetUser = new SkillnetUser(userDetails);
         return skillnetUser;

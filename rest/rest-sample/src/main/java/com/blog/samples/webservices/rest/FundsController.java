@@ -45,7 +45,7 @@ public class FundsController {
 	 * @return the fund
 	 */
 	@RequestMapping(value = "/rest/funds/{fundId}", method = RequestMethod.GET)
-	public ModelAndView getFund(@PathVariable("fundId") final String fundId_p) {
+	public ModelAndView getFund(final @PathVariable("fundId") final String fundId_p) {
 		Fund fund = null;
 
 		/* validate fund Id parameter */
@@ -94,8 +94,7 @@ public class FundsController {
 	 * @return the model and view
 	 */
 	@RequestMapping(value = { "/rest/funds/" }, method = { RequestMethod.POST })
-	public ModelAndView createFund(@RequestBody final Fund fund_p,
-			final HttpServletResponse httpResponse_p, final WebRequest request_p) {
+	public ModelAndView createFund(@RequestBody final Fund fund_p,			final HttpServletResponse httpResponse_p, final WebRequest request_p) {
 
 		Fund createdFund;
 		logger_c.debug("Creating Fund: " + fund_p.toString());
@@ -128,8 +127,7 @@ public class FundsController {
 	 * @return the model and view
 	 */
 	@RequestMapping(value = { "/rest/funds/{fundId}" }, method = { RequestMethod.PUT })
-	public ModelAndView updateFund(@RequestBody final Fund fund_p,
-			@PathVariable("fundId") final String fundId_p,
+	public ModelAndView updateFund(@RequestBody final Fund fund_p,final 			@PathVariable("fundId") final String fundId_p,
 			final HttpServletResponse httpResponse_p) {
 
 		logger_c.debug("Updating Fund: " + fund_p.toString());
@@ -161,8 +159,7 @@ public class FundsController {
 	 * @return the model and view
 	 */
 	@RequestMapping(value = "/rest/funds/{fundId}", method = RequestMethod.DELETE)
-	public ModelAndView removeFund(
-			@PathVariable("fundId") final String fundId_p,
+	public ModelAndView removeFund(final 			@PathVariable("fundId") final String fundId_p,
 			final HttpServletResponse httpResponse_p) {
 
 		logger_c.debug("Deleting Fund Id: " + fundId_p.toString());

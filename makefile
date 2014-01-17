@@ -9,7 +9,7 @@ clean.install:
 	cd springHibernate/ && make && cd .. 
 	cd spring_roo/ && make && cd .. 
 	cd velocity/ && make && cd .. 
-	cd zk/ && make && cd .. 
+#	cd zk/ && make && cd .. 
 run.sonar:
 	cd jersey/ && make && cd .. 
 	cd hibernate/ && make && cd .. 

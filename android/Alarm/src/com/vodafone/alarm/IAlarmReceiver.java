@@ -5,8 +5,8 @@ import android.content.Intent;
 
 public interface IAlarmReceiver {
 
-	public abstract void onReceive(Context context, Intent intent);
+	public abstract void onReceive(final Context context,final  Intent intent);
 
-	public abstract void setAlarm(Context context);
+	public abstract void setAlarm(final Context context);
 
 }

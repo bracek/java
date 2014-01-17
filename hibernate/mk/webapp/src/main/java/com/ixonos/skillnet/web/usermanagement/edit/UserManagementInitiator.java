@@ -22,57 +22,58 @@ import com.ixonos.skillnet.logic.service.UsersService;
 public class UserManagementInitiator extends AnnotateDataBinderInit {
 
 	@Resource
-	private CodeTableService codeTableService = (CodeTableService)SpringUtil.getApplicationContext().getBean("codeTableService");
+	private final CodeTableService codeTableService = (CodeTableService) SpringUtil
+			.getApplicationContext().getBean("codeTableService");
 
 	@Resource
-	protected UsersService usersService = (UsersService)SpringUtil.getApplicationContext().getBean("usersService");
-	
+	protected UsersService usersService = (UsersService) SpringUtil
+			.getApplicationContext().getBean("usersService");
+
 	@Resource
-	protected GroupsService groupsService = (GroupsService)SpringUtil.getApplicationContext().getBean("groupsService");
+	protected GroupsService groupsService = (GroupsService) SpringUtil
+			.getApplicationContext().getBean("groupsService");
 
 	@Override
-	public void doAfterCompose(Page page, Component[] comps) throws Exception {		
-		List<Users> userList = getOrderedListOfUsers();
-		List<CodeTable> authorityList = codeTableService.getCodes("AUTHORITIES");			
-		List<Users> managerList = getOrderedListOfManagers();
-		List<Groups> groupList = getOrderedListOfGroups();
-		
+	public void doAfterCompose(final Page page, final Component[] comps)
+			throws Exception {
+		final List<Users> userList = getOrderedListOfUsers();
+		final List<CodeTable> authorityList = codeTableService
+				.getCodes("AUTHORITIES");
+		final List<Users> managerList = getOrderedListOfManagers();
+		final List<Groups> groupList = getOrderedListOfGroups();
+
 		page.setVariable("managerList", managerList);
 		page.setVariable("userList", userList);
 		page.setVariable("authorityList", authorityList);
 		page.setVariable("groupList", groupList);
-		
-		super.doAfterCompose(page, comps);		
+
+		super.doAfterCompose(page, comps);
 	}
-	
+
 	private List<Users> getOrderedListOfUsers() {
 		List<Users> users = usersService.getAllUsers();
-		Users[] usersArray = users.toArray(new Users[users.size()]);
+		final Users[] usersArray = users.toArray(new Users[users.size()]);
 		Arrays.sort(usersArray, new UserManagementComparator(true, "Username"));
 		users = Arrays.asList(usersArray);
 		return users;
 	}
 
-    @Deprecated
-	private List<Users> getOrderedListOfManagers(List<Users> users) {
-		return this.getOrderedListOfManagers();
-	}
-	
 	private List<Users> getOrderedListOfManagers() {
-		List<Users> managerList = new ArrayList<Users>();
-        managerList.add(null);
-        managerList.addAll(usersService.getAllGroupManagers());
+		final List<Users> managerList = new ArrayList<Users>();
+		managerList.add(null);
+		managerList.addAll(usersService.getAllGroupManagers());
 		return managerList;
 	}
 
 	private List<Groups> getOrderedListOfGroups() {
 		List<Groups> groups = groupsService.readAll();
-		Groups[] groupsArray = groups.toArray(new Groups[groups.size()]);
+		final Groups[] groupsArray = groups.toArray(new Groups[groups.size()]);
 		Arrays.sort(groupsArray, new Comparator<Groups>() {
-			public int compare(Groups o1, Groups o2) {
+			@Override
+			public int compare(final Groups o1, final Groups o2) {
 				return o1.getGroupName().compareTo(o2.getGroupName());
 			}
-			
+
 		});
 		groups = Arrays.asList(groupsArray);
 		return groups;

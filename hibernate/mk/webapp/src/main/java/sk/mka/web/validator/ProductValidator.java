@@ -23,14 +23,14 @@ public class ProductValidator implements Validator {
      * @see org.springframework.validation.Validator#supports(java.lang.Class)
      */
     @SuppressWarnings("unchecked")
-    public boolean supports(Class clazz) {
+    public boolean supports(final Class clazz) {
         return Osoba.class.isAssignableFrom(clazz);
     }
 
     /* (non-Javadoc)
      * @see org.springframework.validation.Validator#validate(java.lang.Object, org.springframework.validation.Errors)
      */
-    public void validate(Object obj, Errors errors) {
+    public void validate(final Object obj,final  Errors errors) {
         logger.debug("validate(): Method has just been started.");
 
         Product product = (Product) obj;

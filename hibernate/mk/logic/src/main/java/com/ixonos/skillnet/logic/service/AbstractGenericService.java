@@ -23,28 +23,28 @@ public abstract class AbstractGenericService<T> implements HibernateGenericServi
      */
     protected GenericDAO<T> genericDAO;
 
-    public void create(T t) {
+    public void create(final T t) {
         if (t == null) {
             throw new IllegalArgumentException("Given argument is null");
         }
         this.genericDAO.create(t);
     }
     
-    public void createOrUpdate(T t) {
+    public void createOrUpdate(final T t) {
         if (t == null) {
             throw new IllegalArgumentException("Given argument is null");
         }
         this.genericDAO.createOrUpdate(t);
     }
 
-    public void update(T t) {
+    public void update(final T t) {
         if (t == null) {
             throw new IllegalArgumentException("Given argument is null");
         }
         this.genericDAO.update(t);
     }
 
-    public void delete(T t) {
+    public void delete(final T t) {
         if (t == null) {
             throw new IllegalArgumentException("Given argument is null");
         }
@@ -55,14 +55,14 @@ public abstract class AbstractGenericService<T> implements HibernateGenericServi
         return this.genericDAO.readAll();
     }
 
-    public T read(Serializable id) {
+    public T read(final Serializable id) {
         if (id == null) {
             throw new IllegalArgumentException("Given argument is null");
         }
         return this.genericDAO.read(id);
     }
     
-    public T find(Serializable id) {
+    public T find(final Serializable id) {
         if (id == null) {
             throw new IllegalArgumentException("Given argument is null");
         }
@@ -76,21 +76,21 @@ public abstract class AbstractGenericService<T> implements HibernateGenericServi
         this.genericDAO = genericDAO;
     }
 
-    public void setJdbcGenericDAO(JdbcGenericDAO<T> jdbcGenericDAO) {
+    public void setJdbcGenericDAO(final JdbcGenericDAO<T> jdbcGenericDAO) {
         if (jdbcGenericDAO == null) {
             throw new IllegalArgumentException("Given argument (jdbcGenericDAO) is null.");
         }
         this.jdbcGenericDAO = jdbcGenericDAO;
     }
    
-    public List<T> readByCriteria(T t) {
+    public List<T> readByCriteria(final T t) {
         if (genericDAO == null) {
             throw new IllegalArgumentException("Given argument (genericDAO) is null.");
         }
         return this.genericDAO.readByCriteria(t);
     }
 
-    public List<T> readByCriteria(DetachedCriteria criteria) {
+    public List<T> readByCriteria(final DetachedCriteria criteria) {
         if (genericDAO == null) {
             throw new IllegalArgumentException("Given argument (genericDAO) is null.");
         }

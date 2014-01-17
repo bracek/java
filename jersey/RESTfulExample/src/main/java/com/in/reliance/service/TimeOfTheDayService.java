@@ -20,7 +20,7 @@ public class TimeOfTheDayService {
     @GET
     @Produces("text/plain")
     @Path("/asplaintext/{name}")
-    public String getTimeOfTheDay(@PathParam("name") String name) {
+    public String getTimeOfTheDay(final @PathParam("name") String name) {
         SimpleDateFormat df = new SimpleDateFormat(PATTERN);
         return name + "-" + df.format(Calendar.getInstance().getTime());
     }
@@ -28,7 +28,7 @@ public class TimeOfTheDayService {
     @GET
     @Produces("application/xml")
     @Path("/asxml/{name}/")
-    public Time getTimeOfTheDayInXML(@PathParam("name") String name) {
+    public Time getTimeOfTheDayInXML(final @PathParam("name") String name) {
         SimpleDateFormat df = new SimpleDateFormat(PATTERN);
         Time t = new Time();
         t.setName(name);
@@ -41,7 +41,7 @@ public class TimeOfTheDayService {
     @GET
     @Produces("application/json")
     @Path("/asjson/{name}/")
-    public Time getTimeOfTheDayInJSON(@PathParam("name") String name) {
+    public Time getTimeOfTheDayInJSON(final @PathParam("name") String name) {
         SimpleDateFormat df = new SimpleDateFormat(PATTERN);
         Time t = new Time();
         t.setName(name);

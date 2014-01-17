@@ -31,13 +31,13 @@ public class UsersEditDetailWindow extends Window implements IUserEditDetailWind
 
     private static final long serialVersionUID = 1L;
     private Users user;
-    private UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    private UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
 
     /**
      * @{@inheritDoc}
      */
     @Override
-    public void changeUserDetail(Event event) throws Exception {
+    public void changeUserDetail(final Event event) throws Exception {
         usersService.updateUsersInfo(user.getUsername(), user);
         Messagebox.show(Labels.getLabel("userDetail.information.userUpdated"), Labels.getLabel("userDetail.information"), Messagebox.OK, Messagebox.INFORMATION);
     }
@@ -46,7 +46,7 @@ public class UsersEditDetailWindow extends Window implements IUserEditDetailWind
      * @{@inheritDoc}
      */
     @Override
-    public void uploadCV(Event event) throws Exception {
+    public void uploadCV(final Event event) throws Exception {
 
         org.zkoss.util.media.Media[] media = Fileupload.get(-1);
         InputStream x;
@@ -79,7 +79,7 @@ public class UsersEditDetailWindow extends Window implements IUserEditDetailWind
      * @{@inheritDoc}
      */
     @Override
-    public void uploadPhoto(Event event) throws Exception {
+    public void uploadPhoto(final Event event) throws Exception {
 
         org.zkoss.util.media.Media[] media = Fileupload.get(-1);
         InputStream x;
@@ -110,12 +110,12 @@ public class UsersEditDetailWindow extends Window implements IUserEditDetailWind
      * @{@inheritDoc}
      */
     @Override
-    public void deletePhoto(Event event) throws Exception {
+    public void deletePhoto(final Event event) throws Exception {
     		if (PhotoUtil.deletePhoto(user))
     			PhotoUtil.refreshPhoto(user, (Image) this.getFellow("imagePhoto"), this.getFellow("deletePhoto"), false);
     }
     
-    public void onOpenPhoto(MouseEvent event) throws Exception {
+    public void onOpenPhoto(final MouseEvent event) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("user", user);
 		Window win = (Window) Executions.createComponents("/WEB-INF/jsp/tiles/photo/userPhoto.zul", null, map);
@@ -139,7 +139,7 @@ public class UsersEditDetailWindow extends Window implements IUserEditDetailWind
      * @{@inheritDoc}
      */
     @Override
-    public void downloadCV(Event event) throws Exception {
+    public void downloadCV(final Event event) throws Exception {
         CurriculumWindow.downloadCV(event, user);
     }
 
@@ -155,7 +155,7 @@ public class UsersEditDetailWindow extends Window implements IUserEditDetailWind
      * @{@inheritDoc}
      */
     @Override
-    public void setUser(Users user) {
+    public void setUser(final Users user) {
         this.user = user;
     }
 }

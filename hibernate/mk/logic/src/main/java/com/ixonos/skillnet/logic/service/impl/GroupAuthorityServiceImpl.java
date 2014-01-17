@@ -46,7 +46,7 @@ public final class GroupAuthorityServiceImpl extends AbstractGenericService<Grou
     @Secured(ROLE_ADMIN)
     @Override
     @Transactional
-    public boolean changeGroupAuthorities(String groupName, List<String> incomingAuthorities) throws Exception {
+    public boolean changeGroupAuthorities(final String groupName,final  List<String> incomingAuthorities) throws Exception {
         Groups group = null;
         try {
             group = groupsService.getGroup(groupName);
@@ -88,7 +88,7 @@ public final class GroupAuthorityServiceImpl extends AbstractGenericService<Grou
         return true;
     }
 
-    private GroupAuthority getGroupAuthority(String authority) throws Exception {
+    private GroupAuthority getGroupAuthority(final String authority) throws Exception {
         GroupAuthority groupAuthority = new GroupAuthority();
         final CodeTable code = codeTableService.getCode(AUTHORITIES, authority);
         groupAuthority.setAuthority(code);
@@ -97,7 +97,7 @@ public final class GroupAuthorityServiceImpl extends AbstractGenericService<Grou
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("groupAuthorityDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("groupAuthorityDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
 }

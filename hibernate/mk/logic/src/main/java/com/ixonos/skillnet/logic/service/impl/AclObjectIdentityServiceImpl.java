@@ -22,7 +22,7 @@ public final class AclObjectIdentityServiceImpl extends AbstractGenericService<A
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("aclObjectIdentityDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("aclObjectIdentityDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
 }

@@ -42,7 +42,7 @@ public class Projects {
 		return symbian;
 	}
 
-	public void setSymbian(Symbian symbian) {
+	public void setSymbian(final Symbian symbian) {
 		this.symbian = symbian;
 	}
 
@@ -50,7 +50,7 @@ public class Projects {
 		return meego;
 	}
 
-	public void setMeego(Meego meego) {
+	public void setMeego(final Meego meego) {
 		this.meego = meego;
 	}
 }

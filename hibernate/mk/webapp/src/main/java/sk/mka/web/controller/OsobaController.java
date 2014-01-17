@@ -44,7 +44,7 @@ public class OsobaController {
      * Saves a person.
      */
     @RequestMapping(value = "/save/osoba.do")
-    public ModelAndView save(Osoba osoba) {
+    public ModelAndView save(final Osoba osoba) {
         PersonErrors errors = new PersonErrors();
         validator.validate(osoba, errors);
 
@@ -60,7 +60,7 @@ public class OsobaController {
      * Gets a person based on it's id.
      */
     @RequestMapping(value = "/info/osoba.do")
-    public ModelAndView info(@RequestParam("id") Integer id) {
+    public ModelAndView info(final @RequestParam("id") Integer id) {
 
         Object result = null;
 //        if (osobaDAO instanceof GenericDAO) {
@@ -74,7 +74,7 @@ public class OsobaController {
      * Deletes a person.
      */
     @RequestMapping(value = "/delete/osoba.do")
-    public ModelAndView delete(@RequestParam("id") Integer id) {
+    public ModelAndView delete(final @RequestParam("id") Integer id) {
 
 
 //        if (osobaDAO instanceof GenericDAO) {

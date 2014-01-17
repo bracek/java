@@ -24,7 +24,7 @@ public final class EditUsersWindow extends Window implements IZkWindowGeneralAct
     private Users user;
     private Listbox usersListbox;
     private Listbox updateProjectListbox;
-    private ProjectsService projectsService = (ProjectsService) SpringUtil.getApplicationContext().getBean("projectsService");
+    private ProjectsService projectsService = (final ProjectsService) SpringUtil.getApplicationContext().getBean("projectsService");
     private List<Users> addUsersList;
 
     public EditUsersWindow() {
@@ -32,7 +32,7 @@ public final class EditUsersWindow extends Window implements IZkWindowGeneralAct
     }
 
     @Override
-    public void onAdd(Event event) throws Exception {
+    public void onAdd(final Event event) throws Exception {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("usersListbox", this.getFellow("usersListbox"));
         Window win = (Window) Executions.createComponents("/WEB-INF/jsp/tiles/users/addNewUser.zul", null, map);
@@ -41,7 +41,7 @@ public final class EditUsersWindow extends Window implements IZkWindowGeneralAct
     }
 
     @Override
-    public void onUpdate(Event event) throws Exception {
+    public void onUpdate(final Event event) throws Exception {
 
         UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
         usersService.update(this.user);
@@ -49,12 +49,12 @@ public final class EditUsersWindow extends Window implements IZkWindowGeneralAct
     }
 
     @Override
-    public boolean checkValues(Users t) throws Exception {
+    public boolean checkValues(final Users t) throws Exception {
         return false;
     }
 
     @Override
-    public void onDelete(Event event) throws Exception {
+    public void onDelete(final Event event) throws Exception {
         Listitem li = (Listitem) ZkUtils.getParentComponent(event.getTarget(), Listitem.class);
         final Users selectedUser = (Users) (((Listbox) (li.getParent())).getModel().getElementAt(li.getIndex()));
         //first we need remove user from all projects in which user exist
@@ -88,7 +88,7 @@ public final class EditUsersWindow extends Window implements IZkWindowGeneralAct
         return updateProjectListbox;
     }
 
-    public void setUpdateProjectListbox(Listbox updateProjectListbox) {
+    public void setUpdateProjectListbox(final Listbox updateProjectListbox) {
         this.updateProjectListbox = updateProjectListbox;
     }
 
@@ -96,7 +96,7 @@ public final class EditUsersWindow extends Window implements IZkWindowGeneralAct
         return usersListbox;
     }
 
-    public void setUsersListbox(Listbox usersListbox) {
+    public void setUsersListbox(final Listbox usersListbox) {
         this.usersListbox = usersListbox;
     }
 
@@ -104,7 +104,7 @@ public final class EditUsersWindow extends Window implements IZkWindowGeneralAct
         return user;
     }
 
-    public void setUser(Users user) {
+    public void setUser(final Users user) {
         this.user = user;
     }
 
@@ -112,7 +112,7 @@ public final class EditUsersWindow extends Window implements IZkWindowGeneralAct
         return addUsersList;
     }
 
-    public void setAddUsersList(List<Users> addUsersList) {
+    public void setAddUsersList(final List<Users> addUsersList) {
         this.addUsersList = addUsersList;
     }
 }

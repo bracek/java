@@ -35,7 +35,7 @@ public abstract class AbstractLoadData implements LoadData {
     }
 
     @Override
-    public String[][] loadData(String filename) throws IOException {
+    public String[][] loadData(final String filename) throws IOException {
         String[] subStr;
         try {
             // Open the file that is the first
@@ -89,7 +89,7 @@ public abstract class AbstractLoadData implements LoadData {
     }
 
     @Override
-    public Object[][] loadDataAsObjects(String filename) throws IOException {
+    public Object[][] loadDataAsObjects(final String filename) throws IOException {
         this.filename = filename;
         String[] subStr;
         try {
@@ -157,7 +157,7 @@ public abstract class AbstractLoadData implements LoadData {
      * @param strLine
      * @param subStr
      */
-    protected void splitLine(String strLine, String[] subStr) {
+    protected void splitLine(final String strLine,final  String[] subStr) {
         if (!strLine.equals("")) {
             subStr = strLine.split("\t");
             cols = subStr.length;

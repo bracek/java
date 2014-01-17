@@ -20,8 +20,7 @@ public class Mvn2tools {
     static final String CONFIG_FILENAME = "target/classes/config-logic.properties";
     private static String[] divisionArray;
 
-    public static String getPomValue(
-            final String inKey)
+    public static String getPomValue(            final String inKey)
             throws FileNotFoundException, IOException {
         int i = 0;
         String cleanValue = null;

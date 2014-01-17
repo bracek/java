@@ -35,7 +35,7 @@ public class GenerateResults2latex {
     private static org.apache.log4j.Logger log = Logger.getLogger(GenerateResults2latex.class);
     private static final String CONFIG_FILE = "input/config";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
 
         final ILoadData loadPhonemeData = new PhonemeLoadDataImpl();
         final String numbers[][] = loadPhonemeData.loadData(Const.INPUT.RESULTS);
@@ -140,7 +140,7 @@ public class GenerateResults2latex {
         }
     }
 
-    private static void setThreadLogic(Thread thread, final int threadTimeWaiting) throws InterruptedException {
+    private static void setThreadLogic(final Thread thread, final int threadTimeWaiting) throws InterruptedException {
         thread.start();
         thread.join(threadTimeWaiting);
         if (thread.isAlive() == true) {

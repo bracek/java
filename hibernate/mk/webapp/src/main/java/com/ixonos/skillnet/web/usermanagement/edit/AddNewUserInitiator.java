@@ -19,30 +19,34 @@ import com.ixonos.skillnet.logic.service.UsersService;
 
 public class AddNewUserInitiator extends AnnotateDataBinderInit {
 	@Resource
-	private CodeTableService codeTableService = (CodeTableService)SpringUtil.getApplicationContext().getBean("codeTableService");
+	private final CodeTableService codeTableService = (CodeTableService) SpringUtil
+			.getApplicationContext().getBean("codeTableService");
 
 	@Resource
-	protected UsersService usersService = (UsersService)SpringUtil.getApplicationContext().getBean("usersService");
-	
+	protected UsersService usersService = (UsersService) SpringUtil
+			.getApplicationContext().getBean("usersService");
+
 	@Override
-	public void doAfterCompose(Page page, Component[] comps) throws Exception {		
-		List<Users> users = usersService.getAllUsers();
+	public void doAfterCompose(final Page page, final Component[] comps)
+			throws Exception {
+		final List<Users> users = usersService.getAllUsers();
 		List<CodeTable> authorities = new ArrayList<CodeTable>();
 		try {
 			authorities = codeTableService.getCodes("AUTHORITIES");
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
-		}		
-		List<Users> managerList = new ArrayList<Users>();
+		}
+		final List<Users> managerList = new ArrayList<Users>();
 		managerList.add(null);
-		for (Users user : users) {
+		for (final Users user : users) {
 			managerList.add(user);
 		}
 		page.setVariable("managerList", managerList);
-		page.setVariable("authorities", authorities);		
-		Listbox usersListbox = (Listbox)Executions.getCurrent().getArg().get("usersListbox");
-		AddNewUserWindow addNewUserWindow = (AddNewUserWindow)comps[0];
-		addNewUserWindow.setUsersListbox(usersListbox);		
-		super.doAfterCompose(page, comps);	
+		page.setVariable("authorities", authorities);
+		final Listbox usersListbox = (Listbox) Executions.getCurrent().getArg()
+				.get("usersListbox");
+		final AddNewUserWindow addNewUserWindow = (AddNewUserWindow) comps[0];
+		addNewUserWindow.setUsersListbox(usersListbox);
+		super.doAfterCompose(page, comps);
 	}
 }

@@ -30,11 +30,11 @@ public final class PracticumServiceImpl extends AbstractGenericService<Practicum
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("practicumDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("practicumDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
     
-	public List<Practicum> getPracticum(Users userId, Skill skillId) {
+	public List<Practicum> getPracticum(final Users userId,final  Skill skillId) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Practicum.class);
 		criteria.add(Restrictions.eq("userId", userId));
 		criteria.add(Restrictions.eq("skillId", skillId));

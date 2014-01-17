@@ -26,7 +26,7 @@ public class JdbcNodeDAOImpl extends SimpleJdbcDaoSupport implements
 		JdbcNodeDAO {
 
 	private static final String BY_ID_QUERY = "SELECT node_id FROM node";
-	private static final String CHILD_COUNT_QUERY = "SELECT count(node_id) FROM node WHERE parent_node_id= :parent";
+	private static final String CHILD_COUNT_QUERY = "SELECT count(final node_id) FROM node WHERE parent_node_id= :parent";
 	private static final String DELETE = "DELETE FROM node_id WHERE id = :id";
 
 	private GeneralQuery findByIdQuery;
@@ -40,19 +40,20 @@ public class JdbcNodeDAOImpl extends SimpleJdbcDaoSupport implements
 	 *            the datasource
 	 */
 	@Autowired
-	public JdbcNodeDAOImpl(@Qualifier("dataSourceJdbc") DataSource datasource) {
+	public JdbcNodeDAOImpl(
+			final @Qualifier("dataSourceJdbc") DataSource datasource) {
 		super.setDataSource(datasource);
 	}
 
 	@Override
 	protected void initDao() throws Exception {
 		delete = new SqlUpdate(getDataSource(), DELETE);
-        delete.declareParameter(new SqlParameter("id", Types.INTEGER));
+		delete.declareParameter(new SqlParameter("id", Types.INTEGER));
 	}
 
 	@Override
-	public void jdbcDelete(Integer id) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
+	public void jdbcDelete(final Integer id) {
+		final Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("id", id);
 		delete.updateByNamedParam(paramMap);
 	}
@@ -64,9 +65,10 @@ public class JdbcNodeDAOImpl extends SimpleJdbcDaoSupport implements
 	}
 
 	@Override
-	public int getChildCount(Node parent) {
-		SimpleJdbcTemplate template = new SimpleJdbcTemplate(getDataSource());
-		Map<String, Integer> fbiParams = new HashMap<String, Integer>();
+	public int getChildCount(final Node parent) {
+		final SimpleJdbcTemplate template = new SimpleJdbcTemplate(
+				getDataSource());
+		final Map<String, Integer> fbiParams = new HashMap<String, Integer>();
 		fbiParams.put("parent", parent.getNodeId());
 		return template.queryForInt(CHILD_COUNT_QUERY, fbiParams);
 	}
@@ -83,7 +85,7 @@ public class JdbcNodeDAOImpl extends SimpleJdbcDaoSupport implements
 		 * @param query
 		 *            the query
 		 */
-		public GeneralQuery(String query) {
+		public GeneralQuery(final String query) {
 			super(getDataSource(), query);
 		}
 
@@ -95,7 +97,8 @@ public class JdbcNodeDAOImpl extends SimpleJdbcDaoSupport implements
 		 * @param paramsWithTypes
 		 *            the params with types
 		 */
-		public GeneralQuery(String query, Map<String, Integer> paramsWithTypes) {
+		public GeneralQuery(final String query,
+				final Map<String, Integer> paramsWithTypes) {
 			super(getDataSource(), query, paramsWithTypes);
 		}
 
@@ -105,8 +108,10 @@ public class JdbcNodeDAOImpl extends SimpleJdbcDaoSupport implements
 		 * @see stibrik.springapp.dao.util.MappingGenericQuery#mapRow(ResultSet,
 		 * int)
 		 */
-		protected Node mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Node node = new Node();
+		@Override
+		protected Node mapRow(final ResultSet rs, final int rowNum)
+				throws SQLException {
+			final Node node = new Node();
 			node.setNodeId(new Integer(rs.getInt("node_id")));
 			return node;
 		}

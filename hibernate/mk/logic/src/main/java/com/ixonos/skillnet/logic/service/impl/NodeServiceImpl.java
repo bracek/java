@@ -44,17 +44,17 @@ public final class NodeServiceImpl extends AbstractGenericService<Node> implemen
 
     @Autowired
     @Override
-    public void setServiceDAO(@Qualifier("nodeDAO") GenericDAO genericDAO) {
+    public void setServiceDAO(final @Qualifier("nodeDAO") GenericDAO genericDAO) {
         super.setServiceDAO(genericDAO);
     }
     @Autowired
     @Override
-    public void setJdbcGenericDAO(@Qualifier("jdbcNodeDAO") JdbcGenericDAO jdbcGenericDAO) {
+    public void setJdbcGenericDAO(final @Qualifier("jdbcNodeDAO") JdbcGenericDAO jdbcGenericDAO) {
         super.setJdbcGenericDAO(jdbcGenericDAO);
     }
 
     @Override
-	public Node getChild(Node node, int index) {
+	public Node getChild(final Node node,final  int index) {
 		Integer nodeId = node.getNodeId();
 		List<Node> nodes = read(nodeId).getChildren(); 
 		Node[] nodesArray = nodes.toArray(new Node[nodes.size()]);
@@ -64,13 +64,13 @@ public final class NodeServiceImpl extends AbstractGenericService<Node> implemen
 	}
 
 	@Override
-	public List<Node> getChildren(Node node) {
+	public List<Node> getChildren(final Node node) {
 		Integer nodeId = node.getNodeId();
 		return read(nodeId).getChildren();
 	}
 
 	@Override
-	public Node getRoot(String rootName) {
+	public Node getRoot(final String rootName) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Node.class);
 		if (rootName.equals("ROOT")) {			
 			criteria.add(Restrictions.isNull("parentNode"));			
@@ -83,7 +83,7 @@ public final class NodeServiceImpl extends AbstractGenericService<Node> implemen
 
 	@Secured(ROLE_GM)
 	@Override
-	public Node insertNode(Integer parentID, Integer skillID) {
+	public Node insertNode(final Integer parentID,final  Integer skillID) {
 		Node parent = nodeDAO.read(parentID);
 		Node node = new Node();
 		node.setParentNode(parent);
@@ -94,7 +94,7 @@ public final class NodeServiceImpl extends AbstractGenericService<Node> implemen
 	}
 
 	@Override
-	public int getChildCount(Node parent) {
+	public int getChildCount(final Node parent) {
         if (jdbcNodeDAO == null) {
             throw new IllegalArgumentException("Given argument (jdbcNodeDAO) is null.");
         }

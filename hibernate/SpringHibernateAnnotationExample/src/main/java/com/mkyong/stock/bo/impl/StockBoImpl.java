@@ -13,23 +13,23 @@ public class StockBoImpl implements StockBo{
 	@Autowired
 	StockDao stockDao;
 	
-	public void setStockDao(StockDao stockDao) {
+	public void setStockDao(final StockDao stockDao) {
 		this.stockDao = stockDao;
 	}
 
-	public void save(Stock stock){
+	public void save(final Stock stock){
 		stockDao.save(stock);
 	}
 	
-	public void update(Stock stock){
+	public void update(final Stock stock){
 		stockDao.update(stock);
 	}
 	
-	public void delete(Stock stock){
+	public void delete(final Stock stock){
 		stockDao.delete(stock);
 	}
 	
-	public Stock findByStockCode(String stockCode){
+	public Stock findByStockCode(final String stockCode){
 		return stockDao.findByStockCode(stockCode);
 	}
 }

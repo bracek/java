@@ -13,7 +13,7 @@ public class Builder {
         return categoryUrl;
     }
 
-    public void setCategoryUrl(String categoryUrl) {
+    public void setCategoryUrl(final String categoryUrl) {
         this.categoryUrl = categoryUrl;
     }
 }

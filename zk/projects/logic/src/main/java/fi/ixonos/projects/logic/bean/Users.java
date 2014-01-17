@@ -99,11 +99,11 @@ public class Users implements Serializable, Comparable {
     public Users() {
     }
 
-    public Users(Integer userId) {
+    public Users(final Integer userId) {
         this.userId = userId;
     }
 
-    public Users(Integer userId, String username, String password, Boolean enabled) {
+    public Users(final Integer userId,final  String username,final  String password,final  Boolean enabled) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -114,7 +114,7 @@ public class Users implements Serializable, Comparable {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(final Integer userId) {
         this.userId = userId;
     }
 
@@ -122,7 +122,7 @@ public class Users implements Serializable, Comparable {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
@@ -130,7 +130,7 @@ public class Users implements Serializable, Comparable {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -138,7 +138,7 @@ public class Users implements Serializable, Comparable {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(final Boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -146,7 +146,7 @@ public class Users implements Serializable, Comparable {
         return userCollection;
     }
 
-    public void setUserCollection(List<Users> userCollection) {
+    public void setUserCollection(final List<Users> userCollection) {
         this.userCollection = userCollection;
     }
 
@@ -154,11 +154,11 @@ public class Users implements Serializable, Comparable {
         return manager;
     }
 
-    public void setManager(Users manager) {
+    public void setManager(final Users manager) {
         this.manager = manager;
     }
 
-    public void setAuthorities(String authorities) {
+    public void setAuthorities(final String authorities) {
         this.authorities = authorities;
     }
 
@@ -177,7 +177,7 @@ public class Users implements Serializable, Comparable {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(final String location) {
         this.location = location;
     }
 
@@ -185,7 +185,7 @@ public class Users implements Serializable, Comparable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -193,7 +193,7 @@ public class Users implements Serializable, Comparable {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(final String position) {
         this.position = position;
     }
 
@@ -201,7 +201,7 @@ public class Users implements Serializable, Comparable {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(final String surname) {
         this.surname = surname;
     }
 
@@ -209,7 +209,7 @@ public class Users implements Serializable, Comparable {
         return telephoneNumber;
     }
 
-    public void setTelephoneNumber(String telephoneNumber) {
+    public void setTelephoneNumber(final String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
 
@@ -217,7 +217,7 @@ public class Users implements Serializable, Comparable {
         return curriculum;
     }
 
-    public void setCurriculum(byte[] curriculum) {
+    public void setCurriculum(final byte[] curriculum) {
         this.curriculum = curriculum;
     }
 
@@ -225,7 +225,7 @@ public class Users implements Serializable, Comparable {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -237,12 +237,12 @@ public class Users implements Serializable, Comparable {
         return isCurriculumAlreadyFillUp;
     }
 
-    public void setIsCurriculumAlreadyFillUp(boolean isCurriculumAlreadyFillUp) {
+    public void setIsCurriculumAlreadyFillUp(final boolean isCurriculumAlreadyFillUp) {
         this.isCurriculumAlreadyFillUp = isCurriculumAlreadyFillUp;
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(final Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Users)) {
             return false;
@@ -260,7 +260,7 @@ public class Users implements Serializable, Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(final Object o) {
         if (o instanceof Users) {
             Users user = (Users) o;
             return (this.username.compareTo(user.getUsername()));
@@ -272,7 +272,7 @@ public class Users implements Serializable, Comparable {
         return photo;
     }
 
-    public void setPhoto(byte[] photo) {
+    public void setPhoto(final byte[] photo) {
         this.photo = photo;
     }
 
@@ -280,7 +280,7 @@ public class Users implements Serializable, Comparable {
         return photoUploaded;
     }
 
-    public void setPhotoUploaded(boolean photoUploaded) {
+    public void setPhotoUploaded(final boolean photoUploaded) {
         this.photoUploaded = photoUploaded;
     }
 
@@ -288,7 +288,7 @@ public class Users implements Serializable, Comparable {
         return projectsCollection;
     }
 
-    public void setProjectsCollection(Collection<Projects> projectsCollection) {
+    public void setProjectsCollection(final Collection<Projects> projectsCollection) {
         this.projectsCollection = projectsCollection;
     }
 
@@ -296,7 +296,7 @@ public class Users implements Serializable, Comparable {
         return projectsOpenedCollection;
     }
 
-    public void setProjectsOpenedCollection(Collection<Projects> projectsOpenedCollection) {
+    public void setProjectsOpenedCollection(final Collection<Projects> projectsOpenedCollection) {
         this.projectsOpenedCollection = projectsOpenedCollection;
     }
 
@@ -304,7 +304,7 @@ public class Users implements Serializable, Comparable {
         return authorityCollection;
     }
 
-    public void setAuthorityCollection(List<Authority> authorityCollection) {
+    public void setAuthorityCollection(final List<Authority> authorityCollection) {
         this.authorityCollection = authorityCollection;
     }
 
@@ -312,7 +312,7 @@ public class Users implements Serializable, Comparable {
         return groupMemberCollection;
     }
 
-    public void setGroupMemberCollection(List<GroupMember> groupMemberCollection) {
+    public void setGroupMemberCollection(final List<GroupMember> groupMemberCollection) {
         this.groupMemberCollection = groupMemberCollection;
     }
 }

@@ -15,7 +15,7 @@ import com.ixonos.skillnet.logic.dao.NodeDAO;
 public class NodeDAOImpl extends GenericDAOImpl<Node> implements NodeDAO {
 
    @Autowired
-   public NodeDAOImpl(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+   public NodeDAOImpl(final @Qualifier("sessionFactory") SessionFactory sessionFactory) {
        setSessionFactory(sessionFactory);
    }
 }

@@ -21,7 +21,7 @@ public class GroupsUpdateAuthoritiesWindow extends Window {
 
     final GroupAuthorityService groupAuthorityService = (GroupAuthorityService) SpringUtil.getApplicationContext().getBean("groupAuthorityService");
 
-    public void onUpdateAuthority(Event event) throws Exception {
+    public void onUpdateAuthority(final Event event) throws Exception {
 
         List<String> listOfAuthoritiesForCurrentGroup = new ArrayList<String>();
         List listItems = ((Listbox) this.getFellow("LISTBOX_AUTHORITIES")).getItems();
