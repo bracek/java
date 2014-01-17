@@ -1,6 +1,6 @@
 package com.mkyong;
 
-public class Track {
+public final class Track {
 
 	private String title;
 	private String singer;
@@ -9,7 +9,7 @@ public class Track {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(final String title) {
 		this.title = title;
 	}
 
@@ -17,7 +17,7 @@ public class Track {
 		return singer;
 	}
 
-	public void setSinger(String singer) {
+	public void setSinger(final String singer) {
 		this.singer = singer;
 	}
 

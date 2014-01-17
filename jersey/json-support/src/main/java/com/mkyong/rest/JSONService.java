@@ -16,9 +16,9 @@ public class JSONService {
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Track getTrackInJSON() {
+	public final Track getTrackInJSON() {
 
-		Track track = new Track();
+		final Track track = new Track();
 		track.setTitle("Enter Sandman");
 		track.setSinger("Metallica");
 
@@ -29,9 +29,9 @@ public class JSONService {
 	@POST
 	@Path("/post")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createTrackInJSON(Track track) {
+	public Response createTrackInJSON(final Track track) {
 
-		String result = "Track saved : " + track;
+		final String result = "Track saved : " + track;
 		return Response.status(201).entity(result).build();
 
 	}
