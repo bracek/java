@@ -45,7 +45,7 @@ public class FundsController {
 	 * @return the fund
 	 */
 	@RequestMapping(value = "/rest/funds/{fundId}", method = RequestMethod.GET)
-	public ModelAndView getFund(final @PathVariable("fundId") final String fundId_p) {
+	public ModelAndView getFund(final @PathVariable("fundId") String fundId_p) {
 		Fund fund = null;
 
 		/* validate fund Id parameter */
@@ -74,7 +74,7 @@ public class FundsController {
 	public ModelAndView getFunds() {
 		List<Fund> funds = null;
 		logger_c.debug("1");
-		
+
 		try {
 			funds = fundService_i.getAllFunds();
 		} catch (final Exception e) {
@@ -94,7 +94,8 @@ public class FundsController {
 	 * @return the model and view
 	 */
 	@RequestMapping(value = { "/rest/funds/" }, method = { RequestMethod.POST })
-	public ModelAndView createFund(@RequestBody final Fund fund_p,			final HttpServletResponse httpResponse_p, final WebRequest request_p) {
+	public ModelAndView createFund(@RequestBody final Fund fund_p,
+			final HttpServletResponse httpResponse_p, final WebRequest request_p) {
 
 		Fund createdFund;
 		logger_c.debug("Creating Fund: " + fund_p.toString());
@@ -127,7 +128,8 @@ public class FundsController {
 	 * @return the model and view
 	 */
 	@RequestMapping(value = { "/rest/funds/{fundId}" }, method = { RequestMethod.PUT })
-	public ModelAndView updateFund(@RequestBody final Fund fund_p,final 			@PathVariable("fundId") final String fundId_p,
+	public ModelAndView updateFund(@RequestBody final Fund fund_p,
+			final @PathVariable("fundId") String fundId_p,
 			final HttpServletResponse httpResponse_p) {
 
 		logger_c.debug("Updating Fund: " + fund_p.toString());
@@ -159,7 +161,8 @@ public class FundsController {
 	 * @return the model and view
 	 */
 	@RequestMapping(value = "/rest/funds/{fundId}", method = RequestMethod.DELETE)
-	public ModelAndView removeFund(final 			@PathVariable("fundId") final String fundId_p,
+	public ModelAndView removeFund(
+			final @PathVariable("fundId") String fundId_p,
 			final HttpServletResponse httpResponse_p) {
 
 		logger_c.debug("Deleting Fund Id: " + fundId_p.toString());
@@ -182,7 +185,7 @@ public class FundsController {
 	}
 
 	public static boolean isEmpty(final String s_p) {
-		return (null == s_p) || s_p.trim().length() == 0;
+		return null == s_p || s_p.trim().length() == 0;
 	}
 
 	/**
