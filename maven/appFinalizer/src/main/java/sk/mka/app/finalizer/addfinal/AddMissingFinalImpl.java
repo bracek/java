@@ -79,7 +79,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     @Override
     protected void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {
         if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC)
-                || line.contains(final "static") || line.contains(Utils.PROTECTED)) {
+                || line.contains(Utils.STATIC) || line.contains(Utils.PROTECTED)) {
             if (!line.contains(Utils.NEW) && !line.contains(".class") && !line.contains("getClass()")) {
 
                 if (line.contains(Utils.OPEN_PARENTHES_OPENING)) {
@@ -90,7 +90,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
                     if (line.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
                         int endOfStart = line
-                                .indexOf(Utils.OPEN_PARENTHESIS_CLOSING);
+                                .lastIndexOf(Utils.OPEN_PARENTHESIS_CLOSING);
                         final String middle = line.substring(indexOfStart + 1,
                                 endOfStart);
                         final String end = line.substring(endOfStart);
@@ -115,7 +115,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
                     final int indexOfStartBracket = paramsTemporaryBuffer
                             .indexOf(Utils.OPEN_PARENTHES_OPENING);
                     final int indexOfEndOfStart = paramsTemporaryBuffer
-                            .indexOf(Utils.OPEN_PARENTHESIS_CLOSING);
+                            .lastIndexOf(Utils.OPEN_PARENTHESIS_CLOSING);
 
                     final String beggining = paramsTemporaryBuffer.substring(0,
                             indexOfStartBracket + 1);
@@ -140,24 +140,34 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     }
 
     private void appendFinalToParams(final StringBuffer stringBuffer, final String beg, final String middle, final String end) {
-        final String[] split = middle.split(",");
-        for (int i = 0; i < split.length; i++) {
-            if (i == 0) {
-                stringBuffer.append(beg);
+
+
+        final String[] split = middle.split(Utils.COMMA);
+        if (!middle.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
+            for (int i = 0; i < split.length; i++) {
+                if (i == 0) {
+                    stringBuffer.append(beg);
+                }
+
+                if (!split[i].contains(Utils.FINAL))
+                    stringBuffer.append(Utils.FINAL + Utils.SPACE);
+
+                stringBuffer.append(split[i]);
+                if (i < split.length - 1)
+                    stringBuffer.append(Utils.COMMA);
+
+                if (i == split.length - 1) {
+                    stringBuffer.append(end);
+                }
             }
-
-            if (!split[i].contains(Utils.FINAL))
+        } else {
+            if (!middle.contains(Utils.FINAL)) {
                 stringBuffer.append(Utils.FINAL + Utils.SPACE);
-
-            stringBuffer.append(split[i]);
-            if (i < split.length - 1)
-                stringBuffer.append(Utils.COMMA);
-
-            if (i == split.length - 1) {
+                stringBuffer.append(middle);
                 stringBuffer.append(end);
             }
-
         }
+
         stringBuffer.append(Utils.NEWLINE);
     }
 

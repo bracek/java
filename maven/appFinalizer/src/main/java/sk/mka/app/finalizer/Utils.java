@@ -3,6 +3,7 @@ package sk.mka.app.finalizer;
 public class Utils {
 
     public static final String INTERFACE = "interface";
+    public static final String STATIC = "static";
     public static final String PREFIX = "/*";
     public static final String COMPOSITE_BRACKET_OPEN = "{";
     public static final String PUBLIC_INTERFACE = "public interface";
