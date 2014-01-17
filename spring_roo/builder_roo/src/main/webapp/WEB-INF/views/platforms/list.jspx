@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:list id="pl_fi_ixonos_builder_domain_Platform" items="${platforms}" z="lek0gGgioWALaH/PM1g9stXG48Y=">
-        <table:table data="${platforms}" id="l_fi_ixonos_builder_domain_Platform" path="/platforms" z="kt3jpJr3JVCtPQVoHV7izvxgi0M=">
-            <table:column id="c_fi_ixonos_builder_domain_Platform_platform_name" property="platform_name" z="vEhmHIk081fLuMDbql3S0Ax2PJg="/>
-            <table:column id="c_fi_ixonos_builder_domain_Platform_news_template" property="news_template" z="Odp9qNH82qWke3qNn4MPgVJJFTE="/>
-        </table:table>
-    </page:list>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<page:list id="pl_fi_ixonos_builder_domain_Platform"
+		items="${platforms}" z="lek0gGgioWALaH/PM1g9stXG48Y=">
+		<table:table data="${platforms}"
+			id="l_fi_ixonos_builder_domain_Platform" path="/platforms"
+			z="kt3jpJr3JVCtPQVoHV7izvxgi0M=">
+			<table:column id="c_fi_ixonos_builder_domain_Platform_platform_name"
+				property="platform_name" z="vEhmHIk081fLuMDbql3S0Ax2PJg=" />
+			<table:column id="c_fi_ixonos_builder_domain_Platform_news_template"
+				property="news_template" z="Odp9qNH82qWke3qNn4MPgVJJFTE=" />
+		</table:table>
+	</page:list>
 </div>

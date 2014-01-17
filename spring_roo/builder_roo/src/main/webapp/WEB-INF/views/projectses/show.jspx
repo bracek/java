@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_fi_ixonos_builder_domain_Projects" object="${projects}" path="/projectses" z="3lpXVGQ5Nk2lDpqsklzhcCBiyhM=">
-        <field:display field="name" id="s_fi_ixonos_builder_domain_Projects_name" object="${projects}" z="8YCrVNWbgHz2Qh2nkpubUOFKUf0="/>
-        <field:display field="symbian" id="s_fi_ixonos_builder_domain_Projects_symbian" object="${projects}" z="LPoWYgbUFF0dDNquRLdrtSgfXH4="/>
-        <field:display field="meego" id="s_fi_ixonos_builder_domain_Projects_meego" object="${projects}" z="hcrRCVWKI+Lywxnma4EqWUZuuMQ="/>
-        <field:display field="email" id="s_fi_ixonos_builder_domain_Projects_email" object="${projects}" z="g2SCfIN9TR7SaG7EaO8MGHsAwaw="/>
-    </page:show>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<page:show id="ps_fi_ixonos_builder_domain_Projects"
+		object="${projects}" path="/projectses"
+		z="3lpXVGQ5Nk2lDpqsklzhcCBiyhM=">
+		<field:display field="name"
+			id="s_fi_ixonos_builder_domain_Projects_name" object="${projects}"
+			z="8YCrVNWbgHz2Qh2nkpubUOFKUf0=" />
+		<field:display field="symbian"
+			id="s_fi_ixonos_builder_domain_Projects_symbian" object="${projects}"
+			z="LPoWYgbUFF0dDNquRLdrtSgfXH4=" />
+		<field:display field="meego"
+			id="s_fi_ixonos_builder_domain_Projects_meego" object="${projects}"
+			z="hcrRCVWKI+Lywxnma4EqWUZuuMQ=" />
+		<field:display field="email"
+			id="s_fi_ixonos_builder_domain_Projects_email" object="${projects}"
+			z="g2SCfIN9TR7SaG7EaO8MGHsAwaw=" />
+	</page:show>
 </div>

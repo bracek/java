@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_fi_ixonos_builder_domain_Platform" object="${platform}" path="/platforms" z="XeYQgGhW7TSiDPT9Iquz1R8kkEQ=">
-        <field:display field="platform_name" id="s_fi_ixonos_builder_domain_Platform_platform_name" object="${platform}" z="j1iigRr5V4KPE+dPWTrF3/y4/xU="/>
-        <field:display field="news_template" id="s_fi_ixonos_builder_domain_Platform_news_template" object="${platform}" z="abB+mwBAo3Zu/Bj+HpGyMcNVNLY="/>
-    </page:show>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<page:show id="ps_fi_ixonos_builder_domain_Platform"
+		object="${platform}" path="/platforms"
+		z="XeYQgGhW7TSiDPT9Iquz1R8kkEQ=">
+		<field:display field="platform_name"
+			id="s_fi_ixonos_builder_domain_Platform_platform_name"
+			object="${platform}" z="j1iigRr5V4KPE+dPWTrF3/y4/xU=" />
+		<field:display field="news_template"
+			id="s_fi_ixonos_builder_domain_Platform_news_template"
+			object="${platform}" z="abB+mwBAo3Zu/Bj+HpGyMcNVNLY=" />
+	</page:show>
 </div>

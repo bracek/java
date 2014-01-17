@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_fi_ixonos_builder_domain_Meego" object="${meego}" path="/meegoes" z="8yqgIiBg8Dk0X/26R/kwtPOli4Y=">
-        <field:display field="home_page" id="s_fi_ixonos_builder_domain_Meego_home_page" object="${meego}" z="EG1t261V8hHYywytlgTlAWspPy4="/>
-        <field:display field="short_description" id="s_fi_ixonos_builder_domain_Meego_short_description" object="${meego}" z="9Ke4GpqqClCAcyP97+5+ZgFKarw="/>
-        <field:display field="long_description" id="s_fi_ixonos_builder_domain_Meego_long_description" object="${meego}" z="WNdk0XH5mRGndejwixDAZf0fPj4="/>
-        <field:display field="display_name" id="s_fi_ixonos_builder_domain_Meego_display_name" object="${meego}" z="djlRYHO+oMiyAXAtfp/C+8yisIM="/>
-        <field:display field="project" id="s_fi_ixonos_builder_domain_Meego_project" object="${meego}" z="P/07fnvJud/T38J6H0kj2IZqsKg="/>
-    </page:show>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<page:show id="ps_fi_ixonos_builder_domain_Meego" object="${meego}"
+		path="/meegoes" z="8yqgIiBg8Dk0X/26R/kwtPOli4Y=">
+		<field:display field="home_page"
+			id="s_fi_ixonos_builder_domain_Meego_home_page" object="${meego}"
+			z="EG1t261V8hHYywytlgTlAWspPy4=" />
+		<field:display field="short_description"
+			id="s_fi_ixonos_builder_domain_Meego_short_description"
+			object="${meego}" z="9Ke4GpqqClCAcyP97+5+ZgFKarw=" />
+		<field:display field="long_description"
+			id="s_fi_ixonos_builder_domain_Meego_long_description"
+			object="${meego}" z="WNdk0XH5mRGndejwixDAZf0fPj4=" />
+		<field:display field="display_name"
+			id="s_fi_ixonos_builder_domain_Meego_display_name" object="${meego}"
+			z="djlRYHO+oMiyAXAtfp/C+8yisIM=" />
+		<field:display field="project"
+			id="s_fi_ixonos_builder_domain_Meego_project" object="${meego}"
+			z="P/07fnvJud/T38J6H0kj2IZqsKg=" />
+	</page:show>
 </div>

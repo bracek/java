@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:list id="pl_fi_ixonos_builder_domain_NewsTemplate" items="${newstemplates}" z="vdFo6d1vR8UEv1VGhp6ylyDqi8c=">
-        <table:table data="${newstemplates}" id="l_fi_ixonos_builder_domain_NewsTemplate" path="/newstemplates" z="9OZagFSL7bb9sMUlJWpEqdFaXH4=">
-            <table:column id="c_fi_ixonos_builder_domain_NewsTemplate_category_url" property="category_url" z="krH0bfJtDurYieym41Gj4qyWUbg="/>
-            <table:column id="c_fi_ixonos_builder_domain_NewsTemplate_platform" property="platform" z="mLk/Wc/3015Bx5iVTjGsCxH9EHE="/>
-            <table:column id="c_fi_ixonos_builder_domain_NewsTemplate_project" property="project" z="ujISrcu9tLlXAmkZlgyeBQfcSgQ="/>
-        </table:table>
-    </page:list>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<page:list id="pl_fi_ixonos_builder_domain_NewsTemplate"
+		items="${newstemplates}" z="vdFo6d1vR8UEv1VGhp6ylyDqi8c=">
+		<table:table data="${newstemplates}"
+			id="l_fi_ixonos_builder_domain_NewsTemplate" path="/newstemplates"
+			z="9OZagFSL7bb9sMUlJWpEqdFaXH4=">
+			<table:column
+				id="c_fi_ixonos_builder_domain_NewsTemplate_category_url"
+				property="category_url" z="krH0bfJtDurYieym41Gj4qyWUbg=" />
+			<table:column id="c_fi_ixonos_builder_domain_NewsTemplate_platform"
+				property="platform" z="mLk/Wc/3015Bx5iVTjGsCxH9EHE=" />
+			<table:column id="c_fi_ixonos_builder_domain_NewsTemplate_project"
+				property="project" z="ujISrcu9tLlXAmkZlgyeBQfcSgQ=" />
+		</table:table>
+	</page:list>
 </div>

@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
-    <div version="2.0">
-        <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-        <jsp:output omit-xml-declaration="yes"/>
-        <page:list id="pl_fi_ixonos_builder_domain_Projects" items="${projectses}" z="NMgnkL4HGrH0QunF1qw5qVS0YOQ=">
-            <table:table data="${projectses}" id="l_fi_ixonos_builder_domain_Projects" path="/projectses" z="lFYk4PfagBvrdqN0PNA6vt8XZY0=">
-                <table:column id="c_fi_ixonos_builder_domain_Projects_name" property="name" z="FB9tcXlsXU+MYIxpvjjdLY42fdQ="/>
-                <table:column id="c_fi_ixonos_builder_domain_Projects_symbian" property="symbian" z="RkKDXP49Pd3/AXRiTbop1mpF12U="/>
-                <table:column id="c_fi_ixonos_builder_domain_Projects_meego" property="meego" z="9mFnwJ7JYJiOdeYgUpwFx8/qiqc="/>
-                <table:column id="c_fi_ixonos_builder_domain_Projects_news_template" property="news_template" z="CfQXxfu4aFhLPfcrtrnmdoAA9IY="/>
-                <table:column id="c_fi_ixonos_builder_domain_Projects_email" property="email" z="5YevCS5g2xXROpi5cAXa6mH4dF4="/>
-            </table:table>
-        </page:list>
-    </div>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<div version="2.0">
+		<jsp:directive.page contentType="text/html;charset=UTF-8" />
+		<jsp:output omit-xml-declaration="yes" />
+		<page:list id="pl_fi_ixonos_builder_domain_Projects"
+			items="${projectses}" z="NMgnkL4HGrH0QunF1qw5qVS0YOQ=">
+			<table:table data="${projectses}"
+				id="l_fi_ixonos_builder_domain_Projects" path="/projectses"
+				z="lFYk4PfagBvrdqN0PNA6vt8XZY0=">
+				<table:column id="c_fi_ixonos_builder_domain_Projects_name"
+					property="name" z="FB9tcXlsXU+MYIxpvjjdLY42fdQ=" />
+				<table:column id="c_fi_ixonos_builder_domain_Projects_symbian"
+					property="symbian" z="RkKDXP49Pd3/AXRiTbop1mpF12U=" />
+				<table:column id="c_fi_ixonos_builder_domain_Projects_meego"
+					property="meego" z="9mFnwJ7JYJiOdeYgUpwFx8/qiqc=" />
+				<table:column id="c_fi_ixonos_builder_domain_Projects_news_template"
+					property="news_template" z="CfQXxfu4aFhLPfcrtrnmdoAA9IY=" />
+				<table:column id="c_fi_ixonos_builder_domain_Projects_email"
+					property="email" z="5YevCS5g2xXROpi5cAXa6mH4dF4=" />
+			</table:table>
+		</page:list>
+	</div>
 </div>

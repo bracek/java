@@ -3,73 +3,70 @@
 
 <log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
-    <!-- ============================== -->
-    <!-- Append messages to the log files -->
-    <!-- ============================== -->
-    <appender name="FILE_APPENDER" class="org.apache.log4j.FileAppender">
-        <param name="File" value="target/phd.log"/>
-        <param name="Threshold" value="${log4j.appender.Threshold}"/>
-        <param name="Append" value="false"/>
+	<!-- ============================== -->
+	<!-- Append messages to the log files -->
+	<!-- ============================== -->
+	<appender name="FILE_APPENDER" class="org.apache.log4j.FileAppender">
+		<param name="File" value="target/phd.log" />
+		<param name="Threshold" value="${log4j.appender.Threshold}" />
+		<param name="Append" value="false" />
 
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{dd.MMM yyyy HH\:mm\:ss,SSS}[%p] [%c] %m%n"/>
-        </layout>
-    </appender>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd.MMM yyyy HH\:mm\:ss,SSS}[%p] [%c] %m%n" />
+		</layout>
+	</appender>
 
-    <!-- ============================== -->
-    <!-- Append messages to the console -->
-    <!-- ============================== -->
-    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
-        <param name="Target" value="System.out"/>
-        <param name="Threshold" value="${log4j.appender.console.Threshold}"/>
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{dd.MMM yyyy HH\:mm\:ss,SSS}[%p] [%c] %m%n"/>
-        </layout>
-    </appender>
-
-
-    <appender name="ASYNC_APPENDER" class="org.apache.log4j.AsyncAppender">
-        <!--
-        <param name="blocking" value="false"/>
-        -->
-        <!-- this is hooked to root category; categorories log directly to following appenders -->
-        <appender-ref ref="FILE_APPENDER"/>
-    </appender>
-
-    <!-- ================ -->
-    <!-- Limit categories -->
-    <!-- ================ -->
-
-    <category name="org.springframework" additivity="false">
-        <priority value="${log4j.appender.Threshold}"/>
-        <appender-ref ref="ASYNC_APPENDER"/>
-    </category>
-
-    <category name="org.quartz" additivity="false">
-        <priority value="${log4j.appender.Threshold}"/>
-        <appender-ref ref="ASYNC_APPENDER"/>
-    </category>
+	<!-- ============================== -->
+	<!-- Append messages to the console -->
+	<!-- ============================== -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="${log4j.appender.console.Threshold}" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd.MMM yyyy HH\:mm\:ss,SSS}[%p] [%c] %m%n" />
+		</layout>
+	</appender>
 
 
-    <!-- ================ -->
-    <!-- Limit loggers    -->
-    <!-- ================ -->
-    <logger name="sk.mka">
-        <level value="${log4j.appender.Threshold}"/>
-        <appender-ref ref="ASYNC_APPENDER"/>
-    </logger>
+	<appender name="ASYNC_APPENDER" class="org.apache.log4j.AsyncAppender">
+		<!-- <param name="blocking" value="false"/> -->
+		<!-- this is hooked to root category; categorories log directly to following 
+			appenders -->
+		<appender-ref ref="FILE_APPENDER" />
+	</appender>
 
-    <!-- ======================= -->
-    <!-- Setup the Root category -->
-    <!-- ======================= -->
-    <root>
-        <!--<level value="INFO" />-->
-        <!-- all|debug|info|warn|error|fatal|off|null -->
-        <priority value="DEBUG"/>
-        <appender-ref ref="CONSOLE"/>
-        <!--
-        <appender-ref ref="ASYNC_APPENDER"/>
-        -->
-    </root>
+	<!-- ================ -->
+	<!-- Limit categories -->
+	<!-- ================ -->
+
+	<category name="org.springframework" additivity="false">
+		<priority value="${log4j.appender.Threshold}" />
+		<appender-ref ref="ASYNC_APPENDER" />
+	</category>
+
+	<category name="org.quartz" additivity="false">
+		<priority value="${log4j.appender.Threshold}" />
+		<appender-ref ref="ASYNC_APPENDER" />
+	</category>
+
+
+	<!-- ================ -->
+	<!-- Limit loggers -->
+	<!-- ================ -->
+	<logger name="sk.mka">
+		<level value="${log4j.appender.Threshold}" />
+		<appender-ref ref="ASYNC_APPENDER" />
+	</logger>
+
+	<!-- ======================= -->
+	<!-- Setup the Root category -->
+	<!-- ======================= -->
+	<root>
+		<!--<level value="INFO" /> -->
+		<!-- all|debug|info|warn|error|fatal|off|null -->
+		<priority value="DEBUG" />
+		<appender-ref ref="CONSOLE" />
+		<!-- <appender-ref ref="ASYNC_APPENDER"/> -->
+	</root>
 
 </log4j:configuration>

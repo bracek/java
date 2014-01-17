@@ -1,370 +1,298 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>bracek.velocity.thesis</groupId>
-    <artifactId>bracek-velocity-thesis</artifactId>
-    <packaging>pom</packaging>
-    <version>0.2</version>
-    <name>bracek.velocity.thesis</name>
-    <url>http://maven.apache.org</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>bracek.velocity.thesis</groupId>
+	<artifactId>bracek-velocity-thesis</artifactId>
+	<packaging>pom</packaging>
+	<version>0.2</version>
+	<name>bracek.velocity.thesis</name>
+	<url>http://maven.apache.org</url>
 
-    <properties>
-        <log4j.version>1.2.14</log4j.version>
-        <velocity.version>1.6.2</velocity.version>
-        <sk.mka.phd.version>0.1</sk.mka.phd.version>
-    </properties>
-    
-    <modules>
-        <module>logic</module>
-        <module>iterator</module>
-        <module>experiments</module>
-    </modules>
+	<properties>
+		<log4j.version>1.2.14</log4j.version>
+		<velocity.version>1.6.2</velocity.version>
+		<sk.mka.phd.version>0.1</sk.mka.phd.version>
+	</properties>
 
-
-    <profiles>
-
-        <profile>
-            <id>kemt_artifactory</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-
-            <properties>
-                <start.id>0</start.id>
-                <exp.bpMomentumfonik>5000</exp.bpMomentumfonik>
-                <exp.results.folder.voiced>a0b0</exp.results.folder.voiced>
-                <exp.results.folder.unvoiced>ua0b1</exp.results.folder.unvoiced>
-                
-
-                <!-- Log4J Threshold   setup-->
-                <log4j.appender.Threshold>INFO</log4j.appender.Threshold>
-                <log4j.appender.console.Threshold>FATAL</log4j.appender.console.Threshold>
-            </properties>
-
-            <!--
-            <repositories>
-                <repository>
-                    <id>central</id>
-                    <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
-                    <id>snapshots</id>
-                    <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>central</id>
-                    <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-releases</url>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </pluginRepository>
-                <pluginRepository>
-                    <id>snapshots</id>
-                    <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-snapshots</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                </pluginRepository>
-            </pluginRepositories>
-            -->
-        </profile>
-    </profiles>
+	<modules>
+		<module>logic</module>
+		<module>iterator</module>
+		<module>experiments</module>
+	</modules>
 
 
-    <dependencies>
+	<profiles>
 
-        <dependency>
-            <artifactId>phd-logic</artifactId>
-            <groupId>sk.mka</groupId>
-            <version>0.0.4</version>
-        </dependency>
+		<profile>
+			<id>kemt_artifactory</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity</artifactId>
-            <version>${velocity.version}</version>
-        </dependency>
-    </dependencies>
+			<properties>
+				<start.id>0</start.id>
+				<exp.bpMomentumfonik>5000</exp.bpMomentumfonik>
+				<exp.results.folder.voiced>a0b0</exp.results.folder.voiced>
+				<exp.results.folder.unvoiced>ua0b1</exp.results.folder.unvoiced>
 
-    <!-- BEGIN OF REPOSITORIES -->
-    <repositories>
 
-        <repository>
-            <id>central</id>
-            <name>Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>http://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
+				<!-- Log4J Threshold setup -->
+				<log4j.appender.Threshold>INFO</log4j.appender.Threshold>
+				<log4j.appender.console.Threshold>FATAL</log4j.appender.console.Threshold>
+			</properties>
 
-        <repository>
-            <id>Ibiblio</id>
-            <name>Ibiblio mirror</name>
-            <layout>default</layout>
-            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
+			<!-- <repositories> <repository> <id>central</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url> 
+				<snapshots> <enabled>false</enabled> </snapshots> </repository> <repository> 
+				<id>snapshots</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/repo</url> 
+				<releases> <enabled>false</enabled> </releases> </repository> </repositories> 
+				<pluginRepositories> <pluginRepository> <id>central</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-releases</url> 
+				<snapshots> <enabled>false</enabled> </snapshots> </pluginRepository> <pluginRepository> 
+				<id>snapshots</id> <url>http://kemt.fei.tuke.sk:8081/artifactory/plugins-snapshots</url> 
+				<releases> <enabled>false</enabled> </releases> </pluginRepository> </pluginRepositories> -->
+		</profile>
+	</profiles>
 
-        <repository>
-            <id>wso2-maven2-repository</id>
-            <url>http://dist.wso2.org/maven2</url>
-        </repository>
 
-        <repository>
-            <id>codecafe.dev</id>
-            <url>http://codecafe.dev-hda.com/repository/</url>
-        </repository>
+	<dependencies>
 
-    </repositories>
+		<dependency>
+			<artifactId>phd-logic</artifactId>
+			<groupId>sk.mka</groupId>
+			<version>0.0.4</version>
+		</dependency>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>elca-services</id>
-            <url>http://el4.elca-services.ch/el4j/maven2repository</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
-    <!-- END OF REPOSITORIES -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity.version}</version>
+		</dependency>
+	</dependencies>
+
+	<!-- BEGIN OF REPOSITORIES -->
+	<repositories>
+
+		<repository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>Ibiblio</id>
+			<name>Ibiblio mirror</name>
+			<layout>default</layout>
+			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>wso2-maven2-repository</id>
+			<url>http://dist.wso2.org/maven2</url>
+		</repository>
+
+		<repository>
+			<id>codecafe.dev</id>
+			<url>http://codecafe.dev-hda.com/repository/</url>
+		</repository>
+
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>elca-services</id>
+			<url>http://el4.elca-services.ch/el4j/maven2repository</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+	<!-- END OF REPOSITORIES -->
 
 
 
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>config-logic.properties</include>
-                    <include>log4j.xml</include>
-                </includes>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>ISO-8859-2</encoding>
-                    <showWarnings>true</showWarnings>
-                </configuration>
-            </plugin>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>config-logic.properties</include>
+					<include>log4j.xml</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>ISO-8859-2</encoding>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
 
 
-<!--            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <formats>
-                        <format>xml</format>
-                    </formats>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>cobertura</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>cobertura-maven-plugin</artifactId> 
+				<version>2.2</version> <configuration> <formats> <format>xml</format> </formats> 
+				</configuration> <executions> <execution> <phase>package</phase> <goals> 
+				<goal>cobertura</goal> </goals> </execution> </executions> </plugin> -->
 
-            <!--
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.1.1</version>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                    </execution>
-                </executions>
-            </plugin>
--->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <encoding>windows-1250</encoding>
-                </configuration>
-            </plugin>
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.1.1</version> <executions> <execution> <phase>compile</phase> 
+				</execution> </executions> </plugin> -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>windows-1250</encoding>
+				</configuration>
+			</plugin>
 
 
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <configuration>
-                    <encoding>windows-1250</encoding>
-                </configuration>
-            </plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>windows-1250</encoding>
+				</configuration>
+			</plugin>
 
 
-            <plugin>
-                <groupId>org.codehaus.sonar</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>2.0</version>
-            </plugin>
+			<plugin>
+				<groupId>org.codehaus.sonar</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.7</version>
-                <configuration>
-                    <!-- Default configuration for all reports -->
-                    ...
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>aggregate</id>
-                        <goals>
-                            <goal>aggregate</goal>
-                        </goals>
-                        <phase>site</phase>
-                        <configuration>
-                            <!-- Specific configuration for the aggregate report -->
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-
-        </plugins>
-    </build>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<!-- Default configuration for all reports -->
+					...
+				</configuration>
+				<executions>
+					<execution>
+						<id>aggregate</id>
+						<goals>
+							<goal>aggregate</goal>
+						</goals>
+						<phase>site</phase>
+						<configuration>
+							<!-- Specific configuration for the aggregate report -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.7</version>
-
-                <configuration>
-                    <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
-
-                    <!-- <docletPath>/path/to/UmlGraph.jar</docletPath> -->
-                    <docletArtifact>
-                        <groupId>org.umlgraph</groupId>
-                        <artifactId>doclet</artifactId>
-                        <version>5.1</version>
-                    </docletArtifact>
-                    <additionalparam>-views</additionalparam>
-                    <useStandardDocletOptions>true</useStandardDocletOptions>
-                </configuration>
-                <reportSets>
-                    <!--  <reportSet>
-                        <id>html</id>
-                        <reports>
-                            <report>javadoc</report>
-                        </reports>
-                    </reportSet>
-                    <reportSet>
-                        <id>doccheck</id>
-                        <configuration>
-                            <doclet>com.sun.tools.doclets.doccheck.DocCheck</doclet>
-
-                             <docletPath>/path/to/doccheck.jar</docletPath>
-                            <docletArtifact>
-                                <groupId>com.sun.tools.doclets</groupId>
-                                <artifactId>doccheck</artifactId>
-                                <version>1.2b2</version>
-                            </docletArtifact>
-                            <additionalparam>
-                                -d ${project.build.directory}/site/doccheck
-                            </additionalparam>
-
-                             Other dir than apidocs
-                            <destDir>doccheck</destDir>
-
-                             For the project-reports page
-                            <name>DocCheck</name>
-                            <description>DocCheck documentation.</description>
-                        </configuration>
-                        <reports>
-                            <report>javadoc</report>
-                        </reports>
-                    </reportSet>-->
-
-                    <reportSet>
-                        <id>non-aggregate</id>
-                        <configuration>
-                            <!-- Specific configuration for the non aggregate report -->
-                        </configuration>
-                        <reports>
-                            <report>javadoc</report>
-                        </reports>
-                    </reportSet>
-                    <reportSet>
-                        <id>aggregate</id>
-                        <configuration>
-                            <!-- Specific configuration for the aggregate report -->
-                        </configuration>
-                        <reports>
-                            <report>aggregate</report>
-                        </reports>
-                    </reportSet>
+		</plugins>
+	</build>
 
 
-                </reportSets>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
 
-            </plugin>
-        </plugins>
-    </reporting>
+				<configuration>
+					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+
+					<!-- <docletPath>/path/to/UmlGraph.jar</docletPath> -->
+					<docletArtifact>
+						<groupId>org.umlgraph</groupId>
+						<artifactId>doclet</artifactId>
+						<version>5.1</version>
+					</docletArtifact>
+					<additionalparam>-views</additionalparam>
+					<useStandardDocletOptions>true</useStandardDocletOptions>
+				</configuration>
+				<reportSets>
+					<!-- <reportSet> <id>html</id> <reports> <report>javadoc</report> </reports> 
+						</reportSet> <reportSet> <id>doccheck</id> <configuration> <doclet>com.sun.tools.doclets.doccheck.DocCheck</doclet> 
+						<docletPath>/path/to/doccheck.jar</docletPath> <docletArtifact> <groupId>com.sun.tools.doclets</groupId> 
+						<artifactId>doccheck</artifactId> <version>1.2b2</version> </docletArtifact> 
+						<additionalparam> -d ${project.build.directory}/site/doccheck </additionalparam> 
+						Other dir than apidocs <destDir>doccheck</destDir> For the project-reports 
+						page <name>DocCheck</name> <description>DocCheck documentation.</description> 
+						</configuration> <reports> <report>javadoc</report> </reports> </reportSet> -->
+
+					<reportSet>
+						<id>non-aggregate</id>
+						<configuration>
+							<!-- Specific configuration for the non aggregate report -->
+						</configuration>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+					<reportSet>
+						<id>aggregate</id>
+						<configuration>
+							<!-- Specific configuration for the aggregate report -->
+						</configuration>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
 
 
-    <ciManagement>
-        <system>Hudson</system>
-        <url>http://kemt.fei.tuke.sk:9001/job/velocity_bpMomentumFonik/</url>
-        <notifiers>
-            <notifier>
-                <type>mail</type>
-                <sendOnError>true</sendOnError>
-                <sendOnFailure>true</sendOnFailure>
-                <sendOnSuccess>true</sendOnSuccess>
-                <sendOnWarning>false</sendOnWarning>
-                <configuration>
-                    <address>miroslav.katrak@gmail.com</address>
-                </configuration>
-            </notifier>
-        </notifiers>
-    </ciManagement>
+				</reportSets>
 
-    <developers>
-        <developer>
-            <id>bracek</id>
-            <name>Miroslav Katrak</name>
-            <email>miroslav dot katrak at gmail.com</email>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>+1</timezone>
-        </developer>
-    </developers>
+			</plugin>
+		</plugins>
+	</reporting>
 
-    <scm>
-        <connection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/velocity_bpMomentumFonik/</connection>
-        <developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/velocity_bpMomentumFonik/</developerConnection>
-        <url>http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/velocity_bpMomentumFonik/</url>
-        <tag>HEAD</tag>
-    </scm>
+
+	<ciManagement>
+		<system>Hudson</system>
+		<url>http://kemt.fei.tuke.sk:9001/job/velocity_bpMomentumFonik/</url>
+		<notifiers>
+			<notifier>
+				<type>mail</type>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>true</sendOnSuccess>
+				<sendOnWarning>false</sendOnWarning>
+				<configuration>
+					<address>miroslav.katrak@gmail.com</address>
+				</configuration>
+			</notifier>
+		</notifiers>
+	</ciManagement>
+
+	<developers>
+		<developer>
+			<id>bracek</id>
+			<name>Miroslav Katrak</name>
+			<email>miroslav dot katrak at gmail.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/velocity_bpMomentumFonik/</connection>
+		<developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/velocity_bpMomentumFonik/</developerConnection>
+		<url>http://kemt.fei.tuke.sk:3128/svn/katrak/java/velocity/velocity_bpMomentumFonik/</url>
+		<tag>HEAD</tag>
+	</scm>
 </project>

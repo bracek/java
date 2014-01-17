@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:list id="pl_fi_ixonos_builder_domain_Meego" items="${meegoes}" z="HvK9gd8UImw4GxOpdAGHGQFLNrA=">
-        <table:table data="${meegoes}" id="l_fi_ixonos_builder_domain_Meego" path="/meegoes" z="Pd0yBQLVeCqAd0MKIaxb5Iuljl0=">
-            <table:column id="c_fi_ixonos_builder_domain_Meego_home_page" property="home_page" z="MAsAja1YBePio0d5ArEq9NfIo4U="/>
-            <table:column id="c_fi_ixonos_builder_domain_Meego_short_description" property="short_description" z="ye45CbzulXFQSar4V2b22M5dY14="/>
-            <table:column id="c_fi_ixonos_builder_domain_Meego_long_description" property="long_description" z="4UNTMZbdfhCU0NalV1tQV+QynMs="/>
-            <table:column id="c_fi_ixonos_builder_domain_Meego_display_name" property="display_name" z="6eyaFbLHobO2pVyxlpCRFSMIRGE="/>
-            <table:column id="c_fi_ixonos_builder_domain_Meego_project" property="project" z="6kSepKdVgqAC6kO+Ox8farYh6x0="/>
-        </table:table>
-    </page:list>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<page:list id="pl_fi_ixonos_builder_domain_Meego" items="${meegoes}"
+		z="HvK9gd8UImw4GxOpdAGHGQFLNrA=">
+		<table:table data="${meegoes}" id="l_fi_ixonos_builder_domain_Meego"
+			path="/meegoes" z="Pd0yBQLVeCqAd0MKIaxb5Iuljl0=">
+			<table:column id="c_fi_ixonos_builder_domain_Meego_home_page"
+				property="home_page" z="MAsAja1YBePio0d5ArEq9NfIo4U=" />
+			<table:column id="c_fi_ixonos_builder_domain_Meego_short_description"
+				property="short_description" z="ye45CbzulXFQSar4V2b22M5dY14=" />
+			<table:column id="c_fi_ixonos_builder_domain_Meego_long_description"
+				property="long_description" z="4UNTMZbdfhCU0NalV1tQV+QynMs=" />
+			<table:column id="c_fi_ixonos_builder_domain_Meego_display_name"
+				property="display_name" z="6eyaFbLHobO2pVyxlpCRFSMIRGE=" />
+			<table:column id="c_fi_ixonos_builder_domain_Meego_project"
+				property="project" z="6kSepKdVgqAC6kO+Ox8farYh6x0=" />
+		</table:table>
+	</page:list>
 </div>

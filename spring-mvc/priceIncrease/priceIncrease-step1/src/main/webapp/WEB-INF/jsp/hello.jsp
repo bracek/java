@@ -3,8 +3,8 @@
 <title>Hello :: Spring Application</title>
 </head>
 <body>
-<h1>Hello - Spring Application</h1>
+	<h1>Hello - Spring Application</h1>
 
-<p>Greetings.</p>
+	<p>Greetings.</p>
 </body>
 </html>

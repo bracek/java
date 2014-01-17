@@ -1,10 +1,11 @@
-  <settings>
-    <servers>
-        <server>
-            <id>tomcat</id>
-            <username>admin</username>
-            <password></password>
-        </server>
-    </servers>
+
+<settings>
+	<servers>
+		<server>
+			<id>tomcat</id>
+			<username>admin</username>
+			<password></password>
+		</server>
+	</servers>
 </settings>
     

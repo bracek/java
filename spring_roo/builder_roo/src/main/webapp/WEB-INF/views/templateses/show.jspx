@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_fi_ixonos_builder_domain_Templates" object="${templates}" path="/templateses" z="pkfLsSp9+zzysgPK2W0jhtiJsW0=">
-        <field:display field="name" id="s_fi_ixonos_builder_domain_Templates_name" object="${templates}" z="Ew4xVK/aLU2YNn/n/1iq3CHWuVY="/>
-    </page:show>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<page:show id="ps_fi_ixonos_builder_domain_Templates"
+		object="${templates}" path="/templateses"
+		z="pkfLsSp9+zzysgPK2W0jhtiJsW0=">
+		<field:display field="name"
+			id="s_fi_ixonos_builder_domain_Templates_name" object="${templates}"
+			z="Ew4xVK/aLU2YNn/n/1iq3CHWuVY=" />
+	</page:show>
 </div>

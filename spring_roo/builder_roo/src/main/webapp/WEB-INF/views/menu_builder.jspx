@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-    <menu:category id="c_flows" z="5igpkb/e+HPIN8iUErvmM38Eqqk=">
-            <menu:item id="i_flows_sampleflow" messageCode="b.menu" url="/flow" z="user-managed"/>
-        </menu:category>
-        
-     <menu:category id="c_projects" z="I8hWa0cVR6gfNxztmbdOCadth1Q=">
-            <menu:item id="i_projects_new" messageCode="global_menu_new" url="/projectses?form" z="kdTi2py9zWLgLwRPNcJOeZ4zgbs="/>
-            <menu:item id="i_projects_list" messageCode="global_menu_list" url="/projectses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="XGUb9mGpfdpnzaDvwUQ6cbtB6M0="/>            
-        </menu:category>                
-    </menu:menu>
-    
-    
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+		<menu:category id="c_flows" z="5igpkb/e+HPIN8iUErvmM38Eqqk=">
+			<menu:item id="i_flows_sampleflow" messageCode="b.menu" url="/flow"
+				z="user-managed" />
+		</menu:category>
+
+		<menu:category id="c_projects" z="I8hWa0cVR6gfNxztmbdOCadth1Q=">
+			<menu:item id="i_projects_new" messageCode="global_menu_new"
+				url="/projectses?form" z="kdTi2py9zWLgLwRPNcJOeZ4zgbs=" />
+			<menu:item id="i_projects_list" messageCode="global_menu_list"
+				url="/projectses?page=1&amp;size=${empty param.size ? 10 : param.size}"
+				z="XGUb9mGpfdpnzaDvwUQ6cbtB6M0=" />
+		</menu:category>
+	</menu:menu>
+
+
 </div>

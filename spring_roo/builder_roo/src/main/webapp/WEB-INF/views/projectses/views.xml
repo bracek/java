@@ -2,18 +2,23 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 	<definition extends="default" name="projectses/list">
-		<put-attribute name="body" value="/WEB-INF/views/projectses/list.jspx"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/projectses/list.jspx" />
 	</definition>
 	<definition extends="default" name="projectses/show">
-		<put-attribute name="body" value="/WEB-INF/views/projectses/show.jspx"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/projectses/show.jspx" />
 	</definition>
 	<definition extends="default" name="projectses/create">
-		<put-attribute name="body" value="/WEB-INF/views/projectses/create.jspx"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/projectses/create.jspx" />
 	</definition>
 	<definition extends="default" name="projectses/update">
-		<put-attribute name="body" value="/WEB-INF/views/projectses/update.jspx"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/projectses/update.jspx" />
 	</definition>
-<definition extends="default" name="projectses/findProjectsesByNameEquals">
-        <put-attribute name="body" value="/WEB-INF/views/projectses/findProjectsesByNameEquals.jspx"/>
-    </definition>
+	<definition extends="default" name="projectses/findProjectsesByNameEquals">
+		<put-attribute name="body"
+			value="/WEB-INF/views/projectses/findProjectsesByNameEquals.jspx" />
+	</definition>
 </tiles-definitions>
