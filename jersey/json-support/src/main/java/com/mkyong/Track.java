@@ -5,7 +5,7 @@ public final class Track {
 	private String title;
 	private String singer;
 
-	public final String getSinger() {
+	public String getSinger() {
 		return singer;
 	}
 
