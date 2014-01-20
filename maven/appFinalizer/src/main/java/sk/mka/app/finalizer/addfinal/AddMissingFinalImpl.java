@@ -149,7 +149,8 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
             if (!split[i].contains(Utils.FINAL)) {
                 if (!split[i].contains(Utils.REQUIRED))
-                    stringBuffer.append(Utils.FINAL + Utils.SPACE);
+                    if (!split[i].equals(Utils.OPEN_PARENTHESIS_CLOSING))
+                        stringBuffer.append(Utils.FINAL + Utils.SPACE);
             }
             stringBuffer.append(split[i]);
 
