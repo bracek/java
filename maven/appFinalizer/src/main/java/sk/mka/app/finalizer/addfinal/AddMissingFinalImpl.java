@@ -162,6 +162,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
             }
         } else {
             if (!middle.contains(Utils.FINAL)) {
+                stringBuffer.append(beg);
                 stringBuffer.append(Utils.FINAL + Utils.SPACE);
                 stringBuffer.append(middle);
                 stringBuffer.append(end);
