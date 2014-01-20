@@ -141,29 +141,41 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     private void appendFinalToParams(final StringBuffer stringBuffer, final String beg, final String middle, final String end) {
         final String[] split = middle.split(Utils.COMMA);
 
-        for (int i = 0; i < split.length; i++) {
-            if (i == 0) {
-                stringBuffer.append(beg);
-            }
 
-            if (!split[i].contains(Utils.FINAL)) {
-                if (!split[i].contains(Utils.REQUIRED))
-                    if (!split[i].equals(Utils.OPEN_PARENTHESIS_CLOSING))
-                        if (!split[i].contains(">"))
+        if (beg.contains(Utils.PUBLIC) || beg.contains(Utils.PRIVATE) || beg.contains(Utils.PROTECTED) && beg.contains(Utils.OPEN_PARENTHESIS_OPENING)) {
+            for (int i = 0; i < split.length; i++) {
+                if (i == 0) {
+                    stringBuffer.append(beg);
+                }
 
-                            stringBuffer.append(Utils.FINAL + Utils.SPACE);
+                if (!split[i].contains(Utils.FINAL)) {
+                    if (!split[i].contains(Utils.REQUIRED))
+                        if (!split[i].equals(Utils.OPEN_PARENTHESIS_CLOSING))
+                            if (!split[i].contains(">"))
+
+                                stringBuffer.append(Utils.FINAL + Utils.SPACE);
+                }
+                stringBuffer.append(split[i]);
+
+                if (i < split.length - 1) {
+                    stringBuffer.append(Utils.COMMA);
+                    stringBuffer.append(Utils.NEWLINE);
+                }
+
+                if (i == split.length - 1) {
+                    stringBuffer.append(end);
+                    stringBuffer.append(Utils.NEWLINE);
+                }
             }
-            stringBuffer.append(split[i]);
+        } else {
+            stringBuffer.append(beg);
+            stringBuffer.append(middle);
+            stringBuffer.append(end);
             stringBuffer.append(Utils.NEWLINE);
 
-            if (i < split.length - 1)
-                stringBuffer.append(Utils.COMMA);
-
-            if (i == split.length - 1) {
-                stringBuffer.append(end);
-            }
         }
     }
+
 
     private void appendLine(final StringBuffer stringBuffer, final String line) {
         stringBuffer.append(line);
