@@ -20,9 +20,10 @@ public class Utils {
     public static String PACKAGE = "package";
     public static String CLASS = "class";
     public static final String DOT = ".";
-    public static final String OPEN_PARENTHESIS_OPENING = "(";
     public static final String OPEN_PARENTHESIS_CLOSING = ")";
     public static final String SPACE = " ";
     public static final String COMMA = ",";
     public static final String FINAL = "final";
+    public static final String OPEN_PARENTHESIS_OPENING = "(";
+
 }
