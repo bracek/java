@@ -90,7 +90,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
                     if (line.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
                         int endOfStart = line
-                                .lastIndexOf(Utils.OPEN_PARENTHESIS_CLOSING);
+                                .lastIndexOf(Utils.OPEN_PARENTHESIS_CLOSING) + 1;
                         final String middle = line.substring(indexOfStart + 1,
                                 endOfStart);
                         final String end = line.substring(endOfStart);
@@ -115,7 +115,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
                     final int indexOfStartBracket = paramsTemporaryBuffer
                             .indexOf(Utils.OPEN_PARENTHES_OPENING);
                     final int indexOfEndOfStart = paramsTemporaryBuffer
-                            .lastIndexOf(Utils.OPEN_PARENTHESIS_CLOSING);
+                            .lastIndexOf(Utils.OPEN_PARENTHESIS_CLOSING) + 1;
 
                     final String beggining = paramsTemporaryBuffer.substring(0,
                             indexOfStartBracket + 1);
@@ -143,37 +143,78 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
 
         final String[] split = middle.split(Utils.COMMA);
-        if (!middle.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
-            for (int i = 0; i < split.length; i++) {
-                if (i == 0) {
-                    stringBuffer.append(beg);
-                }
+//        if (!middle.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
 
-                if (!split[i].contains(Utils.FINAL))
-                    stringBuffer.append(Utils.FINAL + Utils.SPACE);
-
-                stringBuffer.append(split[i]);
-                if (i < split.length - 1)
-                    stringBuffer.append(Utils.COMMA);
-
-                if (i == split.length - 1) {
-                    stringBuffer.append(end);
-                }
+        for (int i = 0; i < split.length; i++) {
+            if (i == 0) {
+                stringBuffer.append(beg);
             }
-        } else {
-            if (!middle.contains(Utils.FINAL)) {
-                stringBuffer.append(beg);
-                stringBuffer.append(Utils.FINAL + Utils.SPACE);
-                stringBuffer.append(middle);
-                stringBuffer.append(end);
-            } else {
-                stringBuffer.append(beg);
-                stringBuffer.append(middle);
+
+            if (!split[i].contains(Utils.FINAL)) {
+                if (!split[i].contains(Utils.REQUIRED))
+                    stringBuffer.append(Utils.FINAL + Utils.SPACE);
+            }
+            stringBuffer.append(split[i]);
+
+            if (i < split.length - 1)
+                stringBuffer.append(Utils.COMMA);
+
+            if (i == split.length - 1) {
                 stringBuffer.append(end);
             }
         }
 
-        stringBuffer.append(Utils.NEWLINE);
+
+//        } else {
+//            if (!middle.contains(Utils.FINAL)) {
+//                stringBuffer.append(beg);
+//                stringBuffer.append(Utils.FINAL + Utils.SPACE);
+//                stringBuffer.append(middle);
+//                stringBuffer.append(end);
+//            } else {
+//                stringBuffer.append(beg);
+//                stringBuffer.append(middle);
+//                stringBuffer.append(end);
+//            }
+//        }
+//
+//        stringBuffer.append(Utils.NEWLINE);
+
+
+//        final String[] split = middle.split(Utils.COMMA);
+//        if (!middle.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
+//            for (int i = 0; i < split.length; i++) {
+//                if (i == 0) {
+//                    stringBuffer.append(beg);
+//                }
+//
+//                if (!split[i].contains(Utils.FINAL)) {
+//                    if (!split[i].contains(Utils.REQUIRED))
+//                        stringBuffer.append(Utils.FINAL + Utils.SPACE);
+//                }
+//
+//                stringBuffer.append(split[i]);
+//                if (i < split.length - 1)
+//                    stringBuffer.append(Utils.COMMA);
+//
+//                if (i == split.length - 1) {
+//                    stringBuffer.append(end);
+//                }
+//            }
+//        } else {
+//            if (!middle.contains(Utils.FINAL)) {
+//                stringBuffer.append(beg);
+//                stringBuffer.append(Utils.FINAL + Utils.SPACE);
+//                stringBuffer.append(middle);
+//                stringBuffer.append(end);
+//            } else {
+//                stringBuffer.append(beg);
+//                stringBuffer.append(middle);
+//                stringBuffer.append(end);
+//            }
+//        }
+//
+//        stringBuffer.append(Utils.NEWLINE);
     }
 
     private void appendLine(final StringBuffer stringBuffer, final String line) {

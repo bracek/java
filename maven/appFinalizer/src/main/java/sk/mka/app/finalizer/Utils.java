@@ -7,6 +7,7 @@ public class Utils {
     public static final String PREFIX = "/*";
     public static final String COMPOSITE_BRACKET_OPEN = "{";
     public static final String PUBLIC_INTERFACE = "public interface";
+    public static final String REQUIRED = "required";
     public static String NEW = "new";
     public static String PRIVATE = "private";
     public static String PROTECTED = "protected";
