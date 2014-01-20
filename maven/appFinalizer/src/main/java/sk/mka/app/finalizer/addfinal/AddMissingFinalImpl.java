@@ -164,7 +164,6 @@ public final class AddMissingFinalImpl extends AbstractAction implements
             }
         }
 
-
 //        } else {
 //            if (!middle.contains(Utils.FINAL)) {
 //                stringBuffer.append(beg);
