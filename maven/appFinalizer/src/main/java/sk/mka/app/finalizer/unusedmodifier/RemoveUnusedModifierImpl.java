@@ -64,9 +64,9 @@ class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
 
                             int indexOfSlash = line.indexOf(Utils.COMMENT);
 
-                            if (line.contains(Utils.OPEN_PARENTHES_OPENING)) {
+                            if (line.contains(Utils.OPEN_PARENTHESIS_OPENING)) {
                                 int indexOfBeginingBracket = line
-                                        .indexOf(Utils.OPEN_PARENTHES_OPENING);
+                                        .indexOf(Utils.OPEN_PARENTHESIS_OPENING);
                                 if (indexOfSlash < indexOfBeginingBracket) {
                                     appendLine(stringBuffer, line);
                                 } else {

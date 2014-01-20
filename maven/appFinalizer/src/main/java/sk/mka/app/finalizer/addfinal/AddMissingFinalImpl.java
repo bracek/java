@@ -10,7 +10,8 @@ public final class AddMissingFinalImpl extends AbstractAction implements
         IAction {
 
     @Override
-    public void parseFile(final File file) {        BufferedReader reader = null;
+    public void parseFile(final File file) {
+        BufferedReader reader = null;
         final StringBuffer stringBuffer = new StringBuffer();
         final StringBuffer paramsTemporaryBuffer = new StringBuffer();
         boolean doModification = false;
@@ -76,7 +77,8 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     }
 
     @Override
-    protected void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {        if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC)
+    protected void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {
+        if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC)
                 || line.contains(Utils.STATIC) || line.contains(Utils.PROTECTED)) {
             if (!line.contains(Utils.NEW) && !line.contains(".class") && !line.contains("getClass()")) {
 
@@ -140,8 +142,6 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     private void appendFinalToParams(final StringBuffer stringBuffer, final String beg, final String middle, final String end) {
 
         final String[] split = middle.split(Utils.COMMA);
-//        if (!middle.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
-
         for (int i = 0; i < split.length; i++) {
             if (i == 0) {
                 stringBuffer.append(beg);
@@ -213,11 +213,13 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 //        stringBuffer.append(Utils.NEWLINE);
     }
 
-    private void appendLine(final StringBuffer stringBuffer, final String line) {        stringBuffer.append(line);
+    private void appendLine(final StringBuffer stringBuffer, final String line) {
+        stringBuffer.append(line);
         stringBuffer.append(Utils.NEWLINE);
     }
 
-    private void writeToFile(final String filename, final String output) {        try {
+    private void writeToFile(final String filename, final String output) {
+        try {
             final BufferedWriter out = new BufferedWriter(new FileWriter(
                     filename));
             out.write(output);
