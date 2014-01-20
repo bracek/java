@@ -89,7 +89,8 @@ public class PersonDaoImpl implements PersonDao {
      */
     @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
     @Override
-    public Person saveAddress(final Integer id,final  Address address) {
+    public Person saveAddress(final Integer id,
+final  Address address) {
         Person person = findPersonById(id);
 
         if (person.getAddresses().contains(address)) {
@@ -106,7 +107,8 @@ public class PersonDaoImpl implements PersonDao {
      */
     @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
     @Override
-    public Person deleteAddress(final Integer id,final  Integer addressId) {
+    public Person deleteAddress(final Integer id,
+final  Integer addressId) {
         Person person = findPersonById(id);
 
         Address address = new Address();

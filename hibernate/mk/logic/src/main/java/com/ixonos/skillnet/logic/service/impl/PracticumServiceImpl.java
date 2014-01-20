@@ -34,7 +34,8 @@ public final class PracticumServiceImpl extends AbstractGenericService<Practicum
         super.setServiceDAO(genericDAO);
     }
     
-	public List<Practicum> getPracticum(final Users userId,final  Skill skillId) {
+	public List<Practicum> getPracticum(final Users userId,
+final  Skill skillId) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Practicum.class);
 		criteria.add(Restrictions.eq("userId", userId));
 		criteria.add(Restrictions.eq("skillId", skillId));

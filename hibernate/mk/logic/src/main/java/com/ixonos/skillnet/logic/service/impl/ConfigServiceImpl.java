@@ -57,7 +57,8 @@ public final class ConfigServiceImpl extends AbstractGenericService<Config> impl
 	@Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
 	@Transactional(readOnly = true)
 	@Override
-	public Integer getIntProperty(final String property,final  Integer defaultValue) {
+	public Integer getIntProperty(final String property,
+final  Integer defaultValue) {
 		try {
 			Config c = read(property);
 			return Integer.parseInt(c.getValue());
@@ -98,7 +99,8 @@ public final class ConfigServiceImpl extends AbstractGenericService<Config> impl
 	@Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
 	@Transactional(readOnly = true)
 	@Override
-	public String getStringProperty(final String property,final  String defaultValue) {
+	public String getStringProperty(final String property,
+final  String defaultValue) {
 		try {
 			String result = read(property).getValue();
 			if (result != null && !result.isEmpty()) {
@@ -118,7 +120,9 @@ public final class ConfigServiceImpl extends AbstractGenericService<Config> impl
     @Secured(ROLE_ADMIN)
 	@Transactional
 	@Override
-	public void saveProperty(final String property,final  Object value,final  String description) {
+	public void saveProperty(final String property,
+final  Object value,
+final  String description) {
 		Config c = null;
 		try {
 			c = find(property);

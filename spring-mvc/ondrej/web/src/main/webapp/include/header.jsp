@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -14,31 +14,31 @@ pageEncoding="UTF-8"%>
 <script type="text/javascript" src="dwr/engine.js"></script>
 </head>
 <body>
-<div class="pageWrapper">
-<div class="menuWrapper">
-<map title="Navigation">
-<p>
-<c:choose>
-<c:when
-test="${fn:endsWith(pageContext.request.requestURI,'hello.jsp')}">
-<span class="currentPage">[Welcome page]</span>
-</c:when>
-<c:otherwise>
+	<div class="pageWrapper">
+		<div class="menuWrapper">
+			<map title="Navigation">
+				<p>
+					<c:choose>
+						<c:when
+							test="${fn:endsWith(pageContext.request.requestURI,'hello.jsp')}">
+							<span class="currentPage">[Welcome page]</span>
+						</c:when>
+						<c:otherwise>
 [<a href="hello.do">Welcome page</a>]
 </c:otherwise>
-</c:choose>
+					</c:choose>
 
-<c:choose>
-<c:when
-test="${fn:endsWith(pageContext.request.requestURI,'inventory.jsp') 
+					<c:choose>
+						<c:when
+							test="${fn:endsWith(pageContext.request.requestURI,'inventory.jsp') 
  or fn:endsWith(pageContext.request.requestURI,'editProduct.jsp')}">
-<span class="currentPage">[Manage Inventory]</span>
-</c:when>
-<c:otherwise>
+							<span class="currentPage">[Manage Inventory]</span>
+						</c:when>
+						<c:otherwise>
 [<a href="inventory.do">Manage Inventory</a>]
 </c:otherwise>
-</c:choose>
-</p>
-</map>
-</div>
-<div class="bodyWrapper">
+					</c:choose>
+				</p>
+			</map>
+		</div>
+		<div class="bodyWrapper">

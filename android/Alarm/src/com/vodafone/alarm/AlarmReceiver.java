@@ -18,7 +18,8 @@ public class AlarmReceiver extends AbstractAlarmReceiver implements
 	 * .Context, android.content.Intent)
 	 */
 	@Override
-	public void onReceive(final Context context, final Intent intent) {
+	public void onReceive(final Context context,
+ final Intent intent) {
 
 		// Put here YOUR code.
 		// Toast.makeText(context, "Alarm !!!!!!!!!!",

@@ -15,7 +15,8 @@ import org.zkoss.zkplus.databind.BindingListModelList;
 public class ImportUsersInitiator extends AnnotateDataBinderInit {
 
 	@Override
-    public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {
+    public void doAfterCompose(final Page page,
+final  Component[] comps) throws Exception {
 		
 		BindingListModel emptyList  = new BindingListModelList(new ArrayList<String>(), true);
 		page.setVariable("ldapUsers", emptyList);

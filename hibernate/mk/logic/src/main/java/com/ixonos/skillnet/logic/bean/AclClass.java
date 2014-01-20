@@ -53,7 +53,8 @@ public class AclClass implements Serializable {
         this.id = id;
     }
 
-    public AclClass(final Integer id,final  String class1) {
+    public AclClass(final Integer id,
+final  String class1) {
         this.id = id;
         this.class1 = class1;
     }

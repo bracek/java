@@ -298,7 +298,8 @@ public class PracticumTreeController extends GenericForwardComposer implements
 			return (Image) icons.get("empty").clone();
 	}
 
-	private Practicum getYoungestPracticum(final Users user,final  Skill skill) {
+	private Practicum getYoungestPracticum(final Users user,
+final  Skill skill) {
 		List<Practicum> practicumList = practicumService.getPracticum(user,
 				skill);
 		if (practicumList.size() != 0) {
@@ -397,7 +398,8 @@ public class PracticumTreeController extends GenericForwardComposer implements
 		System.out.println("onChanging$filter -> END");
 	}
 
-	private void updateTreeItemMap(final Treeitem item,final  Integer skillId) {
+	private void updateTreeItemMap(final Treeitem item,
+final  Integer skillId) {
 		ArrayList<Treeitem> ti = treeItems.get(skillId);
 		if (ti == null)
 			ti = new ArrayList<Treeitem>();
@@ -417,7 +419,8 @@ public class PracticumTreeController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(final Treeitem item,final  Object data) throws Exception {
+	public void render(final Treeitem item,
+final  Object data) throws Exception {
 		Node node = (Node) data;
 		Treecell tcSkillName = new Treecell(node.getSkill().getName());
 		Treecell tcIcon = new Treecell();
@@ -498,7 +501,8 @@ public class PracticumTreeController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(final Row row,final  Object data) throws Exception {
+	public void render(final Row row,
+final  Object data) throws Exception {
 		Practicum practicum = (Practicum) data;
 		boolean practicumIsNull = false;
 		if (practicum.getSkillId() == null)
@@ -686,14 +690,16 @@ public class PracticumTreeController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(final Comboitem comboItem,final  Object data) throws Exception {
+	public void render(final Comboitem comboItem,
+final  Object data) throws Exception {
 		CodeTable item = (CodeTable) data;
 		comboItem.setLabel(item.getCode());
 		comboItem.setValue(item);
 	}
 
 	@Override
-	public void render(final Listitem listItem,final  Object data) throws Exception {
+	public void render(final Listitem listItem,
+final  Object data) throws Exception {
 		Skill skill = (Skill) data;
 		new Listcell(skill.getName()).setParent(listItem);
 		new Listcell(skill.getDescription()).setParent(listItem);

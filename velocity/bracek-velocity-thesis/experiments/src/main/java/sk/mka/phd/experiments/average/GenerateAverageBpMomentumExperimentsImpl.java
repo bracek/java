@@ -13,7 +13,8 @@ public final class GenerateAverageBpMomentumExperimentsImpl extends AbstractGene
 
     private static final String TEMPLATE_AVERAGE_LIST_VOICED_EXPERIMENTS = "input/experiments/voiced/table_list_experiments.vm";
 
-    public GenerateAverageBpMomentumExperimentsImpl(final String directorySuffix, final BBColums desiredColumn) {
+    public GenerateAverageBpMomentumExperimentsImpl(final String directorySuffix,
+ final BBColums desiredColumn) {
         super(desiredColumn);
         this.setTemplateVelocityFileForAverageListExperiments(TEMPLATE_AVERAGE_LIST_VOICED_EXPERIMENTS);
         setUpFolderPath(directorySuffix);
@@ -25,7 +26,8 @@ public final class GenerateAverageBpMomentumExperimentsImpl extends AbstractGene
      * @param expArrayList
      */
     @Override
-    public void extracPopClassBFromFolderName(final String folderName,final  ArrayList expArrayList) {
+    public void extracPopClassBFromFolderName(final String folderName,
+final  ArrayList expArrayList) {
         String excludeBadCharacter = folderName.replace("_", "");
         String result = excludeBadCharacter.replace(".", "");
         expArrayList.add(result);

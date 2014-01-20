@@ -21,7 +21,9 @@ public class ViewMessageController {
 
     @SuppressWarnings("unchecked")
     @RequestMapping
-    public String handle(final ModelMap model,final  HttpServletRequest request,final  HttpServletResponse response) throws Exception {
+    public String handle(final ModelMap model,
+final  HttpServletRequest request,
+final  HttpServletResponse response) throws Exception {
         model.put("messages", messageService.getList());
         return ApplicationCodes.MESSAGE.VIEW_MESSAGE_KEY;
     }

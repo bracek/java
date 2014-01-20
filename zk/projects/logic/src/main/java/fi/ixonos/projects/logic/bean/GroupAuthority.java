@@ -37,7 +37,8 @@ public class GroupAuthority implements Serializable {
         this.groupAuthorityId = groupAuthorityId;
     }
 
-    public GroupAuthority(final Integer groupAuthorityId,final  CodeTable authority) {
+    public GroupAuthority(final Integer groupAuthorityId,
+final  CodeTable authority) {
         this.groupAuthorityId = groupAuthorityId;
         this.authority = authority;
     }

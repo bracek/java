@@ -22,19 +22,20 @@ import com.ixonos.skillnet.logic.service.UsersService;
 public class UserManagementInitiator extends AnnotateDataBinderInit {
 
 	@Resource
-	private final CodeTableService codeTableService = (CodeTableService) SpringUtil
+	private final CodeTableService codeTableService = (final CodeTableService) SpringUtil
 			.getApplicationContext().getBean("codeTableService");
 
 	@Resource
-	protected UsersService usersService = (UsersService) SpringUtil
+	protected UsersService usersService = (final UsersService) SpringUtil
 			.getApplicationContext().getBean("usersService");
 
 	@Resource
-	protected GroupsService groupsService = (GroupsService) SpringUtil
+	protected GroupsService groupsService = (final GroupsService) SpringUtil
 			.getApplicationContext().getBean("groupsService");
 
 	@Override
-	public void doAfterCompose(final Page page, final Component[] comps)
+	public void doAfterCompose(final Page page,
+ final Component[] comps)
 			throws Exception {
 		final List<Users> userList = getOrderedListOfUsers();
 		final List<CodeTable> authorityList = codeTableService
@@ -70,7 +71,8 @@ public class UserManagementInitiator extends AnnotateDataBinderInit {
 		final Groups[] groupsArray = groups.toArray(new Groups[groups.size()]);
 		Arrays.sort(groupsArray, new Comparator<Groups>() {
 			@Override
-			public int compare(final Groups o1, final Groups o2) {
+			public int compare(final Groups o1,
+ final Groups o2) {
 				return o1.getGroupName().compareTo(o2.getGroupName());
 			}
 

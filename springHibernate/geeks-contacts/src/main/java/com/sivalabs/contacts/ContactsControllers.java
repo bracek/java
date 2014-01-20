@@ -39,7 +39,8 @@ public class ContactsControllers {
     }
 
     @RequestMapping("/searchContacts")
-    public ModelAndView searchContacts(final @RequestParam(required = false, defaultValue = "") String name) {
+    public ModelAndView searchContacts(final @RequestParam(required = false,
+final  defaultValue = "") String name) {
         ModelAndView mav = new ModelAndView("showContacts");
         List<Contact> contacts = contactsDAO.searchContacts(name.trim());
         mav.addObject("SEARCH_CONTACTS_RESULTS_KEY", contacts);
@@ -83,7 +84,9 @@ public class ContactsControllers {
 
 
     @RequestMapping(value = "/updateContact", method = RequestMethod.POST)
-    public String update(final @ModelAttribute("editContact") Contact contact, BindingResult result, SessionStatus status) {
+    public String update(final @ModelAttribute("editContact") Contact contact,
+final  BindingResult result,
+final  SessionStatus status) {
         validator.validate(contact, result);
         if (result.hasErrors()) {
             return "editContact";

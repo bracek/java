@@ -1,80 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-             xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.4.xsd">
 
-    <http auto-config="true" realm="SkillNet Ixonos Realm">
+	<http auto-config="true" realm="SkillNet Ixonos Realm">
 
-        <intercept-url pattern="/me/about.do" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/me/me/curriculum.do" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<intercept-url pattern="/me/about.do" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/me/me/curriculum.do" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
-        <intercept-url pattern="/anonymous/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/logoutSuccess*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/anonymous/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/logoutSuccess*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
 
-        <intercept-url pattern="/menu/**" access="ROLE_USER"/>
-        <intercept-url pattern="/submenu/**" access="ROLE_GROUP_MANAGER"/>
-        <intercept-url pattern="/admin/**" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/menu/**" access="ROLE_USER" />
+		<intercept-url pattern="/submenu/**" access="ROLE_GROUP_MANAGER" />
+		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
 
-        <intercept-url pattern="/js/**" filters="none"/>
-        <intercept-url pattern="/img/**" filters="none"/>
-        <intercept-url pattern="/zkau/web/**/img/**" filters="none"/>
-        <intercept-url pattern="/zkau/web/**/css/**" filters="none"/>
-        <intercept-url pattern="/css/**" filters="none"/>
-        <intercept-url pattern="/**/*.js" filters="none"/>
+		<intercept-url pattern="/js/**" filters="none" />
+		<intercept-url pattern="/img/**" filters="none" />
+		<intercept-url pattern="/zkau/web/**/img/**" filters="none" />
+		<intercept-url pattern="/zkau/web/**/css/**" filters="none" />
+		<intercept-url pattern="/css/**" filters="none" />
+		<intercept-url pattern="/**/*.js" filters="none" />
 
-        <intercept-url pattern="/skills/skillsEdit.do" access="ROLE_GROUP_MANAGER"/>
-        <intercept-url pattern="/skills/skillsPracticum" access="ROLE_USER"/>
+		<intercept-url pattern="/skills/skillsEdit.do" access="ROLE_GROUP_MANAGER" />
+		<intercept-url pattern="/skills/skillsPracticum" access="ROLE_USER" />
 
-        <!-- usermanagment security -->
-        <intercept-url pattern="/usermanagement/usermanagementEditDetail.do" access="ROLE_USER"/>
-        <intercept-url pattern="/usermanagement/usermanagementEdit.do" access="ROLE_ADMIN"/>
-        <intercept-url pattern="/usermanagement/usermanagementFind.do" access="ROLE_GROUP_MANAGER"/>
+		<!-- usermanagment security -->
+		<intercept-url pattern="/usermanagement/usermanagementEditDetail.do"
+			access="ROLE_USER" />
+		<intercept-url pattern="/usermanagement/usermanagementEdit.do"
+			access="ROLE_ADMIN" />
+		<intercept-url pattern="/usermanagement/usermanagementFind.do"
+			access="ROLE_GROUP_MANAGER" />
 
-       <!-- groupmanagment security -->
-        <intercept-url pattern="/groupmanagement/**" access="ROLE_ADMIN"/>
+		<!-- groupmanagment security -->
+		<intercept-url pattern="/groupmanagement/**" access="ROLE_ADMIN" />
 
-        <!-- reporting security -->
-        <intercept-url pattern="/reporting/reportingSingleReport.do" access="ROLE_USER"/>
-        <intercept-url pattern="/reporting/reportingCustomReport.do" access="ROLE_GROUP_MANAGER"/>
-        <intercept-url pattern="/reporting/reportingMyReport.do" access="ROLE_USER"/>
+		<!-- reporting security -->
+		<intercept-url pattern="/reporting/reportingSingleReport.do"
+			access="ROLE_USER" />
+		<intercept-url pattern="/reporting/reportingCustomReport.do"
+			access="ROLE_GROUP_MANAGER" />
+		<intercept-url pattern="/reporting/reportingMyReport.do"
+			access="ROLE_USER" />
 
-        <!-- company tree security -->
-        <intercept-url pattern="/companytree/**" access="ROLE_GROUP_MANAGER,ROLE_ADMIN,ROLE_USER"/>
+		<!-- company tree security -->
+		<intercept-url pattern="/companytree/**"
+			access="ROLE_GROUP_MANAGER,ROLE_ADMIN,ROLE_USER" />
 
-        <!-- admin security-->
-        <intercept-url pattern="/admin/**" access="ROLE_ADMIN"/>
+		<!-- admin security -->
+		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
 
-        <!-- help security-->
-        <intercept-url pattern="/help/**" access="IS_AUTHENTICATED_FULLY"/>
+		<!-- help security -->
+		<intercept-url pattern="/help/**" access="IS_AUTHENTICATED_FULLY" />
 
-        <intercept-url pattern="/index.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<intercept-url pattern="/index.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
-       
-       
-        <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=1" login-processing-url="/j_security_check"/>
-        <logout logout-url="/logout" invalidate-session="true" logout-success-url="/login.jsp"/>
-        <!--
-        <form-login login-page="/login.do"
-                             login-processing-url="/loginProcess"
-                             default-target-url="/index.do"
-                             authentication-failure-url="/login.do?login_error=1" />
-        <logout logout-url="/logout" logout-success-url="/login.do" />
-       -->
-    </http>
 
-    <beans:bean id="userDetailsService" class="com.ixonos.skillnet.logic.security.SkillnetUserDetailsService">
 
-        <beans:property name="dataSource" ref="dataSource"/>
+		<form-login login-page="/login.jsp"
+			authentication-failure-url="/login.jsp?login_error=1"
+			login-processing-url="/j_security_check" />
+		<logout logout-url="/logout" invalidate-session="true"
+			logout-success-url="/login.jsp" />
+		<!-- <form-login login-page="/login.do" login-processing-url="/loginProcess" 
+			default-target-url="/index.do" authentication-failure-url="/login.do?login_error=1" 
+			/> <logout logout-url="/logout" logout-success-url="/login.do" /> -->
+	</http>
 
-        <beans:property name="enableAuthorities" value="true"/>
-        <beans:property name="enableGroups" value="true"/>
+	<beans:bean id="userDetailsService"
+		class="com.ixonos.skillnet.logic.security.SkillnetUserDetailsService">
 
-        <beans:property name="groupAuthoritiesByUsernameQuery" value="
+		<beans:property name="dataSource" ref="dataSource" />
+
+		<beans:property name="enableAuthorities" value="true" />
+		<beans:property name="enableGroups" value="true" />
+
+		<beans:property name="groupAuthoritiesByUsernameQuery"
+			value="
                             SELECT
 							    g.group_id,
 							    u.username,
@@ -94,9 +101,10 @@
 							    AND
 							    (c.code_table_id = ga.authority)
 							    AND
-							    (u.username=?)"/>
+							    (u.username=?)" />
 
-        <beans:property name="usersByUsernameQuery" value="
+		<beans:property name="usersByUsernameQuery"
+			value="
                            SELECT
                                 username,
                                 password,
@@ -104,9 +112,10 @@
                            FROM
                                 users
                            WHERE
-                                (username=?)"/>
+                                (username=?)" />
 
-        <beans:property name="authoritiesByUsernameQuery" value="
+		<beans:property name="authoritiesByUsernameQuery"
+			value="
                            SELECT
                                 u.username,
                                 c.code
@@ -119,21 +128,22 @@
                                 AND
                                 (c.code_table_id = a.authority)
                                 AND
-                                (u.username=?)"/>
+                                (u.username=?)" />
 
-    </beans:bean>
+	</beans:bean>
 
 
-    <authentication-provider user-service-ref="userDetailsService">
-        <password-encoder hash="sha-256">
-            <salt-source user-property="username"/>
-        </password-encoder>
-    </authentication-provider>
+	<authentication-provider user-service-ref="userDetailsService">
+		<password-encoder hash="sha-256">
+			<salt-source user-property="username" />
+		</password-encoder>
+	</authentication-provider>
 
-    <authentication-manager alias="authenticationManager"/>
+	<authentication-manager alias="authenticationManager" />
 
-    <!-- Automatically receives AuthenticationEvent messages -->
-    <beans:bean id="loggerListener" class="org.springframework.security.event.authentication.LoggerListener"/>
+	<!-- Automatically receives AuthenticationEvent messages -->
+	<beans:bean id="loggerListener"
+		class="org.springframework.security.event.authentication.LoggerListener" />
 
 
 </beans:beans>

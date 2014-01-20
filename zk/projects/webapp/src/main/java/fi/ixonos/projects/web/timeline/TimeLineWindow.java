@@ -110,7 +110,8 @@ public class TimeLineWindow extends Window {
         listbox.setModel(new ListModelList(projectList));
         listbox.setItemRenderer(new ListitemRenderer() {
             @Override
-            public void render(final Listitem item,final  Object data) throws Exception {
+            public void render(final Listitem item,
+final  Object data) throws Exception {
                 Listcell colorCell = new Listcell();
                 Panel panel = new Panel();
                 panel.setWidth("20px");
@@ -140,7 +141,8 @@ public class TimeLineWindow extends Window {
         listbox.setModel(new ListModelList(userList));
         listbox.setItemRenderer(new ListitemRenderer() {
             @Override
-            public void render(final Listitem item,final  Object data) throws Exception {
+            public void render(final Listitem item,
+final  Object data) throws Exception {
                 Listcell colorCell = new Listcell();
                 Panel panel = new Panel();
                 panel.setWidth("20px");

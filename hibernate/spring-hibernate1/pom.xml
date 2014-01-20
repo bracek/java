@@ -36,15 +36,15 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.5.2</version>
 		</dependency>
 		<dependency>
-		        <groupId>c3p0</groupId>
-		        <artifactId>c3p0</artifactId>
-		        <version>0.9.1.2</version>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>

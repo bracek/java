@@ -67,7 +67,8 @@ public class PizzaOrder implements Serializable {
         this.id = id;
     }
 
-    public PizzaOrder(final Long id,final  String name) {
+    public PizzaOrder(final Long id,
+final  String name) {
         this.id = id;
         this.name = name;
     }

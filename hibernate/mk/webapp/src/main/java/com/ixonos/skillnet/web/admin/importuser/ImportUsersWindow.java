@@ -47,11 +47,11 @@ public class ImportUsersWindow extends Window {
 	private BindingListModel ldapUsers;
 	private String ldapName;
 	private String ldapPassword;
-	private final ConfigService configService = (ConfigService) SpringUtil
+	private final ConfigService configService = (final ConfigService) SpringUtil
 			.getApplicationContext().getBean("configService");
-	private final UsersService usersService = (UsersService) SpringUtil
+	private final UsersService usersService = (final UsersService) SpringUtil
 			.getApplicationContext().getBean("usersService");
-	private final MailService mailService = (MailService) SpringUtil
+	private final MailService mailService = (final MailService) SpringUtil
 			.getApplicationContext().getBean("mailService");
 
 	@SuppressWarnings("unchecked")

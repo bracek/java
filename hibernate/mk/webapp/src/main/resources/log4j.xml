@@ -3,80 +3,81 @@
 
 <log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
-    <!-- ===================================================================== -->
-    <!--                                                                       -->
-    <!--  Log4j Configuration                                                  -->
-    <!--                                                                       -->
-    <!-- ===================================================================== -->
+	<!-- ===================================================================== -->
+	<!-- -->
+	<!-- Log4j Configuration -->
+	<!-- -->
+	<!-- ===================================================================== -->
 
-    <!-- ============================== -->
-    <!-- Append messages to the log files -->
-    <!-- ============================== -->
-    <appender name="SKILLNET" class="org.apache.log4j.FileAppender">
-       <!-- <param name="File" value="${catalina.home}/logs/skillnet.log"/> -->
-        <param name="File" value="target/skillnet.log"/>
-        <param name="Threshold" value="${log4j.appender.skillnet.Threshold}"/>
-        <param name="Append" value="false"/>
+	<!-- ============================== -->
+	<!-- Append messages to the log files -->
+	<!-- ============================== -->
+	<appender name="SKILLNET" class="org.apache.log4j.FileAppender">
+		<!-- <param name="File" value="${catalina.home}/logs/skillnet.log"/> -->
+		<param name="File" value="target/skillnet.log" />
+		<param name="Threshold" value="${log4j.appender.skillnet.Threshold}" />
+		<param name="Append" value="false" />
 
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{dd.MMM yyyy HH\:mm\:ss,SSS}[%p] [%c] %m%n"/>
-        </layout>
-    </appender>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd.MMM yyyy HH\:mm\:ss,SSS}[%p] [%c] %m%n" />
+		</layout>
+	</appender>
 
-    <!-- ============================== -->
-    <!-- Append messages to the console -->
-    <!-- ============================== -->
-    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
-        <param name="Target" value="System.out"/>
-        <param name="Threshold" value="${log4j.appender.console.Threshold}"/>
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{dd.MMM yyyy HH\:mm\:ss,SSS}[%p] [%c] %m%n"/>
-        </layout>
-    </appender>
-
-
-    <appender name="ASYNC_SKILLNET" class="org.apache.log4j.AsyncAppender">
-        <param name="blocking" value="false"/>
-        <!-- this is hooked to root category; categorories log directly to following appenders -->
-        <appender-ref ref="SKILLNET"/>
-    </appender>
-
-    <!-- ================ -->
-    <!-- Limit categories -->
-    <!-- ================ -->
-    <!--<category name="com.ixonos" additivity="false">-->
-        <!--<priority value="${log4j.appender.skillnet.Threshold}"/>-->
-        <!--<appender-ref ref="ASYNC_SKILLNET"/>-->
-    <!--</category>-->
-
-    <category name="org.springframework" additivity="false">
-        <priority value="${log4j.appender.skillnet.Threshold}"/>
-        <appender-ref ref="ASYNC_SKILLNET"/>
-    </category>
-
-    <category name="org.quartz" additivity="false">
-        <priority value="${log4j.appender.skillnet.Threshold}"/>
-        <appender-ref ref="ASYNC_SKILLNET"/>
-    </category>
+	<!-- ============================== -->
+	<!-- Append messages to the console -->
+	<!-- ============================== -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="${log4j.appender.console.Threshold}" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd.MMM yyyy HH\:mm\:ss,SSS}[%p] [%c] %m%n" />
+		</layout>
+	</appender>
 
 
-    <!-- ================ -->
-    <!-- Limit loggers    -->
-    <!-- ================ -->
-    <logger name="com.ixonos.skillnet">
-        <level value="${log4j.appender.skillnet.Threshold}"/>
-        <appender-ref ref="ASYNC_SKILLNET"/>
-    </logger>
+	<appender name="ASYNC_SKILLNET" class="org.apache.log4j.AsyncAppender">
+		<param name="blocking" value="false" />
+		<!-- this is hooked to root category; categorories log directly to following 
+			appenders -->
+		<appender-ref ref="SKILLNET" />
+	</appender>
 
-    <!-- ======================= -->
-    <!-- Setup the Root category -->
-    <!-- ======================= -->
-    <root>
-        <!--<level value="INFO" />-->
-        <!-- all|debug|info|warn|error|fatal|off|null -->
-        <priority value="INFO"/>
-        <appender-ref ref="ASYNC_SKILLNET"/>
-        <appender-ref ref="CONSOLE"/>
-    </root>
+	<!-- ================ -->
+	<!-- Limit categories -->
+	<!-- ================ -->
+	<!--<category name="com.ixonos" additivity="false"> -->
+	<!--<priority value="${log4j.appender.skillnet.Threshold}"/> -->
+	<!--<appender-ref ref="ASYNC_SKILLNET"/> -->
+	<!--</category> -->
+
+	<category name="org.springframework" additivity="false">
+		<priority value="${log4j.appender.skillnet.Threshold}" />
+		<appender-ref ref="ASYNC_SKILLNET" />
+	</category>
+
+	<category name="org.quartz" additivity="false">
+		<priority value="${log4j.appender.skillnet.Threshold}" />
+		<appender-ref ref="ASYNC_SKILLNET" />
+	</category>
+
+
+	<!-- ================ -->
+	<!-- Limit loggers -->
+	<!-- ================ -->
+	<logger name="com.ixonos.skillnet">
+		<level value="${log4j.appender.skillnet.Threshold}" />
+		<appender-ref ref="ASYNC_SKILLNET" />
+	</logger>
+
+	<!-- ======================= -->
+	<!-- Setup the Root category -->
+	<!-- ======================= -->
+	<root>
+		<!--<level value="INFO" /> -->
+		<!-- all|debug|info|warn|error|fatal|off|null -->
+		<priority value="INFO" />
+		<appender-ref ref="ASYNC_SKILLNET" />
+		<appender-ref ref="CONSOLE" />
+	</root>
 
 </log4j:configuration>

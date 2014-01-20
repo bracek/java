@@ -12,7 +12,8 @@ import org.zkoss.zul.ComboitemRenderer;
 public class UserComboitemRenderer implements ComboitemRenderer {
 
     @Override
-    public void render(final Comboitem item,final  Object data) throws Exception {
+    public void render(final Comboitem item,
+final  Object data) throws Exception {
         if (data instanceof Users) {
             Users user = (Users) data;
             if (user != null) {

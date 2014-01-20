@@ -40,7 +40,9 @@ public class RegisterController {
      */
     @SuppressWarnings("unchecked")
     @RequestMapping
-    public String handle(final ModelMap model,final  HttpServletRequest request,final  HttpServletResponse response) throws Exception {
+    public String handle(final ModelMap model,
+final  HttpServletRequest request,
+final  HttpServletResponse response) throws Exception {
         logger.debug("handle(): has just been started.");
 
         model.put("products", productService.getProducts());

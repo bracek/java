@@ -46,7 +46,8 @@ public final class GroupAuthorityServiceImpl extends AbstractGenericService<Grou
     @Secured(ROLE_ADMIN)
     @Override
     @Transactional
-    public boolean changeGroupAuthorities(final String groupName,final  List<String> incomingAuthorities) throws Exception {
+    public boolean changeGroupAuthorities(final String groupName,
+final  List<String> incomingAuthorities) throws Exception {
         Groups group = null;
         try {
             group = groupsService.getGroup(groupName);

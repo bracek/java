@@ -16,7 +16,8 @@ public abstract class AbstractArbitraryDataLoadFile extends AbstractDataLoadFile
 
     protected ArrayList<Object> linesArrayList = new ArrayList<Object>();
 
-    public AbstractArbitraryDataLoadFile(final String finalPath, final String separator) {
+    public AbstractArbitraryDataLoadFile(final String finalPath,
+ final String separator) {
         super(finalPath, separator);
         loadData();
     }

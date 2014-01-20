@@ -31,7 +31,8 @@ public final class MyAlarmService extends Service {
 	}
 
 	@Override
-	public void onStart(final Intent intent, final int startId) {
+	public void onStart(final Intent intent,
+ final int startId) {
 		// super.onStart(intent, startId);
 		alarm.setAlarm(MyAlarmService.this);
 		Toast.makeText(this, "AlarmService.onStart()", Toast.LENGTH_LONG)

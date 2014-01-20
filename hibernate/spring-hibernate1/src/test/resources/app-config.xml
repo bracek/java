@@ -13,7 +13,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<context:component-scan base-package="org.adit.spring" />
 	<import resource="db-config.xml" />
 </beans>

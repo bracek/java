@@ -31,7 +31,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * @param query
 	 *            the query
 	 */
-	public MappingGenericQuery(final DataSource ds, final String query) {
+	public MappingGenericQuery(final DataSource ds,
+ final String query) {
 		super(ds, query);
 		compile();
 	}
@@ -46,8 +47,10 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * @param paramsWithTypes
 	 *            the params with types
 	 */
-	public MappingGenericQuery(final DataSource ds, final String query,
-			final Map<String, Integer> paramsWithTypes) {
+	public MappingGenericQuery(final DataSource ds,
+ final String query,
+			final Map<String,
+ Integer> paramsWithTypes) {
 		super(ds, query);
 
 		if (paramsWithTypes != null) {
@@ -71,7 +74,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * @param paramsTypes
 	 *            the params types
 	 */
-	public MappingGenericQuery(final DataSource ds, final String query,
+	public MappingGenericQuery(final DataSource ds,
+ final String query,
 			final Integer[] paramsTypes) {
 		super(ds, query);
 
@@ -93,7 +97,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * , int)
 	 */
 	@Override
-	protected abstract T mapRow(final ResultSet arg0, final int arg1)
+	protected abstract T mapRow(final ResultSet arg0,
+ final int arg1)
 			throws SQLException;
 
 	/*
@@ -113,7 +118,9 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * java.util.Map)
 	 */
 	@Override
-	public List<T> execute(final int p1, final int p2, final Map context)
+	public List<T> execute(final int p1,
+ final int p2,
+ final Map context)
 			throws DataAccessException {
 		return super.execute(p1, p2, context);
 	}
@@ -124,7 +131,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * @see org.springframework.jdbc.object.SqlQuery#execute(int, int)
 	 */
 	@Override
-	public List<T> execute(final int p1, final int p2)
+	public List<T> execute(final int p1,
+ final int p2)
 			throws DataAccessException {
 		return super.execute(p1, p2);
 	}
@@ -135,7 +143,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * @see org.springframework.jdbc.object.SqlQuery#execute(int, java.util.Map)
 	 */
 	@Override
-	public List<T> execute(final int p1, final Map context)
+	public List<T> execute(final int p1,
+ final Map context)
 			throws DataAccessException {
 		return super.execute(p1, context);
 	}
@@ -157,7 +166,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * java.util.Map)
 	 */
 	@Override
-	public List<T> execute(final long p1, final Map context)
+	public List<T> execute(final long p1,
+ final Map context)
 			throws DataAccessException {
 		return super.execute(p1, context);
 	}
@@ -189,7 +199,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * java.util.Map)
 	 */
 	@Override
-	public List<T> execute(final Object[] params, final Map context)
+	public List<T> execute(final Object[] params,
+ final Map context)
 			throws DataAccessException {
 		return super.execute(params, context);
 	}
@@ -211,7 +222,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * java.util.Map)
 	 */
 	@Override
-	public List<T> execute(final String p1, final Map context)
+	public List<T> execute(final String p1,
+ final Map context)
 			throws DataAccessException {
 		return super.execute(p1, context);
 	}
@@ -234,7 +246,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * .Map, java.util.Map)
 	 */
 	@Override
-	public List<T> executeByNamedParam(final Map paramMap, final Map context)
+	public List<T> executeByNamedParam(final Map paramMap,
+ final Map context)
 			throws DataAccessException {
 		return super.executeByNamedParam(paramMap, context);
 	}
@@ -259,7 +272,9 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * java.util.Map)
 	 */
 	@Override
-	public T findObject(final int p1, final int p2, final Map context)
+	public T findObject(final int p1,
+ final int p2,
+ final Map context)
 			throws DataAccessException {
 		return (T) super.findObject(p1, p2, context);
 	}
@@ -270,7 +285,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * @see org.springframework.jdbc.object.SqlQuery#findObject(int, int)
 	 */
 	@Override
-	public T findObject(final int p1, final int p2) throws DataAccessException {
+	public T findObject(final int p1,
+ final int p2) throws DataAccessException {
 		return (T) super.findObject(p1, p2);
 	}
 
@@ -281,7 +297,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * java.util.Map)
 	 */
 	@Override
-	public T findObject(final int p1, final Map context)
+	public T findObject(final int p1,
+ final Map context)
 			throws DataAccessException {
 		return (T) super.findObject(p1, context);
 	}
@@ -303,7 +320,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * java.util.Map)
 	 */
 	@Override
-	public T findObject(final long p1, final Map context)
+	public T findObject(final long p1,
+ final Map context)
 			throws DataAccessException {
 		return (T) super.findObject(p1, context);
 	}
@@ -326,7 +344,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * java.util.Map)
 	 */
 	@Override
-	public T findObject(final Object[] params, final Map context)
+	public T findObject(final Object[] params,
+ final Map context)
 			throws DataAccessException {
 		return (T) super.findObject(params, context);
 	}
@@ -350,7 +369,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * java.util.Map)
 	 */
 	@Override
-	public T findObject(final String p1, final Map context)
+	public T findObject(final String p1,
+ final Map context)
 			throws DataAccessException {
 		return (T) super.findObject(p1, context);
 	}
@@ -374,7 +394,8 @@ public abstract class MappingGenericQuery<T> extends MappingSqlQuery {
 	 * util.Map, java.util.Map)
 	 */
 	@Override
-	public T findObjectByNamedParam(final Map paramMap, final Map context)
+	public T findObjectByNamedParam(final Map paramMap,
+ final Map context)
 			throws DataAccessException {
 		return (T) super.findObjectByNamedParam(paramMap, context);
 	}

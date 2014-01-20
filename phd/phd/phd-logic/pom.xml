@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 
-    <parent>
-        <artifactId>phd</artifactId>
-        <groupId>sk.mka.phd</groupId>
-<!--        <version>0.0.3</version>-->
-        <version>${sk.mka.phd.version}</version>
-    </parent>
+	<parent>
+		<artifactId>phd</artifactId>
+		<groupId>sk.mka.phd</groupId>
+		<!-- <version>0.0.3</version> -->
+		<version>${sk.mka.phd.version}</version>
+	</parent>
 
-    <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
-    <groupId>sk.mka.phd</groupId>
-    <artifactId>phd-logic</artifactId>
-<!--    <version>0.0.3</version>-->
-    <version>${sk.mka.phd.version}</version>
-    <name>phd-logic</name>
-    <url>http://maven.apache.org</url>
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+	<groupId>sk.mka.phd</groupId>
+	<artifactId>phd-logic</artifactId>
+	<!-- <version>0.0.3</version> -->
+	<version>${sk.mka.phd.version}</version>
+	<name>phd-logic</name>
+	<url>http://maven.apache.org</url>
 
-    <dependencies>
-        <!--inner dependency  -->
-        <dependency>
-            <artifactId>phd-core</artifactId>
-            <groupId>sk.mka.phd</groupId>
-<!--           <version>0.0.3</version>-->
-           <version>${sk.mka.phd.version}</version>
-        </dependency>
+	<dependencies>
+		<!--inner dependency -->
+		<dependency>
+			<artifactId>phd-core</artifactId>
+			<groupId>sk.mka.phd</groupId>
+			<!-- <version>0.0.3</version> -->
+			<version>${sk.mka.phd.version}</version>
+		</dependency>
 
-        <!-- extern dependency -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+		<!-- extern dependency -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 </project>
 

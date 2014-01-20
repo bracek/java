@@ -10,7 +10,8 @@ import com.ixonos.skillnet.web.skills.edit.ImportSkillsWindow.ImportSkillsListIt
 public class SkillListitemRenderer implements ListitemRenderer {
 
 	@Override
-	public void render(final Listitem item, final Object data) throws Exception {
+	public void render(final Listitem item,
+ final Object data) throws Exception {
 		final Skill skill = (Skill) data;
 		final ImportSkillsListItem impItem = (ImportSkillsListItem) ((Listitem) getParentComponent(
 				item, Listitem.class)).getValue();
@@ -22,7 +23,7 @@ public class SkillListitemRenderer implements ListitemRenderer {
 		item.setLabel(skill.getName());
 	}
 
-	private Component getParentComponent(Component component,
+	private Component getParentComponent(final Component component,
 			final Class<?> clazz) throws Exception {
 		int index = 0;
 		while (component != null

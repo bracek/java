@@ -35,23 +35,32 @@ public class PersonErrors implements Errors {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void reject(final String arg0,final  String arg1) {
+    public void reject(final String arg0,
+final  String arg1) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void reject(final String arg0,final  Object[] arg1,final  String arg2) {
+    public void reject(final String arg0,
+final  Object[] arg1,
+final  String arg2) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void rejectValue(final String arg0,final  String arg1) {
+    public void rejectValue(final String arg0,
+final  String arg1) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void rejectValue(final String arg0,final  String arg1,final  String arg2) {
+    public void rejectValue(final String arg0,
+final  String arg1,
+final  String arg2) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void rejectValue(final String arg0,final  String arg1,final  Object[] arg2,final  String arg3) {
+    public void rejectValue(final String arg0,
+final  String arg1,
+final  Object[] arg2,
+final  String arg3) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

@@ -20,7 +20,7 @@ import com.ixonos.skillnet.logic.util.NodesComparator;
 public class SkillnetTreeModelImpl implements SkillnetTreeModel {
 	private String rootName;
 	private Map<Integer, List<Node>> childrenMap = new HashMap<Integer, List<Node>>();
-	private final Integer ROOT_KEY = Integer.valueOf(0);
+	private final Integer ROOT_KEY = Integer.valueOf(final 0);
 
 	@Resource
 	protected NodeService nodeService;
@@ -31,7 +31,8 @@ public class SkillnetTreeModelImpl implements SkillnetTreeModel {
 
 	@Override
 	@Transactional
-	public Object getChild(final Object parent, final int index) {
+	public Object getChild(final Object parent,
+ final int index) {
 		prepareChildrenInMap((Node) parent);
 		final Integer parentId = ((Node) parent).getNodeId();
 		return childrenMap.get(parentId).get(index);
@@ -46,7 +47,8 @@ public class SkillnetTreeModelImpl implements SkillnetTreeModel {
 	}
 
 	@Override
-	public int[] getPath(final Object arg0, final Object arg1) {
+	public int[] getPath(final Object arg0,
+ final Object arg1) {
 		return null;
 	}
 

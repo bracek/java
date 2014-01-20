@@ -15,7 +15,8 @@ public class TimeLineInitiator extends AnnotateDataBinderInit {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {
+    public void doAfterCompose(final Page page,
+final  Component[] comps) throws Exception {
         getTimelineWindow(comps).init();
         super.doAfterCompose(page, comps);
     }

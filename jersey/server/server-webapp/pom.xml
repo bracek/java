@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>server-webapp</artifactId>
 	<packaging>war</packaging>
- <parent>
-    <groupId>com.in.reliance</groupId>
-    <artifactId>server</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
-	
+	<parent>
+		<groupId>com.in.reliance</groupId>
+		<artifactId>server</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
 	<dependencies>
-	    <!-- inner dependency -->
-<!-- 	     <dependency>
-      <groupId>com.in.reliance</groupId>
-      <artifactId>server-domain</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency> -->
-    
-      <dependency>
-      <groupId>com.in.reliance</groupId>
-      <artifactId>server-services</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-	    
+		<!-- inner dependency -->
+		<!-- <dependency> <groupId>com.in.reliance</groupId> <artifactId>server-domain</artifactId> 
+			<version>1.0-SNAPSHOT</version> </dependency> -->
+
+		<dependency>
+			<groupId>com.in.reliance</groupId>
+			<artifactId>server-services</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>${javax.servlet.version}</version>
 		</dependency>
-		
-	    <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-	    
-	    <dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>${jackson.mapper.version}</version>
@@ -58,7 +56,7 @@
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-client</artifactId>
 			<version>${jersey.version}</version>
-		</dependency>	
+		</dependency>
 
 		<!-- Spring 3 dependencies -->
 		<dependency>
@@ -113,12 +111,12 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>server</finalName>
 		<plugins>
 			<plugin>
-			   	<groupId>org.apache.maven.plugins</groupId>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
@@ -126,49 +124,45 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			
-			  <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>tomcat-maven-plugin</artifactId>
-                  <version>${tomcat-maven-plugin.version}</version>
-                <configuration>
-                         <url>http://localhost:8080/manager/text</url>
-                         <server>tomcat</server>
-						 <path>/server</path> 
-                         <username>admin</username>
-        				 <password>admin</password>
-        				 <warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
-                </configuration>
-            </plugin> 
-            
+
 			<plugin>
-        		<groupId>org.mortbay.jetty</groupId>
-        		<artifactId>maven-jetty-plugin</artifactId>
-        		<version>${maven-jetty-plugin.version}</version> <!-- TODO upgrade to version 7 -->
-        <configuration>
-            <stopPort>9669</stopPort>
-            <stopKey>${appname}</stopKey>
-            <!-- Redeploy every x seconds if changes are detected, 
-                    0 for no automatic redeployment -->
-            <scanIntervalSeconds>3</scanIntervalSeconds>
-            <connectors>
-                <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                    <!-- <port>7770</port> --> 
-                    <port>8080</port> 
-                    <maxIdleTime>60000</maxIdleTime>
-                </connector>
-            </connectors>
-            <!-- <webAppConfig>
-                <contextPath>/${appname}</contextPath>
-                <sessionHandler implementation="org.mortbay.jetty.servlet.SessionHandler">
-                    <sessionManager implementation="org.mortbay.jetty.servlet.HashSessionManager">
-                        <storeDirectory>${project.build.directory}/sessions</storeDirectory>
-                    </sessionManager>
-                </sessionHandler>
-            </webAppConfig> -->
-        </configuration>
-    </plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>${tomcat-maven-plugin.version}</version>
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<server>tomcat</server>
+					<path>/server</path>
+					<username>admin</username>
+					<password>admin</password>
+					<warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>${maven-jetty-plugin.version}</version> <!-- TODO upgrade to version 7 -->
+				<configuration>
+					<stopPort>9669</stopPort>
+					<stopKey>${appname}</stopKey>
+					<!-- Redeploy every x seconds if changes are detected, 0 for no automatic 
+						redeployment -->
+					<scanIntervalSeconds>3</scanIntervalSeconds>
+					<connectors>
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<!-- <port>7770</port> -->
+							<port>8080</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<!-- <webAppConfig> <contextPath>/${appname}</contextPath> <sessionHandler 
+						implementation="org.mortbay.jetty.servlet.SessionHandler"> <sessionManager 
+						implementation="org.mortbay.jetty.servlet.HashSessionManager"> <storeDirectory>${project.build.directory}/sessions</storeDirectory> 
+						</sessionManager> </sessionHandler> </webAppConfig> -->
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>

@@ -29,7 +29,8 @@ public class ReadFileSingleton {
         return _instance;
     }
 
-    public String[][] loadData(final String filename,final  String separator) throws IOException {
+    public String[][] loadData(final String filename,
+final  String separator) throws IOException {
         String[] subStr;
         int cols = 0;
         int rows = 0;

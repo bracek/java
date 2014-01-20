@@ -31,7 +31,8 @@ public class UserManagementInitiator extends AnnotateDataBinderInit {
 	protected GroupsService groupsService = (final GroupsService)SpringUtil.getApplicationContext().getBean("groupsService");
 
 	@Override
-	public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {		
+	public void doAfterCompose(final Page page,
+final  Component[] comps) throws Exception {		
 		List<Users> userList = getOrderedListOfUsers();
 		List<CodeTable> authorityList = codeTableService.getCodes("AUTHORITIES");			
 		List<Users> managerList = getOrderedListOfManagers();
@@ -69,7 +70,8 @@ public class UserManagementInitiator extends AnnotateDataBinderInit {
 		List<Groups> groups = groupsService.readAll();
 		Groups[] groupsArray = groups.toArray(new Groups[groups.size()]);
 		Arrays.sort(groupsArray, new Comparator<Groups>() {
-			public int compare(final Groups o1,final  Groups o2) {
+			public int compare(final Groups o1,
+final  Groups o2) {
 				return o1.getGroupName().compareTo(o2.getGroupName());
 			}
 			

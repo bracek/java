@@ -113,7 +113,8 @@ public class MailServiceImpl implements MailService {
 	 */
 	@Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
     @Override
-	public boolean sendChangedPasswordEmail(final InternetAddress user,final 			List<String> textParameters) {
+	public boolean sendChangedPasswordEmail(final InternetAddress user,
+final 			List<String> textParameters) {
 		MailTemplates.Template template = MailTemplates.Template.PASSWORD_CHANGED;
         Map<String, ClassPathResource> attachments = new HashMap<String, ClassPathResource>();
         attachments.put("ixonos_logo.jpg", new ClassPathResource("mail_templates/skillnet_logo.jpg"));
@@ -135,7 +136,8 @@ public class MailServiceImpl implements MailService {
 	 */
 	@Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
 	@Override
-	public boolean sendUserAccountDeletedEmail(final InternetAddress deletedUser,final 			List<String> textParameters) {
+	public boolean sendUserAccountDeletedEmail(final InternetAddress deletedUser,
+final 			List<String> textParameters) {
 		MailTemplates.Template template = MailTemplates.Template.ACCOUNT_DELETED;
         Map<String, ClassPathResource> attachments = new HashMap<String, ClassPathResource>();
         attachments.put("ixonos_logo.jpg", new ClassPathResource("mail_templates/skillnet_logo.jpg"));

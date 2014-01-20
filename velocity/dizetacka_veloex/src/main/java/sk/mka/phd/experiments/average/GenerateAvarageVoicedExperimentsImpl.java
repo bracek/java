@@ -24,7 +24,8 @@ public class GenerateAvarageVoicedExperimentsImpl extends AbstractGenerateExperi
      * @param expArrayList
      */
     @Override
-    public void extracPopClassBFromFolderName(final String folderName,final  ArrayList expArrayList) {
+    public void extracPopClassBFromFolderName(final String folderName,
+final  ArrayList expArrayList) {
         String excludeBadCharacter = folderName.replace(CHARACTER_, "\\_");
         int end = excludeBadCharacter.indexOf('p');
         String popClassB = excludeBadCharacter.substring(0, end);

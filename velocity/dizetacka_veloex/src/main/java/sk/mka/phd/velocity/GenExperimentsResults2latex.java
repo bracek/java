@@ -52,7 +52,8 @@ public class GenExperimentsResults2latex extends AbstractGenerateExperimentsAver
     }
 
     @Override
-    public void extracPopClassBFromFolderName(final String folderName,final  ArrayList expArrayList) {
+    public void extracPopClassBFromFolderName(final String folderName,
+final  ArrayList expArrayList) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

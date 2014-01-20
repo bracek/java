@@ -23,9 +23,9 @@ public class ChangePasswordWindow extends Window {
 	 */
 	private static Logger logger = Logger.getLogger(ChangePasswordWindow.class);
 	private static final long serialVersionUID = 1L;
-	private final MailService mailService = (MailService) SpringUtil
+	private final MailService mailService = (final MailService) SpringUtil
 			.getApplicationContext().getBean("mailService");
-	private final UsersService usersService = (UsersService) SpringUtil
+	private final UsersService usersService = (final UsersService) SpringUtil
 			.getApplicationContext().getBean("usersService");
 	public String userName;
 

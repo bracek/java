@@ -20,7 +20,8 @@ public class PriceIncreaseValidator implements Validator {
         return PriceIncrease.class.equals(clazz);
     }
 
-    public void validate(final Object obj, final Errors errors) {
+    public void validate(final Object obj,
+ final Errors errors) {
         PriceIncrease pi = (PriceIncrease) obj;
         if (pi == null) {
             errors.rejectValue("percentage", "error.not-specified", null,

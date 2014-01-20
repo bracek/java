@@ -77,7 +77,12 @@ public class AclEntry implements Serializable {
         this.id = id;
     }
 
-    public AclEntry(final Integer id,final  Integer aceOrder,final  Integer mask,final  Boolean granting,final  Boolean auditSuccess,final  Boolean auditFailure) {
+    public AclEntry(final Integer id,
+final  Integer aceOrder,
+final  Integer mask,
+final  Boolean granting,
+final  Boolean auditSuccess,
+final  Boolean auditFailure) {
         this.id = id;
         this.aceOrder = aceOrder;
         this.mask = mask;

@@ -20,7 +20,9 @@ public class DateSerializer extends JsonSerializer<Date> {
      * @see org.codehaus.jackson.map.JsonSerializer#serialize(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider)
      */
     @Override
-    public void serialize(final Date value_p, final JsonGenerator gen, final SerializerProvider prov_p) throws IOException, JsonProcessingException {
+    public void serialize(final Date value_p,
+ final JsonGenerator gen,
+ final SerializerProvider prov_p) throws IOException, JsonProcessingException {
         final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HHmmss");
         final String formattedDate = formatter.format(value_p);
         gen.writeString(formattedDate);

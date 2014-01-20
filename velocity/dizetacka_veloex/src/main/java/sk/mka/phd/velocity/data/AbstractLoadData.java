@@ -157,7 +157,8 @@ public abstract class AbstractLoadData implements LoadData {
      * @param strLine
      * @param subStr
      */
-    protected void splitLine(final String strLine,final  String[] subStr) {
+    protected void splitLine(final String strLine,
+final  String[] subStr) {
         if (!strLine.equals("")) {
             subStr = strLine.split("\t");
             cols = subStr.length;

@@ -9,12 +9,14 @@ public class SkillsComparator implements Comparator {
 	private boolean _asc;
 	private String _column;
 
-	public SkillsComparator(final boolean asc,final  String column) {
+	public SkillsComparator(final boolean asc,
+final  String column) {
 		_asc = asc;
 		_column = column;
 	}
 
-	public int compare(final Object o1,final  Object o2) {
+	public int compare(final Object o1,
+final  Object o2) {
 		Skill skill1 = (Skill) o1;
 		Skill skill2 = (Skill) o2;
 		int v = 0;

@@ -14,7 +14,8 @@ import com.ixonos.skillnet.logic.bean.Users;
 public class RolesListitemRenderer implements ListitemRenderer {
 
 	@Override
-	public void render(final Listitem item, final Object data) throws Exception {
+	public void render(final Listitem item,
+ final Object data) throws Exception {
 		final CodeTable renderedAuthority = (CodeTable) data;
 		final Users user = (Users) ((Listitem) getParentComponent(item,
 				Listitem.class)).getValue();
@@ -41,7 +42,8 @@ public class RolesListitemRenderer implements ListitemRenderer {
 		item.setLabel(renderedAuthority.getCode());
 	}
 
-	private Component getParentComponent(Component component, final Class clazz)
+	private Component getParentComponent(final Component component,
+ final Class clazz)
 			throws Exception {
 		int index = 0;
 		while (component != null

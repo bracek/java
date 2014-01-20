@@ -24,7 +24,8 @@ public class AddNewUserInitiator extends AnnotateDataBinderInit {
     protected UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
 
     @Override
-    public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {
+    public void doAfterCompose(final Page page,
+final  Component[] comps) throws Exception {
         List<Users> users = usersService.getAllUsers();
         List<CodeTable> authorities = new ArrayList<CodeTable>();
         try {

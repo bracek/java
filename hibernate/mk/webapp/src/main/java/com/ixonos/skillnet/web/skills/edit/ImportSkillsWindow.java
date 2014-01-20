@@ -59,13 +59,13 @@ public class ImportSkillsWindow extends Window {
 	private final QName qn_description = new QName(SKILLNET_URI, "description",
 			"isn");
 
-	private final GroupsService groupsService = (GroupsService) SpringUtil
+	private final GroupsService groupsService = (final GroupsService) SpringUtil
 			.getApplicationContext().getBean("groupsService");
-	private final UsersService usersService = (UsersService) SpringUtil
+	private final UsersService usersService = (final UsersService) SpringUtil
 			.getApplicationContext().getBean("usersService");
-	private final SkillService skillService = (SkillService) SpringUtil
+	private final SkillService skillService = (final SkillService) SpringUtil
 			.getApplicationContext().getBean("skillService");
-	private final NodeService nodeService = (NodeService) SpringUtil
+	private final NodeService nodeService = (final NodeService) SpringUtil
 			.getApplicationContext().getBean("nodeService");
 
 	private final List<Skill> mergedList = new ArrayList<Skill>();
@@ -216,7 +216,8 @@ public class ImportSkillsWindow extends Window {
 		}
 	}
 
-	private void parseNode(final XMLEventReader reader, final Node parent)
+	private void parseNode(final XMLEventReader reader,
+ final Node parent)
 			throws XMLStreamException {
 		final Node node = new Node();
 		node.setParentNode(parent);
@@ -398,7 +399,7 @@ public class ImportSkillsWindow extends Window {
 		bb.close();
 	}
 
-	private Component getParentComponent(Component component,
+	private Component getParentComponent(final Component component,
 			final Class<?> clazz) throws Exception {
 		int index = 0;
 		while (component != null
@@ -419,7 +420,8 @@ public class ImportSkillsWindow extends Window {
 		private Skill impSkill;
 		private Skill actSkill;
 
-		public ImportSkillsListItem(final Skill impSkill, final Skill actSkill) {
+		public ImportSkillsListItem(final Skill impSkill,
+ final Skill actSkill) {
 			this.impSkill = impSkill;
 			this.actSkill = actSkill;
 		}

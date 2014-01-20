@@ -47,8 +47,7 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups>
 
 	@Autowired
 	@Override
-	public void setServiceDAO(
-			final @Qualifier("groupsDAO") GenericDAO genericDAO) {
+	public void setServiceDAO(			final @Qualifier("groupsDAO") GenericDAO genericDAO) {
 		super.setServiceDAO(genericDAO);
 	}
 
@@ -107,7 +106,8 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups>
 	@Transactional
 	@Override
 	public boolean changeGroupMember(final String groupName,
-			final String member, final boolean isAdded) throws Exception {
+			final String member,
+ final boolean isAdded) throws Exception {
 		final Groups group = getGroup(groupName);
 		final List<GroupMember> membersCollection = group
 				.getGroupMemberCollection();
@@ -145,7 +145,8 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups>
 	@Transactional
 	@Override
 	public boolean changeGroupMembers(final String groupName,
-			final Map<String, Boolean> selectedUsersMap) throws Exception {
+			final Map<String,
+ Boolean> selectedUsersMap) throws Exception {
 		final Groups group = getGroup(groupName);
 		final List<GroupMember> membersCollection = group
 				.getGroupMemberCollection();
@@ -214,7 +215,8 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups>
 	@Transactional(readOnly = true)
 	@Override
 	@Secured({ ROLE_ADMIN, ROLE_USER, ROLE_GM })
-	public String getTreeRootName(final String userName, final Properties props)
+	public String getTreeRootName(final String userName,
+ final Properties props)
 			throws Exception {
 		// read all groups of this user
 		final Users user = usersService.getUser(userName);

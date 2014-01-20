@@ -32,7 +32,8 @@ public final class PhotoUtil {
      * @param event
      * @throws java.lang.Exception
      */
-    public static boolean uploadPhoto(final Users user,final  byte[] byteArrayPhoto) throws Exception {
+    public static boolean uploadPhoto(final Users user,
+final  byte[] byteArrayPhoto) throws Exception {
         int max_photo_size;
         try {
             max_photo_size = Integer.parseInt(ProjectsInitServlet.props.getProperty("max_photo_size"));
@@ -77,7 +78,10 @@ public final class PhotoUtil {
      * @param event
      * @throws java.lang.Exception
      */
-    public static void refreshPhoto(final Users user,final  Image usersPhoto,final  Component deletePhotoButton,final  boolean normalSize) throws Exception {
+    public static void refreshPhoto(final Users user,
+final  Image usersPhoto,
+final  Component deletePhotoButton,
+final  boolean normalSize) throws Exception {
         int max_photo_width;
         int max_photo_height;
         try {
@@ -111,7 +115,9 @@ public final class PhotoUtil {
         }
     }
 
-    private static byte[] createThumbnailImage(final byte[] imageData,final  int maxWidth,final  int maxHeight) throws IOException {
+    private static byte[] createThumbnailImage(final byte[] imageData,
+final  int maxWidth,
+final  int maxHeight) throws IOException {
         InputStream in = new ByteArrayInputStream(imageData);
         BufferedImage image = ImageIO.read(in);
         if (image == null) {

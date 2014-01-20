@@ -32,7 +32,8 @@ public final class AlarmVodafoneBroadcastRecevier extends BroadcastReceiver {
 	 * android.content.Intent)
 	 */
 	@Override
-	public void onReceive(final Context context, final Intent intent) {
+	public void onReceive(final Context context,
+ final Intent intent) {
 
 		final PowerManager pm = (PowerManager) context
 				.getSystemService(Context.POWER_SERVICE);
@@ -58,7 +59,9 @@ public final class AlarmVodafoneBroadcastRecevier extends BroadcastReceiver {
 
 	}
 
-	public void setAlarmInFuture(final Context context, final int hour,			final int minute) {
+	public void setAlarmInFuture(final Context context,
+ final int hour,
+			final int minute) {
 		final AlarmManager am = (AlarmManager) context
 				.getSystemService(Context.ALARM_SERVICE);
 		final Intent intent = new Intent(context,

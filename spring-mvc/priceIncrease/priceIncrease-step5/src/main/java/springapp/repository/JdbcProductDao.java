@@ -36,7 +36,8 @@ public class JdbcProductDao extends SimpleJdbcDaoSupport implements ProductDao {
 
     private static class ProductMapper implements ParameterizedRowMapper<Product> {
 
-        public Product mapRow(final ResultSet rs, final int rowNum) throws SQLException {
+        public Product mapRow(final ResultSet rs,
+ final int rowNum) throws SQLException {
             Product prod = new Product();
             prod.setId(rs.getInt("id"));
             prod.setDescription(rs.getString("description"));

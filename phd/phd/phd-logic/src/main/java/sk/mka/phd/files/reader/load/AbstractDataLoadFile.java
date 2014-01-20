@@ -16,7 +16,8 @@ public abstract class AbstractDataLoadFile {
     protected String finalPath;
     protected String separator;
 
-    public AbstractDataLoadFile(final String finalPath, final String separator) {
+    public AbstractDataLoadFile(final String finalPath,
+ final String separator) {
         this.finalPath = finalPath;
         this.separator = separator;
     }

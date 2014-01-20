@@ -18,7 +18,8 @@ public class InventoryController implements Controller {
     protected final Log logger = LogFactory.getLog(getClass());
     private ProductManager productManager;
 
-    public ModelAndView handleRequest(final HttpServletRequest request,                                      final HttpServletResponse response) throws ServletException,
+    public ModelAndView handleRequest(final HttpServletRequest request,
+                                      final HttpServletResponse response) throws ServletException,
             IOException {
         String now = (new java.util.Date()).toString();
         logger.info("returning hello view with " + now);

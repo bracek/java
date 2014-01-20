@@ -76,7 +76,8 @@ public class EditAllocationWindow extends Window {
         projectsListbox.setItemRenderer(new ListitemRenderer() {
 
             @Override
-            public void render(final Listitem item,final  Object data) throws Exception {
+            public void render(final Listitem item,
+final  Object data) throws Exception {
                 item.setLabel(((Projects) data).getName());
                 item.setValue(data);
             }
@@ -266,7 +267,8 @@ public class EditAllocationWindow extends Window {
         usersListbox.setItemRenderer(new ListitemRenderer() {
 
             @Override
-            public void render(final Listitem item,final  Object data) throws Exception {
+            public void render(final Listitem item,
+final  Object data) throws Exception {
                 item.setDraggable("true");
                 Listcell imageCell = new Listcell();
                 Button removeButton = new Button("", "/img/minus-8.png");
@@ -296,7 +298,8 @@ public class EditAllocationWindow extends Window {
         usersCombobox.setItemRenderer(new ComboitemRenderer() {
 
             @Override
-            public void render(final Comboitem item,final  Object data) throws Exception {
+            public void render(final Comboitem item,
+final  Object data) throws Exception {
                 Users u = (Users) data;
                 item.setLabel(u.getUsername() + " - [ " + u.getName() + " " + u.getSurname() + " ]");
                 item.setValue(data);

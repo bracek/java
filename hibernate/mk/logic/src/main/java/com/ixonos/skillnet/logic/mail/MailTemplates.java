@@ -27,7 +27,8 @@ public class MailTemplates {
 		return mailTemplates;
 	}
 	
-	public void addTemplate(final String templateName,final  String templateText) {
+	public void addTemplate(final String templateName,
+final  String templateText) {
 		templatesMap.put(templateName, templateText);
 	}
 	

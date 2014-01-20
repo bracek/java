@@ -107,7 +107,8 @@ public abstract class AbstractGenerateExperimentsAverage implements IGenerateExp
     }
 
     @Override
-    public ArrayList countAvarageForFile(final String folderName,final  Object[][] info) {
+    public ArrayList countAvarageForFile(final String folderName,
+final  Object[][] info) {
         ArrayList expArrayList = new ArrayList();
         double average = 0;
         double Aaverage = 0;
@@ -159,7 +160,8 @@ public abstract class AbstractGenerateExperimentsAverage implements IGenerateExp
         return info;
     }
 
-    public void createSortedInfoForVelocity(final HashMap sortedPopByIndex,final  Object[][] info) throws NumberFormatException {
+    public void createSortedInfoForVelocity(final HashMap sortedPopByIndex,
+final  Object[][] info) throws NumberFormatException {
         Set keys = sortedPopByIndex.keySet();
         List list = new ArrayList(keys);
         Collections.sort(list);

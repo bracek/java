@@ -158,7 +158,8 @@ public class SkillsController extends GenericForwardComposer implements
 
 	protected SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
 
-	public void render(final Listitem listItem,final  Object data) throws Exception {
+	public void render(final Listitem listItem,
+final  Object data) throws Exception {
 		Skill skill = (Skill) data;
 		new Listcell(skill.getName()).setParent(listItem);
 		new Listcell(skill.getDescription()).setParent(listItem);

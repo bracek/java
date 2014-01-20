@@ -20,11 +20,12 @@ import com.ixonos.skillnet.web.controllers.SkillsComparator;
 public class ImportSkillsInitiator extends AnnotateDataBinderInit {
 
 	@Resource
-	protected SkillService skillService = (SkillService) SpringUtil
+	protected SkillService skillService = (final SkillService) SpringUtil
 			.getApplicationContext().getBean("skillService");
 
 	@Override
-	public void doAfterCompose(final Page page, final Component[] comps)
+	public void doAfterCompose(final Page page,
+ final Component[] comps)
 			throws Exception {
 		page.setVariable("skillList", new ListModelList(
 				getOrderedListOfSkills()));

@@ -32,7 +32,8 @@ public class FilterFileListing implements IFilterFileListing {
      * @param list
      */
     @Override
-    public void getFilesNames(final File folder, final List<File> list) {
+    public void getFilesNames(final File folder,
+ final List<File> list) {
         folder.setReadOnly();
         File[] files = folder.listFiles(filter);
         for (int j = 0; j < files.length; j++) {

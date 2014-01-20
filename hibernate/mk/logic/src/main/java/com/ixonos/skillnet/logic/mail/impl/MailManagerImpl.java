@@ -60,10 +60,12 @@ public class MailManagerImpl implements MailManager {
 	 */
 	@Override
 	public void sendMail(final List<String> recipients,
-			final List<String> ccRecipients, final List<String> bccRecipients,
+			final List<String> ccRecipients,
+ final List<String> bccRecipients,
 			final MailTemplates.Template template,
 			final List<String> textParameters,
-			final Map<String, ClassPathResource> attachments) throws Exception {
+			final Map<String,
+ ClassPathResource> attachments) throws Exception {
 		final JavaMailSenderImpl sender = new JavaMailSenderImpl();
 
 		sender.setHost(configService.getStringProperty(SMTP_HOST,
@@ -145,7 +147,8 @@ public class MailManagerImpl implements MailManager {
 	 */
 	@Override
 	public void sendMail(final List<String> recipients,
-			final Template template, final List<String> textParameters)
+			final Template template,
+ final List<String> textParameters)
 			throws Exception {
 		sendMail(recipients, null, null, template, textParameters, null);
 
@@ -158,7 +161,8 @@ public class MailManagerImpl implements MailManager {
 	 * @throws Exception
 	 */
 	@Override
-	public void sendMail(final List<String> recipients, final Template template)
+	public void sendMail(final List<String> recipients,
+ final Template template)
 			throws Exception {
 		sendMail(recipients, null, null, template, null, null);
 	}
@@ -172,9 +176,11 @@ public class MailManagerImpl implements MailManager {
 	 * @throws Exception
 	 */
 	@Override
-	public void sendMail(final String recipient, final Template template,
+	public void sendMail(final String recipient,
+ final Template template,
 			final List<String> textParameters,
-			final Map<String, ClassPathResource> attachments) throws Exception {
+			final Map<String,
+ ClassPathResource> attachments) throws Exception {
 		final List<String> recipients = new ArrayList<String>();
 		recipients.add(recipient);
 		sendMail(recipients, null, null, template, textParameters, attachments);
@@ -188,7 +194,8 @@ public class MailManagerImpl implements MailManager {
 	 * @throws Exception
 	 */
 	@Override
-	public void sendMail(final String recipient, final Template template,
+	public void sendMail(final String recipient,
+ final Template template,
 			final List<String> textParameters) throws Exception {
 		final List<String> recipients = new ArrayList<String>();
 		recipients.add(recipient);
@@ -202,7 +209,8 @@ public class MailManagerImpl implements MailManager {
 	 * @throws Exception
 	 */
 	@Override
-	public void sendMail(final String recipient, final Template template)
+	public void sendMail(final String recipient,
+ final Template template)
 			throws Exception {
 		final List<String> recipients = new ArrayList<String>();
 		recipients.add(recipient);
@@ -218,8 +226,10 @@ public class MailManagerImpl implements MailManager {
 	 */
 	@Override
 	public void sendMail(final List<String> recipients,
-			final Template template, final List<String> textParameters,
-			final Map<String, ClassPathResource> attachments) throws Exception {
+			final Template template,
+ final List<String> textParameters,
+			final Map<String,
+ ClassPathResource> attachments) throws Exception {
 		sendMail(recipients, null, null, template, textParameters, attachments);
 	}
 

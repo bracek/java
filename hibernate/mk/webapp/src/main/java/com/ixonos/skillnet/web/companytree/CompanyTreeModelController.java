@@ -140,7 +140,8 @@ public class CompanyTreeModelController extends GenericForwardComposer implement
     }
 
     @Override
-    public void render(final Treeitem item,final  Object data) throws Exception {
+    public void render(final Treeitem item,
+final  Object data) throws Exception {
         Users user = (Users) data;
         Treecell tcUserName = new Treecell(user.getHumanReadableUsername());
         Treerow tr = null;
@@ -185,7 +186,8 @@ public class CompanyTreeModelController extends GenericForwardComposer implement
     }
 
     @Override
-    public void render(final Row row,final  Object data) throws Exception {
+    public void render(final Row row,
+final  Object data) throws Exception {
         String[] userData = (String[]) data;
         Label label = new Label(userData[0]);
         Textbox textbox = new Textbox(userData[1]);
@@ -205,7 +207,8 @@ public class CompanyTreeModelController extends GenericForwardComposer implement
     }
 
     @Override
-    public void render(final Listitem listItem,final  Object data) throws Exception {
+    public void render(final Listitem listItem,
+final  Object data) throws Exception {
         if (data != null) {
             if (data instanceof Users) {
                 listItem.setValue(data);

@@ -17,7 +17,8 @@ public class FilteredFileListing extends FileListing {
     private final String mask;
     private final String extension;
 
-    public FilteredFileListing(final String mask, final String extension) {
+    public FilteredFileListing(final String mask,
+ final String extension) {
         this.mask = mask;
         this.extension = extension;
     }

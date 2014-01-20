@@ -13,7 +13,8 @@ import org.zkoss.zkplus.databind.AnnotateDataBinderInit;
 public final class AddUsersInitiator extends AnnotateDataBinderInit {
 
     @Override
-    public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {
+    public void doAfterCompose(final Page page,
+final  Component[] comps) throws Exception {
         super.doAfterCompose(page, comps);
 
     }

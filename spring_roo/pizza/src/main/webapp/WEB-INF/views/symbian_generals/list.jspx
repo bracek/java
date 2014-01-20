@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:list id="pl_com_springsource_roo_pizzashop_domain_Symbian_general" items="${symbian_generals}" z="+yN564YCmUMF+fjwxyC/r4YSEPQ=">
-        <table:table data="${symbian_generals}" id="l_com_springsource_roo_pizzashop_domain_Symbian_general" path="/symbian_generals" z="vihIX8mOqDE0cNyjCPNo4wq/ufg=">
-            <table:column id="c_com_springsource_roo_pizzashop_domain_Symbian_general_application_icon" property="application_icon" z="ugVInAHoDFrssFiwYQrpGRmpZkU="/>
-        </table:table>
-    </page:list>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<page:list
+		id="pl_com_springsource_roo_pizzashop_domain_Symbian_general"
+		items="${symbian_generals}" z="+yN564YCmUMF+fjwxyC/r4YSEPQ=">
+		<table:table data="${symbian_generals}"
+			id="l_com_springsource_roo_pizzashop_domain_Symbian_general"
+			path="/symbian_generals" z="vihIX8mOqDE0cNyjCPNo4wq/ufg=">
+			<table:column
+				id="c_com_springsource_roo_pizzashop_domain_Symbian_general_application_icon"
+				property="application_icon" z="ugVInAHoDFrssFiwYQrpGRmpZkU=" />
+		</table:table>
+	</page:list>
 </div>

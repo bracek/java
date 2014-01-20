@@ -50,7 +50,8 @@ public final class ProjectsServiceImpl extends AbstractGenericService<Projects> 
 
     @Override
     @Transactional
-    public void addUser(final Integer projectId,final  Users user) throws Exception {
+    public void addUser(final Integer projectId,
+final  Users user) throws Exception {
         Projects project = getProject(projectId);
         project.getUsersCollection().add(user);
         update(project);
@@ -58,7 +59,8 @@ public final class ProjectsServiceImpl extends AbstractGenericService<Projects> 
 
     @Override
     @Transactional
-    public void removeUser(final Integer projectId,final  Users user) throws Exception {
+    public void removeUser(final Integer projectId,
+final  Users user) throws Exception {
         Projects project = getProject(projectId);
         project.getUsersCollection().remove(user);
         update(project);

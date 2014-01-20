@@ -20,7 +20,7 @@ import com.ixonos.skillnet.logic.service.UsersService;
  */
 public final class CurriculumWindow {
 
-	final static protected UsersService usersService = (UsersService) SpringUtil
+	final static protected UsersService usersService = (final UsersService) SpringUtil
 			.getApplicationContext().getBean("usersService");
 	public static final String CURRICULUM_DOC_SUFFIX = "_cv.doc";
 

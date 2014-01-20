@@ -94,7 +94,10 @@ public class Skill /*extends AbstractBean*/ implements Serializable  {
         this.skillId = skillId;
     }
 
-    public Skill(final Integer skillId,final  String name,final  Date created,final  Boolean valuable) {
+    public Skill(final Integer skillId,
+final  String name,
+final  Date created,
+final  Boolean valuable) {
         this.skillId = skillId;
         this.name = name;
         this.created = created;

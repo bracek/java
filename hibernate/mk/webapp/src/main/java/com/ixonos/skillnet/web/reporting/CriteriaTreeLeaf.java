@@ -28,7 +28,9 @@ public class CriteriaTreeLeaf extends AbstractCriteriaTreeItem {
      * @param operator criteria operator
      * @param value criteria value
      */
-    public CriteriaTreeLeaf(final String variable,final  int operator,final  Object[] value) {
+    public CriteriaTreeLeaf(final String variable,
+final  int operator,
+final  Object[] value) {
         super();
         setVariable(variable);
         setOperator(operator);
@@ -42,7 +44,9 @@ public class CriteriaTreeLeaf extends AbstractCriteriaTreeItem {
      * @param operator criteria operator
      * @param value criteria value
      */
-    public CriteriaTreeLeaf(final String variable,final  int operator,final  Object value) {
+    public CriteriaTreeLeaf(final String variable,
+final  int operator,
+final  Object value) {
         this(variable, operator, new Object[]{value});
     }
     

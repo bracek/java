@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-             xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
               http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.4.xsd">
 
-    <global-method-security secured-annotations="enabled"/>
+	<global-method-security secured-annotations="enabled" />
 
-    <!-- Authorities acquiring method -->
+	<!-- Authorities acquiring method -->
 
-    <beans:bean id="userDetailsService" class="fi.ixonos.projects.logic.security.SkillnetUserDetailsService">
-        <beans:property name="dataSource" ref="dataSourceProjects"/>
-        <beans:property name="enableAuthorities" value="true"/>
-        <beans:property name="enableGroups" value="true"/>
-        <beans:property name="groupAuthoritiesByUsernameQuery" value="
+	<beans:bean id="userDetailsService"
+		class="fi.ixonos.projects.logic.security.SkillnetUserDetailsService">
+		<beans:property name="dataSource" ref="dataSourceProjects" />
+		<beans:property name="enableAuthorities" value="true" />
+		<beans:property name="enableGroups" value="true" />
+		<beans:property name="groupAuthoritiesByUsernameQuery"
+			value="
                             SELECT
                                 g.group_id,
                                 u.username,
@@ -33,9 +34,9 @@
                                 AND
                                 (c.code_table_id = ga.authority)
                                 AND
-                                (u.username=?)"
-        />
-        <beans:property name="usersByUsernameQuery" value="
+                                (u.username=?)" />
+		<beans:property name="usersByUsernameQuery"
+			value="
                            SELECT
                                 username,
                                 password,
@@ -43,9 +44,9 @@
                            FROM
                                 users
                            WHERE
-                                (username=?)"
-        />
-        <beans:property name="authoritiesByUsernameQuery" value="
+                                (username=?)" />
+		<beans:property name="authoritiesByUsernameQuery"
+			value="
                            SELECT
                                 u.username,
                                 c.code
@@ -58,50 +59,48 @@
                                 AND
                                 (c.code_table_id = a.authority)
                                 AND
-                                (u.username=?)"
-        />
-    </beans:bean>
+                                (u.username=?)" />
+	</beans:bean>
 
-    <!-- Authentication methods -->
+	<!-- Authentication methods -->
 
-    <!-- ################################################################# -->
-    <!-- ###################### LDAP Authentication ###################### -->
-    <beans:bean id="contextSource" class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
-        <beans:constructor-arg value="${projects.ldap.url}"/>
-        <beans:property name="base" value="${projects.ldap.base}"/>
-    </beans:bean>
+	<!-- ################################################################# -->
+	<!-- ###################### LDAP Authentication ###################### -->
+	<beans:bean id="contextSource"
+		class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
+		<beans:constructor-arg value="${projects.ldap.url}" />
+		<beans:property name="base" value="${projects.ldap.base}" />
+	</beans:bean>
 
-    <beans:bean id="ldapAuthenticationProvider" class="fi.ixonos.projects.logic.security.ldap.ProjectsAuthenticationProvider">
-        <custom-authentication-provider/>
-        <beans:property name="usersDetailsService" ref="userDetailsService"/>
-        <beans:constructor-arg>
-            <beans:bean class="fi.ixonos.projects.logic.security.ldap.ProjectsAuthenticator">
-                <beans:constructor-arg ref="contextSource"/>
-            </beans:bean>
-        </beans:constructor-arg>
-    </beans:bean>
+	<beans:bean id="ldapAuthenticationProvider"
+		class="fi.ixonos.projects.logic.security.ldap.ProjectsAuthenticationProvider">
+		<custom-authentication-provider />
+		<beans:property name="usersDetailsService" ref="userDetailsService" />
+		<beans:constructor-arg>
+			<beans:bean
+				class="fi.ixonos.projects.logic.security.ldap.ProjectsAuthenticator">
+				<beans:constructor-arg ref="contextSource" />
+			</beans:bean>
+		</beans:constructor-arg>
+	</beans:bean>
 
-    <beans:bean id="ldapUsersService" class="fi.ixonos.projects.logic.security.ldap.ImportLdapUsersService">
-        <beans:constructor-arg ref="contextSource"/>
-    </beans:bean>
-    <!-- ###################### LDAP Authentication ###################### -->
-    <!-- ################################################################# -->
+	<beans:bean id="ldapUsersService"
+		class="fi.ixonos.projects.logic.security.ldap.ImportLdapUsersService">
+		<beans:constructor-arg ref="contextSource" />
+	</beans:bean>
+	<!-- ###################### LDAP Authentication ###################### -->
+	<!-- ################################################################# -->
 
-    <!-- ################################################################# -->
-    <!-- ###################### JDBC Authentication ######################-->
-    <!--
-    <authentication-provider user-service-ref="userDetailsService">
-        <password-encoder hash="sha-256">
-            <salt-source user-property="username"/>
-        </password-encoder>
-    </authentication-provider>
+	<!-- ################################################################# -->
+	<!-- ###################### JDBC Authentication ###################### -->
+	<!-- <authentication-provider user-service-ref="userDetailsService"> <password-encoder 
+		hash="sha-256"> <salt-source user-property="username"/> </password-encoder> 
+		</authentication-provider> <authentication-manager alias="authenticationManager"/> -->
+	<!-- ###################### JDBC Authentication ###################### -->
+	<!-- ################################################################# -->
 
-    <authentication-manager alias="authenticationManager"/>
-    -->
-    <!-- ###################### JDBC Authentication ######################-->
-    <!-- ################################################################# -->
-
-    <!-- Automatically receives AuthenticationEvent messages -->
-    <beans:bean id="loggerListener" class="org.springframework.security.event.authentication.LoggerListener"/>
+	<!-- Automatically receives AuthenticationEvent messages -->
+	<beans:bean id="loggerListener"
+		class="org.springframework.security.event.authentication.LoggerListener" />
 
 </beans:beans>

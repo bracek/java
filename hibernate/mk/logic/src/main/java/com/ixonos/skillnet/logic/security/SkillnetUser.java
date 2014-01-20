@@ -34,8 +34,10 @@ public class SkillnetUser extends User {
 	private final Logger logger = Logger.getLogger(SkillnetUser.class);
 
 	@Deprecated
-	public SkillnetUser(final String username, final String password,
-			final boolean enabled, final GrantedAuthority[] authorities)
+	public SkillnetUser(final String username,
+ final String password,
+			final boolean enabled,
+ final GrantedAuthority[] authorities)
 			throws IllegalArgumentException {
 		this(username, password, enabled, true, true, authorities);
 		logger.debug("deprecated constructor");
@@ -49,8 +51,10 @@ public class SkillnetUser extends User {
 		logger.debug("creating SkillnetUser from UserDetails:" + userDetails);
 	}
 
-	public SkillnetUser(final String username, final String password,
-			final boolean enabled, final boolean accountNonExpired,
+	public SkillnetUser(final String username,
+ final String password,
+			final boolean enabled,
+ final boolean accountNonExpired,
 			final boolean credentialsNonExpired,
 			final GrantedAuthority[] authorities)
 			throws IllegalArgumentException {
@@ -59,10 +63,13 @@ public class SkillnetUser extends User {
 		logger.debug("constructor");
 	}
 
-	public SkillnetUser(final String username, final String password,
-			final boolean enabled, final boolean accountNonExpired,
+	public SkillnetUser(final String username,
+ final String password,
+			final boolean enabled,
+ final boolean accountNonExpired,
 			final boolean credentialsNonExpired,
-			final boolean accountNonLocked, final GrantedAuthority[] authorities)
+			final boolean accountNonLocked,
+ final GrantedAuthority[] authorities)
 			throws IllegalArgumentException {
 		super(username, password, enabled, accountNonExpired,
 				credentialsNonExpired, accountNonLocked, authorities);
@@ -121,8 +128,8 @@ public class SkillnetUser extends User {
 		return customUserDetails;
 	}
 
-	public void setCustomUserDetails(
-			final HashMap<Object, Object> customUserDetails) {
+	public void setCustomUserDetails(			final HashMap<Object,
+ Object> customUserDetails) {
 		this.customUserDetails = customUserDetails;
 	}
 

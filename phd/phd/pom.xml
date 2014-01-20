@@ -1,563 +1,522 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <properties>
-        <sk.mka.phd.version>0.1</sk.mka.phd.version>
-    </properties>
-    
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>sk.mka.phd</groupId>
-    <artifactId>phd</artifactId>
-    <version>${sk.mka.phd.version}</version>
-    <packaging>pom</packaging>
-    <name>phd</name>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<properties>
+		<sk.mka.phd.version>0.1</sk.mka.phd.version>
+	</properties>
 
-    <profiles>
-        <profile>
-            <id>timit_profile</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>sk.mka.phd</groupId>
+	<artifactId>phd</artifactId>
+	<version>${sk.mka.phd.version}</version>
+	<packaging>pom</packaging>
+	<name>phd</name>
 
-            <properties>
-                <dir>test</dir>
-                <phonemeReduction>phonemeReduction.dat</phonemeReduction>
-                <phonemeDistribution>phonemeDistribution.dat</phonemeDistribution>
-                <groupsOutputRepresentation>outputGroupRepresentation.out</groupsOutputRepresentation>
-                <groupsOutputXml>outputGroups.xml</groupsOutputXml>
+	<profiles>
+		<profile>
+			<id>timit_profile</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 
-
-                <!-- Log4J Threshold setup-->
-                <!-- all|debug|info|warn|error|fatal|off|null -->
-                <log4j.appender.mka.Threshold>INFO</log4j.appender.mka.Threshold>
-                <log4j.appender.console.Threshold>ERROR</log4j.appender.console.Threshold>
-            </properties>
-        </profile>
-    </profiles>
+			<properties>
+				<dir>test</dir>
+				<phonemeReduction>phonemeReduction.dat</phonemeReduction>
+				<phonemeDistribution>phonemeDistribution.dat</phonemeDistribution>
+				<groupsOutputRepresentation>outputGroupRepresentation.out</groupsOutputRepresentation>
+				<groupsOutputXml>outputGroups.xml</groupsOutputXml>
 
 
-    <dependencyManagement>
-        <dependencies>
-            <!-- sort alfabeticallly -->
-
-            <dependency>
-                <groupId>dom4j</groupId>
-                <artifactId>dom4j</artifactId>
-                <version>1.6.1</version>
-            </dependency>
-
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.8.1</version>
-                <scope>test</scope>
-            </dependency>
-
-            <!-- Logging -->
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>1.2.16</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <modules>
-        <module>phd-core</module>
-        <module>phd-logic</module>
-    </modules>
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>1.6</source>
-                        <target>1.6</target>
-                        <encoding>UTF-8</encoding>
-                        <showWarnings>true</showWarnings>
-                    </configuration>
-                </plugin>
-
-		<!--
-                <plugin>
-                    <groupId>net.unto.maven.plugins</groupId>
-                    <artifactId>maven-junit4-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>test</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-		-->
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>2.0.2</version>
-                    <configuration>
-                        <!--<useFullArtifactNames>false</useFullArtifactNames>-->
-                        <!--<excludes>META-INF/**/*</excludes>-->
-                        <archive>
-                            <manifest>
-                                <addClasspath>true</addClasspath>
-                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            </manifest>
-                            <manifestEntries>
-                                <Implementation-Build>${buildNumber}</Implementation-Build>
-                            </manifestEntries>
-                        </archive>
-                    </configuration>
-                </plugin>
-
-                <!-- eclipse plugin -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-eclipse-plugin</artifactId>
-                    <version>2.8</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.3.1</version>
-                    <configuration>
-                        <archive>
-                            <manifestEntries>
-                                <mode>development</mode>
-                                <url>${pom.url}</url>
-                                <SCM-Revision>${buildNumber}</SCM-Revision>
-                            </manifestEntries>
-                        </archive>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>tomcat-maven-plugin</artifactId>
-                    <version>1.0</version>
-                    <!--  using default configuration manager account username:admin, password: /no password/ -->
-                    <configuration>
-                        <url>${tomcat.manager.url}</url>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>cobertura-maven-plugin</artifactId>
-                    <inherited>true</inherited>
-                    <version>2.4</version>
-                    <executions>
-                        <execution>
-                            <id>clean</id>
-                            <goals>
-                                <goal>clean</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>findbugs-maven-plugin</artifactId>
-                    <version>2.3.1</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>2.0.2</version>
-                    <configuration>
-                        <useFullArtifactNames>false</useFullArtifactNames>
-                        <excludes>META-INF/**/*</excludes>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>tomcat-maven-plugin</artifactId>
-                    <version>1.0</version>
-                    <configuration>
-                        <url>http://localhost:8080/manager</url>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>2.3.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-archetype-plugin</artifactId>
-                    <version>2.0-alpha-5</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-antrun-plugin</artifactId>
-                    <version>1.4</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-docck-plugin</artifactId>
-                    <version>1.0</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.3.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>2.4.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.mortbay.jetty</groupId>
-                    <artifactId>maven-jetty-plugin</artifactId>
-                    <version>7.0.0pre3</version>
-                    <configuration>
-                        <!--
-                        <scanIntervalSeconds>10</scanIntervalSeconds>
-                        <systemProperties>
-                            <systemProperty>
-                                <name>org.apache.commons.logging.Log</name>
-                                <value>
-                org.apache.commons.logging.impl.SimpleLog
-                                </value>
-                            </systemProperty>
-                        </systemProperties>
-                        -->
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>2.1.1</version>
-                    <configuration>
-                        <locales>en</locales>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.4.3</version>
-                </plugin>
-                <plugin>
-                    <groupId>ch.elca.el4j.maven.plugins</groupId>
-                    <artifactId>maven-repohelper-plugin</artifactId>
-                    <version>1.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>ch.elca.el4j.maven.plugins</groupId>
-                    <artifactId>maven-file-collector-plugin</artifactId>
-                    <version>1.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>ch.elca.el4j.maven.plugins</groupId>
-                    <artifactId>maven-database-plugin</artifactId>
-                    <version>1.2</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>ch.elca.el4j.maven.plugins</groupId>
-                    <artifactId>maven-depgraph-plugin</artifactId>
-                    <version></version>
-                </plugin>
-            </plugins>
-
-        </pluginManagement>
-        <!-- END OF PLUGIN MANAGMNET -->
-
-        <plugins>
-
-            <plugin>
-                <groupId>ch.elca.el4j.maven.plugins</groupId>
-                <artifactId>maven-depgraph-plugin</artifactId>
-                <version>1.7</version>
-            </plugin>
+				<!-- Log4J Threshold setup -->
+				<!-- all|debug|info|warn|error|fatal|off|null -->
+				<log4j.appender.mka.Threshold>INFO</log4j.appender.mka.Threshold>
+				<log4j.appender.console.Threshold>ERROR</log4j.appender.console.Threshold>
+			</properties>
+		</profile>
+	</profiles>
 
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>ISO-8859-2</encoding>
-                    <showWarnings>true</showWarnings>
-                </configuration>
-            </plugin>
+	<dependencyManagement>
+		<dependencies>
+			<!-- sort alfabeticallly -->
 
-            <!--     <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <formats>
-                        <format>xml</format>
-                    </formats>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>cobertura</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>1.6.1</version>
+			</dependency>
 
-            <!--
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.1.1</version>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                    </execution>
-                </executions>
-            </plugin>
--->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <encoding>windows-1250</encoding>
-                </configuration>
-            </plugin>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.1</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Logging -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.16</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<modules>
+		<module>phd-core</module>
+		<module>phd-logic</module>
+	</modules>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+						<encoding>UTF-8</encoding>
+						<showWarnings>true</showWarnings>
+					</configuration>
+				</plugin>
+
+				<!-- <plugin> <groupId>net.unto.maven.plugins</groupId> <artifactId>maven-junit4-plugin</artifactId> 
+					<executions> <execution> <phase>test</phase> <goals> <goal>test</goal> </goals> 
+					</execution> </executions> </plugin> -->
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.0.2</version>
+					<configuration>
+						<!--<useFullArtifactNames>false</useFullArtifactNames> -->
+						<!--<excludes>META-INF/**/*</excludes> -->
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+							<manifestEntries>
+								<Implementation-Build>${buildNumber}</Implementation-Build>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<!-- eclipse plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.8</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3.1</version>
+					<configuration>
+						<archive>
+							<manifestEntries>
+								<mode>development</mode>
+								<url>${pom.url}</url>
+								<SCM-Revision>${buildNumber}</SCM-Revision>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>tomcat-maven-plugin</artifactId>
+					<version>1.0</version>
+					<!-- using default configuration manager account username:admin, password: 
+						/no password/ -->
+					<configuration>
+						<url>${tomcat.manager.url}</url>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<inherited>true</inherited>
+					<version>2.4</version>
+					<executions>
+						<execution>
+							<id>clean</id>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>2.3.1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.0.2</version>
+					<configuration>
+						<useFullArtifactNames>false</useFullArtifactNames>
+						<excludes>META-INF/**/*</excludes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>tomcat-maven-plugin</artifactId>
+					<version>1.0</version>
+					<configuration>
+						<url>http://localhost:8080/manager</url>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.3.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-archetype-plugin</artifactId>
+					<version>2.0-alpha-5</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-docck-plugin</artifactId>
+					<version>1.0</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.4.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>maven-jetty-plugin</artifactId>
+					<version>7.0.0pre3</version>
+					<configuration>
+						<!-- <scanIntervalSeconds>10</scanIntervalSeconds> <systemProperties> 
+							<systemProperty> <name>org.apache.commons.logging.Log</name> <value> org.apache.commons.logging.impl.SimpleLog 
+							</value> </systemProperty> </systemProperties> -->
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>2.1.1</version>
+					<configuration>
+						<locales>en</locales>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.4.3</version>
+				</plugin>
+				<plugin>
+					<groupId>ch.elca.el4j.maven.plugins</groupId>
+					<artifactId>maven-repohelper-plugin</artifactId>
+					<version>1.2</version>
+				</plugin>
+				<plugin>
+					<groupId>ch.elca.el4j.maven.plugins</groupId>
+					<artifactId>maven-file-collector-plugin</artifactId>
+					<version>1.2</version>
+				</plugin>
+				<plugin>
+					<groupId>ch.elca.el4j.maven.plugins</groupId>
+					<artifactId>maven-database-plugin</artifactId>
+					<version>1.2</version>
+				</plugin>
+
+				<plugin>
+					<groupId>ch.elca.el4j.maven.plugins</groupId>
+					<artifactId>maven-depgraph-plugin</artifactId>
+					<version></version>
+				</plugin>
+			</plugins>
+
+		</pluginManagement>
+		<!-- END OF PLUGIN MANAGMNET -->
+
+		<plugins>
+
+			<plugin>
+				<groupId>ch.elca.el4j.maven.plugins</groupId>
+				<artifactId>maven-depgraph-plugin</artifactId>
+				<version>1.7</version>
+			</plugin>
 
 
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <configuration>
-                    <encoding>windows-1250</encoding>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>ISO-8859-2</encoding>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>cobertura-maven-plugin</artifactId> 
+				<version>2.2</version> <configuration> <formats> <format>xml</format> </formats> 
+				</configuration> <executions> <execution> <phase>package</phase> <goals> 
+				<goal>cobertura</goal> </goals> </execution> </executions> </plugin> -->
+
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.1.1</version> <executions> <execution> <phase>compile</phase> 
+				</execution> </executions> </plugin> -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>windows-1250</encoding>
+				</configuration>
+			</plugin>
 
 
-            <plugin>
-                <groupId>org.codehaus.sonar</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>1.8M1</version>
-            </plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>windows-1250</encoding>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.codehaus.sonar</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>1.8M1</version>
+			</plugin>
 
 
 
-        </plugins>
-    </build>
+		</plugins>
+	</build>
 
 
 
-    <!-- BEGIN OF REPORTING PLUGINS-->
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.4</version>
-                <inherited>true</inherited>
-            </plugin>
+	<!-- BEGIN OF REPORTING PLUGINS -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.4</version>
+				<inherited>true</inherited>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.5</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changes-plugin</artifactId>
-                <configuration>
-                    <columnNames>Type,Key,Summary,Assignee,Status,Resolution,Fix Version</columnNames>
-                    <sortColumnNames>Type,Key DESC</sortColumnNames>
-                </configuration>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changes-plugin</artifactId>
+				<configuration>
+					<columnNames>Type,Key,Summary,Assignee,Status,Resolution,Fix
+						Version</columnNames>
+					<sortColumnNames>Type,Key DESC</sortColumnNames>
+				</configuration>
 
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>changes-report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>2.3.1</version>
-            </plugin>
-
-            <!--maven2-javadoc-plugin
-         publishing your classes' Javadocs-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.7</version>
-                <reportSets>
-                    <reportSet>
-                        <id>uml</id>
-                        <configuration>
-                            <aggregate>true</aggregate>
-                            <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
-                            <docletArtifact>
-                                <groupId>gr.spinellis</groupId>
-                                <artifactId>UmlGraph</artifactId>
-                                <version>4.4</version>
-                            </docletArtifact>
-                            <additionalparam>
-                                -inferrel -inferdep -quiet -hide java.*
-                                -collpackages java.util.* -qualify
-                                -postfixpackage -nodefontsize 9
-                                -nodefontpackagesize 7
-                            </additionalparam>
-                        </configuration>
-                        <reports>
-                            <report>javadoc</report>
-                        </reports>
-                    </reportSet>
-                    <reportSet>
-                        <id>html</id>
-                        <configuration>
-                            <show>private</show>
-                        </configuration>
-                        <reports>
-                            <report>javadoc</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.2</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-clover-plugin</artifactId>
-                <version>2.4</version>
-            </plugin>
-            <!-- pmd -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <targetJdk>1.6</targetJdk>
-                    <rulesets>
-                        <ruleset>/rulesets/basic.xml</ruleset>
-                        <ruleset>/rulesets/controversial.xml</ruleset>
-                    </rulesets>
-                    <format>xml</format>
-                    <linkXref>true</linkXref>
-                    <sourceEncoding>utf-8</sourceEncoding>
-                    <minimumTokens>100</minimumTokens>
-                </configuration>
-            </plugin>
-
-            <!-- find bugs -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>2.3.1</version>
-            </plugin>
-
-            <!-- changelog-maven-plugin -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>changelog-maven-plugin</artifactId>
-            </plugin>
-            <!-- jdepend plugin -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jdepend-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>taglist-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.5</version>
-            </plugin>
-            <!-- IDE's -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-idea-plugin</artifactId>
-                <version>2.2</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.2</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>cim</report>
-                            <report>dependencies</report>
-                            <report>index</report>
-                            <report>issue-tracking</report>
-                            <report>license</report>
-                            <report>mailing-list</report>
-                            <report>maven-jira-plugin</report>
-                            <report>project-team</report>
-                            <report>scm</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-
-        </plugins>
-    </reporting>
-    <!-- END OF REPORTING-->
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>changes-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
 
 
-    <ciManagement>
-        <system>Hudson</system>
-        <url>http://kemt.fei.tuke.sk:9001/job/simplify/</url>
-        <notifiers>
-            <notifier>
-                <type>mail</type>
-                <sendOnError>true</sendOnError>
-                <sendOnFailure>true</sendOnFailure>
-                <sendOnSuccess>true</sendOnSuccess>
-                <sendOnWarning>false</sendOnWarning>
-                <configuration>
-                    <address>miroslav.katrak@gmail.com</address>
-                </configuration>
-            </notifier>
-        </notifiers>
-    </ciManagement>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.3.1</version>
+			</plugin>
 
-    <developers>
-        <developer>
-            <id>bracek</id>
-            <name>Miroslav Katrak</name>
-            <email>miroslav dot katrak at gmail.com</email>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>+1</timezone>
-        </developer>
-    </developers>
+			<!--maven2-javadoc-plugin publishing your classes' Javadocs -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
+				<reportSets>
+					<reportSet>
+						<id>uml</id>
+						<configuration>
+							<aggregate>true</aggregate>
+							<doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
+							<docletArtifact>
+								<groupId>gr.spinellis</groupId>
+								<artifactId>UmlGraph</artifactId>
+								<version>4.4</version>
+							</docletArtifact>
+							<additionalparam>
+								-inferrel -inferdep -quiet -hide java.*
+								-collpackages java.util.* -qualify
+								-postfixpackage -nodefontsize 9
+								-nodefontpackagesize 7
+							</additionalparam>
+						</configuration>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+					<reportSet>
+						<id>html</id>
+						<configuration>
+							<show>private</show>
+						</configuration>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clover-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+			<!-- pmd -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<targetJdk>1.6</targetJdk>
+					<rulesets>
+						<ruleset>/rulesets/basic.xml</ruleset>
+						<ruleset>/rulesets/controversial.xml</ruleset>
+					</rulesets>
+					<format>xml</format>
+					<linkXref>true</linkXref>
+					<sourceEncoding>utf-8</sourceEncoding>
+					<minimumTokens>100</minimumTokens>
+				</configuration>
+			</plugin>
 
-    <scm>
-        <connection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/phd/</connection>
-        <developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/phd/</developerConnection>
-        <url>http://kemt.fei.tuke.sk:3128/svn/katrak/java/phd//</url>
-        <tag>HEAD</tag>
-    </scm>
+			<!-- find bugs -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.3.1</version>
+			</plugin>
+
+			<!-- changelog-maven-plugin -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>changelog-maven-plugin</artifactId>
+			</plugin>
+			<!-- jdepend plugin -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<!-- IDE's -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-idea-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.2</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>cim</report>
+							<report>dependencies</report>
+							<report>index</report>
+							<report>issue-tracking</report>
+							<report>license</report>
+							<report>mailing-list</report>
+							<report>maven-jira-plugin</report>
+							<report>project-team</report>
+							<report>scm</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+		</plugins>
+	</reporting>
+	<!-- END OF REPORTING -->
+
+
+	<ciManagement>
+		<system>Hudson</system>
+		<url>http://kemt.fei.tuke.sk:9001/job/simplify/</url>
+		<notifiers>
+			<notifier>
+				<type>mail</type>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>true</sendOnSuccess>
+				<sendOnWarning>false</sendOnWarning>
+				<configuration>
+					<address>miroslav.katrak@gmail.com</address>
+				</configuration>
+			</notifier>
+		</notifiers>
+	</ciManagement>
+
+	<developers>
+		<developer>
+			<id>bracek</id>
+			<name>Miroslav Katrak</name>
+			<email>miroslav dot katrak at gmail.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/phd/</connection>
+		<developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/phd/</developerConnection>
+		<url>http://kemt.fei.tuke.sk:3128/svn/katrak/java/phd//</url>
+		<tag>HEAD</tag>
+	</scm>
 
 
 </project>

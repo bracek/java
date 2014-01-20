@@ -87,7 +87,8 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
      */
     @Transactional(readOnly = true)
     @Override
-    public boolean isPasswordCorrect(final String userName,final  String password) throws Exception {
+    public boolean isPasswordCorrect(final String userName,
+final  String password) throws Exception {
         Users user = getUser(userName);
         return hashPassword(password, userName).equals(user.getPassword());
     }
@@ -103,7 +104,8 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
      * @throws Exception the exception
      */
     @Override
-    public String hashPassword(final String plainPassword,final  String userName) throws Exception {
+    public String hashPassword(final String plainPassword,
+final  String userName) throws Exception {
         MessageDigestPasswordEncoder mdpe = new MessageDigestPasswordEncoder("SHA-256");
         return mdpe.encodePassword(plainPassword, userName);
     }
@@ -165,7 +167,8 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
 
     @Transactional
     @Override
-    public void openProject(final String userName,final  Projects project) throws Exception {
+    public void openProject(final String userName,
+final  Projects project) throws Exception {
         Users user = getUser(userName);
         user.getProjectsOpenedCollection().add(project);
         createOrUpdate(user);
@@ -173,7 +176,8 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
 
     @Transactional
     @Override
-    public void closeProject(final String userName,final  Projects project) throws Exception {
+    public void closeProject(final String userName,
+final  Projects project) throws Exception {
         Users user = getUser(userName);
         user.getProjectsOpenedCollection().remove(project);
         createOrUpdate(user);
@@ -196,7 +200,8 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
     @Secured(ROLE_USER)
     @Transactional
     @Override
-    public void updateCurriculum(final String userName,final  byte[] cvByteArray) throws Exception {
+    public void updateCurriculum(final String userName,
+final  byte[] cvByteArray) throws Exception {
         Users user = getUser(userName);
         user.setCurriculum(cvByteArray);
         user.setIsCurriculumAlreadyFillUp(true);
@@ -209,7 +214,8 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
     @Secured(ROLE_USER)
     @Transactional
     @Override
-    public void updatePhoto(final String userName,final  byte[] photoByteArray) throws Exception {
+    public void updatePhoto(final String userName,
+final  byte[] photoByteArray) throws Exception {
         Users user = getUser(userName);
         user.setPhoto(photoByteArray);
         user.setPhotoUploaded(true);
@@ -222,7 +228,8 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
     @Secured(ROLE_USER)
     @Override
     @Transactional
-    public void updateUsersInfo(final String username,final  Users user) throws Exception {
+    public void updateUsersInfo(final String username,
+final  Users user) throws Exception {
 
         final Users updateUser = getUser(username);
         updateUser.setName(user.getName());
@@ -241,7 +248,8 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
     @Secured(ROLE_ADMIN)
     @Transactional
     @Override
-    public boolean updateUser(final String userName,final  List<String> authorities) throws Exception {
+    public boolean updateUser(final String userName,
+final  List<String> authorities) throws Exception {
         Users user = getUser(userName);
         // prepared list delete, add authorities
         List<Authority> authorityCollection = user.getAuthorityCollection();
@@ -339,7 +347,9 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
     @Secured(ROLE_ADMIN)
     @Transactional
     @Override
-    public boolean updateUser(final String userName,final  Users manager,final  Boolean enabled) throws Exception {
+    public boolean updateUser(final String userName,
+final  Users manager,
+final  Boolean enabled) throws Exception {
         Users user = getUser(userName);
         // update manager
         if (manager != null) {
@@ -375,7 +385,17 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
      */
     @Transactional
     @Override
-    public boolean addNewUser(final String login,final  String password,final  String name,final             String surname,final  String email,final  String phoneNumber,final  String location,final             String position,final  Boolean enabled,final  Users manager,final             List<String> authorities) throws Exception {
+    public boolean addNewUser(final String login,
+final  String password,
+final  String name,
+final             String surname,
+final  String email,
+final  String phoneNumber,
+final  String location,
+final             String position,
+final  Boolean enabled,
+final  Users manager,
+final             List<String> authorities) throws Exception {
 
         Users user = new Users();
         user.setUsername(login);

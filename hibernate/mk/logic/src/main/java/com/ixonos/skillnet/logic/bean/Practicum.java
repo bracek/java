@@ -61,7 +61,8 @@ public class Practicum implements Serializable {
         this.practicumId = practicumId;
     }
 
-    public Practicum(final Integer practicumId,final  Date dateFrom) {
+    public Practicum(final Integer practicumId,
+final  Date dateFrom) {
         this.practicumId = practicumId;
         this.dateFrom = dateFrom;
     }

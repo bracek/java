@@ -86,7 +86,8 @@ public class PhonemeLoadDataImpl extends AbstractPhonemeLoadData implements Phon
     }
 
     @Override
-    public Object[][] modifyList(final List<String> phone,final  int cols) {
+    public Object[][] modifyList(final List<String> phone,
+final  int cols) {
 
         int numberOfLines = phone.size();  //get number of phonema
         int nRows = numberOfLines / cols;

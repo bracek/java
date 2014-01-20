@@ -8,47 +8,47 @@
 			<param name="ConversionPattern" value="%d{ISO8601} %-5p [%C.%M:%L] -> %m%n" />
 		</layout>
 	</appender>
-	
+
 	<logger name="com.ixonos.ibs.prototype.spring">
 		<level value="debug" />
 	</logger>
-	
+
 	<logger name="org.hibernate">
 		<level value="info" />
 	</logger>
-	
+
 	<logger name="org.hibernate.type">
 		<level value="trace" />
 	</logger>
-	
+
 	<logger name="org.hibernate.sql">
-		<level value="debug"/>
+		<level value="debug" />
 	</logger>
-	
+
 	<logger name="org.hibernate.tool.hbm2ddl">
-    	<level value="debug" />
+		<level value="debug" />
 	</logger>
 
 	<logger name="org.springframework">
 		<level value="info" />
 	</logger>
-	
+
 	<logger name="org.springframework.core">
 		<level value="info" />
 	</logger>
-	
+
 	<logger name="org.springframework.beans">
 		<level value="info" />
 	</logger>
-	
+
 	<logger name="org.springframework.context">
 		<level value="info" />
 	</logger>
-	
+
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
-	
+
 	<logger name="com.sun.jersey">
 		<level value="info" />
 	</logger>

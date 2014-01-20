@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
-        <action>
-            <actionName>run</actionName>
-            <goals>
-                <goal>process-classes</goal>
-                <goal>org.codehaus.mojo:exec-maven-plugin:1.1.1:exec</goal>
-            </goals>
-            <properties>
-                <exec.classpathScope>runtime</exec.classpathScope>
-                <exec.args>-classpath %classpath sk.mka.phd.timit.SimplifyTimitApp</exec.args>
-                <exec.executable>java</exec.executable>
-            </properties>
-        </action>
-        <action>
-            <actionName>CUSTOM-CLEAN_INSTALL</actionName>
-            <displayName>CLEAN_INSTALL</displayName>
-            <goals>
-                <goal>clean</goal>
-                <goal>install</goal>
-            </goals>
-            <activatedProfiles>
-                <activatedProfile>clean_install</activatedProfile>
-            </activatedProfiles>
-        </action>
-    </actions>
+	<action>
+		<actionName>run</actionName>
+		<goals>
+			<goal>process-classes</goal>
+			<goal>org.codehaus.mojo:exec-maven-plugin:1.1.1:exec</goal>
+		</goals>
+		<properties>
+			<exec.classpathScope>runtime</exec.classpathScope>
+			<exec.args>-classpath %classpath sk.mka.phd.timit.SimplifyTimitApp</exec.args>
+			<exec.executable>java</exec.executable>
+		</properties>
+	</action>
+	<action>
+		<actionName>CUSTOM-CLEAN_INSTALL</actionName>
+		<displayName>CLEAN_INSTALL</displayName>
+		<goals>
+			<goal>clean</goal>
+			<goal>install</goal>
+		</goals>
+		<activatedProfiles>
+			<activatedProfile>clean_install</activatedProfile>
+		</activatedProfiles>
+	</action>
+</actions>

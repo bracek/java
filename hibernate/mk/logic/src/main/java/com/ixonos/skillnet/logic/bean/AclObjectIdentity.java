@@ -75,7 +75,9 @@ public class AclObjectIdentity implements Serializable {
         this.id = id;
     }
 
-    public AclObjectIdentity(final Integer id,final  Long objectIdIdentity,final  Boolean entriesInheriting) {
+    public AclObjectIdentity(final Integer id,
+final  Long objectIdIdentity,
+final  Boolean entriesInheriting) {
         this.id = id;
         this.objectIdIdentity = objectIdIdentity;
         this.entriesInheriting = entriesInheriting;

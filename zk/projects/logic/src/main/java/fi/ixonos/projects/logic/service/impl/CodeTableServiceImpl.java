@@ -40,7 +40,8 @@ public final class CodeTableServiceImpl extends AbstractGenericService<CodeTable
     @Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
     @Override
     @Transactional(readOnly = true)
-    public CodeTable getCode(final String groupCode,final  String code) throws Exception {
+    public CodeTable getCode(final String groupCode,
+final  String code) throws Exception {
         CodeTable codeTable = new CodeTable();
         codeTable.setGroupCode(groupCode);
         codeTable.setCode(code);

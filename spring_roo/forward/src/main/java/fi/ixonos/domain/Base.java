@@ -57,7 +57,8 @@ public class Base implements Serializable {
         this.id = id;
     }
 
-    public Base(final Long id,final  String name) {
+    public Base(final Long id,
+final  String name) {
         this.id = id;
         this.name = name;
     }

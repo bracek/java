@@ -21,7 +21,8 @@ public class OsobaValidator implements Validator {
         return Osoba.class.equals(clazz);
     }
 
-    public void validate(final Object obj,final  Errors e) {
+    public void validate(final Object obj,
+final  Errors e) {
         ValidationUtils.rejectIfEmpty(e, "firstName", "firstName.empty");
 
 //        Person person = (Person) obj;

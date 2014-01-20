@@ -50,7 +50,7 @@ public class GroupsController extends GenericForwardComposer implements
 			.getLogger(GroupsController.class);
 
 	@Resource
-	protected GroupAuthorityService groupAuthorityService = (GroupAuthorityService) SkillnetApplicationContext
+	protected GroupAuthorityService groupAuthorityService = (final GroupAuthorityService) SkillnetApplicationContext
 			.getApplicationContext().getBean("groupAuthorityService");
 	@Resource
 	protected GroupsService groupsService;
@@ -110,15 +110,14 @@ public class GroupsController extends GenericForwardComposer implements
 
 			}
 
-			private void cleanHashMap(
-					final HashMap<Integer, Boolean> hashMapEnabled) {
+			private void cleanHashMap(					final HashMap<Integer,
+ Boolean> hashMapEnabled) {
 				for (int i = 0; i < listOfAuthoritiesFromCodeTable().size(); i++) {
 					hashMapEnabled.put(i, Boolean.FALSE);
 				}
 			}
 
-			private void findMatchInListForCodeTableAndGroupAuthorityTable(
-					final List<GroupAuthority> authorityListFromDatabase,
+			private void findMatchInListForCodeTableAndGroupAuthorityTable(					final List<GroupAuthority> authorityListFromDatabase,
 					final List<CodeTable> listOfAllAuhtoritiesFromCodeTable) {
 				Integer codeTableId;
 				Integer groupAuthorityCodeTableId;
@@ -154,8 +153,7 @@ public class GroupsController extends GenericForwardComposer implements
 				}
 			}
 
-			private List<GroupAuthority> getAuthoritiesForSelectedGroups(
-					final Groups selectedGroup) {
+			private List<GroupAuthority> getAuthoritiesForSelectedGroups(					final Groups selectedGroup) {
 				final DetachedCriteria dCriteria2 = DetachedCriteria
 						.forClass(GroupAuthority.class);
 				dCriteria2.add(Restrictions.eq(
@@ -168,7 +166,8 @@ public class GroupsController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(final Listitem listItem, final Object data)
+	public void render(final Listitem listItem,
+ final Object data)
 			throws Exception {
 		if (data instanceof Groups) {
 			listItem.setValue(data);

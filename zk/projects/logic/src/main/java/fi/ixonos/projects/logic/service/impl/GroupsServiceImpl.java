@@ -67,7 +67,8 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
     @Secured(ROLE_ADMIN)
     @Transactional
     @Override
-    public boolean changeGroupMembers(final String groupName,final  List<String> members) throws Exception {
+    public boolean changeGroupMembers(final String groupName,
+final  List<String> members) throws Exception {
     	Groups group = getGroup(groupName);    	    	
     	// prepared list delete, add authorities
     	List<GroupMember> membersCollection = group.getGroupMemberCollection();
@@ -102,7 +103,9 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
     @Secured(ROLE_ADMIN)
     @Transactional
     @Override
-    public boolean changeGroupMember(final String groupName,final  String member,final  boolean isAdded) throws Exception {
+    public boolean changeGroupMember(final String groupName,
+final  String member,
+final  boolean isAdded) throws Exception {
     	Groups group = getGroup(groupName);    	    	    	
     	List<GroupMember> membersCollection = group.getGroupMemberCollection();
     	if (isAdded) {	// insert
@@ -138,7 +141,9 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
     @Secured(ROLE_ADMIN)
     @Transactional
     @Override
-    public boolean changeGroupMembers(final String groupName,final  Map<String,final Boolean> selectedUsersMap) throws Exception {
+    public boolean changeGroupMembers(final String groupName,
+final  Map<String,
+final Boolean> selectedUsersMap) throws Exception {
     	Groups group = getGroup(groupName);    	    	    	
     	List<GroupMember> membersCollection = group.getGroupMemberCollection();
     	for (Entry<String, Boolean> selectedUser : selectedUsersMap.entrySet()) {
@@ -205,7 +210,8 @@ public final class GroupsServiceImpl extends AbstractGenericService<Groups> impl
     @Transactional(readOnly = true)
     @Override
     @Secured({ROLE_ADMIN, ROLE_USER, ROLE_GM})
-	public String getTreeRootName(final String userName,final  Properties props) throws Exception {
+	public String getTreeRootName(final String userName,
+final  Properties props) throws Exception {
     	// read all groups of this user
 		Users user = usersService.getUser(userName);
 		List<GroupMember> groupMembers = user.getGroupMemberCollection();

@@ -157,12 +157,14 @@ public class ProductDaoImpl extends SimpleJdbcDaoSupport implements ProductDao {
 		 *            the params with types
 		 */
 		public GeneralQuery(final String query,
-				final Map<String, Integer> paramsWithTypes) {
+				final Map<String,
+ Integer> paramsWithTypes) {
 			super(getDataSource(), query, paramsWithTypes);
 		}
 
 		@Override
-		protected Product mapRow(final ResultSet rs, final int rowNum)
+		protected Product mapRow(final ResultSet rs,
+ final int rowNum)
 				throws SQLException {
 			final Product product = new Product();
 			product.setId(rs.getInt("id"));

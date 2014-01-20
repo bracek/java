@@ -8,7 +8,8 @@ import org.zkoss.zul.RowRenderer;
  
 public class LiveGroupRenderer implements RowRenderer {
  
-    public void render(final Row row,final  java.lang.Object data) {
+    public void render(final Row row,
+final  java.lang.Object data) {
         if(data instanceof String[]) {
             String[] ary = (String[]) data;
             Div div = new Div();

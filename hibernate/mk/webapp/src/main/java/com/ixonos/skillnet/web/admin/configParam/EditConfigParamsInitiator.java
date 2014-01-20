@@ -26,11 +26,12 @@ import com.ixonos.skillnet.logic.service.ConfigService;
  */
 public class EditConfigParamsInitiator extends AnnotateDataBinderInit {
 
-	private final ConfigService configService = (ConfigService) SpringUtil
+	private final ConfigService configService = (final ConfigService) SpringUtil
 			.getApplicationContext().getBean("configService");
 
 	@Override
-	public void doAfterCompose(final Page page, final Component[] comps)
+	public void doAfterCompose(final Page page,
+ final Component[] comps)
 			throws Exception {
 
 		final Map<String, Config> configParams = configService.getProperties();

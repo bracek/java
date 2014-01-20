@@ -12,7 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class FundController {
 
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public String getMovie(@PathVariable final String name, final ModelMap model) {
+    public String getMovie(@PathVariable final String name,
+ final ModelMap model) {
 
         model.addAttribute("movie", name);
         return "list";

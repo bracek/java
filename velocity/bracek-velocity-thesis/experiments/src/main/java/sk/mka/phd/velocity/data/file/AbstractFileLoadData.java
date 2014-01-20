@@ -141,7 +141,8 @@ public abstract class AbstractFileLoadData extends AbstractLoadData implements I
      * @param strLine
      * @param subStr
      */
-    protected void splitLine(final String strLine,final  String[] subStr) {
+    protected void splitLine(final String strLine,
+final  String[] subStr) {
         if (!strLine.equals("")) {
             subStr = strLine.split(getSeparator());
             cols = subStr.length;

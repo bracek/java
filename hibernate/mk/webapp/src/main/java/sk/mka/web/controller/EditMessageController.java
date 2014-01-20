@@ -56,8 +56,8 @@ public class EditMessageController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public String handle(
-			final @RequestParam(value = ApplicationCodes.MESSAGE.COMMAND, required = false) Integer id,
+	public String handle(			final @RequestParam(value = ApplicationCodes.MESSAGE.COMMAND,
+ required = false) Integer id,
 			final ModelMap model, final HttpServletRequest request)
 			throws Exception {
 		logger.debug("handle()[GET]: has just been started. Given message id "
@@ -72,8 +72,7 @@ public class EditMessageController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String handle(
-			final @ModelAttribute(ApplicationCodes.MESSAGE.COMMAND) Message message,
+	public String handle(			final @ModelAttribute(ApplicationCodes.MESSAGE.COMMAND) Message message,
 			final BindingResult result, final HttpServletRequest request)
 			throws Exception {
 		logger.debug("handle()[POST]: has just been started. Given product is "

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="PROJECTS" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <display-name>PROJECTS Web Application</display-name>
-    <listener>
-        <description>Used to cleanup when a session is destroyed</description>
-        <display-name>ZK Session Cleaner</display-name>
-        <listener-class>org.zkoss.zk.ui.http.HttpSessionListener</listener-class>
-    </listener>
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
+<web-app id="PROJECTS" version="2.5"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>PROJECTS Web Application</display-name>
+	<listener>
+		<description>Used to cleanup when a session is destroyed</description>
+		<display-name>ZK Session Cleaner</display-name>
+		<listener-class>org.zkoss.zk.ui.http.HttpSessionListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
         /WEB-INF/webmvc-config.xml
             classpath:applicationContext-logic.xml
             classpath:applicationContext-webapp.xml
@@ -17,166 +19,150 @@
 <!--            classpath:schedulerContext.xml-->
             <!--classpath:cxf.xml-->
         </param-value>
-    </context-param>
-    <filter>
-        <filter-name>encoding-filter</filter-name>
-        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-        <init-param>
-            <param-name>forceEncoding</param-name>
-            <param-value>true</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>encoding-filter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
+	</context-param>
+	<filter>
+		<filter-name>encoding-filter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encoding-filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
 
-    <filter>
-        <filter-name>hibernateFilter</filter-name>
-        <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>hibernateFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-       <dispatcher>REQUEST</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>ERROR</dispatcher>
-    </filter-mapping>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-<!--    <listener>
-        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
-    </listener>-->
-    <servlet>
-        <servlet-name>init</servlet-name>
-        <servlet-class>fi.ixonos.projects.web.servlet.ProjectsInitServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet>
-        <servlet-name>projects</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>2</load-on-startup>
-    </servlet>
-    <!-- DWR servlet setup -->
-    <!--    <servlet>
-        <servlet-name>dwr</servlet-name>
-        <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
-        <init-param>
-            <param-name>debug</param-name>
-            <param-value>true</param-value>
-        </init-param>
-        <load-on-startup>3</load-on-startup>
-    </servlet>-->
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- <listener> <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class> 
+		</listener> -->
+	<servlet>
+		<servlet-name>init</servlet-name>
+		<servlet-class>fi.ixonos.projects.web.servlet.ProjectsInitServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>projects</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<!-- DWR servlet setup -->
+	<!-- <servlet> <servlet-name>dwr</servlet-name> <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class> 
+		<init-param> <param-name>debug</param-name> <param-value>true</param-value> 
+		</init-param> <load-on-startup>3</load-on-startup> </servlet> -->
 
-     <!--    <servlet-mapping>
-        <servlet-name>dwr</servlet-name>
-        <url-pattern>/dwr/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ReportServiceImplService</servlet-name>
-        <url-pattern>/ReportServiceImplService</url-pattern>
-    </servlet-mapping>
-    -->
-    <!--WebServices from Apache CXF-->
-    <servlet>
-        <servlet-name>CXFServlet</servlet-name>
-        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <!-- ZK framework -->
-    <servlet>
-        <description>
+	<!-- <servlet-mapping> <servlet-name>dwr</servlet-name> <url-pattern>/dwr/*</url-pattern> 
+		</servlet-mapping> <servlet-mapping> <servlet-name>ReportServiceImplService</servlet-name> 
+		<url-pattern>/ReportServiceImplService</url-pattern> </servlet-mapping> -->
+	<!--WebServices from Apache CXF -->
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- ZK framework -->
+	<servlet>
+		<description>
             The servlet loads the DSP pages.
         </description>
-        <servlet-name>dspLoader</servlet-name>
-        <servlet-class>org.zkoss.web.servlet.dsp.InterpreterServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <description>
+		<servlet-name>dspLoader</servlet-name>
+		<servlet-class>org.zkoss.web.servlet.dsp.InterpreterServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
             ZK loader for ZUML pages
         </description>
-        <servlet-name>zkLoader</servlet-name>
-        <servlet-class>org.zkoss.zk.ui.http.DHtmlLayoutServlet</servlet-class>
-        <init-param>
-            <param-name>update-uri</param-name>
-            <param-value>/zkau</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet>
-        <description>
+		<servlet-name>zkLoader</servlet-name>
+		<servlet-class>org.zkoss.zk.ui.http.DHtmlLayoutServlet</servlet-class>
+		<init-param>
+			<param-name>update-uri</param-name>
+			<param-value>/zkau</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<description>
             The asynchronous update engine for ZK
         </description>
-        <servlet-name>auEngine</servlet-name>
-        <servlet-class>org.zkoss.zk.au.http.DHtmlUpdateServlet</servlet-class>
-    </servlet>
-    <!--    <servlet>
-        <servlet-name>ReportServiceImplService</servlet-name>
-        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>-->
-    <servlet-mapping>
-        <servlet-name>dspLoader</servlet-name>
-        <url-pattern>*.dsp</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>zkLoader</servlet-name>
-        <url-pattern>*.zul</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>zkLoader</servlet-name>
-        <url-pattern>*.zhtml</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>auEngine</servlet-name>
-        <url-pattern>/zkau/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CXFServlet</servlet-name>
-        <url-pattern>/ws/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>projects</servlet-name>
-        <url-pattern>*.do</url-pattern>
-    </servlet-mapping>
-   
-    <mime-mapping>
-        <extension>wsdl</extension>
-        <mime-type>text/xml</mime-type>
-    </mime-mapping>
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-        <welcome-file>index.zul</welcome-file>
-    </welcome-file-list>
-    <error-page>
-        <error-code>401</error-code>
-        <location>/error401.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>403</error-code>
-        <location>/error403.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>404</error-code>
-        <location>/error404.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/error500.jsp</location>
-    </error-page>
+		<servlet-name>auEngine</servlet-name>
+		<servlet-class>org.zkoss.zk.au.http.DHtmlUpdateServlet</servlet-class>
+	</servlet>
+	<!-- <servlet> <servlet-name>ReportServiceImplService</servlet-name> <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class> 
+		<load-on-startup>1</load-on-startup> </servlet> -->
+	<servlet-mapping>
+		<servlet-name>dspLoader</servlet-name>
+		<url-pattern>*.dsp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>zkLoader</servlet-name>
+		<url-pattern>*.zul</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>zkLoader</servlet-name>
+		<url-pattern>*.zhtml</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>auEngine</servlet-name>
+		<url-pattern>/zkau/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/ws/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>projects</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<mime-mapping>
+		<extension>wsdl</extension>
+		<mime-type>text/xml</mime-type>
+	</mime-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.zul</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>401</error-code>
+		<location>/error401.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error403.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error500.jsp</location>
+	</error-page>
 </web-app>

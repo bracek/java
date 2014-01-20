@@ -17,7 +17,8 @@ public class XmlWriter {
 
     protected static Logger log = Logger.getLogger(XmlWriter.class);
 
-      public static void writeXmlDocumentToFile(final String xmlPath,final  Document document) {
+      public static void writeXmlDocumentToFile(final String xmlPath,
+final  Document document) {
         try {
             XMLWriter output = new XMLWriter(new FileWriter(new File(xmlPath)));
             output.write(document);

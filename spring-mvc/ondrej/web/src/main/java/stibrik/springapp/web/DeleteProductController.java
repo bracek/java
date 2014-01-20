@@ -55,7 +55,7 @@ public class DeleteProductController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String handle(
-			@RequestParam(value = PRODUCT, required = false) final Integer id,
+			final @RequestParam(value = PRODUCT, required = false) Integer id,
 			final HttpServletRequest request) throws Exception {
 		logger.debug("handle()[GET]: has just been started. Given product id "
 				+ id);

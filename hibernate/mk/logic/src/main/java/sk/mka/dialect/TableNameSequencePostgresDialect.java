@@ -33,7 +33,9 @@ public class TableNameSequencePostgresDialect extends PostgreSQLDialect {
          * assign one based on the table name.
          */
         @Override
-        public void configure(final Type type, final Properties params, final Dialect dialect) {
+        public void configure(final Type type,
+ final Properties params,
+ final Dialect dialect) {
             if (params.getProperty(SEQUENCE) == null || params.getProperty(SEQUENCE).length() == 0) {
                 String tableName = params.getProperty(PersistentIdentifierGenerator.TABLE);
                 if (tableName != null) {

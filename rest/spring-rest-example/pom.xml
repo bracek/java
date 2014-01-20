@@ -9,17 +9,17 @@
 		<spring.version>3.1.2.RELEASE</spring.version>
 		<java.version>1.6</java.version>
 		<servlet-api.version>2.5.0</servlet-api.version>
-		 <jackson.mapper.version>1.5.6</jackson.mapper.version>
+		<jackson.mapper.version>1.5.6</jackson.mapper.version>
 	</properties>
-	
+
 	<dependencies>
-	    
-	     <dependency>  
-                 <groupId>org.codehaus.jackson</groupId>  
-                 <artifactId>jackson-mapper-asl</artifactId>  
-                 <version>${jackson.mapper.version}</version>  
-            </dependency>
-              
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.mapper.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -55,14 +55,8 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<!-- 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>com.springsource.javax.servlet</artifactId>
-			<version>${servlet-api.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		 -->
+		<!-- <dependency> <groupId>javax.servlet</groupId> <artifactId>com.springsource.javax.servlet</artifactId> 
+			<version>${servlet-api.version}</version> <scope>provided</scope> </dependency> -->
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
@@ -117,38 +111,38 @@
 					<target>1.5</target>
 				</configuration>
 			</plugin>
-			  <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>tomcat-maven-plugin</artifactId>
-                  <version>1.1</version>
-                <configuration>
-                         <url>http://localhost:8080/manager/text</url>
-                         <server>tomcat</server>
-						 <path>/spring-rest-example</path> 
-                         <username>admin</username>
-        				 <password>admin</password>
-        				 <warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
-                </configuration>
-            </plugin> 
-	        
-<plugin>
-        <groupId>org.mortbay.jetty</groupId>
-        <artifactId>maven-jetty-plugin</artifactId>
-        <version>6.1.10</version>
-        <configuration>
-          <stopPort>9966</stopPort>
-          <stopKey>foo</stopKey>
-                        <scanIntervalSeconds>10</scanIntervalSeconds>
-                        <systemProperties>
-                            <systemProperty>
-                                <name>org.apache.commons.logging.Log</name>
-                                <value>
-                org.apache.commons.logging.impl.SimpleLog
-                                </value>
-                            </systemProperty>
-                        </systemProperties>
-        </configuration>
-</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<server>tomcat</server>
+					<path>/spring-rest-example</path>
+					<username>admin</username>
+					<password>admin</password>
+					<warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.10</version>
+				<configuration>
+					<stopPort>9966</stopPort>
+					<stopKey>foo</stopKey>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<systemProperties>
+						<systemProperty>
+							<name>org.apache.commons.logging.Log</name>
+							<value>
+								org.apache.commons.logging.impl.SimpleLog
+							</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<profiles>
@@ -249,25 +243,11 @@
 			<id>it</id>
 			<build>
 				<plugins>
-					<!-- <plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>create-directory-and-copy-resources</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<tasks>
-										<echo message="Creating Directory ${integrationOutputDirectory}" />
-										<mkdir dir="${integrationOutputDirectory}" />
-									</tasks>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin> -->
+					<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-antrun-plugin</artifactId> 
+						<executions> <execution> <id>create-directory-and-copy-resources</id> <phase>pre-integration-test</phase> 
+						<goals> <goal>run</goal> </goals> <configuration> <tasks> <echo message="Creating 
+						Directory ${integrationOutputDirectory}" /> <mkdir dir="${integrationOutputDirectory}" 
+						/> </tasks> </configuration> </execution> </executions> </plugin> -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>build-helper-maven-plugin</artifactId>
@@ -379,7 +359,7 @@
 							</execution>
 						</executions>
 					</plugin>
-					
+
 
 				</plugins>
 			</build>

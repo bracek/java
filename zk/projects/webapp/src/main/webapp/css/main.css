@@ -1,75 +1,74 @@
-html, body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, fieldset {
-    margin: 0;
-    border: 0;
-    padding: 0;
+html,body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,fieldset {
+	margin: 0;
+	border: 0;
+	padding: 0;
 }
 
-body, table {
-    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    margin: 0 0 0 0;
+body,table {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0 0 0 0;
 }
 
 .background {
-    background-color: #cc0033;
+	background-color: #cc0033;
 }
-
 
 #layoutTable {
-    width: 100%;
+	width: 100%;
 }
 
-#layoutTable #navigation{
-    width: 165px;
-    vertical-align: top;
+#layoutTable #navigation {
+	width: 165px;
+	vertical-align: top;
 }
 
 a:visited {
-    color: blue;
+	color: blue;
 }
 
 a {
-    color: blue;
-    font-size: 14px;
+	color: blue;
+	font-size: 14px;
 }
 
 a:hover {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 a:active {
+	
 }
 
 table.header {
-    background-color: #cc0033;
-    color: white;
-    top: 30px;
-    font-size: 20px;
-    text-align: center;
-    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
-    font-variant: normal;
-    font-weight: bold;
+	background-color: #cc0033;
+	color: white;
+	top: 30px;
+	font-size: 20px;
+	text-align: center;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-variant: normal;
+	font-weight: bold;
 }
 
 td.header {
-    font-size: 30px;
+	font-size: 30px;
 }
 
 table.main {
-    background-color: #cc0033;
-    color: white;
-    font-size: 12px;
-    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	background-color: #cc0033;
+	color: white;
+	font-size: 12px;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 }
 
 td.main {
-    background-color: #cc0033;
-    font-size: 12px;
+	background-color: #cc0033;
+	font-size: 12px;
 }
 
-p.title{
-    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    font-weight:bold;
+p.title {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
 }
-

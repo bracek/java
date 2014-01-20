@@ -19,11 +19,12 @@ import com.ixonos.skillnet.logic.service.UsersService;
  */
 public class UsersEditDetailInitiator extends AnnotateDataBinderInit {
 
-	protected UsersService usersService = (UsersService) SpringUtil
+	protected UsersService usersService = (final UsersService) SpringUtil
 			.getApplicationContext().getBean("usersService");
 
 	@Override
-	public void doAfterCompose(final Page page, final Component[] comps)
+	public void doAfterCompose(final Page page,
+ final Component[] comps)
 			throws Exception {
 
 		final String userName = ((SkillnetUser) SecurityContextHolder

@@ -23,7 +23,8 @@ public class RepeatedAlarmReceiver extends AbstractAlarmReceiver implements
 	}
 
 	@Override
-	public void onReceive(final Context context, final Intent intent) {
+	public void onReceive(final Context context,
+ final Intent intent) {
 		// Put here YOUR code.
 		Toast.makeText(context, "Alarm !!!!!!!!!!", Toast.LENGTH_LONG).show(); // For
 																				// example

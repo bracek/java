@@ -113,7 +113,10 @@ public class Users implements Serializable {
         this.userId = userId;
     }
 
-    public Users(final Integer userId,final  String username,final  String password,final  Boolean enabled) {
+    public Users(final Integer userId,
+final  String username,
+final  String password,
+final  Boolean enabled) {
         this.userId = userId;
         this.username = username;
         this.password = password;

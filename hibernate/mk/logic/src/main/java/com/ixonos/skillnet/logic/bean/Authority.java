@@ -54,7 +54,8 @@ public class Authority implements Serializable {
         this.authorityId = authorityId;
     }
 
-    public Authority(final Integer authorityId,final  CodeTable authority) {
+    public Authority(final Integer authorityId,
+final  CodeTable authority) {
         this.authorityId = authorityId;
         this.authority = authority;
     }

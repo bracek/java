@@ -19,7 +19,8 @@ public abstract class AbstractSquareDataLoadFile extends AbstractDataLoadFile im
     private ArrayList numbersList = new ArrayList();
     protected String[][] values;
 
-    public AbstractSquareDataLoadFile(final String finalPath, final String separator) {
+    public AbstractSquareDataLoadFile(final String finalPath,
+ final String separator) {
         super(finalPath, separator);
         loadData();
     }

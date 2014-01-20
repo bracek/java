@@ -1,39 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
 
-<faces-config version="1.2"
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
-    <navigation-rule>
-        <description>handle user input</description>
-        <from-view-id>/faces/user/registration.jsp</from-view-id>
-        <navigation-case>
-            <from-outcome>submit</from-outcome>
-            <to-view-id>/faces/user/success.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <managed-bean>
-        <managed-bean-name>UserBean</managed-bean-name>
-        <managed-bean-class>sk.mka.bean.UserBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+	<navigation-rule>
+		<description>handle user input</description>
+		<from-view-id>/faces/user/registration.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>submit</from-outcome>
+			<to-view-id>/faces/user/success.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<managed-bean>
+		<managed-bean-name>UserBean</managed-bean-name>
+		<managed-bean-class>sk.mka.bean.UserBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 
-<!--
-    <application>
-        <message-bundle>/WEB-INF/classes/jsf.properties</message-bundle>
-    </application>
-    -->
+	<!-- <application> <message-bundle>/WEB-INF/classes/jsf.properties</message-bundle> 
+		</application> -->
 
-    <validator>
-        <validator-id>sk.mka.web.validator.EmailValidator</validator-id>
-        <validator-class>sk.mka.web.validator.EmailValidator</validator-class>
-    </validator>
+	<validator>
+		<validator-id>sk.mka.web.validator.EmailValidator</validator-id>
+		<validator-class>sk.mka.web.validator.EmailValidator</validator-class>
+	</validator>
 
-    <converter>
-        <converter-id>sk.mka.web.converter.MyDateConverter</converter-id>
-        <converter-class>sk.mka.web.converter.MyDateConverter</converter-class>
-    </converter>
+	<converter>
+		<converter-id>sk.mka.web.converter.MyDateConverter</converter-id>
+		<converter-class>sk.mka.web.converter.MyDateConverter</converter-class>
+	</converter>
 
 
 </faces-config>

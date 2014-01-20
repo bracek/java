@@ -18,7 +18,10 @@ import fi.ixonos.builder.domain.Projects;
 public class ProjectsController {
 	  
     @RequestMapping(method = RequestMethod.POST)
-    public String create(final @Valid Projects projects,final  BindingResult bindingResult,final  Model uiModel,final  HttpServletRequest httpServletRequest) {
+    public String create(final @Valid Projects projects,
+final  BindingResult bindingResult,
+final  Model uiModel,
+final  HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute("projects", projects);
             return "projectses/create";

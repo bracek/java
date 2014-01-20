@@ -11,7 +11,8 @@ import org.zkoss.zul.RowRenderer;
  
 public class SimpleRenderer implements RowRenderer {
     private int id = 0;
-    public void render(final Row row,final  java.lang.Object data) {
+    public void render(final Row row,
+final  java.lang.Object data) {
         String[] contributors = (String[]) data;
         // the data append to each row with simple label
         row.appendChild(new Label(id + ""));

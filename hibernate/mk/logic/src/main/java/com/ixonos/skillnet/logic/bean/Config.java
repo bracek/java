@@ -53,7 +53,9 @@ public class Config implements Serializable {
 	 * @param value
 	 * @param description
 	 */
-	public Config(final String property,final  String value,final  String description) {
+	public Config(final String property,
+final  String value,
+final  String description) {
 		super();
 		this.property = property;
 		this.value = value;

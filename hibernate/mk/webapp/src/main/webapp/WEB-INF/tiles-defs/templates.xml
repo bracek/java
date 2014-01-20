@@ -6,368 +6,378 @@
 <tiles-definitions>
 
 	<!-- Default Main Template -->
-    <definition name=".main" template="/WEB-INF/jsp/templates/main.jsp">
-        <put-attribute name="header" value="/WEB-INF/jsp/templates/header.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/jsp/templates/footer.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/jsp/templates/menu.jsp" />
-        <put-attribute name="body" value="/WEB-INF/jsp/templates/blank.jsp" />
-    </definition>
+	<definition name=".main" template="/WEB-INF/jsp/templates/main.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/templates/header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/templates/footer.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/jsp/templates/menu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/templates/blank.jsp" />
+	</definition>
 
-    <definition name="anonymous/about" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/anonymous/about.jsp" />
-    </definition>
+	<definition name="anonymous/about" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/anonymous/about.jsp" />
+	</definition>
 
-    <definition name="anonymous/curriculum" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/anonymous/curriculum.jsp" />
-    </definition>
+	<definition name="anonymous/curriculum" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/anonymous/curriculum.jsp" />
+	</definition>
 
 
-<!-- BEGIN OF ZK -->
-    <definition name="default" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.skills.edit" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/welcome.jsp" />
-    </definition>
+	<!-- BEGIN OF ZK -->
+	<definition name="default" extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.skills.edit"
+			type="string" />
+		<put-attribute name="body" value="/WEB-INF/jsp/tiles/welcome.jsp" />
+	</definition>
 
-    <!-- admin  -->
-    <definition name="admin/adminImportUsers" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.admin.importUsers.main"  type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/admin/importUsers.zul" />
-    </definition>
+	<!-- admin -->
+	<definition name="admin/adminImportUsers" extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.admin.importUsers.main"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/admin/importUsers.zul" />
+	</definition>
 
-    <definition name="admin/adminConfigParamsEdit" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.admin.configParams.edit" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/admin/configParamsEdit.zul" />
-    </definition>
+	<definition name="admin/adminConfigParamsEdit" extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.admin.configParams.edit"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/admin/configParamsEdit.zul" />
+	</definition>
 
-    <!-- group managment -->
-    <definition name="groupmanagement/groupmanagementEdit" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.groupmanagement.edit" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/groupmanagement/listGroup.zul" />
-    </definition>
+	<!-- group managment -->
+	<definition name="groupmanagement/groupmanagementEdit"
+		extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.groupmanagement.edit"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/groupmanagement/listGroup.zul" />
+	</definition>
 
-    <!-- company tree -->
-    <definition name="companytree/companytreeList" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.companytree" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/companytree/companytree.zul" />
-    </definition>
+	<!-- company tree -->
+	<definition name="companytree/companytreeList" extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.companytree"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/companytree/companytree.zul" />
+	</definition>
 
-<!-- reporting -->
-    <definition name="reporting/reportingCustomReport" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.reporting" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/reporting/report.zul" />
-    </definition>
+	<!-- reporting -->
+	<definition name="reporting/reportingCustomReport" extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.reporting"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/reporting/report.zul" />
+	</definition>
 
-    <definition name="reporting/reportingSingleReport" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.reporting" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/reporting/single_report.zul" />
-    </definition>
+	<definition name="reporting/reportingSingleReport" extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.reporting"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/reporting/single_report.zul" />
+	</definition>
 
-    <definition name="reporting/reportingMyReport" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.reporting" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/reporting/myReport.zul" />
-    </definition>
+	<definition name="reporting/reportingMyReport" extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.reporting"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/reporting/myReport.zul" />
+	</definition>
 
 	<!-- skills pages definition -->
-    <definition name="skills/skillsEdit" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.skills.edit" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/skills/editSkills.zul" />
-    </definition>
-
-    <definition name="skills/skillsPracticum" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.skills.practicum" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/skills/treePracticum.zul" />
-    </definition>
-
-   <!-- user management -->
-    <definition name="usermanagement/usermanagementEdit" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.usermanagement.edit" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/usermanagement/usersEdit.zul" />
-    </definition>
-
-    <definition name="usermanagement/usermanagementEditDetail" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.usermanagement.edit" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/usermanagement/usersDetail.zul" />
-    </definition>
-
-    <definition name="usermanagement/usermanagementFind" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.usermanagement.findUser" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/usermanagement/findUser.zul" />
-    </definition>
-
-    <!-- help -->
-    <definition name="help/userGuide" extends=".main">
-        <put-attribute name="titleKey" value="pagetitle.help.userGuide" type="string" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tiles/help/userQuickGuide.jsp" />
-    </definition>
-
-    <!-- END OF ZK -->
-
-  <!-- message -->
-    <definition name="editMessage" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
-    </definition>
-
-    <definition name="menu/message/saveMessage" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
-    </definition>
-
-    <definition name="menu/message/editMessage" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
-    </definition>
-
-    <definition name="/menu/message/editMessage" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
-    </definition>
-
-    <definition name="menu/message/deleteMessage" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
-    </definition>
-
-    <definition name="menu/message/viewMessages" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/viewMessages.jsp"/>
-    </definition>
-
-    <definition name="/menu/message/viewMessages" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/viewMessages.jsp"/>
-    </definition>
-    <!-- end of message -->
-
-       <!-- book -->
-    <definition name="book/viewBooks" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/viewBooks.jsp" />
-    </definition>
-
-    <definition name="/book/viewBooks" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/viewBooks.jsp" />
-    </definition>
-
-    <definition name="book/addBook" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
-    </definition>
-
-    <definition name="book/create" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
-    </definition>
-
-    <definition name="/book/create" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
-    </definition>
-
-    <definition name="book/save" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
-    </definition>
-
-    <definition name="/book/save" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
-    </definition>
-    <!-- end of book -->
-
-
-
-    <!-- registration formular throught jsp  -->
-    <definition name="register" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/user/register.jsp" />
-    </definition>
-
-    <definition name="index" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
-    </definition>
-
-    <definition name="login" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/login.jsp" />
-    </definition>
-    
-    <definition name="logoutSuccess" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/logoutSuccess.jsp" />
-    </definition>
-
-
-    <!-- person -->
-    <definition name="/person/form" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/person/form.jsp" />
-    </definition>
-    
-    <definition name="person/search" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/person/search.jsp" />
-    </definition>
-
-    
-    <definition name="/address/form" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/address/form.jsp" />
-    </definition>
-    <!-- end of person -->
-
-
-    <!-- BOOK -->
-    <definition name="book/viewBooks" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/viewBooks.jsp" />
-    </definition>
-
-    
-
-    <definition name="/book/viewBooks" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/viewBooks.jsp" />
-    </definition>
-
-    <definition name="book/addBook" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
-    </definition>
-
-    <definition name="book/create" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
-    </definition>
-
-    <definition name="/book/create" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
-    </definition>
-
-    <definition name="book/save" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
-    </definition>
-
-    <definition name="/book/save" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
-    </definition>
-    <!-- end of book -->
-
-    <!-- MENU -->
-    <!-- message -->
-    <definition name="editMessage" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
-    </definition>
-
-    <definition name="menu/message/saveMessage" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
-    </definition>
-
-    <definition name="menu/message/editMessage" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
-    </definition>
-
-    <definition name="/menu/message/editMessage" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
-    </definition>
-
-    <definition name="menu/message/deleteMessage" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
-    </definition>
-
-    <definition name="menu/message/viewMessages" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/viewMessages.jsp"/>
-    </definition>
+	<definition name="skills/skillsEdit" extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.skills.edit"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/skills/editSkills.zul" />
+	</definition>
+
+	<definition name="skills/skillsPracticum" extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.skills.practicum"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/skills/treePracticum.zul" />
+	</definition>
+
+	<!-- user management -->
+	<definition name="usermanagement/usermanagementEdit"
+		extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.usermanagement.edit"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/usermanagement/usersEdit.zul" />
+	</definition>
+
+	<definition name="usermanagement/usermanagementEditDetail"
+		extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.usermanagement.edit"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/usermanagement/usersDetail.zul" />
+	</definition>
+
+	<definition name="usermanagement/usermanagementFind"
+		extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.usermanagement.findUser"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/usermanagement/findUser.zul" />
+	</definition>
+
+	<!-- help -->
+	<definition name="help/userGuide" extends=".main">
+		<put-attribute name="titleKey" value="pagetitle.help.userGuide"
+			type="string" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/tiles/help/userQuickGuide.jsp" />
+	</definition>
+
+	<!-- END OF ZK -->
+
+	<!-- message -->
+	<definition name="editMessage" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
+	</definition>
+
+	<definition name="menu/message/saveMessage" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
+	</definition>
+
+	<definition name="menu/message/editMessage" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
+	</definition>
+
+	<definition name="/menu/message/editMessage" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
+	</definition>
+
+	<definition name="menu/message/deleteMessage" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
+	</definition>
+
+	<definition name="menu/message/viewMessages" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/viewMessages.jsp" />
+	</definition>
+
+	<definition name="/menu/message/viewMessages" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/viewMessages.jsp" />
+	</definition>
+	<!-- end of message -->
+
+	<!-- book -->
+	<definition name="book/viewBooks" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/viewBooks.jsp" />
+	</definition>
+
+	<definition name="/book/viewBooks" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/viewBooks.jsp" />
+	</definition>
+
+	<definition name="book/addBook" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
+	</definition>
+
+	<definition name="book/create" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
+	</definition>
 
-    <definition name="/menu/message/viewMessages" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/menu/message/viewMessages.jsp"/>
-    </definition>
-    <!-- end of message -->
+	<definition name="/book/create" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
+	</definition>
 
-    <!-- users, update authorities for users -->
-    <definition name="users/edit" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
-    </definition>
+	<definition name="book/save" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
+	</definition>
 
-    <definition name="users/create" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
-    </definition>
+	<definition name="/book/save" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
+	</definition>
+	<!-- end of book -->
 
-    <definition name="users/list" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin/users/list.jsp" />
-    </definition>
 
-    <definition name="/users/list" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin/users/list.jsp" />
-    </definition>
 
-    <definition name="users/save" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
-    </definition>
+	<!-- registration formular throught jsp -->
+	<definition name="register" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/user/register.jsp" />
+	</definition>
 
-    <definition name="/users/save" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
-    </definition>
+	<definition name="index" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
+	</definition>
 
-    <!-- registration formular throught jsp  -->
-    <definition name="register" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/user/register.jsp" />
-    </definition>
+	<definition name="login" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/login.jsp" />
+	</definition>
 
-    <definition name="editProduct" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/user/editUser.jsp" />
-    </definition>
-    
-    <definition name="deleteProduct" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/user/editUser.jsp" />
-    </definition>
+	<definition name="logoutSuccess" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/logoutSuccess.jsp" />
+	</definition>
 
-    <!-- jsf pages -->
-    <definition name="user/registration" extends=".main">
-        <put-attribute name="body" value="/faces//user/registration.faces" />
-    </definition>
 
-    <definition name="user/success" extends=".main">
-        <put-attribute name="body" value="/faces/user/success.faces" />
-    </definition>
+	<!-- person -->
+	<definition name="/person/form" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/person/form.jsp" />
+	</definition>
 
+	<definition name="person/search" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/person/search.jsp" />
+	</definition>
 
-    <definition name="error" extends=".main">
-        <put-attribute name="body" value="/WEB-INF/jsp/error/error.jsp" />
-    </definition>
 
-    <!--
-    <definition name="users/edit" extends=".main">
-    <put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
-</definition>
+	<definition name="/address/form" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/address/form.jsp" />
+	</definition>
+	<!-- end of person -->
 
-<definition name="users/create" extends=".main">
-    <put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
-</definition>
 
-<definition name="users/list" extends=".main">
-    <put-attribute name="body" value="/WEB-INF/jsp/admin/users/list.jsp" />
-</definition>
+	<!-- BOOK -->
+	<definition name="book/viewBooks" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/viewBooks.jsp" />
+	</definition>
 
-<definition name="/users/list" extends=".main">
-    <put-attribute name="body" value="/WEB-INF/jsp/admin/users/list.jsp" />
-</definition>
 
-<definition name="users/save" extends=".main">
-    <put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
-</definition>
 
-<definition name="/users/save" extends=".main">
-    <put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
-</definition>
+	<definition name="/book/viewBooks" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/viewBooks.jsp" />
+	</definition>
 
-</definition>
+	<definition name="book/addBook" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
+	</definition>
 
-<definition name="user/registration" extends=".main">
-    <put-attribute name="body" value="/faces//user/registration.faces" />
-</definition>
+	<definition name="book/create" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
+	</definition>
 
-<definition name="user/success" extends=".main">
-    <put-attribute name="body" value="/faces/user/success.faces" />
-</definition>
+	<definition name="/book/create" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
+	</definition>
 
+	<definition name="book/save" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
+	</definition>
 
-<definition name="error" extends=".main">
-    <put-attribute name="body" value="/WEB-INF/jsp/error/error.jsp" />
-</definition>
-
-
-
-
-<definition name="/person/form" extends=".main">
-    <put-attribute name="body" value="/WEB-INF/jsp/person/form.jsp" />
-</definition>
-
-<definition name="person/search" extends=".main">
-    <put-attribute name="body" value="/WEB-INF/jsp/person/search.jsp" />
-</definition>
-
-<definition name="/address/form" extends=".main">
-    <put-attribute name="body" value="/WEB-INF/jsp/address/form.jsp" />
-</definition>
--->
+	<definition name="/book/save" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/book/addBook.jsp" />
+	</definition>
+	<!-- end of book -->
+
+	<!-- MENU -->
+	<!-- message -->
+	<definition name="editMessage" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
+	</definition>
+
+	<definition name="menu/message/saveMessage" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
+	</definition>
+
+	<definition name="menu/message/editMessage" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
+	</definition>
+
+	<definition name="/menu/message/editMessage" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
+	</definition>
+
+	<definition name="menu/message/deleteMessage" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/editMessage.jsp" />
+	</definition>
+
+	<definition name="menu/message/viewMessages" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/viewMessages.jsp" />
+	</definition>
+
+	<definition name="/menu/message/viewMessages" extends=".main">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/menu/message/viewMessages.jsp" />
+	</definition>
+	<!-- end of message -->
+
+	<!-- users, update authorities for users -->
+	<definition name="users/edit" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
+	</definition>
+
+	<definition name="users/create" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
+	</definition>
+
+	<definition name="users/list" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/users/list.jsp" />
+	</definition>
+
+	<definition name="/users/list" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/users/list.jsp" />
+	</definition>
+
+	<definition name="users/save" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
+	</definition>
+
+	<definition name="/users/save" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
+	</definition>
+
+	<!-- registration formular throught jsp -->
+	<definition name="register" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/user/register.jsp" />
+	</definition>
+
+	<definition name="editProduct" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/user/editUser.jsp" />
+	</definition>
+
+	<definition name="deleteProduct" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/user/editUser.jsp" />
+	</definition>
+
+	<!-- jsf pages -->
+	<definition name="user/registration" extends=".main">
+		<put-attribute name="body" value="/faces//user/registration.faces" />
+	</definition>
+
+	<definition name="user/success" extends=".main">
+		<put-attribute name="body" value="/faces/user/success.faces" />
+	</definition>
+
+
+	<definition name="error" extends=".main">
+		<put-attribute name="body" value="/WEB-INF/jsp/error/error.jsp" />
+	</definition>
+
+	<!-- <definition name="users/edit" extends=".main"> <put-attribute name="body" 
+		value="/WEB-INF/jsp/admin/users/edit.jsp" /> </definition> <definition name="users/create" 
+		extends=".main"> <put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" 
+		/> </definition> <definition name="users/list" extends=".main"> <put-attribute 
+		name="body" value="/WEB-INF/jsp/admin/users/list.jsp" /> </definition> <definition 
+		name="/users/list" extends=".main"> <put-attribute name="body" value="/WEB-INF/jsp/admin/users/list.jsp" 
+		/> </definition> <definition name="users/save" extends=".main"> <put-attribute 
+		name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" /> </definition> <definition 
+		name="/users/save" extends=".main"> <put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" 
+		/> </definition> </definition> <definition name="user/registration" extends=".main"> 
+		<put-attribute name="body" value="/faces//user/registration.faces" /> </definition> 
+		<definition name="user/success" extends=".main"> <put-attribute name="body" 
+		value="/faces/user/success.faces" /> </definition> <definition name="error" 
+		extends=".main"> <put-attribute name="body" value="/WEB-INF/jsp/error/error.jsp" 
+		/> </definition> <definition name="/person/form" extends=".main"> <put-attribute 
+		name="body" value="/WEB-INF/jsp/person/form.jsp" /> </definition> <definition 
+		name="person/search" extends=".main"> <put-attribute name="body" value="/WEB-INF/jsp/person/search.jsp" 
+		/> </definition> <definition name="/address/form" extends=".main"> <put-attribute 
+		name="body" value="/WEB-INF/jsp/address/form.jsp" /> </definition> -->
 
 
 </tiles-definitions>

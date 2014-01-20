@@ -33,5 +33,6 @@ public interface PhonemeLoadData {
      * @param cols define, how many colums will be generated for phone
      * @return array of array in following pattern: id phoneme id phoneme (
      */
-    public Object[][] modifyList(final List<String> phone,final  int cols);
+    public Object[][] modifyList(final List<String> phone,
+final  int cols);
 }

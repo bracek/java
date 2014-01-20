@@ -55,7 +55,8 @@ public class Groups implements Serializable {
         this.groupId = groupId;
     }
 
-    public Groups(final Integer groupId,final  String groupName) {
+    public Groups(final Integer groupId,
+final  String groupName) {
         this.groupId = groupId;
         this.groupName = groupName;
     }

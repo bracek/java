@@ -24,7 +24,8 @@
 			z="user-managed" disabled="true" render="false" />
 		<field:input field="size"
 			id="c_org_pragmatikroo_roodocman_domain_Document_size"
-			validationMessageCode="field_invalid_integer" z="user-managed" render="false"/>
+			validationMessageCode="field_invalid_integer" z="user-managed"
+			render="false" />
 		<field:textarea field="url"
 			id="c_org_pragmatikroo_roodocman_domain_Document_url" render="false"
 			z="user-managed" />

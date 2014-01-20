@@ -20,7 +20,8 @@ public class GenerateAvarageUnvoicedExperimentsImpl extends AbstractGenerateExpe
      * @param directorySuffix
      * @param desiredColumn 
      */
-    public GenerateAvarageUnvoicedExperimentsImpl(final String directorySuffix, final BBColums desiredColumn) {
+    public GenerateAvarageUnvoicedExperimentsImpl(final String directorySuffix,
+ final BBColums desiredColumn) {
         super(desiredColumn);
         this.setWhichColumnContainsBBclassification(desiredColumn.value());
         this.setTemplateVelocityFileForAverageListExperiments(TEMPLATE_AVERAGE_LIST_UNVOICED_EXPERIMENTS);
@@ -33,7 +34,8 @@ public class GenerateAvarageUnvoicedExperimentsImpl extends AbstractGenerateExpe
      * @param expArrayList
      */
     @Override
-    public void extracPopClassBFromFolderName(final String folderName,final             ArrayList expArrayList) {
+    public void extracPopClassBFromFolderName(final String folderName,
+final             ArrayList expArrayList) {
         String excludeBadCharacter = folderName.replace(CHARACTER_, "\\_");
         int beggin = excludeBadCharacter.indexOf('u');
         int end = excludeBadCharacter.indexOf('p');

@@ -62,7 +62,10 @@ public class CodeTable implements Serializable, Comparable<CodeTable> {
         this.codeTableId = codeTableId;
     }
 
-    public CodeTable(final Integer codeTableId,final  String groupCode,final  String code,final  String description) {
+    public CodeTable(final Integer codeTableId,
+final  String groupCode,
+final  String code,
+final  String description) {
         this.codeTableId = codeTableId;
         this.groupCode = groupCode;
         this.code = code;

@@ -18,7 +18,8 @@ public class DecimalFormatMka {
      * @param accuracyPattern to how much places should be double value cut
      * @return
      */
-    public static final double doFormat(final String accuracyPattern, final double result) {
+    public static final double doFormat(final String accuracyPattern,
+ final double result) {
         double resultFormated = 0.0;
         try {
             java.text.DecimalFormat df = new java.text.DecimalFormat("###.##");

@@ -120,7 +120,8 @@ public class ProjectsAuthenticator implements LdapAuthenticator {
         }
     }
 
-    private Object getOptionalAttribute(final Attributes attrs,final  String attrName) throws NamingException {
+    private Object getOptionalAttribute(final Attributes attrs,
+final  String attrName) throws NamingException {
         return attrs.get(attrName) != null ? attrs.get(attrName).get() : "";
     }
 }

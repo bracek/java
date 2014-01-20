@@ -1,12 +1,12 @@
 <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
 <dwr>
-  <allow>
+	<allow>
 
-  <!-- interfaces -->
-    <create creator="spring" javascript="DwrDemoHandler">
-    	<param name="beanName" value="dwrDemoHandler"/>
-    	<include method="getResult"/>   	
-    </create>
+		<!-- interfaces -->
+		<create creator="spring" javascript="DwrDemoHandler">
+			<param name="beanName" value="dwrDemoHandler" />
+			<include method="getResult" />
+		</create>
 
-  </allow>
+	</allow>
 </dwr>

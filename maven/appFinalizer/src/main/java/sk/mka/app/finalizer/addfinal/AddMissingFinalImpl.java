@@ -140,7 +140,10 @@ public final class AddMissingFinalImpl extends AbstractAction implements
         }
     }
 
-    private void appendFinalToParams(final StringBuffer stringBuffer, final String beg, final String middle, final String end) {
+    private void appendFinalToParams(final StringBuffer stringBuffer,
+ final String beg,
+ final String middle,
+ final String end) {
 
         final String[] split = middle.split(Utils.COMMA);
 

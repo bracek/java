@@ -13,7 +13,8 @@ public class Stock implements Serializable {
 	public Stock() {
 	}
 
-	public Stock(final String stockCode,final  String stockName) {
+	public Stock(final String stockCode,
+final  String stockName) {
 		this.stockCode = stockCode;
 		this.stockName = stockName;
 	}

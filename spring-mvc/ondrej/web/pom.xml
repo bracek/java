@@ -1,190 +1,190 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-<parent>
-<groupId>stibrik.springapp</groupId>
-<artifactId>springapp</artifactId>
-<version>1.0</version>
-</parent>
+	<parent>
+		<groupId>stibrik.springapp</groupId>
+		<artifactId>springapp</artifactId>
+		<version>1.0</version>
+	</parent>
 
-<modelVersion>4.0.0</modelVersion>
-<artifactId>springapp-web</artifactId>
-<packaging>war</packaging>
-<name>ondrej-web</name>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>springapp-web</artifactId>
+	<packaging>war</packaging>
+	<name>ondrej-web</name>
 
-<build>
-<resources>
-<resource>
-<filtering>true</filtering>
-<directory>src/main/resources</directory>
-</resource>
-<resource>
-<directory>src/main/webapp</directory>
-<excludes>
-<exclude>**</exclude>
-</excludes>
-</resource>
-<resource>
-<directory>src/main/webxml</directory>
-<excludes>
-<exclude>**</exclude>
-</excludes>
-</resource>
-<resource>
-<directory>src/main/java</directory>
-<includes>
-<include>**</include>
-</includes>
-<excludes>
-<exclude>**/*.java</exclude>
-</excludes>
-</resource>
-</resources>
-<plugins>
-<plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-war-plugin</artifactId>
-<configuration>
-<excludes>META-INF/**/*</excludes>
-<webXml>src/main/webxml/web.xml</webXml>
-</configuration>
-</plugin>
-<plugin>
-<groupId>org.codehaus.mojo</groupId>
-<artifactId>tomcat-maven-plugin</artifactId>
-<configuration></configuration>
-</plugin>
-<plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-eclipse-plugin</artifactId>
-<configuration>
-<additionalProjectnatures>
-<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-<projectnature>org.eclipse.jdt.core.javanature</projectnature>
-</additionalProjectnatures>
-<additionalBuildcommands>
-<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-<buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
-</additionalBuildcommands>
-</configuration>
-</plugin>
-</plugins>
-</build>
+	<build>
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/webapp</directory>
+				<excludes>
+					<exclude>**</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/webxml</directory>
+				<excludes>
+					<exclude>**</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<excludes>META-INF/**/*</excludes>
+					<webXml>src/main/webxml/web.xml</webXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<configuration></configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<additionalProjectnatures>
+						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+					</additionalProjectnatures>
+					<additionalBuildcommands>
+						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+						<buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+					</additionalBuildcommands>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-<dependencies>
-<!-- Spring framework -->
-<dependency>
-<groupId>org.springframework</groupId>
-<artifactId>spring-core</artifactId>
-</dependency>
-<dependency>
-<groupId>org.springframework</groupId>
-<artifactId>spring-webmvc</artifactId>
-</dependency>
+	<dependencies>
+		<!-- Spring framework -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
 
-<dependency>
-<groupId>org.springframework</groupId>
-<artifactId>spring-jdbc</artifactId>
-</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
 
-<dependency>
-<groupId>org.springframework</groupId>
-<artifactId>spring-aop</artifactId>
-</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
 
-<!-- j2ee -->
-<dependency>
-<groupId>javax.servlet</groupId>
-<artifactId>servlet-api</artifactId>
-</dependency>
+		<!-- j2ee -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
 
-<dependency>
-<groupId>javax.annotation</groupId>
-<artifactId>jsr250-api</artifactId>
-</dependency>
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+		</dependency>
 
-<dependency>
-<groupId>jstl</groupId>
-<artifactId>jstl</artifactId>
-</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
 
-<dependency>
-<groupId>taglibs</groupId>
-<artifactId>standard</artifactId>
-</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+		</dependency>
 
-<dependency>
-<groupId>javax.persistence</groupId>
-<artifactId>persistence-api</artifactId>
-</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+		</dependency>
 
-<!-- Third party -->
-<dependency>
-<groupId>org.directwebremoting</groupId>
-<artifactId>dwr</artifactId>
-</dependency>
+		<!-- Third party -->
+		<dependency>
+			<groupId>org.directwebremoting</groupId>
+			<artifactId>dwr</artifactId>
+		</dependency>
 
-<dependency>
-<groupId>commons-dbcp</groupId>
-<artifactId>commons-dbcp</artifactId>
-</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
 
-<dependency>
-<groupId>postgresql</groupId>
-<artifactId>postgresql</artifactId>
-</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
 
-<dependency>
-<groupId>log4j</groupId>
-<artifactId>log4j</artifactId>
-</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
 
-<dependency>
-<groupId>junit</groupId>
-<artifactId>junit</artifactId>
-<scope>test</scope>
-</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 
-<!-- inter module references -->
-</dependencies>
+		<!-- inter module references -->
+	</dependencies>
 
-<properties>
-<netbeans.hint.deploy.server>J2EE</netbeans.hint.deploy.server>
-</properties>
+	<properties>
+		<netbeans.hint.deploy.server>J2EE</netbeans.hint.deploy.server>
+	</properties>
 
 
-<ciManagement>
-<system>Hudson</system>
-<url>http://kemt.fei.tuke.sk:9001/</url>
-<notifiers>
-<notifier>
-<type>mail</type>
-<sendOnError>true</sendOnError>
-<sendOnFailure>true</sendOnFailure>
-<sendOnSuccess>true</sendOnSuccess>
-<sendOnWarning>false</sendOnWarning>
-<configuration>
-<address>miroslav.katrak@gmail.com</address>
-</configuration>
-</notifier>
-</notifiers>
-</ciManagement>
+	<ciManagement>
+		<system>Hudson</system>
+		<url>http://kemt.fei.tuke.sk:9001/</url>
+		<notifiers>
+			<notifier>
+				<type>mail</type>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>true</sendOnSuccess>
+				<sendOnWarning>false</sendOnWarning>
+				<configuration>
+					<address>miroslav.katrak@gmail.com</address>
+				</configuration>
+			</notifier>
+		</notifiers>
+	</ciManagement>
 
-<developers>
-<developer>
-<id>bracek</id>
-<name>Miroslav Katrak</name>
-<email>miroslav dot katrak at gmail.com</email>
-<roles>
-<role>Developer</role>
-</roles>
-<timezone>+1</timezone>
-</developer>
-</developers>
+	<developers>
+		<developer>
+			<id>bracek</id>
+			<name>Miroslav Katrak</name>
+			<email>miroslav dot katrak at gmail.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
 
-<!-- <scm> <connection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/spring-mvc/ondrej/</connection> 
-<developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/spring-mvc/ondrej/</developerConnection> 
-<url>http://kemt.fei.tuke.sk:3128/svn/katrak/java/spring-mvc/ondrej/</url> 
-<tag>HEAD</tag> </scm> -->
+	<!-- <scm> <connection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/spring-mvc/ondrej/</connection> 
+		<developerConnection>scm:svn:http://kemt.fei.tuke.sk:3128/svn/katrak/java/spring-mvc/ondrej/</developerConnection> 
+		<url>http://kemt.fei.tuke.sk:3128/svn/katrak/java/spring-mvc/ondrej/</url> 
+		<tag>HEAD</tag> </scm> -->
 </project>

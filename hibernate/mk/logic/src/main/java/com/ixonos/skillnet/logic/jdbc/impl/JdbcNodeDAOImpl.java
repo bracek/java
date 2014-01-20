@@ -40,8 +40,7 @@ public class JdbcNodeDAOImpl extends SimpleJdbcDaoSupport implements
 	 *            the datasource
 	 */
 	@Autowired
-	public JdbcNodeDAOImpl(
-			final @Qualifier("dataSourceJdbc") DataSource datasource) {
+	public JdbcNodeDAOImpl(			final @Qualifier("dataSourceJdbc") DataSource datasource) {
 		super.setDataSource(datasource);
 	}
 
@@ -98,7 +97,8 @@ public class JdbcNodeDAOImpl extends SimpleJdbcDaoSupport implements
 		 *            the params with types
 		 */
 		public GeneralQuery(final String query,
-				final Map<String, Integer> paramsWithTypes) {
+				final Map<String,
+ Integer> paramsWithTypes) {
 			super(getDataSource(), query, paramsWithTypes);
 		}
 
@@ -109,7 +109,8 @@ public class JdbcNodeDAOImpl extends SimpleJdbcDaoSupport implements
 		 * int)
 		 */
 		@Override
-		protected Node mapRow(final ResultSet rs, final int rowNum)
+		protected Node mapRow(final ResultSet rs,
+ final int rowNum)
 				throws SQLException {
 			final Node node = new Node();
 			node.setNodeId(new Integer(rs.getInt("node_id")));

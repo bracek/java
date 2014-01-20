@@ -30,7 +30,8 @@ public class ProductValidator implements Validator {
     /* (non-Javadoc)
      * @see org.springframework.validation.Validator#validate(java.lang.Object, org.springframework.validation.Errors)
      */
-    public void validate(final Object obj,final  Errors errors) {
+    public void validate(final Object obj,
+final  Errors errors) {
         logger.debug("validate(): Method has just been started.");
 
         Product product = (Product) obj;

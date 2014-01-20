@@ -13,7 +13,8 @@ public abstract class AbstractWritePhonemeReductionGroups implements IWritePhone
 
     final String finalPathPhonemeDistribution = TimitParams.getInputDirectory(TimitParams.TimitValues.phonemeDistribution);
     final String phonemaDistributionSeparator = SeparatorConst.Separator.TABULATOR_SEPARATOR.getSeparatorValue();
-    protected PhonemeDistribution instance = PhonemeDistribution.getInstance(finalPathPhonemeDistribution,final  phonemaDistributionSeparator);
+    protected PhonemeDistribution instance = PhonemeDistribution.getInstance(finalPathPhonemeDistribution,
+final  phonemaDistributionSeparator);
     protected String filename;
 
     public AbstractWritePhonemeReductionGroups(final String filename) {

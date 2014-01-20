@@ -1,61 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
 	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
 
-        <!--  annotation support -->
-    <context:annotation-config />
-    <context:component-scan base-package="fi.ixonos.projects.web" />
+	<!-- annotation support -->
+	<context:annotation-config />
+	<context:component-scan base-package="fi.ixonos.projects.web" />
 
 	<!-- Enables annotated POJO @Controllers -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 
 	<!-- Enables plain Controllers -->
-    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+	<bean
+		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
 
-    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
-        <property name="order" value="1"/>
-    </bean>
+	<bean
+		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+		<property name="order" value="1" />
+	</bean>
 
-      <!-- Localization definition -->
-    <bean id="messageSource"
+	<!-- Localization definition -->
+	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basenames">
-            <list>
-                <value>fi.ixonos.projects.web.bundle.labels.labels</value>
-                <value>fi.ixonos.projects.report.report</value>
-            </list>
-        </property>
-    </bean>
-    
-    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="mappings">
-            <props>
-                <prop key="/**/*.do">viewController</prop>
-            </props>
-        </property>
-        <property name="interceptors">
-            <list>
-                <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-                    <property name="paramName">
-                        <value>locale</value>
-                    </property>
-                </bean>
-            </list>
-        </property>
-    </bean>
+		<property name="basenames">
+			<list>
+				<value>fi.ixonos.projects.web.bundle.labels.labels</value>
+				<value>fi.ixonos.projects.report.report</value>
+			</list>
+		</property>
+	</bean>
 
-    <bean id="viewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
-    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
-    
-    <!-- View resolver definition -->
-    <bean id="viewResolver"
-    	  class="org.springframework.web.servlet.view.UrlBasedViewResolver"
-		  p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView"/>
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/**/*.do">viewController</prop>
+			</props>
+		</property>
+		<property name="interceptors">
+			<list>
+				<bean id="localeChangeInterceptor"
+					class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+					<property name="paramName">
+						<value>locale</value>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="viewController"
+		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+
+	<!-- View resolver definition -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView" />
 
 </beans>

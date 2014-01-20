@@ -14,7 +14,8 @@ public class NodesComparator implements Comparator {
 		_asc = asc;
 	}
 
-	public int compare(final Object o1,final  Object o2) {
+	public int compare(final Object o1,
+final  Object o2) {
 		Node node1 = (Node) o1;
 		Node node2 = (Node) o2;
 		String node1SkillName = node1.getSkill().getName();

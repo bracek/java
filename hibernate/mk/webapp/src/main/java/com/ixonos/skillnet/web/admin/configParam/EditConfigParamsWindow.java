@@ -36,10 +36,10 @@ public class EditConfigParamsWindow extends Window {
 
 	private static final long serialVersionUID = 1L;
 
-	private final ConfigService configService = (ConfigService) SpringUtil
+	private final ConfigService configService = (final ConfigService) SpringUtil
 			.getApplicationContext().getBean("configService");
 
-	private final MailService mailService = (MailService) SpringUtil
+	private final MailService mailService = (final MailService) SpringUtil
 			.getApplicationContext().getBean("mailService");
 
 	private Config smtpHost;

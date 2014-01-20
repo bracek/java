@@ -89,7 +89,11 @@ public abstract class AbstractGenerateExperimentsAverage implements GenerateExpe
         }
     }
 
-    protected BufferedReader madeVelocityContext(final Object[][] info, final VelocityEngine velocityEngine,final  BufferedReader reader,final  String fileReaderName,final  String fileWriterName) throws FileNotFoundException, MethodInvocationException, ResourceNotFoundException, ParseErrorException, IOException {
+    protected BufferedReader madeVelocityContext(final Object[][] info,
+ final VelocityEngine velocityEngine,
+final  BufferedReader reader,
+final  String fileReaderName,
+final  String fileWriterName) throws FileNotFoundException, MethodInvocationException, ResourceNotFoundException, ParseErrorException, IOException {
         reader = new BufferedReader(new FileReader(new File(fileReaderName)));
         final FileWriter fileWriter = new FileWriter(new File(fileWriterName));
         // Output
@@ -109,7 +113,8 @@ public abstract class AbstractGenerateExperimentsAverage implements GenerateExpe
      * @param info
      */
     @Override
-    public ArrayList countAvarageForFile(final String folderName,final  Object[][] info) {
+    public ArrayList countAvarageForFile(final String folderName,
+final  Object[][] info) {
         ArrayList expArrayList = new ArrayList();
         double average = 0;
         double Aaverage = 0;
@@ -161,7 +166,8 @@ public abstract class AbstractGenerateExperimentsAverage implements GenerateExpe
         return info;
     }
 
-    public void createSortedInfoForVelocity(final HashMap sortedPopByIndex,final  Object[][] info) throws NumberFormatException {
+    public void createSortedInfoForVelocity(final HashMap sortedPopByIndex,
+final  Object[][] info) throws NumberFormatException {
         Set keys = sortedPopByIndex.keySet();
         List list = new ArrayList(keys);
         Collections.sort(list);

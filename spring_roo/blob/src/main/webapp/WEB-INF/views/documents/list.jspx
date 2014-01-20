@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:list id="pl_org_pragmatikroo_roodocman_domain_Document" items="${documents}" z="ZLySzdvrxTQSZpdoluKk+L1ifC0=">
-        <table:table data="${documents}" id="l_org_pragmatikroo_roodocman_domain_Document" path="/documents" update="true" z="user-managed">
-            <table:column id="c_org_pragmatikroo_roodocman_domain_Document_name" property="name" z="fLW0W9tp/kCcrAL9EZmVXKqGDuw="/>
-            <table:column id="c_org_pragmatikroo_roodocman_domain_Document_description" property="description" z="265VKIOLom4X0XIRvOhO0dLqeeo="/>
-            <table:column id="c_org_pragmatikroo_roodocman_domain_Document_filename" property="filename" render="false" z="user-managed"/>
-            <table:column id="c_org_pragmatikroo_roodocman_domain_Document_content" property="content" render="false" z="user-managed"/>
-            <table:column id="c_org_pragmatikroo_roodocman_domain_Document_contentType" property="contentType" z="NXuKl7rBdB9JxgYDjCvw9WGtMb0="/>
-            <table:column id="c_org_pragmatikroo_roodocman_domain_Document_size" property="size" z="1n5Cg2z7FYeJbpDy3pLwqculDGg="/>
-        </table:table>
-    </page:list>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<page:list id="pl_org_pragmatikroo_roodocman_domain_Document"
+		items="${documents}" z="ZLySzdvrxTQSZpdoluKk+L1ifC0=">
+		<table:table data="${documents}"
+			id="l_org_pragmatikroo_roodocman_domain_Document" path="/documents"
+			update="true" z="user-managed">
+			<table:column id="c_org_pragmatikroo_roodocman_domain_Document_name"
+				property="name" z="fLW0W9tp/kCcrAL9EZmVXKqGDuw=" />
+			<table:column
+				id="c_org_pragmatikroo_roodocman_domain_Document_description"
+				property="description" z="265VKIOLom4X0XIRvOhO0dLqeeo=" />
+			<table:column
+				id="c_org_pragmatikroo_roodocman_domain_Document_filename"
+				property="filename" render="false" z="user-managed" />
+			<table:column
+				id="c_org_pragmatikroo_roodocman_domain_Document_content"
+				property="content" render="false" z="user-managed" />
+			<table:column
+				id="c_org_pragmatikroo_roodocman_domain_Document_contentType"
+				property="contentType" z="NXuKl7rBdB9JxgYDjCvw9WGtMb0=" />
+			<table:column id="c_org_pragmatikroo_roodocman_domain_Document_size"
+				property="size" z="1n5Cg2z7FYeJbpDy3pLwqculDGg=" />
+		</table:table>
+	</page:list>
 </div>

@@ -16,7 +16,8 @@ public class PhonemeReductionGroups extends AbstractArbitraryDataLoadFile implem
     private Collection<PhonemaGroup> phonemesGroups;
     private IWritePhonemeReductionGroups outputFile;
 
-    public PhonemeReductionGroups(final String finalPath, final String separator) {
+    public PhonemeReductionGroups(final String finalPath,
+ final String separator) {
         super(finalPath, separator);
         phonemesGroups = new ArrayList<PhonemaGroup>();
         loadReductionGroup();

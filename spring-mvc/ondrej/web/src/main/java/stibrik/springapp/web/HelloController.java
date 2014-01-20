@@ -43,7 +43,9 @@ public static final String viewName = "hello";
  */
 @SuppressWarnings("unchecked")
 @RequestMapping
-public String handle(final ModelMap model,final  HttpServletRequest request,final  HttpServletResponse response) throws Exception {
+public String handle(final ModelMap model,
+final  HttpServletRequest request,
+final  HttpServletResponse response) throws Exception {
 String now = (new SimpleDateFormat("dd.MM.yyyy HH:mm:ss")).format(new Date());
 logger.debug("handle(): Returning hello view with " + now);
 

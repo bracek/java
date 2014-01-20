@@ -69,8 +69,8 @@ public class EditProductController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
-	public String handle(
-			final @RequestParam(value = PRODUCT, required = false) Integer id,
+	public String handle(			final @RequestParam(value = PRODUCT,
+ required = false) Integer id,
 			final ModelMap model, final HttpServletRequest request)
 			throws Exception {
 		logger.debug("handle()[GET]: has just been started. Given product id "

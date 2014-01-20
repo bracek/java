@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MovieController {
 
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public String getMovie(final @PathVariable String name,final  ModelMap model) {
+    public String getMovie(final @PathVariable String name,
+final  ModelMap model) {
 
         model.addAttribute("movie", name);
         return "list";

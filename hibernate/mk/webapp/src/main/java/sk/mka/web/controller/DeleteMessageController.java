@@ -43,8 +43,8 @@ public class DeleteMessageController {
 	 *             the exception
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public String handle(
-			final @RequestParam(value = ApplicationCodes.MESSAGE.COMMAND, required = false) Integer id,
+	public String handle(			final @RequestParam(value = ApplicationCodes.MESSAGE.COMMAND,
+ required = false) Integer id,
 			final HttpServletRequest request) throws Exception {
 		logger.debug("handle()[GET]: has just been started. Given message id "
 				+ id);

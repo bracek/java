@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <parent>
-        <artifactId>timit</artifactId>
-        <groupId>sk.mka.phd.timit</groupId>
-        <version>${sk.mka.phd.timit.version}</version>
-    </parent>
+	<parent>
+		<artifactId>timit</artifactId>
+		<groupId>sk.mka.phd.timit</groupId>
+		<version>${sk.mka.phd.timit.version}</version>
+	</parent>
 
-    <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
-    <groupId>sk.mka.phd.timit</groupId>
-    <artifactId>timit-logic</artifactId>
-    <version>${sk.mka.phd.timit.version}</version>
-    <name>timit-logic</name>
-    <url>http://maven.apache.org</url>
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+	<groupId>sk.mka.phd.timit</groupId>
+	<artifactId>timit-logic</artifactId>
+	<version>${sk.mka.phd.timit.version}</version>
+	<name>timit-logic</name>
+	<url>http://maven.apache.org</url>
 
-    <dependencies>
-        <!--inner dependency  -->
-        <dependency>
-            <artifactId>timit-core</artifactId>
-            <groupId>sk.mka.phd.timit</groupId>
-            <version>${sk.mka.phd.timit.version}</version>
-        </dependency>
+	<dependencies>
+		<!--inner dependency -->
+		<dependency>
+			<artifactId>timit-core</artifactId>
+			<groupId>sk.mka.phd.timit</groupId>
+			<version>${sk.mka.phd.timit.version}</version>
+		</dependency>
 
-        <!-- inner dependency -->
-        <dependency>
-            <artifactId>phd-logic</artifactId>
-            <groupId>sk.mka.phd</groupId>
-        </dependency>
+		<!-- inner dependency -->
+		<dependency>
+			<artifactId>phd-logic</artifactId>
+			<groupId>sk.mka.phd</groupId>
+		</dependency>
 
 
-        <!-- extern dependency -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+		<!-- extern dependency -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>config-logic.properties</include>
-                    <include>log4j.xml</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>target/jasper</directory>
-            </resource>
-        </resources>
-    </build>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>config-logic.properties</include>
+					<include>log4j.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>target/jasper</directory>
+			</resource>
+		</resources>
+	</build>
 </project>

@@ -50,8 +50,7 @@ public class ProductDaoImpl extends SimpleJdbcDaoSupport implements ProductDao {
 	 *            the datasource
 	 */
 	@Autowired
-	public ProductDaoImpl(
-			final @Qualifier("dataSourceTarget") DataSource datasource) {
+	public ProductDaoImpl(			final @Qualifier("dataSourceTarget") DataSource datasource) {
 		super.setDataSource(datasource);
 	}
 
@@ -183,7 +182,8 @@ public class ProductDaoImpl extends SimpleJdbcDaoSupport implements ProductDao {
 		 *            the params with types
 		 */
 		public GeneralQuery(final String query,
-				final Map<String, Integer> paramsWithTypes) {
+				final Map<String,
+ Integer> paramsWithTypes) {
 			super(getDataSource(), query, paramsWithTypes);
 		}
 
@@ -194,7 +194,8 @@ public class ProductDaoImpl extends SimpleJdbcDaoSupport implements ProductDao {
 		 * int)
 		 */
 		@Override
-		protected Product mapRow(final ResultSet rs, final int rowNum)
+		protected Product mapRow(final ResultSet rs,
+ final int rowNum)
 				throws SQLException {
 			final Product product = new Product();
 			product.setId(rs.getInt("id"));

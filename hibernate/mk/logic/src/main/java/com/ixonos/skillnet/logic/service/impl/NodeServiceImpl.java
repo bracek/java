@@ -54,7 +54,8 @@ public final class NodeServiceImpl extends AbstractGenericService<Node> implemen
     }
 
     @Override
-	public Node getChild(final Node node,final  int index) {
+	public Node getChild(final Node node,
+final  int index) {
 		Integer nodeId = node.getNodeId();
 		List<Node> nodes = read(nodeId).getChildren(); 
 		Node[] nodesArray = nodes.toArray(new Node[nodes.size()]);
@@ -83,7 +84,8 @@ public final class NodeServiceImpl extends AbstractGenericService<Node> implemen
 
 	@Secured(ROLE_GM)
 	@Override
-	public Node insertNode(final Integer parentID,final  Integer skillID) {
+	public Node insertNode(final Integer parentID,
+final  Integer skillID) {
 		Node parent = nodeDAO.read(parentID);
 		Node node = new Node();
 		node.setParentNode(parent);

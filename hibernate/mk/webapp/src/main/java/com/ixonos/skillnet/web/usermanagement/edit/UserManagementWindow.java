@@ -44,7 +44,7 @@ public class UserManagementWindow extends Window {
 	 */
 	private static Logger logger = Logger.getLogger(UserManagementWindow.class);
 	private static final long serialVersionUID = 1L;
-	private final MailService mailService = (MailService) SpringUtil
+	private final MailService mailService = (final MailService) SpringUtil
 			.getApplicationContext().getBean("mailService");
 
 	public Users user;
@@ -96,7 +96,8 @@ public class UserManagementWindow extends Window {
 		}
 	}
 
-	private Component getParentComponent(Component component, final Class clazz)
+	private Component getParentComponent(final Component component,
+ final Class clazz)
 			throws Exception {
 		int index = 0;
 		while (component != null

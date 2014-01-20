@@ -14,7 +14,8 @@ public class HelloController implements Controller {
 
     protected final Log logger = LogFactory.getLog(getClass());
 
-    public ModelAndView handleRequest(final HttpServletRequest request, final HttpServletResponse response)
+    public ModelAndView handleRequest(final HttpServletRequest request,
+ final HttpServletResponse response)
             throws ServletException, IOException {
         logger.info("Returning hello view");
         return new ModelAndView("WEB-INF/jsp/hello.jsp");

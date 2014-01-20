@@ -140,7 +140,8 @@ public class GenerateResults2latex {
         }
     }
 
-    private static void setThreadLogic(final Thread thread, final int threadTimeWaiting) throws InterruptedException {
+    private static void setThreadLogic(final Thread thread,
+ final int threadTimeWaiting) throws InterruptedException {
         thread.start();
         thread.join(threadTimeWaiting);
         if (thread.isAlive() == true) {

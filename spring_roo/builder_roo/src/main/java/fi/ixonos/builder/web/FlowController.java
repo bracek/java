@@ -33,7 +33,10 @@ public class FlowController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String setProject(final @Valid Projects projects,final 			BindingResult bindingResult,final  Model uiModel,final 			HttpServletRequest httpServletRequest) {
+	public String setProject(final @Valid Projects projects,
+final 			BindingResult bindingResult,
+final  Model uiModel,
+final 			HttpServletRequest httpServletRequest) {
 
 		boolean hasID = false;
 		hasID = uiModel.containsAttribute("hiddenId1");

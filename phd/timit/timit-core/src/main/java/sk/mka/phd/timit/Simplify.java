@@ -36,7 +36,8 @@ public class Simplify implements ISimplify {
         phonemeReductionGroups = new PhonemeReductionGroups(finalPath, " ");
     }
 
-    private void loadData(final String filename, final String separator) throws IOException {
+    private void loadData(final String filename,
+ final String separator) throws IOException {
         String outputActivated;
         PhonemaGroup activatedPhonemaGroup = null;
         StringBuffer stringBuffer = new StringBuffer();
@@ -153,7 +154,8 @@ public class Simplify implements ISimplify {
      * @param separator
      * @return
      */
-    private String[] loadLine(final String strLine, final String separator) {
+    private String[] loadLine(final String strLine,
+ final String separator) {
         return strLine.split(separator);
 
 

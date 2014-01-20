@@ -1,114 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
-        <action>
-            <actionName>CUSTOM-TOMCAT-REDEPLOY</actionName>
-            <displayName>TOMCAT-REDEPLOY</displayName>
-            <goals>
-                <goal>tomcat:undeploy</goal>
-                <goal>tomcat:deploy</goal>
-                
-                
-            </goals>
-            <activatedProfiles>
-                <activatedProfile>TOMCAT-REDEPLOY</activatedProfile>
-            </activatedProfiles>
-            <properties>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </action>
-        <action>
-            <actionName>CUSTOM-TOMCAT-DEPLOY</actionName>
-            <displayName>TOMCAT-DEPLOY</displayName>
-            <goals>
-                <goal>tomcat:deploy</goal>
-                
-                
-                
-            </goals>
-            <properties>
-                
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </action>
-        <action>
-            <actionName>CUSTOM-NETBEANS-DEPLOY</actionName>
-            <displayName>NETBEANS-DEPLOY</displayName>
-            <goals>
-                <goal>package</goal>
-                
-            </goals>
-            <properties>
-                <maven.test.skip>true</maven.test.skip>
-                <netbeans-deploy>true</netbeans-deploy>
-            </properties>
-        </action>
-        <action>
-            <actionName>debug</actionName>
-            <packagings>
-                <packaging>war</packaging>
-                <packaging>ear</packaging>
-                <packaging>ejb</packaging>
-            </packagings>
-            <goals>
-                <goal>jetty:run</goal>
-            </goals>
-            <properties>
-                
-                
-                
-                <maven.test.skip>true</maven.test.skip>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-            </properties>
-        </action>
-        <action>
-            <actionName>CUSTOM-JETTTY-RUN</actionName>
-            <displayName>JETTTY-RUN</displayName>
-            <goals>
-                <goal>jetty:run</goal>
-                
-            </goals>
-            <properties>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-            <activatedProfiles>
-                <activatedProfile>JETTY.RUN</activatedProfile>
-            </activatedProfiles>
-        </action>
-        <action>
-            <actionName>run</actionName>
-            <packagings>
-                <packaging>war</packaging>
-                <packaging>ear</packaging>
-                <packaging>ejb</packaging>
-            </packagings>
-            <goals>
-                <goal>jetty:run</goal>
-            </goals>
-        </action>
-        <action>
-            <actionName>rebuild</actionName>
-            <packagings>
-                <packaging>*</packaging>
-            </packagings>
-            <goals>
-                <goal>clean</goal>
-                <goal>jetty:run</goal>
-            </goals>
-        </action>
-        
-        
-        
-        
-        
-    </actions>
+	<action>
+		<actionName>CUSTOM-TOMCAT-REDEPLOY</actionName>
+		<displayName>TOMCAT-REDEPLOY</displayName>
+		<goals>
+			<goal>tomcat:undeploy</goal>
+			<goal>tomcat:deploy</goal>
+
+
+		</goals>
+		<activatedProfiles>
+			<activatedProfile>TOMCAT-REDEPLOY</activatedProfile>
+		</activatedProfiles>
+		<properties>
+			<maven.test.skip>true</maven.test.skip>
+		</properties>
+	</action>
+	<action>
+		<actionName>CUSTOM-TOMCAT-DEPLOY</actionName>
+		<displayName>TOMCAT-DEPLOY</displayName>
+		<goals>
+			<goal>tomcat:deploy</goal>
+
+
+
+		</goals>
+		<properties>
+
+			<maven.test.skip>true</maven.test.skip>
+		</properties>
+	</action>
+	<action>
+		<actionName>CUSTOM-NETBEANS-DEPLOY</actionName>
+		<displayName>NETBEANS-DEPLOY</displayName>
+		<goals>
+			<goal>package</goal>
+
+		</goals>
+		<properties>
+			<maven.test.skip>true</maven.test.skip>
+			<netbeans-deploy>true</netbeans-deploy>
+		</properties>
+	</action>
+	<action>
+		<actionName>debug</actionName>
+		<packagings>
+			<packaging>war</packaging>
+			<packaging>ear</packaging>
+			<packaging>ejb</packaging>
+		</packagings>
+		<goals>
+			<goal>jetty:run</goal>
+		</goals>
+		<properties>
+
+
+
+			<maven.test.skip>true</maven.test.skip>
+
+
+
+
+
+
+
+
+
+
+
+
+		</properties>
+	</action>
+	<action>
+		<actionName>CUSTOM-JETTTY-RUN</actionName>
+		<displayName>JETTTY-RUN</displayName>
+		<goals>
+			<goal>jetty:run</goal>
+
+		</goals>
+		<properties>
+			<maven.test.skip>true</maven.test.skip>
+		</properties>
+		<activatedProfiles>
+			<activatedProfile>JETTY.RUN</activatedProfile>
+		</activatedProfiles>
+	</action>
+	<action>
+		<actionName>run</actionName>
+		<packagings>
+			<packaging>war</packaging>
+			<packaging>ear</packaging>
+			<packaging>ejb</packaging>
+		</packagings>
+		<goals>
+			<goal>jetty:run</goal>
+		</goals>
+	</action>
+	<action>
+		<actionName>rebuild</actionName>
+		<packagings>
+			<packaging>*</packaging>
+		</packagings>
+		<goals>
+			<goal>clean</goal>
+			<goal>jetty:run</goal>
+		</goals>
+	</action>
+
+
+
+
+
+</actions>

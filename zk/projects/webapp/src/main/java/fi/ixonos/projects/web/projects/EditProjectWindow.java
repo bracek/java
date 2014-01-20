@@ -229,7 +229,8 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         projectsList.addAll(projectsService.readAll());
     }
 
-    private Component getParentComponent(final Component component,final  Class clazz) throws Exception {
+    private Component getParentComponent(final Component component,
+final  Class clazz) throws Exception {
         int index = 0;
         while ((component != null) && !clazz.isInstance((component = component.getParent()))) {
             index++;

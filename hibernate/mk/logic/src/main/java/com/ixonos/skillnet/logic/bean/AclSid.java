@@ -61,7 +61,9 @@ public class AclSid implements Serializable {
         this.id = id;
     }
 
-    public AclSid(final Integer id,final  Boolean principal,final  String sid) {
+    public AclSid(final Integer id,
+final  Boolean principal,
+final  String sid) {
         this.id = id;
         this.principal = principal;
         this.sid = sid;

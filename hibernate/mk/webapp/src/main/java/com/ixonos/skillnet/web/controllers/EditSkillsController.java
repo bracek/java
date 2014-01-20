@@ -114,7 +114,8 @@ public class EditSkillsController extends GenericForwardComposer implements
 	private Thread taskThread;
 
 	@Override
-	public void render(final Treeitem item, final Object data) throws Exception {
+	public void render(final Treeitem item,
+ final Object data) throws Exception {
 		final Node node = (Node) data;
 		final Treecell tcSkillName = new Treecell(node.getSkill().getName());
 		Treerow tr = null;
@@ -242,7 +243,8 @@ public class EditSkillsController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(final Listitem listItem, final Object data)
+	public void render(final Listitem listItem,
+ final Object data)
 			throws Exception {
 		final Skill skill = (Skill) data;
 		new Listcell(skill.getName()).setParent(listItem);
@@ -372,7 +374,8 @@ public class EditSkillsController extends GenericForwardComposer implements
 
 	@SuppressWarnings("unchecked")
 	private void selectSkillInTree(final Collection<Treeitem> items,
-			final String[] pathArray, final int i) {
+			final String[] pathArray,
+ final int i) {
 
 		for (final Treeitem treeItem : items) {
 			if (treeItem.getLabel().equals(pathArray[i])) {
@@ -517,7 +520,8 @@ public class EditSkillsController extends GenericForwardComposer implements
 		}
 	}
 
-	private void exportSkill(final XMLEventWriter writer, final Skill s,
+	private void exportSkill(final XMLEventWriter writer,
+ final Skill s,
 			final int lvl) throws XMLStreamException {
 		writer.add(xmlef.createIgnorableSpace("\n"));
 		for (int i = 0; i < lvl; i++) {
@@ -578,7 +582,8 @@ public class EditSkillsController extends GenericForwardComposer implements
 		}
 	}
 
-	private void exportChild(final XMLEventWriter writer, final Node node,
+	private void exportChild(final XMLEventWriter writer,
+ final Node node,
 			final int lvl) throws XMLStreamException {
 
 		writer.add(xmlef.createIgnorableSpace("\n"));
@@ -713,7 +718,7 @@ public class EditSkillsController extends GenericForwardComposer implements
 	}
 
 	@SuppressWarnings("unchecked")
-	private void filterListModel(String filter) {
+	private void filterListModel(final String filter) {
 		filter = filter.toLowerCase();
 		if (filter.equals("") || filter.equals("*")) {
 			list.setModel(listModelList);

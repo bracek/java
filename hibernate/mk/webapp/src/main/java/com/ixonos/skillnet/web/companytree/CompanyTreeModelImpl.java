@@ -32,7 +32,8 @@ public class CompanyTreeModelImpl implements CompanyTreeModel {
 
 	@Override
 	@Transactional
-	public Object getChild(final Object parent,final  int index) {
+	public Object getChild(final Object parent,
+final  int index) {
 		if (((Users)parent).getUserId()==null)
 			try {
 				return getRootUser(index);
@@ -51,7 +52,8 @@ public class CompanyTreeModelImpl implements CompanyTreeModel {
 	}
 
 	@Override
-	public int[] getPath(final Object arg0,final  Object arg1) {
+	public int[] getPath(final Object arg0,
+final  Object arg1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -100,7 +102,8 @@ public class CompanyTreeModelImpl implements CompanyTreeModel {
     	return users.size();    		
     }
 	
-	private Users getUsersChild(final Users parent,final  int index) {
+	private Users getUsersChild(final Users parent,
+final  int index) {
 		if (mapUser.containsKey(parent)) {
 			return mapUser.get(parent).get(index);
 		}

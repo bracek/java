@@ -21,7 +21,8 @@ public class UsersPhotoInitiator extends AnnotateDataBinderInit {
     protected UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
 
     @Override
-    public void doAfterCompose(final Page page,final  Component[] comps) throws Exception {
+    public void doAfterCompose(final Page page,
+final  Component[] comps) throws Exception {
 
         Window usersPhotolInitiator = (Window) comps[0];
 

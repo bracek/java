@@ -47,7 +47,8 @@ public class ImportLdapUsersService {
      * @return List of strings, each strings like: "CN=Marek Menhert,OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local";
      **/
     @SuppressWarnings("unchecked")
-    public List<String> getUsersFullNameList(final String principal,final  String ldapManagerPassword) {
+    public List<String> getUsersFullNameList(final String principal,
+final  String ldapManagerPassword) {
         NamingEnumeration results = null;
         DirContext ctx = null;
         try {
@@ -99,7 +100,9 @@ public class ImportLdapUsersService {
         }
     }
 
-    public List<Map<String, Object>> findUsersByCN(final String searchExpression,final  String principal,final  String ldapManagerPassword) {
+    public List<Map<String, Object>> findUsersByCN(final String searchExpression,
+final  String principal,
+final  String ldapManagerPassword) {
         NamingEnumeration results = null;
         DirContext ctx = null;
         try {
@@ -172,7 +175,8 @@ public class ImportLdapUsersService {
         }
     }
 
-    private Object getOptionalAttribute(final Attributes attrs,final  String attrName) throws NamingException {
+    private Object getOptionalAttribute(final Attributes attrs,
+final  String attrName) throws NamingException {
         return attrs.get(attrName) != null ? attrs.get(attrName).get() : "";
     }
 }

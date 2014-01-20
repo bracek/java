@@ -111,13 +111,15 @@ public class GroupsController extends GenericForwardComposer implements
 
 			}
 
-			private void cleanHashMap(final HashMap<Integer,final  Boolean> hashMapEnabled) {
+			private void cleanHashMap(final HashMap<Integer,
+final  Boolean> hashMapEnabled) {
 				for (int i = 0; i < listOfAuthoritiesFromCodeTable().size(); i++) {
 					hashMapEnabled.put(i, Boolean.FALSE);
 				}
 			}
 
-			private void findMatchInListForCodeTableAndGroupAuthorityTable(					final List<GroupAuthority> authorityListFromDatabase,					final List<CodeTable> listOfAllAuhtoritiesFromCodeTable) {
+			private void findMatchInListForCodeTableAndGroupAuthorityTable(					final List<GroupAuthority> authorityListFromDatabase,
+					final List<CodeTable> listOfAllAuhtoritiesFromCodeTable) {
 				Integer codeTableId;
 				Integer groupAuthorityCodeTableId;
 
@@ -165,7 +167,8 @@ public class GroupsController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(final Listitem listItem,final  Object data) throws Exception {
+	public void render(final Listitem listItem,
+final  Object data) throws Exception {
 		if (data instanceof Groups) {
 			listItem.setValue(data);
 			Groups group = (Groups) data;

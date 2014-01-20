@@ -8,7 +8,8 @@ import org.zkoss.zkplus.databind.AnnotateDataBinderInit;
 public class ChangePasswordInitiator extends AnnotateDataBinderInit {
 
 	@Override
-	public void doAfterCompose(final Page page, final Component[] comps)
+	public void doAfterCompose(final Page page,
+ final Component[] comps)
 			throws Exception {
 		final String userName = (String) Executions.getCurrent().getArg()
 				.get("userName");

@@ -16,7 +16,8 @@ import org.springframework.security.userdetails.UserDetailsService;
  */
 public class ProjectsAuthenticationProvider extends LdapAuthenticationProvider {
 
-    public ProjectsAuthenticationProvider(final LdapAuthenticator authenticator,final  LdapAuthoritiesPopulator authoritiesPopulator) {
+    public ProjectsAuthenticationProvider(final LdapAuthenticator authenticator,
+final  LdapAuthoritiesPopulator authoritiesPopulator) {
         super(authenticator, authoritiesPopulator);
     }
 

@@ -53,7 +53,8 @@ public class TreeController extends GenericForwardComposer implements
 	}
 
 	@Override
-	public void render(final Treeitem item,final  Object data) throws Exception {
+	public void render(final Treeitem item,
+final  Object data) throws Exception {
 		SimpleTreeNode t = (SimpleTreeNode) data;
 		Node node = (Node) t.getData();
 		Treecell tcSkillName = new Treecell(node.getSkill().getName());

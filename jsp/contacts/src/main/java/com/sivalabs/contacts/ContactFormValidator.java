@@ -20,7 +20,8 @@ public class ContactFormValidator implements Validator
 	}
 
 	@Override
-	public void validate(final Object model,final  Errors errors)
+	public void validate(final Object model,
+final  Errors errors)
 	{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name","required.name", "Name is required.");
 	}
