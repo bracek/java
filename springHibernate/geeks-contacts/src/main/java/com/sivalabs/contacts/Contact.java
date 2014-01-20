@@ -40,14 +40,9 @@ public class Contact {
 	public Contact() {
 	}
 
-	public Contact(final int id,
- final String name,
- final String address,
-			final String gender,
- final Date dob,
- final String email,
-			final String mobile,
- final String phone) {
+	public Contact(final int id, final String name, final String address,
+			final String gender, final Date dob, final String email,
+			final String mobile, final String phone) {
 		super();
 		this.id = id;
 		this.name = name;

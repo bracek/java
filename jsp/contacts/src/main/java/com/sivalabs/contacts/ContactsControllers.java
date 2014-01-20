@@ -44,8 +44,8 @@ public class ContactsControllers {
 	}
 
 	@RequestMapping("/searchContacts")
-	public ModelAndView searchContacts(			@RequestParam(required = false,
- defaultValue = "") final String name) {
+	public ModelAndView searchContacts(
+			@RequestParam(required = false, defaultValue = "") final String name) {
 		final ModelAndView mav = new ModelAndView("showContacts");
 		final List<Contact> contacts = contactsDAO.searchContacts(name.trim());
 		mav.addObject("SEARCH_CONTACTS_RESULTS_KEY", contacts);
