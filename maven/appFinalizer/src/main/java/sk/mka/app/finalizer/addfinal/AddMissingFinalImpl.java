@@ -10,8 +10,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
         IAction {
 
     @Override
-    public void parseFile(final File file) {
-        BufferedReader reader = null;
+    public void parseFile(final File file) {        BufferedReader reader = null;
         final StringBuffer stringBuffer = new StringBuffer();
         final StringBuffer paramsTemporaryBuffer = new StringBuffer();
         boolean doModification = false;
@@ -37,9 +36,9 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
                         int indexOfSlash = line.indexOf(Utils.COMMENT);
 
-                        if (line.contains(Utils.OPEN_PARENTHES_OPENING)) {
+                        if (line.contains(Utils.OPEN_PARENTHESIS_OPENING)) {
                             int indexOfBeginingBracket = line
-                                    .indexOf(Utils.OPEN_PARENTHES_OPENING);
+                                    .indexOf(Utils.OPEN_PARENTHESIS_OPENING);
                             if (indexOfSlash < indexOfBeginingBracket) {
                                 appendLine(stringBuffer, line);
                             } else {
@@ -77,15 +76,14 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     }
 
     @Override
-    protected void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {
-        if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC)
+    protected void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {        if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC)
                 || line.contains(Utils.STATIC) || line.contains(Utils.PROTECTED)) {
             if (!line.contains(Utils.NEW) && !line.contains(".class") && !line.contains("getClass()")) {
 
-                if (line.contains(Utils.OPEN_PARENTHES_OPENING)) {
+                if (line.contains(Utils.OPEN_PARENTHESIS_OPENING)) {
 
                     int indexOfStart = line
-                            .indexOf(Utils.OPEN_PARENTHES_OPENING);
+                            .indexOf(Utils.OPEN_PARENTHESIS_OPENING);
                     final String beg = line.substring(0, indexOfStart + 1);
 
                     if (line.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
@@ -113,7 +111,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
                 if (line.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
                     paramsTemporaryBuffer.append(line);
                     final int indexOfStartBracket = paramsTemporaryBuffer
-                            .indexOf(Utils.OPEN_PARENTHES_OPENING);
+                            .indexOf(Utils.OPEN_PARENTHESIS_OPENING);
                     final int indexOfEndOfStart = paramsTemporaryBuffer
                             .lastIndexOf(Utils.OPEN_PARENTHESIS_CLOSING) + 1;
 
@@ -140,7 +138,6 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     }
 
     private void appendFinalToParams(final StringBuffer stringBuffer, final String beg, final String middle, final String end) {
-
 
         final String[] split = middle.split(Utils.COMMA);
 //        if (!middle.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
@@ -216,13 +213,11 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 //        stringBuffer.append(Utils.NEWLINE);
     }
 
-    private void appendLine(final StringBuffer stringBuffer, final String line) {
-        stringBuffer.append(line);
+    private void appendLine(final StringBuffer stringBuffer, final String line) {        stringBuffer.append(line);
         stringBuffer.append(Utils.NEWLINE);
     }
 
-    private void writeToFile(final String filename, final String output) {
-        try {
+    private void writeToFile(final String filename, final String output) {        try {
             final BufferedWriter out = new BufferedWriter(new FileWriter(
                     filename));
             out.write(output);

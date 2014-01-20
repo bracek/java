@@ -10,8 +10,7 @@ import java.util.Scanner;
 class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
 
     @Override
-    public void parseFile(final File file) {
-        BufferedReader reader = null;
+    public void parseFile(final File file) {        BufferedReader reader = null;
         final StringBuffer stringBuffer = new StringBuffer();
         final StringBuffer paramsTemporaryBuffer = new StringBuffer();
         boolean isInterface = false;
@@ -105,7 +104,6 @@ class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
     }
 
     protected void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {
-
         if (line.contains(Utils.PUBLIC_INTERFACE)) {
             paramsTemporaryBuffer.append(line);
             stringBuffer.append(line);
@@ -134,13 +132,11 @@ class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
 
     }
 
-    private static void appendLine(final StringBuffer stringBuffer, final String line) {
-        stringBuffer.append(line);
+    private static void appendLine(final StringBuffer stringBuffer, final String line) {        stringBuffer.append(line);
         stringBuffer.append(Utils.NEWLINE);
     }
 
-    private static void writeToFile(final String filename, final String output) {
-        try {
+    private static void writeToFile(final String filename, final String output) {        try {
             final BufferedWriter out = new BufferedWriter(new FileWriter(
                     filename));
             final String outText = output.toString();
