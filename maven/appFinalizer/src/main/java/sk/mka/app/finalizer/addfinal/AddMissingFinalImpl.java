@@ -78,8 +78,8 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
     @Override
     protected void modify(final StringBuffer stringBuffer,
- final StringBuffer paramsTemporaryBuffer,
- final String line) {
+                          final StringBuffer paramsTemporaryBuffer,
+                          final String line) {
         if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC) || line.contains(Utils.STATIC) || line.contains(Utils.PROTECTED)) {
             if (!line.contains(Utils.NEW) && !line.contains(".class") && !line.contains("getClass()")) {
 
@@ -140,14 +140,19 @@ public final class AddMissingFinalImpl extends AbstractAction implements
         }
     }
 
-    private void appendFinalToParams(final StringBuffer stringBuffer,
- final String beg,
- final String middle,
- final String end) {
+    private void appendFinalToParams(final StringBuffer stringBuffer, final String beg, final String middle, final String end) {
+
         final String[] split = middle.split(Utils.COMMA);
 
+        boolean doModifcation = false;
 
-        if (beg.contains(Utils.PUBLIC) || beg.contains(Utils.PRIVATE) || beg.contains(Utils.PROTECTED) && beg.contains(Utils.OPEN_PARENTHESIS_OPENING)) {
+        if (beg.contains(Utils.PUBLIC) || beg.contains(Utils.PRIVATE) || beg.contains(Utils.PROTECTED) && beg.contains(Utils.OPEN_PARENTHESIS_OPENING))
+            doModifcation = true;
+        if (beg.indexOf("INSERT") > 0)
+            doModifcation = false;
+
+
+        if (doModifcation) {
             for (int i = 0; i < split.length; i++) {
                 if (i == 0) {
                     stringBuffer.append(beg);
@@ -183,13 +188,13 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
 
     private void appendLine(final StringBuffer stringBuffer,
- final String line) {
+                            final String line) {
         stringBuffer.append(line);
         stringBuffer.append(Utils.NEWLINE);
     }
 
     private void writeToFile(final String filename,
- final String output) {
+                             final String output) {
         try {
             final BufferedWriter out = new BufferedWriter(new FileWriter(
                     filename));
