@@ -150,6 +150,8 @@ public final class AddMissingFinalImpl extends AbstractAction implements
             doModifcation = true;
         if (beg.indexOf("INSERT") > 0)
             doModifcation = false;
+        if (beg.indexOf("UPDATE") > 0)
+            doModifcation = false;
 
 
         if (doModifcation) {
