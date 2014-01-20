@@ -102,8 +102,7 @@ class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
         }
     }
 
-    protected void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {        if (line.contains(Utils.PUBLIC_INTERFACE)) {
-            paramsTemporaryBuffer.append(line);
+    protected void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {        if (line.contains(Utils.PUBLIC_INTERFACE)) {            paramsTemporaryBuffer.append(line);
             stringBuffer.append(line);
             stringBuffer.append(Utils.NEWLINE);
         } else {
@@ -130,8 +129,7 @@ class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
 
     }
 
-    private static void appendLine(final StringBuffer stringBuffer, final String line) {        stringBuffer.append(line);        stringBuffer.append(Utils.NEWLINE);
-    }
+    private static void appendLine(final StringBuffer stringBuffer, final String line) {        stringBuffer.append(line);        stringBuffer.append(Utils.NEWLINE);    }
 
     private static void writeToFile(final String filename, final String output) {        try {            final BufferedWriter out = new BufferedWriter(new FileWriter(
                     filename));

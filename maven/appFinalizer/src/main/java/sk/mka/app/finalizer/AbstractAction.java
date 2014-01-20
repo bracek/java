@@ -49,8 +49,7 @@ public abstract class AbstractAction implements IAction {
      *
      * @param aStartingDir is a valid directory, which can be read.
      */
-    public List<File> getFileListing(final File aStartingDir)            throws FileNotFoundException {        validateDirectory(aStartingDir);
-        getFileListingNoSort(aStartingDir);
+    public List<File> getFileListing(final File aStartingDir)            throws FileNotFoundException {        validateDirectory(aStartingDir);        getFileListingNoSort(aStartingDir);
         return getFileListingNoSort(aStartingDir);
 
     }
