@@ -80,7 +80,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     @Override
     public void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {
         if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC) || line.contains(Utils.STATIC) || line.contains(Utils.PROTECTED)) {
-            if (!line.contains(Utils.NEW) && !line.contains(".class") && !line.contains("getClass()")) {
+            if (!line.contains(Utils.NEW) && !line.contains(Utils.DOT_CLASS) && !line.contains(Utils.GET_CLASS)) {
 
                 //don't edit line, where is no arguments in method
                 final int indexOfOpeningBracket = line.indexOf(Utils.OPEN_PARENTHESIS_OPENING);

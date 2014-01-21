@@ -26,4 +26,6 @@ public class Utils {
     public static final String FINAL = "final";
     public static final String OPEN_PARENTHESIS_OPENING = "(";
 
+    public static final String GET_CLASS = "getClass()";
+    public static final String DOT_CLASS = ".class";
 }
