@@ -104,9 +104,9 @@ class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
         }
     }
 
-    protected void modify(final StringBuffer stringBuffer,
-                          final StringBuffer paramsTemporaryBuffer,
-                          final String line) {
+    public void modify(final StringBuffer stringBuffer,
+                       final StringBuffer paramsTemporaryBuffer,
+                       final String line) {
         if (line.contains(Utils.PUBLIC_INTERFACE)) {
             paramsTemporaryBuffer.append(line);
             stringBuffer.append(line);

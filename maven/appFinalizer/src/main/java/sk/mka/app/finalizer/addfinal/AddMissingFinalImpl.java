@@ -78,7 +78,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     }
 
     @Override
-    protected void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {
+    public void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {
         if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC) || line.contains(Utils.STATIC) || line.contains(Utils.PROTECTED)) {
             if (!line.contains(Utils.NEW) && !line.contains(".class") && !line.contains("getClass()")) {
 
