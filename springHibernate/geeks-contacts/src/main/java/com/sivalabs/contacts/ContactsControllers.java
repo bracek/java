@@ -88,7 +88,7 @@ public class ContactsControllers {
 	}
 
 	@RequestMapping(value = "/updateContact", method = RequestMethod.POST)
-	public String update(final @ModelAttribute("editContact") final Contact contact,
+	public String update(final @ModelAttribute("editContact") Contact contact,
 			final BindingResult result, final SessionStatus status) {
 		validator.validate(contact, result);
 		if (result.hasErrors()) {
