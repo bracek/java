@@ -102,7 +102,8 @@ public final class AddMissingFinalImpl extends AbstractAction implements
                             appendLine(stringBuffer, line);
                         }
                     } else
-                        paramsTemporaryBuffer.append(line);
+                        stringBuffer.append(line);
+                    stringBuffer.append(Utils.NEWLINE);
                 } else {
                     appendLine(stringBuffer, line);
                 }
@@ -141,23 +142,23 @@ public final class AddMissingFinalImpl extends AbstractAction implements
     }
 
     private void appendFinalToParams(final StringBuffer stringBuffer,
- final String beg,
- final String middle,
- final String end) {
+                                     final String beg,
+                                     final String middle,
+                                     final String end) {
 
         final String[] split = middle.split(Utils.COMMA);
 
-        boolean doModifcation = false;
+        boolean doModification = false;
 
         if (beg.contains(Utils.PUBLIC) || beg.contains(Utils.PRIVATE) || beg.contains(Utils.PROTECTED) && beg.contains(Utils.OPEN_PARENTHESIS_OPENING))
-            doModifcation = true;
+            doModification = true;
         if (beg.indexOf("INSERT") > 0)
-            doModifcation = false;
+            doModification = false;
         if (beg.indexOf("UPDATE") > 0)
-            doModifcation = false;
+            doModification = false;
 
 
-        if (doModifcation) {
+        if (doModification) {
             for (int i = 0; i < split.length; i++) {
                 if (i == 0) {
                     stringBuffer.append(beg);
@@ -174,7 +175,6 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
                 if (i < split.length - 1) {
                     stringBuffer.append(Utils.COMMA);
-                    stringBuffer.append(Utils.NEWLINE);
                 }
 
                 if (i == split.length - 1) {
