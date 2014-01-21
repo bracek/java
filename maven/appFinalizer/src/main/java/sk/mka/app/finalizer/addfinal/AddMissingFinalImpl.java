@@ -101,9 +101,10 @@ public final class AddMissingFinalImpl extends AbstractAction implements
                         } else {
                             appendLine(stringBuffer, line);
                         }
-                    } else
+                    } else {
                         stringBuffer.append(line);
-                    stringBuffer.append(Utils.NEWLINE);
+                        stringBuffer.append(Utils.NEWLINE);
+                    }
                 } else {
                     appendLine(stringBuffer, line);
                 }
