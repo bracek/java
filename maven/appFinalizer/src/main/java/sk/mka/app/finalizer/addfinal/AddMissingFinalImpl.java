@@ -82,16 +82,20 @@ public final class AddMissingFinalImpl extends AbstractAction implements
         if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC) || line.contains(Utils.STATIC) || line.contains(Utils.PROTECTED)) {
             if (!line.contains(Utils.NEW) && !line.contains(".class") && !line.contains("getClass()")) {
 
-                if (line.contains(Utils.OPEN_PARENTHESIS_OPENING)) {
+                //don't edit line, where is no arguments in method
+                final int indexOfOpeningBracket = line.indexOf(Utils.OPEN_PARENTHESIS_OPENING);
+                final int indexOfClosingBracket = line.indexOf(Utils.OPEN_PARENTHESIS_CLOSING);
 
-                    int indexOfStart = line
-                            .indexOf(Utils.OPEN_PARENTHESIS_OPENING);
-                    final String beg = line.substring(0, indexOfStart + 1);
+                final boolean methodHasArgument = hasMethodArgument(line, indexOfOpeningBracket, indexOfClosingBracket);
+
+                if (line.contains(Utils.OPEN_PARENTHESIS_OPENING) && methodHasArgument) {
+
+                    final String beg = line.substring(0, indexOfOpeningBracket + 1);
 
                     if (line.contains(Utils.OPEN_PARENTHESIS_CLOSING)) {
                         int endOfStart = line
                                 .lastIndexOf(Utils.OPEN_PARENTHESIS_CLOSING) + 1;
-                        final String middle = line.substring(indexOfStart + 1,
+                        final String middle = line.substring(indexOfOpeningBracket + 1,
                                 endOfStart);
                         final String end = line.substring(endOfStart);
                         boolean isWhitespace = middle.matches("^\\s*$");
@@ -139,6 +143,22 @@ public final class AddMissingFinalImpl extends AbstractAction implements
             } else
                 appendLine(stringBuffer, line);
         }
+    }
+
+    private boolean hasMethodArgument(String line, int indexOfOpeningBracket, int indexOfClosingBracket) {
+        boolean methodHasArgument = true;
+        if (indexOfClosingBracket > 0) {
+            if (indexOfClosingBracket == (indexOfOpeningBracket + 1)) {
+                //there is not argument
+                methodHasArgument = false;
+            }
+            String methodsArgument = line.substring(indexOfOpeningBracket + 1, indexOfClosingBracket);
+            String trim = methodsArgument.trim();
+            if (trim.length() == 0) {
+                methodHasArgument = false;
+            }
+        }
+        return methodHasArgument;
     }
 
     private void appendFinalToParams(final StringBuffer stringBuffer,
