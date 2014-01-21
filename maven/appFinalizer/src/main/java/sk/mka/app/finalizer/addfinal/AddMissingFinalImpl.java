@@ -161,13 +161,9 @@ public final class AddMissingFinalImpl extends AbstractAction implements
         return methodHasArgument;
     }
 
-    private void appendFinalToParams(final StringBuffer stringBuffer,
-                                     final String beg,
-                                     final String middle,
-                                     final String end) {
+    private void appendFinalToParams(final StringBuffer stringBuffer, final String beg, final String middle, final String end) {
 
         final String[] split = middle.split(Utils.COMMA);
-
         boolean doModification = false;
 
         if (beg.contains(Utils.PUBLIC) || beg.contains(Utils.PRIVATE) || beg.contains(Utils.PROTECTED) && beg.contains(Utils.OPEN_PARENTHESIS_OPENING))
