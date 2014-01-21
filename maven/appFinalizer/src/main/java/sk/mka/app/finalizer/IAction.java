@@ -11,4 +11,5 @@ public interface IAction {
 
 	void parseFile(File file);
 
+    int getNumberOfAddedFinalKeyword();
 }

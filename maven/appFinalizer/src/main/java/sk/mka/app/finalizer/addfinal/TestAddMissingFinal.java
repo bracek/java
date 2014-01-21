@@ -33,6 +33,8 @@ public final class TestAddMissingFinal {
                 addMissingFinal.parseFile(file);
             }
         }
+
+        System.out.println(addMissingFinal.getNumberOfAddedFinalKeyword() + " final keyword was added during processing");
     }
 
 }

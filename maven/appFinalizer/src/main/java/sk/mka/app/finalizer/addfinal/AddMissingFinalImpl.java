@@ -6,6 +6,7 @@ import sk.mka.app.finalizer.Utils;
 
 import java.io.*;
 
+
 public final class AddMissingFinalImpl extends AbstractAction implements
         IAction {
 
@@ -166,9 +167,10 @@ public final class AddMissingFinalImpl extends AbstractAction implements
                 if (!split[i].contains(Utils.FINAL)) {
                     if (!split[i].contains(Utils.REQUIRED))
                         if (!split[i].equals(Utils.OPEN_PARENTHESIS_CLOSING))
-                            if (!split[i].contains(">"))
-
+                            if (!split[i].contains(">")) {
                                 stringBuffer.append(Utils.FINAL + Utils.SPACE);
+                                numberOfAddedFinalKeyword++;
+                            }
                 }
                 stringBuffer.append(split[i]);
 
@@ -207,5 +209,6 @@ public final class AddMissingFinalImpl extends AbstractAction implements
             e.printStackTrace();
         }
     }
+
 
 }
