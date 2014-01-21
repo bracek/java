@@ -145,7 +145,7 @@ public final class AddMissingFinalImpl extends AbstractAction implements
         }
     }
 
-    private boolean hasMethodArgument(String line, int indexOfOpeningBracket, int indexOfClosingBracket) {
+    private boolean hasMethodArgument(final String line, final int indexOfOpeningBracket, final int indexOfClosingBracket) {
         boolean methodHasArgument = true;
         if (indexOfClosingBracket > 0) {
             if (indexOfClosingBracket == (indexOfOpeningBracket + 1)) {

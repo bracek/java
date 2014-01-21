@@ -12,7 +12,7 @@ public abstract class AbstractAction implements IAction {
 
     protected abstract void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line);
 
-    static List<File> getFileListingNoSort(final File aStartingDir) throws FileNotFoundException {
+    private static List<File> getFileListingNoSort(final File aStartingDir) throws FileNotFoundException {
         final List<File> result = new ArrayList<File>();
         final File[] filesAndDirs = aStartingDir.listFiles();
         if (filesAndDirs != null) {
@@ -32,7 +32,7 @@ public abstract class AbstractAction implements IAction {
      * Directory is valid if it exists, does not represent a file, and can be
      * read.
      */
-    public void validateDirectory(final File aDirectory) throws FileNotFoundException {
+    void validateDirectory(final File aDirectory) throws FileNotFoundException {
         if (aDirectory == null) {
             throw new IllegalArgumentException("Directory should not be null.");
         }
@@ -66,9 +66,5 @@ public abstract class AbstractAction implements IAction {
     @Override
     public final int getNumberOfAddedFinalKeyword() {
         return numberOfAddedFinalKeyword;
-    }
-
-    public final void setNumberOfAddedFinalKeyword(final int numberOfAddedFinalKeyword) {
-        this.numberOfAddedFinalKeyword = numberOfAddedFinalKeyword;
     }
 }
