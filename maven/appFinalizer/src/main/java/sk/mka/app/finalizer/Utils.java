@@ -28,4 +28,6 @@ public class Utils {
 
     public static final String GET_CLASS = "getClass()";
     public static final String DOT_CLASS = ".class";
+    public static final String INSERT = "INSERT";
+    public static final String UPDATE = "UPDATE";
 }

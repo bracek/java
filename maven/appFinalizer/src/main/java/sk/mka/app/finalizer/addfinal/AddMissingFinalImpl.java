@@ -168,9 +168,9 @@ public final class AddMissingFinalImpl extends AbstractAction implements
 
         if (beg.contains(Utils.PUBLIC) || beg.contains(Utils.PRIVATE) || beg.contains(Utils.PROTECTED) && beg.contains(Utils.OPEN_PARENTHESIS_OPENING))
             doModification = true;
-        if (beg.indexOf("INSERT") > 0)
+        if (beg.indexOf(Utils.INSERT) > 0)
             doModification = false;
-        if (beg.indexOf("UPDATE") > 0)
+        if (beg.indexOf(Utils.UPDATE) > 0)
             doModification = false;
 
 

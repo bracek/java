@@ -12,27 +12,12 @@ public abstract class AbstractAction implements IAction {
 
     public abstract void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line);
 
-    private static List<File> getFileListingNoSort(final File aStartingDir) throws FileNotFoundException {
-        final List<File> result = new ArrayList<File>();
-        final File[] filesAndDirs = aStartingDir.listFiles();
-        if (filesAndDirs != null) {
-            final List<File> filesDirs = Arrays.asList(filesAndDirs);
-            for (File file : filesDirs) {
-                result.add(file); // always add, even if directory
-                if (!file.isFile()) {
-                    final List<File> deeperList = getFileListingNoSort(file);
-                    result.addAll(deeperList);
-                }
-            }
-        }
-        return result;
-    }
 
     /**
      * Directory is valid if it exists, does not represent a file, and can be
      * read.
      */
-    void validateDirectory(final File aDirectory) throws FileNotFoundException {
+    public final void validateDirectory(final File aDirectory) throws FileNotFoundException {
         if (aDirectory == null) {
             throw new IllegalArgumentException("Directory should not be null.");
         }
@@ -56,11 +41,28 @@ public abstract class AbstractAction implements IAction {
      *
      * @param aStartingDir is a valid directory, which can be read.
      */
-    public List<File> getFileListing(final File aStartingDir) throws FileNotFoundException {
+    public final List<File> getFileListing(final File aStartingDir) throws FileNotFoundException {
         validateDirectory(aStartingDir);
         getFileListingNoSort(aStartingDir);
         return getFileListingNoSort(aStartingDir);
 
+    }
+
+
+    private List<File> getFileListingNoSort(final File aStartingDir) throws FileNotFoundException {
+        final List<File> result = new ArrayList<File>();
+        final File[] filesAndDirs = aStartingDir.listFiles();
+        if (filesAndDirs != null) {
+            final List<File> filesDirs = Arrays.asList(filesAndDirs);
+            for (File file : filesDirs) {
+                result.add(file); // always add, even if directory
+                if (!file.isFile()) {
+                    final List<File> deeperList = getFileListingNoSort(file);
+                    result.addAll(deeperList);
+                }
+            }
+        }
+        return result;
     }
 
     @Override
