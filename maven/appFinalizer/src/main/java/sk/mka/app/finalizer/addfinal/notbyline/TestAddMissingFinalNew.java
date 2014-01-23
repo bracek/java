@@ -30,6 +30,7 @@ public final class TestAddMissingFinalNew {
 
         for (File file : files) {
             if (file.isFile()) {
+                System.out.println("file: " + file.getName());
                 addMissingFinal.parseFile(file);
             }
         }

@@ -13,54 +13,42 @@ import java.io.*;
  * Time: 9:21 AM
  */
 public class AddMissingFinalNew extends AbstractAction implements IAction {
-    @Override
-    public void modify(StringBuffer stringBuffer, StringBuffer paramsTemporaryBuffer, String line) {
-    }
 
     @Override
     public void parseFile(File file) {
 
-        int i = file.getName().lastIndexOf(Utils.DOT);
-        String extension = null;
-        if (i > 0) {
-            extension = file.getName().substring(i + 1);
+        String everything;
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(file.getAbsolutePath()));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        if (extension != null && extension.equals(Utils.JAVA)) {
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
 
-            String everything;
-            BufferedReader br = null;
-            try {
-                br = new BufferedReader(new FileReader(file.getAbsolutePath()));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
             }
+            everything = sb.toString();
+            processFile(file, everything);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             try {
-                StringBuilder sb = new StringBuilder();
-                String line = br.readLine();
-
-                while (line != null) {
-                    sb.append(line);
-                    sb.append(System.lineSeparator());
-                    line = br.readLine();
-                }
-                everything = sb.toString();
-                processFile(file, everything);
+                if (br != null)
+                    br.close();
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    if (br != null)
-                        br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    System.out.println(e.getMessage());
-                }
+                System.out.println(e.getMessage());
             }
         }
     }
 
-    @Override
     public void processFile(File file, final String everything) {
 
 
@@ -148,13 +136,10 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
 
     private String appendFinalToArguments(final String methodsArguments) {
 
-        StringBuffer stringBuffer = new StringBuffer();
-        String argumentsWithFinal = null;
+        final StringBuffer stringBuffer = new StringBuffer();
+        String argumentsWithFinal;
         final String[] split = methodsArguments.split(Utils.COMMA);
         for (int i = 0; i < split.length; i++) {
-//            if (i == 0) {
-//                stringBuffer.append(beg);
-//            }
 
             if (!split[i].contains(Utils.FINAL)) {
                 if (!split[i].contains(Utils.REQUIRED))
@@ -169,13 +154,7 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
             if (i < split.length - 1) {
                 stringBuffer.append(Utils.COMMA);
             }
-
-//            if (i == split.length - 1) {
-//                stringBuffer.append(end);
-//                stringBuffer.append(Utils.NEWLINE);
-//            }
         }
-
 
         return stringBuffer.toString();
     }

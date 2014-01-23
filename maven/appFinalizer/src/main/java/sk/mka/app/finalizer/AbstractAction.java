@@ -53,8 +53,25 @@ public abstract class AbstractAction implements IAction {
         if (filesAndDirs != null) {
             final List<File> filesDirs = Arrays.asList(filesAndDirs);
             for (File file : filesDirs) {
-                result.add(file); // always add, even if directory
-                if (!file.isFile()) {
+                boolean acceptedFile = false;
+                final boolean itsFile = file.isFile();
+                if (itsFile) {
+                    //add only java classes
+
+                    final int i = file.getName().lastIndexOf(Utils.DOT);
+                    String extension = null;
+                    if (i > 0)
+                        extension = file.getName().substring(i + 1);
+
+                    if (extension != null && extension.equals(Utils.JAVA))
+                        acceptedFile = true;
+                }
+
+                if (!itsFile || acceptedFile)
+                    result.add(file);
+
+
+                if (!itsFile) {
                     final List<File> deeperList = getFileListingNoSort(file);
                     result.addAll(deeperList);
                 }

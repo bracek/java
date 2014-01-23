@@ -104,14 +104,8 @@ class RemoveUnusedModifierImpl extends AbstractAction implements IAction {
         }
     }
 
-    @Override
-    public void processFile(File file, String everything) {
 
-    }
-
-    public void modify(final StringBuffer stringBuffer,
-                       final StringBuffer paramsTemporaryBuffer,
-                       final String line) {
+    public void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {
         if (line.contains(Utils.PUBLIC_INTERFACE)) {
             paramsTemporaryBuffer.append(line);
             stringBuffer.append(line);
