@@ -53,11 +53,10 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
 
 
         final StringBuffer stringBuffer = new StringBuffer();
-        boolean doModification = false;
         final String[] fileContentByLine = everything.split("\n");
         for (int i = 0; i < fileContentByLine.length; i++) {
             final String currentLine = fileContentByLine[i];
-
+            boolean doModification = false;
 
             if (currentLine.contains(Utils.PUBLIC) || currentLine.contains(Utils.PRIVATE) || currentLine.contains(Utils.PROTECTED) && currentLine.contains(Utils.OPEN_PARENTHESIS_OPENING))
                 doModification = true;
