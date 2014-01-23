@@ -1,4 +1,4 @@
-package sk.mka.app.finalizer.addfinal;
+package sk.mka.app.finalizer.addfinal.notbyline;
 
 import sk.mka.app.finalizer.IAction;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * @author javapractices.com
  * @author Miroslav Katrak
  */
-public final class TestAddMissingFinal {
+public final class TestAddMissingFinalNew {
 
     /**
      * Demonstrate use.
@@ -23,7 +23,7 @@ public final class TestAddMissingFinal {
     public static void main(final String... aArgs) throws FileNotFoundException {
         final File startingDirectory = new File(aArgs[0]);
 
-        final IAction addMissingFinal = new AddMissingFinalImpl();
+        final IAction addMissingFinal = new AddMissingFinalNew();
 
         final List<File> files = addMissingFinal
                 .getFileListing(startingDirectory);
@@ -33,6 +33,8 @@ public final class TestAddMissingFinal {
                 addMissingFinal.parseFile(file);
             }
         }
+
         System.out.println(addMissingFinal.getNumberOfAddedFinalKeyword() + " final keyword was added during processing");
     }
+
 }

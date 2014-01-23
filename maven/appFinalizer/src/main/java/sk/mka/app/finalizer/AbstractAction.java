@@ -10,8 +10,6 @@ public abstract class AbstractAction implements IAction {
 
     protected int numberOfAddedFinalKeyword = 0;
 
-    public abstract void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line);
-
 
     /**
      * Directory is valid if it exists, does not represent a file, and can be

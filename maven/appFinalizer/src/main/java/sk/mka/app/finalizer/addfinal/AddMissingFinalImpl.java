@@ -7,6 +7,7 @@ import sk.mka.app.finalizer.Utils;
 import java.io.*;
 
 
+
 public final class AddMissingFinalImpl extends AbstractAction implements
         IAction {
 
@@ -72,12 +73,13 @@ public final class AddMissingFinalImpl extends AbstractAction implements
             String absolutePath = file.getAbsolutePath();
             final int lastIndexOfDot = absolutePath.lastIndexOf(".");
             absolutePath = absolutePath.substring(0, lastIndexOfDot);
-            absolutePath += ".java";
+            absolutePath += Utils.DOT_JAVA;
             writeToFile(absolutePath, stringBuffer.toString());
         }
     }
 
-    @Override
+
+
     public void modify(final StringBuffer stringBuffer, final StringBuffer paramsTemporaryBuffer, final String line) {
         if (line.contains(Utils.PRIVATE) || line.contains(Utils.PUBLIC) || line.contains(Utils.STATIC) || line.contains(Utils.PROTECTED)) {
             if (!line.contains(Utils.NEW) && !line.contains(Utils.DOT_CLASS) && !line.contains(Utils.GET_CLASS)) {

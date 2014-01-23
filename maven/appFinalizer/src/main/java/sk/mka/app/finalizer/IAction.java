@@ -6,10 +6,11 @@ import java.util.List;
 
 public interface IAction {
 
-	List<File> getFileListing(File startingDirectory)
-			throws FileNotFoundException;
+    List<File> getFileListing(File startingDirectory)
+            throws FileNotFoundException;
 
-	void parseFile(File file);
+    void parseFile(File file);
 
     int getNumberOfAddedFinalKeyword();
+
 }
