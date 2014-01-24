@@ -77,6 +77,8 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
                 doModification = false;
             if (currentLine.contains(Utils.AT_TABLE))
                 doModification = false;
+            if (currentLine.contains(Utils.GET_INSTANCE))
+                doModification = false;
 
             if (doModification) {
 

@@ -32,4 +32,5 @@ public class Utils {
     public static final String DOT_JAVA = ".java";
     public static final String AT_TABLE = "@Table";
     public static final String THIS = "this";
+    public static String GET_INSTANCE = ".getInstance(";
 }
