@@ -57,6 +57,7 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
         int finalKeywordAddedForFile = 0;
         final StringBuffer stringBuffer = new StringBuffer();
         final String[] fileContentByLine = everything.split(Utils.NEWLINE);
+
         for (int i = 0; i < fileContentByLine.length; i++) {
 
             final String currentLine = fileContentByLine[i];
@@ -73,6 +74,8 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
             if (currentLine.contains(Utils.GET_CLASS))
                 doModification = false;
             if (currentLine.contains(Utils.DOT_CLASS))
+                doModification = false;
+            if (currentLine.contains(Utils.AT_TABLE))
                 doModification = false;
 
             if (doModification) {
@@ -95,7 +98,7 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
                         //check if methods has arguments
                         if (methodsArguments.trim().length() > 0) {
                             if (methodsArguments.contains(Utils.DOT)) {
-                               doModification =false;
+                                doModification = false;
                             } else {
                                 doModification = true;
                                 final String fixedArguments = appendFinalToArguments(methodsArguments);

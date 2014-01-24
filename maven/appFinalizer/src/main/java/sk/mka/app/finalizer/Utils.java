@@ -22,7 +22,6 @@ public class Utils {
     public static final String DOT = ".";
     public static final String OPEN_PARENTHESIS_CLOSING = ")";
     public static final String SPACE = " ";
-    public static final String COMMA = ",";
     public static final String FINAL = "final";
     public static final String OPEN_PARENTHESIS_OPENING = "(";
 
@@ -31,4 +30,5 @@ public class Utils {
     public static final String INSERT = "INSERT";
     public static final String UPDATE = "UPDATE";
     public static final String DOT_JAVA = ".java";
+    public static final String AT_TABLE = "@Table";
 }

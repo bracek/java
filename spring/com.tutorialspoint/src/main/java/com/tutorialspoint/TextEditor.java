@@ -7,7 +7,7 @@ public class TextEditor {
 	private SpellChecker spellChecker;
 
 	// @Autowired
-	// public void setSpellChecker(SpellChecker spellChecker) {
+	// public void setSpellChecker(final SpellChecker spellChecker) {
 	// System.out.println("Inside TextEditor constructor.");
 	// this.spellChecker = spellChecker;
 	// }

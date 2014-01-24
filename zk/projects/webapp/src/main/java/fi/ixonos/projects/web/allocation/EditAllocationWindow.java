@@ -503,7 +503,7 @@ final  Object data) throws Exception {
         }
     }
 
-    private void renameProject(Panel p, String newProjectName) throws Exception {
+    private void renameProject(final Panel p,final  String newProjectName) throws Exception {
         Projects project = projectMap.get(p);
         if (project != null) {
             //update project name

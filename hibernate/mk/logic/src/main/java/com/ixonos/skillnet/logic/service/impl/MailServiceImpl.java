@@ -54,7 +54,7 @@ public class MailServiceImpl implements MailService {
      */
     @Secured(ROLE_ADMIN)
     @Override
-    public boolean sendNewAccountCreatedEmail(InternetAddress newUser, List<String> textParameters) {
+    public boolean sendNewAccountCreatedEmail(final InternetAddress newUser, List<String> textParameters) {
 
         MailTemplates.Template template = MailTemplates.Template.ACCOUNT_CREATED;
         Map<String, ClassPathResource> attachments = new HashMap<String, ClassPathResource>();

@@ -74,7 +74,7 @@ public final class UsersServiceImpl extends AbstractGenericService<Users> implem
      */
     @Transactional
     @Override
-    public boolean changePassword(String userName, String newPassword) throws Exception {
+    public boolean changePassword(final String userName,final  String newPassword) throws Exception {
         Users user = getUser(userName);
         user.setPassword(hashPassword(newPassword, userName));
         update(user);

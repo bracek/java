@@ -106,7 +106,7 @@ final  Integer skillID) {
 	@Secured(ROLE_GM)
 	@Override
 	@Transactional
-	public Node moveNode(Integer nodeID, Integer newParentID) {
+	public Node moveNode(final Integer nodeID,final  Integer newParentID) {
 		Boolean canMove = true;
 		Node node = nodeDAO.read(nodeID);
 		Node newParent = nodeDAO.read(newParentID);
