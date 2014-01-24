@@ -99,6 +99,7 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
                             } else {
                                 doModification = true;
                                 final String fixedArguments = appendFinalToArguments(methodsArguments);
+
                                 // check different = not replacing file with the same content - there is any change for file
 
                                 if (!fixedArguments.equals(methodsArguments))
