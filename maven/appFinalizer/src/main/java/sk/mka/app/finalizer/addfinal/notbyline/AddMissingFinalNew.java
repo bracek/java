@@ -55,15 +55,10 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
     public void processFile(final File file, final String everything) {
 
         int finalKeywordAddedForFile = 0;
-        final StringBuffer stringBuffer = new StringBuffer();
+        final StringBuilder stringBuffer = new StringBuilder();
         final String[] fileContentByLine = everything.split(Utils.NEWLINE);
 
-//        for (int i = 0; i < fileContentByLine.length; i++) {
-
         for (String currentLine : fileContentByLine) {
-
-
-//            final String currentLine = fileContentByLine[i];
             boolean doModification = false;
 
             if (currentLine.contains(Utils.PUBLIC) || currentLine.contains(Utils.PRIVATE) || currentLine.contains(Utils.PROTECTED) && currentLine.contains(Utils.OPEN_PARENTHESIS_OPENING))
@@ -110,8 +105,6 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
 
                                 if (methodsArguments.contains(Utils.SPACE)) {
                                     final String fixedArguments = appendFinalToArguments(methodsArguments);
-
-                                    // check different = not replacing file with the same content - there is any change for file
 
                                     if (!fixedArguments.equals(methodsArguments)) {
                                         doModification = true;
