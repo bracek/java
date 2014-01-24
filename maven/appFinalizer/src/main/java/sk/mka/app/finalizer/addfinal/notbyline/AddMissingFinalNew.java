@@ -58,9 +58,12 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
         final StringBuffer stringBuffer = new StringBuffer();
         final String[] fileContentByLine = everything.split(Utils.NEWLINE);
 
-        for (int i = 0; i < fileContentByLine.length; i++) {
+//        for (int i = 0; i < fileContentByLine.length; i++) {
 
-            final String currentLine = fileContentByLine[i];
+        for (String currentLine : fileContentByLine) {
+
+
+//            final String currentLine = fileContentByLine[i];
             boolean doModification = false;
 
             if (currentLine.contains(Utils.PUBLIC) || currentLine.contains(Utils.PRIVATE) || currentLine.contains(Utils.PROTECTED) && currentLine.contains(Utils.OPEN_PARENTHESIS_OPENING))
@@ -89,7 +92,7 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
                     final String beginning = currentLine.substring(0, openingsPostBracket);
                     final String end = currentLine.substring(closeBracketPos + 1, currentLine.length());
 
-                    final StringBuffer tempStringBuffer = new StringBuffer();
+                    final StringBuilder tempStringBuffer = new StringBuilder();
                     tempStringBuffer.append(beginning);
                     tempStringBuffer.append(Utils.OPEN_PARENTHESIS_OPENING);
 
@@ -104,15 +107,21 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
                             } else if (methodsArguments.contains(Utils.THIS)) {
                                 doModification = false;
                             } else {
-                                doModification = true;
-                                final String fixedArguments = appendFinalToArguments(methodsArguments);
 
-                                // check different = not replacing file with the same content - there is any change for file
+                                if (methodsArguments.contains(Utils.SPACE)) {
+                                    final String fixedArguments = appendFinalToArguments(methodsArguments);
 
-                                if (!fixedArguments.equals(methodsArguments))
-                                    finalKeywordAddedForFile++;
+                                    // check different = not replacing file with the same content - there is any change for file
 
-                                tempStringBuffer.append(fixedArguments);
+                                    if (!fixedArguments.equals(methodsArguments)) {
+                                        doModification = true;
+                                        finalKeywordAddedForFile++;
+                                    }
+
+                                    tempStringBuffer.append(fixedArguments);
+                                } else
+                                    doModification = false;
+
                             }
                         } else
                             doModification = false;
@@ -161,7 +170,7 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
 
     private String appendFinalToArguments(final String methodsArguments) {
 
-        final StringBuffer stringBuffer = new StringBuffer();
+        final StringBuilder stringBuffer = new StringBuilder();
         final String[] split = methodsArguments.split(Utils.COMMA);
         for (int i = 0; i < split.length; i++) {
 
