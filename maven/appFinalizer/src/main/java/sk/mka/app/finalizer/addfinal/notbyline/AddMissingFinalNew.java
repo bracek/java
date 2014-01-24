@@ -15,7 +15,7 @@ import java.io.*;
 public class AddMissingFinalNew extends AbstractAction implements IAction {
 
     @Override
-    public void parseFile(File file) {
+    public void parseFile(final File file) {
 
         String everything;
         BufferedReader br = null;
@@ -49,7 +49,7 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
         }
     }
 
-    public void processFile(File file, final String everything) {
+    public void processFile(final File file, final String everything) {
 
 
         final StringBuffer stringBuffer = new StringBuffer();
@@ -112,6 +112,7 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
         }//end of for
 
 
+        System.out.println("out: " + stringBuffer);
         if (stringBuffer.length() > 0) {
             String absolutePath = file.getAbsolutePath();
             final int lastIndexOfDot = absolutePath.lastIndexOf(".");
