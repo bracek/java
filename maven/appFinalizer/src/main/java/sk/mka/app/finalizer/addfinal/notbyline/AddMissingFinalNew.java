@@ -99,6 +99,8 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
                         if (methodsArguments.trim().length() > 0) {
                             if (methodsArguments.contains(Utils.DOT)) {
                                 doModification = false;
+                            } else if (methodsArguments.contains(Utils.THIS)) {
+                                doModification = false;
                             } else {
                                 doModification = true;
                                 final String fixedArguments = appendFinalToArguments(methodsArguments);

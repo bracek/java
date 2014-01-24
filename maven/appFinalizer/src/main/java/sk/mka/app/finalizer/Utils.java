@@ -31,4 +31,5 @@ public class Utils {
     public static final String UPDATE = "UPDATE";
     public static final String DOT_JAVA = ".java";
     public static final String AT_TABLE = "@Table";
+    public static final String THIS = "this";
 }
