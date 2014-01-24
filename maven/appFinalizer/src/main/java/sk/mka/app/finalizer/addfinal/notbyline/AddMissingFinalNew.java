@@ -27,15 +27,18 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
         }
         try {
             StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
+            if (br != null) {
+                String line = br.readLine();
 
-            while (line != null) {
-                sb.append(line);
-                sb.append(System.lineSeparator());
-                line = br.readLine();
+                while (line != null) {
+                    sb.append(line);
+                    sb.append(System.lineSeparator());
+                    line = br.readLine();
+                }
+
+                everything = sb.toString();
+                processFile(file, everything);
             }
-            everything = sb.toString();
-            processFile(file, everything);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -51,10 +54,11 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
 
     public void processFile(final File file, final String everything) {
 
-
+        int finalKeywordAddedForFile = 0;
         final StringBuffer stringBuffer = new StringBuffer();
-        final String[] fileContentByLine = everything.split("\n");
+        final String[] fileContentByLine = everything.split(Utils.NEWLINE);
         for (int i = 0; i < fileContentByLine.length; i++) {
+
             final String currentLine = fileContentByLine[i];
             boolean doModification = false;
 
@@ -88,6 +92,11 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
                         if (methodsArguments.trim().length() > 0) {
                             doModification = true;
                             final String fixedArguments = appendFinalToArguments(methodsArguments);
+                            // check different = not replacing file with the same content - there is any change for file
+
+                            if (!fixedArguments.equals(methodsArguments))
+                                finalKeywordAddedForFile++;
+
                             tempStringBuffer.append(fixedArguments);
                         } else
                             doModification = false;
@@ -112,8 +121,8 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
         }//end of for
 
 
-        System.out.println("out: " + stringBuffer);
-        if (stringBuffer.length() > 0) {
+//        System.out.println("out: " + stringBuffer);
+        if (stringBuffer.length() > 0 && finalKeywordAddedForFile > 0) {
             String absolutePath = file.getAbsolutePath();
             final int lastIndexOfDot = absolutePath.lastIndexOf(".");
             absolutePath = absolutePath.substring(0, lastIndexOfDot);
@@ -137,7 +146,6 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
     private String appendFinalToArguments(final String methodsArguments) {
 
         final StringBuffer stringBuffer = new StringBuffer();
-        String argumentsWithFinal;
         final String[] split = methodsArguments.split(Utils.COMMA);
         for (int i = 0; i < split.length; i++) {
 
