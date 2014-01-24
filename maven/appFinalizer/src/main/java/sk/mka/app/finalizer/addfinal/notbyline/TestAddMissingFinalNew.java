@@ -28,13 +28,16 @@ public final class TestAddMissingFinalNew {
         final List<File> files = addMissingFinal
                 .getFileListing(startingDirectory);
 
+        int processedFilesCount = 0;
         for (File file : files) {
             if (file.isFile()) {
                 System.out.println("file: " + file.getName());
                 addMissingFinal.parseFile(file);
+                processedFilesCount++;
             }
         }
 
+        System.out.println("number of process files: " + processedFilesCount);
         System.out.println(addMissingFinal.getNumberOfAddedFinalKeyword() + " final keyword was added during processing");
     }
 
