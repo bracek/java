@@ -94,14 +94,18 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
 
                         //check if methods has arguments
                         if (methodsArguments.trim().length() > 0) {
-                            doModification = true;
-                            final String fixedArguments = appendFinalToArguments(methodsArguments);
-                            // check different = not replacing file with the same content - there is any change for file
+                            if (methodsArguments.contains(Utils.DOT)) {
+                               doModification =false;
+                            } else {
+                                doModification = true;
+                                final String fixedArguments = appendFinalToArguments(methodsArguments);
+                                // check different = not replacing file with the same content - there is any change for file
 
-                            if (!fixedArguments.equals(methodsArguments))
-                                finalKeywordAddedForFile++;
+                                if (!fixedArguments.equals(methodsArguments))
+                                    finalKeywordAddedForFile++;
 
-                            tempStringBuffer.append(fixedArguments);
+                                tempStringBuffer.append(fixedArguments);
+                            }
                         } else
                             doModification = false;
                     } else
