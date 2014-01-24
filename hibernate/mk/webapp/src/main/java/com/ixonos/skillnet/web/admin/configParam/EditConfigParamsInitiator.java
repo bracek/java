@@ -26,7 +26,7 @@ import com.ixonos.skillnet.logic.service.ConfigService;
  */
 public class EditConfigParamsInitiator extends AnnotateDataBinderInit {
 
-	private final ConfigService configService = (final ConfigService) SpringUtil
+	private final ConfigService configService = (ConfigService) SpringUtil
 			.getApplicationContext().getBean("configService");
 
 	@Override

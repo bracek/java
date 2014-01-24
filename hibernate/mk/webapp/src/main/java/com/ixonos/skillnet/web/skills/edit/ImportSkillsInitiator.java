@@ -20,7 +20,7 @@ import com.ixonos.skillnet.web.controllers.SkillsComparator;
 public class ImportSkillsInitiator extends AnnotateDataBinderInit {
 
 	@Resource
-	protected SkillService skillService = (final SkillService) SpringUtil
+	protected SkillService skillService = (SkillService) SpringUtil
 			.getApplicationContext().getBean("skillService");
 
 	@Override

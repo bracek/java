@@ -26,7 +26,7 @@ public class GeneralLabelLocator implements LabelLocator {
 	 * @see org.zkoss.util.resource.LabelLocator#locate(java.util.Locale)
 	 */
 	@Override
-	public URL locate(final Locale locale) throws Exception {
+	public URL locate(Locale locale) throws Exception {
 		if (locale == null)
 			locale = new Locale("en");
 		final String filename = MENU_FILE_NAME + "_" + locale.getLanguage()

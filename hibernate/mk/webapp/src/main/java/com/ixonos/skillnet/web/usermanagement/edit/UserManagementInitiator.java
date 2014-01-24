@@ -22,15 +22,15 @@ import com.ixonos.skillnet.logic.service.UsersService;
 public class UserManagementInitiator extends AnnotateDataBinderInit {
 
 	@Resource
-	private final CodeTableService codeTableService = (final CodeTableService) SpringUtil
+	private final CodeTableService codeTableService = (CodeTableService) SpringUtil
 			.getApplicationContext().getBean("codeTableService");
 
 	@Resource
-	protected UsersService usersService = (final UsersService) SpringUtil
+	protected UsersService usersService = (UsersService) SpringUtil
 			.getApplicationContext().getBean("usersService");
 
 	@Resource
-	protected GroupsService groupsService = (final GroupsService) SpringUtil
+	protected GroupsService groupsService = (GroupsService) SpringUtil
 			.getApplicationContext().getBean("groupsService");
 
 	@Override

@@ -718,7 +718,7 @@ public class EditSkillsController extends GenericForwardComposer implements
 	}
 
 	@SuppressWarnings("unchecked")
-	private void filterListModel(final String filter) {
+	private void filterListModel( String filter) {
 		filter = filter.toLowerCase();
 		if (filter.equals("") || filter.equals("*")) {
 			list.setModel(listModelList);

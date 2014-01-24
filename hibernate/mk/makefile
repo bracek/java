@@ -1,5 +1,7 @@
 ### BEGIN OF PROFILES ###
 ##kemt ###
+clean.install:
+	mvn clean install
 sonar:
 	mvn sonar:sonar
 default:

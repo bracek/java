@@ -20,7 +20,7 @@ import com.ixonos.skillnet.logic.util.NodesComparator;
 public class SkillnetTreeModelImpl implements SkillnetTreeModel {
 	private String rootName;
 	private Map<Integer, List<Node>> childrenMap = new HashMap<Integer, List<Node>>();
-	private final Integer ROOT_KEY = Integer.valueOf(final 0);
+	private final Integer ROOT_KEY = Integer.valueOf(0);
 
 	@Resource
 	protected NodeService nodeService;
