@@ -31,7 +31,7 @@ public final class TestAddMissingFinalNew {
         int processedFilesCount = 0;
         for (File file : files) {
             if (file.isFile()) {
-                System.out.println("file: " + file.getName());
+//                System.out.println("file: " + file.getName());
                 addMissingFinal.parseFile(file);
                 processedFilesCount++;
             }

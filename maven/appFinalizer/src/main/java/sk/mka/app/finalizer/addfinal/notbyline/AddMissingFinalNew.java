@@ -70,6 +70,8 @@ public class AddMissingFinalNew extends AbstractAction implements IAction {
                 doModification = false;
             if (currentLine.startsWith(Utils.COMMENT))
                 doModification = false;
+           if(currentLine.contains(Utils.GET_CLASS))
+               doModification=false;
 
             if (doModification) {
 
