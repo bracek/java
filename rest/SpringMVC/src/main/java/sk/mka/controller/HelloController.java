@@ -1,4 +1,4 @@
-package com.reliance.server.controller;
+package sk.mka.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
