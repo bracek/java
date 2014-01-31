@@ -14,7 +14,5 @@ public class HelloController {
 
         model.addAttribute("message", "Spring 3 MVC Hello World");
         return "hello";
-
     }
-
 }
