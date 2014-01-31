@@ -10,20 +10,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/accounts")
 public class AccountController {
 
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public String getMovie(@PathVariable final String name,
- final ModelMap model) {
+	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
+	public String getMovie(@PathVariable final String name, final ModelMap model) {
 
-        model.addAttribute("movie", name);
-        return "accounts";
+		model.addAttribute("movie", name);
+		return "accounts";
 
-    }
+	}
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getDefaultMovie(final ModelMap model) {
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String getDefaultMovie(final ModelMap model) {
 
-        model.addAttribute("movie", "this is default movie");
-        return "accounts";
+		model.addAttribute("movie", "this is default movie");
+		return "accounts";
 
-    }
+	}
 }
