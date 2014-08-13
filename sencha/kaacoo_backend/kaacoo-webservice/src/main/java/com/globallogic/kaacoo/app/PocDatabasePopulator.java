@@ -41,10 +41,11 @@ public class PocDatabasePopulator {
         Merchant m12 = Merchant.newBuilder().title("Burger King").entity;
 
 
+        President p0 = President.newBuilder().name("title0", "Miro", "Katrak").entity;
         President p1 = President.newBuilder().name("title1", "George", "Washington").entity;
         President p2 = President.newBuilder().name("title2", "John", "Adams").entity;
         President p3 = President.newBuilder().name("title3", "Thomas", "Jefferson").entity;
-        persist(p1, p2, p3);
+        persist(p0, p1, p2, p3);
 
         Store s1 = Store.newBuilder()
                 .merchant(m1)
