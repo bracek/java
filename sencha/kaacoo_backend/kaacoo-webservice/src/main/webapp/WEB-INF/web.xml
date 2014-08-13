@@ -3,20 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-	<display-name>kaacoo-webservice</display-name>
-	
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:kaacoo-webservice-ctx.xml</param-value>
-	</context-param>
+    <display-name>kaacoo-webservice</display-name>
 
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	
-	<listener>
-		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:kaacoo-webservice-ctx.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
 
     <servlet>
         <servlet-name>WebServiceApp</servlet-name>
@@ -25,9 +25,8 @@
             <param-name>javax.ws.rs.Application</param-name>
             <param-value>com.globallogic.kaacoo.app.Application</param-value>
         </init-param>
-        <load-on-startup>1</load-on-startup>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>WebServiceApp</servlet-name>
         <url-pattern>/api/*</url-pattern>

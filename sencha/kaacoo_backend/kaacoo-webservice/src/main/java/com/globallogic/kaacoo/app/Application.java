@@ -18,23 +18,24 @@ import com.globallogic.kaacoo.view.KaacooViewPackageMarkup;
 
 public class Application extends ResourceConfig {
 
-  private static final Logger log = LoggerFactory.getLogger(Application.class);
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
 
-  public Application() {
-    log.debug("Kaacoo WebService Application initialization.");
+    public Application() {
+        log.debug("Kaacoo WebService Application initialization.");
 
-    packages(true, KaacooViewPackageMarkup.class.getPackage().getName());
-    register(RequestContextFilter.class);
-    register(new MoxyJsonFeature());
-    register(moxyJsonResolver());
-  }
-  
-  public static ContextResolver<MoxyJsonConfig> moxyJsonResolver() {
-    return new MoxyJsonConfig()
-      .setFormattedOutput(true)
-      .setIncludeRoot(false)
-      .setMarshalEmptyCollections(true)
-      .marshallerProperty(MarshallerProperties.JSON_REDUCE_ANY_ARRAYS, false)
-      .resolver();
-  }
+        packages(true, KaacooViewPackageMarkup.class.getPackage().getName());
+        register(RequestContextFilter.class);
+        register(new MoxyJsonFeature());
+        register(moxyJsonResolver());
+        register(new ResponseFilter());
+    }
+
+    public static ContextResolver<MoxyJsonConfig> moxyJsonResolver() {
+        return new MoxyJsonConfig()
+                .setFormattedOutput(true)
+                .setIncludeRoot(false)
+                .setMarshalEmptyCollections(true)
+                .marshallerProperty(MarshallerProperties.JSON_REDUCE_ANY_ARRAYS, false)
+                .resolver();
+    }
 }
