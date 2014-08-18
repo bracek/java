@@ -26,8 +26,8 @@ import java.util.List;
  */
 
 @Named("cardsBean")
-@SessionScoped
-//@ViewScoped
+//@SessionScoped
+@ViewScoped
 @ManagedBean(name = "cardsBean")
 public class CardsBeean implements Serializable {
 
@@ -49,6 +49,10 @@ public class CardsBeean implements Serializable {
         if (newValue != null && !newValue.equals(oldValue)) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
             FacesContext.getCurrentInstance().addMessage(null, msg);
+
+            final Card card = getEntityList().get(event.getRowIndex());
+            entityService.updateCard(card);
+
         }
     }
 
