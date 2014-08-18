@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.mm.jtemplate</groupId>
-		<artifactId>jtemplate</artifactId>
-		<version>0.1-SNAPSHOT</version>
-	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.mm.jtemplate</groupId>
+        <artifactId>jtemplate</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
 
-	<artifactId>jtemplate-web</artifactId>
-	<name>Webapp Module Project</name>
-	<packaging>war</packaging>
+    <artifactId>jtemplate-web</artifactId>
+    <name>Webapp Module Project</name>
+    <packaging>war</packaging>
 
-	<repositories>
-		<repository>
-			<id>prime-repo</id>
-			<name>PrimeFaces Maven Repository</name>
-			<url>http://repository.primefaces.org</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <id>prime-repo</id>
+            <name>PrimeFaces Maven Repository</name>
+            <url>http://repository.primefaces.org</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.mm.jtemplate</groupId>
-			<artifactId>jtemplate-module</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mm.jtemplate</groupId>
-			<artifactId>jtemplate-persist</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>com.mm.jtemplate</groupId>
+            <artifactId>jtemplate-module</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mm.jtemplate</groupId>
+            <artifactId>jtemplate-persist</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
 
-		<!-- JSF dependencies -->
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.2.5</version>
-		</dependency>
+        <!-- JSF dependencies -->
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.2.5</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>2.2.5</version>
-		</dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.2.5</version>
+        </dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
 
-		<!-- Primefaces dependency -->
-		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>4.0</version>
-		</dependency>
-	</dependencies>
+        <!-- Primefaces dependency -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>5.0</version>
+        </dependency>
+    </dependencies>
 </project>

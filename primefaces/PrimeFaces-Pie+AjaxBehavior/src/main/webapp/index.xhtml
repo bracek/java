@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<script name="jquery/jquery.js" library="primefaces"></script>
+	</h:head>	
+	<f:view>
+		<h:form prependId="false">
+			<h1>JavaBeat Primefaces Example</h1>
+			<h2>Primefaces - Pie Chart + Ajax Behavior </h2>
+			<h:panelGrid columns="2">
+				<h:outputText value="Enter Full Name:"/>
+				<p:inputText value="#{registerationBean.user.fullName}"/>
+				<h:outputText value="Enter Age:"/>
+				<p:inputText value="#{registerationBean.user.age}"/>
+				<h:outputText value="Enter Status [Example A, B, C or D]:"/>
+				<p:inputText value="#{registerationBean.user.status}"/>
+				<h:outputText value="Enter Address"/>
+				<p:inputText value="#{registerationBean.user.address.addressValue}"/>																
+			</h:panelGrid>
+			<h:panelGrid columns="1">
+				<p:pieChart value="#{registerationBean.model}" legendPosition="w">
+					<p:ajax event="itemSelect" listener="#{registerationBean.listener}" process="@this" update="dataTable"></p:ajax>
+				</p:pieChart>
+			</h:panelGrid>
+			<h:commandButton value="Save User" action="#{registerationBean.saveUser}"/>
+			<br/>
+			<br/>
+			<br/>
+			<p:dataTable id="dataTable" value="#{registerationBean.selectedUsers}" var="user" border="1">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Name"/>
+					</f:facet>
+					<h:outputText value="#{user.fullName}"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Status"/>
+					</f:facet>
+					<h:outputText value="#{user.status}"/>
+				</p:column>				
+			</p:dataTable>
+		</h:form>		 						
+	</f:view>
+</html>
