@@ -1,0 +1,7 @@
+<p:column>
+            <f:facet name="Remove">
+            <h:outputText value=""/>
+            </f:facet>
+            <p:commandButton icon="ui-icon-close" title="remove from card"
+            actionListener="#{cardsBean.removeItem(entity)}" update="entities"/>
+            </p:column>
