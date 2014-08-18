@@ -9,7 +9,7 @@
     <p:messages></p:messages>
 
     <h:form id="form">
-        <p:growl id="msgs" showDetail="true"/>
+        <p:growl id="msgs" showDetail="false"/>
 
         <table>
             <tr>
@@ -72,8 +72,6 @@
 
         Elements:
         <p:dataTable id="entities" var="entity" value="#{cardsBean.entityList}" editable="true" editMode="cell"
-                     widgetVar="cellCars"
-                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
                      paginator="true" rows="10" style="margin-bottom:20px">
 
             <p:ajax event="cellEdit" listener="#{cardsBean.onCellEdit}" update=":form:msgs"/>
@@ -101,17 +99,13 @@
                 </p:cellEditor>
             </p:column>
 
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value=""/>
-                </f:facet>
-                <p:commandButton icon="ui-icon-close" title="remove from card"
-                                 actionListener="#{cardsBean.removeItem(entity)}" update="entities"/>
-            </p:column>
+            <!--remove part is missing-->
+
+
         </p:dataTable>
 
 
-        <p:chart type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
+        <p:chart id="chart" type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
     </h:form>
 </h:body>
 </html>
