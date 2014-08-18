@@ -7,7 +7,10 @@
 </h:head>
 <h:body>
     <p:messages></p:messages>
-    <h:form>
+
+    <h:form id="form">
+        <p:growl id="msgs" showDetail="true"/>
+
         <table>
             <tr>
                 <td>
@@ -66,42 +69,55 @@
                 </td>
             </tr>
         </table>
+    </h:form>
 
-
-        Elements:
-        <p:dataTable id="entities" var="entity" value="#{cardsBean.entityList}"
+    Elements:
+    <h:form>
+        <p:dataTable id="entities" var="entity" value="#{cardsBean.entityList}" editable="true" editMode="cell"
+                     widgetVar="cellCars"
                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
                      paginator="true" rows="10" style="margin-bottom:20px">
+
+            <p:growl id="cardMsgs" showDetail="true"/>
+
+            <!--<p:ajax event="cellEdit" listener="#{cardsBean.onCellEdit}" update=":entities:cardMsgs"/>-->
+            <p:ajax event="cellEdit" listener="#{cardsBean.onCellEdit}" update="entities"/>
+
             <p:column>
                 <f:facet name="header">
                     <h:outputText value="ID"/>
                 </f:facet>
                 <h:outputText value="#{entity.id}"/>
             </p:column>
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Slsp"/>
-                </f:facet>
-                <h:outputText value="#{entity.slsp}"/>
+
+            <p:column headerText="Slsp">
+                <p:cellEditor>
+                    <f:facet name="output"><h:outputText value="#{entity.slsp}"/></f:facet>
+                    <f:facet name="input"><p:inputText value="#{entity.slsp}" style="width:96%"
+                                                       label="Slsp"/></f:facet>
+                </p:cellEditor>
             </p:column>
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Autokarta"/>
-                </f:facet>
-                <h:outputText value="#{entity.autokarta}"/>
+
+            <p:column headerText="Autokarta">
+                <p:cellEditor>
+                    <f:facet name="output"><h:outputText value="#{entity.autokarta}"/></f:facet>
+                    <f:facet name="input"><p:inputText value="#{entity.autokarta}" style="width:96%"
+                                                       label="Autokarta"/></f:facet>
+                </p:cellEditor>
             </p:column>
 
             <p:column>
                 <f:facet name="header">
                     <h:outputText value=""/>
                 </f:facet>
-                <p:commandButton icon="ui-icon-close" title="remove from cart"
+                <p:commandButton icon="ui-icon-close" title="remove from card"
                                  actionListener="#{cardsBean.removeItem(entity)}" update="entities"/>
             </p:column>
         </p:dataTable>
-
-        <p:chart type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
-
     </h:form>
+
+    <p:chart type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
+
+
 </h:body>
 </html>

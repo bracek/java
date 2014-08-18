@@ -2,14 +2,16 @@ package com.mm.web.bbean;
 
 import com.mm.model.domain.Card;
 import com.mm.module.one.ICardService;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.chart.*;
-import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -18,15 +20,16 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Entity Backed Bean
+ * Card Backed Bean
  *
  * @author Miroslav Katrak
  * @version 1.0.0
  */
 
 @Named("cardsBean")
-//@Scope("session")
 @SessionScoped
+//@ViewScoped
+@ManagedBean(name = "cardsBean")
 public class CardsBeean implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,6 +42,16 @@ public class CardsBeean implements Serializable {
     private float slsp;
     private float autokarta;
     private List<Card> entityList = new ArrayList<Card>();
+
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
+        if (newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
 
     public LineChartModel getChartModel() {
         final LineChartModel lineModel = new LineChartModel();
