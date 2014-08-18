@@ -69,10 +69,8 @@
                 </td>
             </tr>
         </table>
-    </h:form>
 
-    Elements:
-    <h:form>
+        Elements:
         <p:dataTable id="entities" var="entity" value="#{cardsBean.entityList}" editable="true" editMode="cell"
                      widgetVar="cellCars"
                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
@@ -114,10 +112,8 @@
                                  actionListener="#{cardsBean.removeItem(entity)}" update="entities"/>
             </p:column>
         </p:dataTable>
+
+        <p:chart type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
     </h:form>
-
-    <p:chart type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
-
-
 </h:body>
 </html>
