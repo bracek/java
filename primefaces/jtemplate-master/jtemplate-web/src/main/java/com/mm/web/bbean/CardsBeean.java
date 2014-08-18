@@ -32,9 +32,8 @@ public class CardsBeean implements Serializable {
     private ICardService entityService;
 
     private int id;
-    private String attribute;
-    private String slsp;
-    private String autokarta;
+    private float slsp;
+    private float autokarta;
     private List<Card> entityList;
 
 
@@ -51,13 +50,13 @@ public class CardsBeean implements Serializable {
             e.printStackTrace();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "D'oh!", "Message: "));
         }
-
     }
 
 
     public void reset() {
         this.setId(0);
-        this.setAttribute("");
+        this.setAutokarta(0);
+        this.setSlsp(0);
     }
 
     public List<Card> getEntityList() {
@@ -66,17 +65,6 @@ public class CardsBeean implements Serializable {
         return entityList;
     }
 
-//    public IEntityService getEntityService() {
-//        return entityService;
-//    }
-//
-//    public void setEntityService(IEntityService entityService) {
-//        this.entityService = entityService;
-//    }
-
-//    public void setEntityList(List<Entity> entityList) {
-//        this.entityList = entityList;
-//    }
 
     public ICardService getEntityService() {
         return entityService;
@@ -90,35 +78,27 @@ public class CardsBeean implements Serializable {
         this.id = id;
     }
 
-    public String getAttribute() {
-        return attribute;
-    }
-
-    public void setAttribute(String attribute) {
-        this.attribute = attribute;
-    }
-
     public void setEntityService(ICardService entityService) {
         this.entityService = entityService;
     }
 
-    public String getSlsp() {
+    public void setEntityList(List<Card> entityList) {
+        this.entityList = entityList;
+    }
+
+    public float getSlsp() {
         return slsp;
     }
 
-    public void setSlsp(String slsp) {
+    public void setSlsp(float slsp) {
         this.slsp = slsp;
     }
 
-    public String getAutokarta() {
+    public float getAutokarta() {
         return autokarta;
     }
 
-    public void setAutokarta(String autokarta) {
+    public void setAutokarta(float autokarta) {
         this.autokarta = autokarta;
-    }
-
-    public void setEntityList(List<Card> entityList) {
-        this.entityList = entityList;
     }
 }

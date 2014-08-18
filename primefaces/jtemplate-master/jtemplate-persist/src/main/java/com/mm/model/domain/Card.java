@@ -12,17 +12,29 @@ public class Card {
     @Column(name = "id")
     private int id;
     @Column(name = "slsp")
-    private String slsp;
+    private float slsp;
 
     @Column(name = "autokarta")
-    private String autokarta;
+    private float autokarta;
 
 
     public Card() {
     }
 
-    public Card(String slsp) {
+    public float getSlsp() {
+        return slsp;
+    }
+
+    public void setSlsp(float slsp) {
         this.slsp = slsp;
+    }
+
+    public float getAutokarta() {
+        return autokarta;
+    }
+
+    public void setAutokarta(float autokarta) {
+        this.autokarta = autokarta;
     }
 
     public int getId() {
@@ -32,21 +44,4 @@ public class Card {
     public void setId(int id) {
         this.id = id;
     }
-
-    public String getSlsp() {
-        return slsp;
-    }
-
-    public void setSlsp(String slsp) {
-        this.slsp = slsp;
-    }
-
-    public String getAutokarta() {
-        return autokarta;
-    }
-
-    public void setAutokarta(String autokarta) {
-        this.autokarta = autokarta;
-    }
-
 }

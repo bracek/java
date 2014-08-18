@@ -5,7 +5,7 @@ CREATE TABLE ENTITY (
 );
 CREATE TABLE CARD (
    id int(10) NOT NULL AUTO_INCREMENT,
-   slsp int(45) NOT NULL,
-   autokarta int(45) NOT NULL,
+   slsp float(45) NOT NULL,
+   autokarta float(45) NOT NULL,
    PRIMARY KEY (`id`)
 );
