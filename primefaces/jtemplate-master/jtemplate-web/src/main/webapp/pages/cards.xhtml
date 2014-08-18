@@ -76,10 +76,7 @@
                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
                      paginator="true" rows="10" style="margin-bottom:20px">
 
-            <p:growl id="cardMsgs" showDetail="true"/>
-
-            <!--<p:ajax event="cellEdit" listener="#{cardsBean.onCellEdit}" update=":entities:cardMsgs"/>-->
-            <p:ajax event="cellEdit" listener="#{cardsBean.onCellEdit}" update="entities"/>
+            <p:ajax event="cellEdit" listener="#{cardsBean.onCellEdit}" update=":form:msgs"/>
 
             <p:column>
                 <f:facet name="header">
@@ -112,6 +109,7 @@
                                  actionListener="#{cardsBean.removeItem(entity)}" update="entities"/>
             </p:column>
         </p:dataTable>
+
 
         <p:chart type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
     </h:form>
