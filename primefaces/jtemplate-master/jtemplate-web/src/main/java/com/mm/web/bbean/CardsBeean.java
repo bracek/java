@@ -12,9 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Entity Backed Bean
@@ -70,26 +68,37 @@ public class CardsBeean implements Serializable {
     public LineChartModel getChartModel() {
         LineChartModel lineModel = new LineChartModel();
 
-        LineChartSeries boys = new LineChartSeries();
-        boys.setFill(true);
-        boys.setLabel("Boys");
-        boys.set("2004", 120);
-        boys.set("2005", 100);
-        boys.set("2006", 44);
-        boys.set("2007", 150);
-        boys.set("2008", 25);
+        LineChartSeries slsp = new LineChartSeries();
+        slsp.setFill(true);
+        slsp.setLabel("Slsp");
+//        slsp.set("2004", 120);
+//        slsp.set("2005", 100);
+//        slsp.set("2006", 44);
+//        slsp.set("2007", 150);
+//        slsp.set("2008", 25);
+        LineChartSeries autokarta = new LineChartSeries();
+        autokarta.setFill(true);
+        autokarta.setLabel("Autokarta");
 
-        LineChartSeries girls = new LineChartSeries();
-        girls.setFill(true);
-        girls.setLabel("Girls");
-        girls.set("2004", 52);
-        girls.set("2005", 60);
-        girls.set("2006", 110);
-        girls.set("2007", 90);
-        girls.set("2008", 120);
+        final List<Card> slspList = getEntityList();
+        for (int i = 0; i < slspList.size(); i++) {
+            final Card card = slspList.get(i);
 
-        lineModel.addSeries(boys);
-        lineModel.addSeries(girls);
+            slsp.set(card.getId(), card.getSlsp());
+            autokarta.set(card.getId(), card.getAutokarta());
+
+
+        }
+
+//        autokarta.set("2004", 52);
+//        autokarta.set("2005", 60);
+//        autokarta.set("2006", 110);
+//        autokarta.set("2007", 90);
+//        autokarta.set("2008", 120);
+
+
+        lineModel.addSeries(slsp);
+        lineModel.addSeries(autokarta);
 
         lineModel.setTitle("Area Chart");
         lineModel.setLegendPosition("ne");
