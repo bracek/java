@@ -72,6 +72,8 @@
 
         Elements:
         <p:dataTable id="entities" var="entity" value="#{cardsBean.entityList}" editable="true" editMode="cell"
+                     widgetVar="cellCars"
+                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
                      paginator="true" rows="10" style="margin-bottom:20px">
 
             <p:ajax event="cellEdit" listener="#{cardsBean.onCellEdit}" update=":form:msgs"/>
