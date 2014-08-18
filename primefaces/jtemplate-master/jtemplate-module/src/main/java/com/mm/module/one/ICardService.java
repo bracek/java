@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Card Service Interface
  *
- * @author Mirosav Katrak
+ * @author Miro Katrak
  * @version 1.0.0
  */
 

@@ -3,6 +3,7 @@ package com.mm.model.domain;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 @javax.persistence.Entity(name = "Card")
 public class Card {
@@ -16,6 +17,9 @@ public class Card {
 
     @Column(name = "autokarta")
     private float autokarta;
+
+    @Column(name = "date")
+    private Date date;
 
 
     public Card() {
@@ -43,5 +47,13 @@ public class Card {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

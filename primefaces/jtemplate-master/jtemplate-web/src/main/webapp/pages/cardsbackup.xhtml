@@ -37,7 +37,7 @@
             </tr>
             <tr>
                 <td>
-                    <h:outputLabel for="autokarta" value="Autokarta: "/>
+                    <h:outputLabel for="slsp" value="Slsp: "/>
                 </td>
                 <td>
                     <p:inputText id="autokarta"
@@ -49,10 +49,11 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <p:calendar id="inline" value="#{cardsBean.date}" mode="inline"/>
+                <td>
+                    <p:calendar id="inline" value="#{cardsBean.date}" mode="inline" />
                 </td>
             </tr>
+
 
 
             <tr>
@@ -67,11 +68,10 @@
             </tr>
         </table>
 
-
         Elements:
+
         <p:dataTable id="entities" var="entity" value="#{cardsBean.entityList}"
-                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-                     paginator="true" rows="10" style="margin-bottom:20px">
+                     style="width: 10%">
             <p:column>
                 <f:facet name="header">
                     <h:outputText value="ID"/>
@@ -90,18 +90,14 @@
                 </f:facet>
                 <h:outputText value="#{entity.autokarta}"/>
             </p:column>
-
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value=""/>
-                </f:facet>
-                <p:commandButton icon="ui-icon-close" title="remove from cart"
-                                 actionListener="#{cardsBean.removeItem(entity)}" update="entities"/>
-            </p:column>
         </p:dataTable>
-
-        <p:chart type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
-
     </h:form>
+
+    <!--<p:lineChart title="Sales" value="#{cardsBean.chartModel}" legendPosition="w"-->
+                 <!--id="salesChart" style="width:350px;height:300px"/>-->
+
+    <p:chart type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
+
+
 </h:body>
 </html>

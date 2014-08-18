@@ -20,16 +20,16 @@ import java.util.List;
 public class CardService implements ICardService {
 
     @Inject
-    ICardDAO CardDAO;
+    ICardDAO cardDAO;
 
     @Transactional(readOnly = false)
-    public void addCard(Card Card) {
-        getCardDAO().addCard(Card);
+    public void addCard(Card card) {
+        getCardDAO().addCard(card);
     }
 
     @Transactional(readOnly = false)
-    public void deleteCard(Card Card) {
-        getCardDAO().deleteCard(Card);
+    public void deleteCard(Card card) {
+        getCardDAO().deleteCard(card);
     }
 
     @Transactional(readOnly = false)
@@ -46,10 +46,10 @@ public class CardService implements ICardService {
     }
 
     public ICardDAO getCardDAO() {
-        return CardDAO;
+        return cardDAO;
     }
 
     public void setCardDAO(ICardDAO CardDAO) {
-        this.CardDAO = CardDAO;
+        this.cardDAO = CardDAO;
     }
 }

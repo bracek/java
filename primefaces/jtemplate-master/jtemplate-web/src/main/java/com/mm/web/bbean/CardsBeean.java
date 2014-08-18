@@ -7,11 +7,14 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,7 +25,8 @@ import java.util.List;
  */
 
 @Named("cardsBean")
-@Scope("session")
+//@Scope("session")
+@SessionScoped
 public class CardsBeean implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,95 +35,56 @@ public class CardsBeean implements Serializable {
     private ICardService entityService;
 
     private int id;
+    private Date date;
     private float slsp;
     private float autokarta;
-    private List<Card> entityList;
-
-
-    //    public ChartModel getPieModel() {
-//    LineChartModel chartModel = new LineChartModel();
-//
-//        Map<String, Number> data = new HashMap<String, Number>();
-//        List<Card> entityList1 = getEntityList();
-//        for (int i = 0; i < entityList1.size(); i++) {
-//            Card card = entityList1.get(i);
-//            String key = String.valueOf(card.getId());
-//            data.put(key, card.getAutokarta());
-//        }
-//        chartModel.setData(data);
-//
-//        return chartModel;
-//    }
-//    public PieChartModel getPieModel() {
-//        PieChartModel pieModel = new PieChartModel();
-//
-//        Map<String, Number> data = new HashMap<String, Number>();
-//        List<Card> entityList1 = getEntityList();
-//        for (int i = 0; i < entityList1.size(); i++) {
-//            Card card = entityList1.get(i);
-//            String key = String.valueOf(card.getId());
-//            data.put(key, card.getAutokarta());
-//        }
-//        pieModel.setData(data);
-//
-//        return pieModel;
-//    }
+    private List<Card> entityList = new ArrayList<Card>();
 
     public LineChartModel getChartModel() {
-        LineChartModel lineModel = new LineChartModel();
+        final LineChartModel lineModel = new LineChartModel();
 
-        LineChartSeries slsp = new LineChartSeries();
+        final LineChartSeries slsp = new LineChartSeries();
         slsp.setFill(true);
-        slsp.setLabel("Slsp");
-//        slsp.set("2004", 120);
-//        slsp.set("2005", 100);
-//        slsp.set("2006", 44);
-//        slsp.set("2007", 150);
-//        slsp.set("2008", 25);
-        LineChartSeries autokarta = new LineChartSeries();
+        slsp.setLabel("SLSP");
+        final LineChartSeries autokarta = new LineChartSeries();
         autokarta.setFill(true);
-        autokarta.setLabel("Autokarta");
+        autokarta.setLabel("AUTOKARTA");
 
         final List<Card> slspList = getEntityList();
         for (int i = 0; i < slspList.size(); i++) {
             final Card card = slspList.get(i);
-
-            slsp.set(card.getId(), card.getSlsp());
-            autokarta.set(card.getId(), card.getAutokarta());
-
-
+            final String key = card.getDate().toString();
+            slsp.set(key, card.getSlsp());
+            autokarta.set(key, card.getAutokarta());
         }
-
-//        autokarta.set("2004", 52);
-//        autokarta.set("2005", 60);
-//        autokarta.set("2006", 110);
-//        autokarta.set("2007", 90);
-//        autokarta.set("2008", 120);
-
 
         lineModel.addSeries(slsp);
         lineModel.addSeries(autokarta);
-
-        lineModel.setTitle("Area Chart");
+        lineModel.setTitle("Card  Chart");
         lineModel.setLegendPosition("ne");
         lineModel.setStacked(true);
         lineModel.setShowPointLabels(true);
 
-        Axis xAxis = new CategoryAxis("Years");
+        final Axis xAxis = new CategoryAxis("Date");
         lineModel.getAxes().put(AxisType.X, xAxis);
         Axis yAxis = lineModel.getAxis(AxisType.Y);
-        yAxis.setLabel("Births");
+        yAxis.setLabel("Amount");
         yAxis.setMin(0);
-        yAxis.setMax(300);
-
+        yAxis.setMax(25);
         return lineModel;
+    }
+
+    public void removeItem(Card card) {
+        entityService.deleteCard(card);
+        entityList.remove(card);
     }
 
 
     public void addEntity() {
         try {
-            Card entity = new Card();
+            final Card entity = new Card();
             entity.setId(getId());
+            entity.setDate(getDate());
             entity.setAutokarta(getAutokarta());
             entity.setSlsp(getSlsp());
             getEntityService().addCard(entity);
@@ -139,11 +104,10 @@ public class CardsBeean implements Serializable {
     }
 
     public List<Card> getEntityList() {
-        entityList = new ArrayList<Card>();
+        entityList.clear();
         entityList.addAll(getEntityService().getCards());
         return entityList;
     }
-
 
     public ICardService getEntityService() {
         return entityService;
@@ -179,5 +143,13 @@ public class CardsBeean implements Serializable {
 
     public void setAutokarta(float autokarta) {
         this.autokarta = autokarta;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
