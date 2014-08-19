@@ -4,6 +4,7 @@ import com.mm.model.domain.Card;
 import com.mm.module.one.ICardService;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.model.chart.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 
 import javax.faces.application.FacesMessage;
@@ -26,7 +27,7 @@ import java.util.List;
  */
 
 @Named("cardsBean")
-@SessionScoped
+@Scope("session")
 @ManagedBean(name = "cardsBean")
 public class CardsBeean implements Serializable {
 

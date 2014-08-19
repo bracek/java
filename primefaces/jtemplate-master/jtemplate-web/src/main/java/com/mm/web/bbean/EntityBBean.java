@@ -1,19 +1,19 @@
 package com.mm.web.bbean;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import com.mm.model.domain.Card;
+import com.mm.model.domain.Entity;
+import com.mm.module.one.IEntityService;
+import org.primefaces.event.CellEditEvent;
+import org.springframework.context.annotation.Scope;
+import org.springframework.dao.DataAccessException;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.springframework.context.annotation.Scope;
-import org.springframework.dao.DataAccessException;
-
-import com.mm.model.domain.Entity;
-import com.mm.module.one.IEntityService;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -36,6 +36,20 @@ public class EntityBBean implements Serializable {
 	private int id;
 	private String attribute;
 	private List<Entity> entityList;
+
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
+        if (newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+
+//            final Card card = getEntityList().get(event.getRowIndex());
+//            entityService.updateCard(card);
+
+        }
+    }
 
 
 	public void addEntity() {

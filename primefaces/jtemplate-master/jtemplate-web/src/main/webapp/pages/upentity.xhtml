@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Welcome to JTemplate</title>
+</h:head>
+<h:body>
+    <!--<p:messages></p:messages>-->
+    <h:form id="form">
+
+        <p:growl id="msgs" showDetail="false"/>
+        <table>
+            <tr>
+                <td><h:outputLabel for="id" value="Id : "/></td>
+                <td><p:inputText id="id" value="#{entityBBean.id}"
+                                 disabled="true">
+                    <f:converter converterId="javax.faces.Integer"/>
+                    <p:ajax event="blur" update="idMsg"/>
+                </p:inputText> <p:message id="idMsg" for="id" display="icon"/></td>
+            </tr>
+            <tr>
+                <td><h:outputLabel for="attribute" value="Attribute : "/></td>
+                <td><p:inputText id="attribute"
+                                 value="#{entityBBean.attribute}">
+                    <f:validateLength minimum="5"/>
+                    <p:ajax event="blur" update="attributeMsg"/>
+                </p:inputText> <p:message id="attributeMsg" for="attribute" display="icon"/></td>
+            </tr>
+            <tr>
+                <td><p:commandButton id="addUser" value="Add"
+                                     actionListener="#{entityBBean.addEntity}" ajax="false"/></td>
+                <td><p:commandButton id="reset" value="Reset"
+                                     actionListener="#{entityBBean.reset}" ajax="false"/></td>
+            </tr>
+        </table>
+
+        Elements:
+
+        <p:dataTable id="entities" var="entity" value="#{entityBBean.entityList}"
+                     editable="true" editMode="cell"
+                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                     paginator="true" rows="5" style="margin-bottom:10%">
+
+            <p:ajax event="cellEdit" listener="#{entityBBean.onCellEdit}" update=":form:msgs"/>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="ID"/>
+                </f:facet>
+                <h:outputText value="#{entity.id}"/>
+            </p:column>
+            <!--<p:column>-->
+            <!--<f:facet name="header">-->
+            <!--<h:outputText value="Name"/>-->
+            <!--</f:facet>-->
+            <!--<h:outputText value="#{entity.attribute}"/>-->
+            <!--</p:column>-->
+
+            <p:column headerText="attribute">
+                <p:cellEditor>
+                    <f:facet name="output"><h:outputText value="#{entity.attribute}"/></f:facet>
+                    <f:facet name="input"><p:inputText value="#{entity.attribute}" style="width:96%"
+                                                       label="attribute"/></f:facet>
+                </p:cellEditor>
+            </p:column>
+
+        </p:dataTable>
+    </h:form>
+
+</h:body>
+</html>
