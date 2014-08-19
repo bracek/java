@@ -1,14 +1,22 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Welcome to JTemplate</title>
+</h:head>
+
+<h:body>
 
     <p:tabMenu id="tabs" activeIndex="0">
-        <p:menuitem value="Add card" url="/pages/cards.xhtml" icon="ui-icon-star"/>
         <p:menuitem value="List of cards" url="/pages/cards.xhtml" icon="ui-icon-search"/>
-        <p:menuitem value="List of entities" url="/pages/entity.xhtml" icon="ui-icon-document"/>
+        <p:menuitem value="Add card" url="/pages/entity.xhtml" icon="ui-icon-document"/>
+        <p:menuitem value="Delete card" url="/pages/entity.xhtml" icon="ui-icon-document"/>
 
-        <p:menuitem value="List of entities 1" url="/pages/entity.xhtml" icon="ui-icon-wrench"/>
-        <p:menuitem value="List of entities 2" url="/pages/entity.xhtml" icon="ui-icon-person"/>
+        <p:menuitem value="List of entities" url="/pages/entity.xhtml" icon="ui-icon-star"/>
+        <p:menuitem value="Add card" url="/pages/entity.xhtml" icon="ui-icon-wrench"/>
+        <p:menuitem value="Add card" url="/pages/entity.xhtml" icon="ui-icon-person"/>
+
     </p:tabMenu>
 
-</ui:composition>
+</h:body>
+</html>
