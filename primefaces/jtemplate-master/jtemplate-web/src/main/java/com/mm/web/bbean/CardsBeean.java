@@ -7,11 +7,10 @@ import org.primefaces.model.chart.*;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -41,6 +40,66 @@ public class CardsBeean implements Serializable {
     private float slsp;
     private float autokarta;
     private List<Card> entityList = new ArrayList<Card>();
+    private LineChartModel lineModel = new LineChartModel();
+    private final LineChartSeries slspChartSeries = new LineChartSeries();
+    private final LineChartSeries autokartaChartSeries = new LineChartSeries();
+
+
+    @PostConstruct
+    public void init() {
+        createLineModels();
+        slspChartSeries.setFill(true);
+        slspChartSeries.setLabel("SLSP");
+
+        autokartaChartSeries.setFill(true);
+        autokartaChartSeries.setLabel("SLSP");
+
+
+        lineModel.setTitle("Card  Chart");
+        lineModel.setLegendPosition("ne");
+        lineModel.setStacked(true);
+        lineModel.setShowPointLabels(true);
+
+        final Axis xAxis = new CategoryAxis("Date");
+        lineModel.getAxes().put(AxisType.X, xAxis);
+        Axis yAxis = lineModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Amount");
+        yAxis.setMin(0);
+        yAxis.setMax(25);
+
+    }
+
+    public LineChartModel getLineModel() {
+        updateData(slspChartSeries, autokartaChartSeries);
+        return lineModel;
+    }
+
+    private void createLineModels() {
+        lineModel = initLinearModel();
+    }
+
+    private LineChartModel initLinearModel() {
+        final LineChartModel model = new LineChartModel();
+        updateData(slspChartSeries, autokartaChartSeries);
+        model.addSeries(slspChartSeries);
+        model.addSeries(autokartaChartSeries);
+        return model;
+    }
+
+    private void updateData(LineChartSeries slsp, LineChartSeries autokarta) {
+
+        autokarta.getData().clear();
+        slsp.getData().clear();
+
+        final List<Card> slspList = getEntityList();
+        for (int i = 0; i < slspList.size(); i++) {
+            final Card card = slspList.get(i);
+            final String key = card.getDate().toString();
+            slsp.set(key, card.getSlsp());
+            autokarta.set(key, card.getAutokarta());
+        }
+    }
+
 
     public void onCellEdit(CellEditEvent event) {
         Object oldValue = event.getOldValue();
@@ -56,39 +115,39 @@ public class CardsBeean implements Serializable {
         }
     }
 
-    public LineChartModel getChartModel() {
-        final LineChartModel lineModel = new LineChartModel();
-
-        final LineChartSeries slsp = new LineChartSeries();
-        slsp.setFill(true);
-        slsp.setLabel("SLSP");
-        final LineChartSeries autokarta = new LineChartSeries();
-        autokarta.setFill(true);
-        autokarta.setLabel("AUTOKARTA");
-
-        final List<Card> slspList = getEntityList();
-        for (int i = 0; i < slspList.size(); i++) {
-            final Card card = slspList.get(i);
-            final String key = card.getDate().toString();
-            slsp.set(key, card.getSlsp());
-            autokarta.set(key, card.getAutokarta());
-        }
-
-        lineModel.addSeries(slsp);
-        lineModel.addSeries(autokarta);
-        lineModel.setTitle("Card  Chart");
-        lineModel.setLegendPosition("ne");
-        lineModel.setStacked(true);
-        lineModel.setShowPointLabels(true);
-
-        final Axis xAxis = new CategoryAxis("Date");
-        lineModel.getAxes().put(AxisType.X, xAxis);
-        Axis yAxis = lineModel.getAxis(AxisType.Y);
-        yAxis.setLabel("Amount");
-        yAxis.setMin(0);
-        yAxis.setMax(25);
-        return lineModel;
-    }
+//    public LineChartModel getChartModel() {
+//        final LineChartModel lineModel = new LineChartModel();
+//
+//        final LineChartSeries slsp = new LineChartSeries();
+//        slsp.setFill(true);
+//        slsp.setLabel("SLSP");
+//        final LineChartSeries autokarta = new LineChartSeries();
+//        autokarta.setFill(true);
+//        autokarta.setLabel("AUTOKARTA");
+//
+//        final List<Card> slspList = getEntityList();
+//        for (int i = 0; i < slspList.size(); i++) {
+//            final Card card = slspList.get(i);
+//            final String key = card.getDate().toString();
+//            slsp.set(key, card.getSlsp());
+//            autokarta.set(key, card.getAutokarta());
+//        }
+//
+//        lineModel.addSeries(slsp);
+//        lineModel.addSeries(autokarta);
+//        lineModel.setTitle("Card  Chart");
+//        lineModel.setLegendPosition("ne");
+//        lineModel.setStacked(true);
+//        lineModel.setShowPointLabels(true);
+//
+//        final Axis xAxis = new CategoryAxis("Date");
+//        lineModel.getAxes().put(AxisType.X, xAxis);
+//        Axis yAxis = lineModel.getAxis(AxisType.Y);
+//        yAxis.setLabel("Amount");
+//        yAxis.setMin(0);
+//        yAxis.setMax(25);
+//        return lineModel;
+//    }
 
     public void removeItem(Card card) {
         entityService.deleteCard(card);
