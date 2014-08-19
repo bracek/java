@@ -47,7 +47,7 @@
             <tr>
                 <td colspan="2">
                     <p:commandButton id="addUser" value="Add"
-                                     actionListener="#{cardsBean.addEntity}" ajax="false"/>
+                                     actionListener="#{cardsBean.addCard}" ajax="false"/>
                 </td>
                 <td colspan="2">
                     <p:commandButton id="reset" value="Reset"
@@ -86,11 +86,18 @@
             </p:column>
 
             <!--remove part is missing-->
+            <p:column>
+                <f:facet name="Remove">
+                    <h:outputText value=""/>
+                </f:facet>
+                <p:commandButton icon="ui-icon-close" title="remove from card"
+                                 actionListener="#{cardsBean.removeItem(entity)}" update="entities,:form:cardChart"/>
+            </p:column>
 
         </p:dataTable>
 
 
-        <p:chart id="chart" type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
+        <p:chart id="cardChart" type="line" model="#{cardsBean.chartModel}" style="height:300px"/>
     </h:form>
 </h:body>
 </html>

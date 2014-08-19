@@ -26,8 +26,7 @@ import java.util.List;
  */
 
 @Named("cardsBean")
-//@SessionScoped
-@ViewScoped
+@SessionScoped
 @ManagedBean(name = "cardsBean")
 public class CardsBeean implements Serializable {
 
@@ -96,11 +95,14 @@ public class CardsBeean implements Serializable {
     }
 
 
-    public void addEntity() {
+    public void addCard() {
         try {
             final Card entity = new Card();
             entity.setId(getId());
             entity.setDate(getDate());
+            if (getDate() == null)
+                entity.setDate(new Date());
+
             entity.setAutokarta(getAutokarta());
             entity.setSlsp(getSlsp());
             getEntityService().addCard(entity);
