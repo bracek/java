@@ -147,8 +147,12 @@ public class CardsBeean implements Serializable {
         return lineModel;
     }
 
+    /**
+     * data are already updated in line model
+     * @return
+     */
     public BarChartModel getBarModel() {
-        updateData(slspChartSeries, autokartaChartSeries);
+//        updateData(slspChartSeries, autokartaChartSeries);
         return barModel;
     }
 
