@@ -41,41 +41,60 @@ public class CardsBeean implements Serializable {
     private float autokarta;
     private List<Card> entityList = new ArrayList<Card>();
     private LineChartModel lineModel = new LineChartModel();
-    private final LineChartSeries slspChartSeries = new LineChartSeries();
-    private final LineChartSeries autokartaChartSeries = new LineChartSeries();
+    private BarChartModel barModel = new BarChartModel();
+    private ChartSeries slspChartSeries;
+    private ChartSeries autokartaChartSeries;
+
 
 
     @PostConstruct
     public void init() {
+        slspChartSeries = new ChartSeries();
+        autokartaChartSeries = new ChartSeries();
+
         createLineModels();
-        slspChartSeries.setFill(true);
+        createBarModel();
+    }
+
+    private void createBarModel() {
+        barModel = initBarModel();
+
         slspChartSeries.setLabel("SLSP");
+        autokartaChartSeries.setLabel("AUTOKARTA");
 
-        autokartaChartSeries.setFill(true);
-        autokartaChartSeries.setLabel("SLSP");
+        barModel.setTitle("Bar Card Chart");
+        barModel.setLegendPosition("ne");
+
+        final Axis xAxis = barModel.getAxis(AxisType.X);
+        xAxis.setLabel("Date");
+
+        final Axis yAxis = barModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Amount");
+        yAxis.setMin(0);
+        yAxis.setMax(25);
+    }
 
 
-        lineModel.setTitle("Card  Chart");
+    private void createLineModels() {
+        lineModel = initLinearModel();
+
+//        slspChartSeries.setFill(true);
+        slspChartSeries.setLabel("SLSP");
+//        autokartaChartSeries.setFill(true);
+        autokartaChartSeries.setLabel("AUTOKARTA");
+
+        lineModel.setTitle("Line Card Chart");
         lineModel.setLegendPosition("ne");
         lineModel.setStacked(true);
         lineModel.setShowPointLabels(true);
 
         final Axis xAxis = new CategoryAxis("Date");
         lineModel.getAxes().put(AxisType.X, xAxis);
-        Axis yAxis = lineModel.getAxis(AxisType.Y);
+
+        final Axis yAxis = lineModel.getAxis(AxisType.Y);
         yAxis.setLabel("Amount");
         yAxis.setMin(0);
         yAxis.setMax(25);
-
-    }
-
-    public LineChartModel getLineModel() {
-        updateData(slspChartSeries, autokartaChartSeries);
-        return lineModel;
-    }
-
-    private void createLineModels() {
-        lineModel = initLinearModel();
     }
 
     private LineChartModel initLinearModel() {
@@ -86,17 +105,25 @@ public class CardsBeean implements Serializable {
         return model;
     }
 
-    private void updateData(LineChartSeries slsp, LineChartSeries autokarta) {
+    private BarChartModel initBarModel() {
+        final BarChartModel model = new BarChartModel();
+        //date were updated in linear model
+//        updateData(slspChartSeries, autokartaChartSeries);
+        model.addSeries(slspChartSeries);
+        model.addSeries(autokartaChartSeries);
+        return model;
+    }
 
-        autokarta.getData().clear();
-        slsp.getData().clear();
+
+    private void updateData(ChartSeries slspChartSeries, ChartSeries autokartaChartSeries) {
+        slspChartSeries.getData().clear();
+        autokartaChartSeries.getData().clear();
 
         final List<Card> slspList = getEntityList();
-        for (int i = 0; i < slspList.size(); i++) {
-            final Card card = slspList.get(i);
+        for (final Card card : slspList) {
             final String key = card.getDate().toString();
-            slsp.set(key, card.getSlsp());
-            autokarta.set(key, card.getAutokarta());
+            slspChartSeries.set(key, card.getSlsp());
+            autokartaChartSeries.set(key, card.getAutokarta());
         }
     }
 
@@ -115,45 +142,20 @@ public class CardsBeean implements Serializable {
         }
     }
 
-//    public LineChartModel getChartModel() {
-//        final LineChartModel lineModel = new LineChartModel();
-//
-//        final LineChartSeries slsp = new LineChartSeries();
-//        slsp.setFill(true);
-//        slsp.setLabel("SLSP");
-//        final LineChartSeries autokarta = new LineChartSeries();
-//        autokarta.setFill(true);
-//        autokarta.setLabel("AUTOKARTA");
-//
-//        final List<Card> slspList = getEntityList();
-//        for (int i = 0; i < slspList.size(); i++) {
-//            final Card card = slspList.get(i);
-//            final String key = card.getDate().toString();
-//            slsp.set(key, card.getSlsp());
-//            autokarta.set(key, card.getAutokarta());
-//        }
-//
-//        lineModel.addSeries(slsp);
-//        lineModel.addSeries(autokarta);
-//        lineModel.setTitle("Card  Chart");
-//        lineModel.setLegendPosition("ne");
-//        lineModel.setStacked(true);
-//        lineModel.setShowPointLabels(true);
-//
-//        final Axis xAxis = new CategoryAxis("Date");
-//        lineModel.getAxes().put(AxisType.X, xAxis);
-//        Axis yAxis = lineModel.getAxis(AxisType.Y);
-//        yAxis.setLabel("Amount");
-//        yAxis.setMin(0);
-//        yAxis.setMax(25);
-//        return lineModel;
-//    }
+    public LineChartModel getLineModel() {
+        updateData(slspChartSeries, autokartaChartSeries);
+        return lineModel;
+    }
+
+    public BarChartModel getBarModel() {
+        updateData(slspChartSeries, autokartaChartSeries);
+        return barModel;
+    }
 
     public void removeItem(Card card) {
         entityService.deleteCard(card);
         entityList.remove(card);
     }
-
 
     public void addCard() {
         try {
@@ -197,10 +199,6 @@ public class CardsBeean implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void setEntityService(ICardService entityService) {
-        this.entityService = entityService;
     }
 
     public void setEntityList(List<Card> entityList) {

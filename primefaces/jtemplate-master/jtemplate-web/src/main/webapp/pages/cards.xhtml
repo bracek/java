@@ -91,13 +91,16 @@
                     <h:outputText value=""/>
                 </f:facet>
                 <p:commandButton icon="ui-icon-close" title="remove from card"
-                                 actionListener="#{cardsBean.removeItem(entity)}" update="entities,:form:cardChart"/>
+                                 actionListener="#{cardsBean.removeItem(entity)}"
+                                 update="entities,:form:cardChart,:form:cardChart"/>
             </p:column>
 
         </p:dataTable>
 
 
         <p:chart id="cardChart" type="line" model="#{cardsBean.lineModel}" style="height:300px"/>
+        <p:chart id="barChart" type="bar" model="#{cardsBean.barModel}" style="height:300px"/>
+
     </h:form>
 </h:body>
 </html>
