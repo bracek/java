@@ -34,23 +34,6 @@ public class YoutubeListController {
 
     private static final Logger log = LoggerFactory.getLogger(YoutubeListController.class);
 
-
-    @Autowired
-    private View jsonView_i;
-
-
-    private static final org.apache.log4j.Logger logger_c = org.apache.log4j.Logger
-            .getLogger(YoutubeListController.class);
-
-
-    /**
-     * Define a global variable that identifies the name of a file that contains
-     * the developer's API key.
-     */
-    private static final String PROPERTIES_FILENAME = "youtube.properties";
-
-    private static final long NUMBER_OF_VIDEOS_RETURNED = 25;
-
     /**
      * Define a global instance of a Youtube object, which will be used to make
      * YouTube Data API requests.
@@ -65,22 +48,6 @@ public class YoutubeListController {
     @PostConstruct
     public void init() {
         log.debug("init called");
-    }
-
-
-    /**
-     * Gets all lenka youtube.
-     *
-     * @return the funds
-     */
-    @GET
-    @Path("list1")
-    @RequestMapping(value = "/list1", method = RequestMethod.GET)
-    public ModelAndView getYoutubeList() {
-
-        logger_c.debug("searching for lenka on youtube");
-        final SearchListResponse resultItems = new Search().searchListResponse("le");
-        return new ModelAndView(jsonView_i, resultItems);
     }
 
 
