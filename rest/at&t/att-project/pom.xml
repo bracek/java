@@ -15,6 +15,7 @@
 		<module>../att-webservice-jersey</module>
 		<module>../att-webservice-jackson</module>
 		<module>../att-webservice-jersey-jackson</module>
+		<module>../att-webservice-jersey-jackson-json</module>
 	</modules>
 
 	<properties>

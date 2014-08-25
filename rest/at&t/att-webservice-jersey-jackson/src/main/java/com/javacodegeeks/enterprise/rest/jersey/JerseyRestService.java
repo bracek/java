@@ -1,14 +1,11 @@
 package com.javacodegeeks.enterprise.rest.jersey;
 
-import com.google.api.services.samples.youtube.cmdline.data.Search;
-import com.google.api.services.youtube.model.SearchListResponse;
-
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -26,21 +23,21 @@ public class JerseyRestService {
 
     }
 
-    @GET
-    @Path("/list")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public SearchListResponse getYoutubeSearchList() {
-        final SearchListResponse resultItems = new Search().searchListResponse("lenka");
-        return resultItems;
-    }
-
-    @GET
-    @Path("/list1")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public java.util.List<com.google.api.services.youtube.model.SearchResult> getYoutubeSearchList1() {
-        final SearchListResponse resultItems = new Search().searchListResponse("lenka");
-        return resultItems.getItems();
-    }
+//    @GET
+//    @Path("/list")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public SearchListResponse getYoutubeSearchList() {
+//        final SearchListResponse resultItems = new Search().searchListResponse("lenka");
+//        return resultItems;
+//    }
+//
+//    @GET
+//    @Path("/list1")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public java.util.List<com.google.api.services.youtube.model.SearchResult> getYoutubeSearchList1() {
+//        final SearchListResponse resultItems = new Search().searchListResponse("lenka");
+//        return resultItems.getItems();
+//    }
 
 
     @POST
