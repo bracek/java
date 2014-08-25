@@ -23,6 +23,6 @@ public class ContextRefreshListener implements ApplicationListener<ContextRefres
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         log.debug("Context refreshed");
-//    pocDatabasePopulator.populateDatabase();
+        pocDatabasePopulator.populateDatabase();
     }
 }

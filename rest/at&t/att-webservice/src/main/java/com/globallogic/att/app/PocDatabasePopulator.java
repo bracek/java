@@ -37,8 +37,6 @@ public class PocDatabasePopulator {
         Merchant m8 = Merchant.newBuilder().title("Radio Shack").entity;
         Merchant m9 = Merchant.newBuilder().title("Perfumania").entity;
         Merchant m10 = Merchant.newBuilder().title("Marshalls").entity;
-        Merchant m11 = Merchant.newBuilder().title("Spider").entity;
-        Merchant m12 = Merchant.newBuilder().title("Burger King").entity;
 
 
         President p0 = President.newBuilder().name("title0", "Miro", "Katrak").entity;

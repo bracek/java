@@ -5,9 +5,21 @@
 
     <display-name>att-webservice</display-name>
 
+
+    <!-- Main configuration file for this Spring web application. -->
+    <!--<context-param>-->
+    <!--<param-name>contextConfigLocation</param-name>-->
+    <!--<param-value>-->
+    <!--/WEB-INF/config/rest-services-config.xml-->
+    <!--</param-value>-->
+    <!--</context-param>-->
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:att-webservice-ctx.xml</param-value>
+        <param-value>
+            classpath:att-webservice-ctx.xml,
+            WEB-INF/config/rest-services-config.xml
+        </param-value>
     </context-param>
 
     <listener>
@@ -27,8 +39,25 @@
         </init-param>
     </servlet>
 
+    <servlet>
+        <servlet-name>restservices</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value></param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
     <servlet-mapping>
         <servlet-name>WebServiceApp</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- This Servlet mapping means that this Servlet will handle all incoming-->
+    <servlet-mapping>
+        <servlet-name>restservices</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -10,3 +10,4 @@ target/
 .iml
 .project
 /springHibernate/geeks-contacts/geeeksContacts.iml
+*.xml~
