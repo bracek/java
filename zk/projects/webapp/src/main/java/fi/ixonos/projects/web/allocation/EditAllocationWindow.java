@@ -10,6 +10,7 @@ import fi.ixonos.projects.logic.context.ProjectsApplicationContext;
 import fi.ixonos.projects.logic.service.ProjectsService;
 import fi.ixonos.projects.logic.service.UsersService;
 import fi.ixonos.projects.web.projects.AddProjectWindow;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.springframework.security.context.SecurityContextHolder;
 import org.springframework.security.userdetails.User;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,13 +60,12 @@ import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 /**
- *
  * @author polakja
  */
 public class EditAllocationWindow extends Window {
 
-    private ProjectsService projectService = (final ProjectsService) ProjectsApplicationContext.getApplicationContext().getBean("projectsService");
-    private UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private ProjectsService projectService = (ProjectsService) ProjectsApplicationContext.getApplicationContext().getBean("projectsService");
+    private UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
     private Map<Panel, Projects> projectMap = new HashMap<Panel, Projects>();
     private Map<Panel, Combobox> availableMap = new HashMap<Panel, Combobox>();
     private Map<Panel, Listbox> allocatedMap = new HashMap<Panel, Listbox>();
@@ -77,7 +78,7 @@ public class EditAllocationWindow extends Window {
 
             @Override
             public void render(final Listitem item,
-final  Object data) throws Exception {
+                               final Object data) throws Exception {
                 item.setLabel(((Projects) data).getName());
                 item.setValue(data);
             }
@@ -154,17 +155,17 @@ final  Object data) throws Exception {
     }
 
     public void onSaveAllClicked(final Event e) throws Exception {
-        for(Map.Entry<Panel, Projects> entry : projectMap.entrySet()) {
+        for (Map.Entry<Panel, Projects> entry : projectMap.entrySet()) {
             Projects project = entry.getValue();
-            if(project.isDirty()) {
-                if(checkValues(project))
+            if (project.isDirty()) {
+                if (checkValues(project))
                     return;
             }
         }
 
-        for(Map.Entry<Panel, Projects> entry : projectMap.entrySet()) {
+        for (Map.Entry<Panel, Projects> entry : projectMap.entrySet()) {
             Projects project = entry.getValue();
-            if(project.isDirty()) {
+            if (project.isDirty()) {
                 projectService.update(project);
                 project = projectService.getProject(project.getProjectsId());
                 projectMap.put(entry.getKey(), project);
@@ -268,7 +269,7 @@ final  Object data) throws Exception {
 
             @Override
             public void render(final Listitem item,
-final  Object data) throws Exception {
+                               final Object data) throws Exception {
                 item.setDraggable("true");
                 Listcell imageCell = new Listcell();
                 Button removeButton = new Button("", "/img/minus-8.png");
@@ -299,7 +300,7 @@ final  Object data) throws Exception {
 
             @Override
             public void render(final Comboitem item,
-final  Object data) throws Exception {
+                               final Object data) throws Exception {
                 Users u = (Users) data;
                 item.setLabel(u.getUsername() + " - [ " + u.getName() + " " + u.getSurname() + " ]");
                 item.setValue(data);
@@ -313,7 +314,7 @@ final  Object data) throws Exception {
                     Comboitem ci = ((Combobox) event.getTarget()).getSelectedItem();
                     if (ci != null) {
                         Projects project = projectMap.get(p);
-                        if(project.getUsersCollection() == null)
+                        if (project.getUsersCollection() == null)
                             project.setUsersCollection(new HashSet<Users>());
                         project.getUsersCollection().add((Users) ci.getValue());
                         project.setDirty(true);
@@ -403,7 +404,7 @@ final  Object data) throws Exception {
                     boolean canClose = true;
                     if (project.isDirty()) {
                         canClose = false;
-                        if(!checkValues(project)) {
+                        if (!checkValues(project)) {
                             int result = Messagebox.show(Labels.getLabel("allocation.saveChanges"), Labels.getLabel("common.dialog.confirmation"), Messagebox.YES | Messagebox.NO | Messagebox.CANCEL, Messagebox.QUESTION);
                             if (result != Messagebox.CANCEL) {
                                 if (result == Messagebox.YES) {
@@ -413,7 +414,7 @@ final  Object data) throws Exception {
                             }
                         }
                     }
-                    if(canClose) {
+                    if (canClose) {
                         usersService.closeProject(username, project);
                         projectMap.remove(p);
                         availableMap.remove(p);
@@ -424,9 +425,8 @@ final  Object data) throws Exception {
                         comboModel.addAll(getAvailableProjects());
                         projectsListbox.setSelectedIndex(-1);
                         updateMainPanel();
-                    }
-                    else{
-                      event.stopPropagation();
+                    } else {
+                        event.stopPropagation();
                     }
                 }
             }
@@ -444,9 +444,9 @@ final  Object data) throws Exception {
                 if (dragged instanceof Listitem && project != null) {
                     Listitem li = (Listitem) dragged;
                     if (li.getValue() instanceof Users) {
-                        if(project.getUsersCollection() == null)
+                        if (project.getUsersCollection() == null)
                             project.setUsersCollection(new HashSet<Users>());
-                        if(!project.getUsersCollection().contains((Users) li.getValue())) {
+                        if (!project.getUsersCollection().contains((Users) li.getValue())) {
                             project.getUsersCollection().add((Users) li.getValue());
                             project.setDirty(true);
                             updatePanelData(p);
@@ -503,17 +503,16 @@ final  Object data) throws Exception {
         }
     }
 
-    private void renameProject(final Panel p,final  String newProjectName) throws Exception {
+    private void renameProject(final Panel p, final String newProjectName) throws Exception {
         Projects project = projectMap.get(p);
         if (project != null) {
             //update project name
             String oldName = project.getName();
             project.setName(newProjectName);
-            if(checkValues(project)) {
+            if (checkValues(project)) {
                 project.setName(oldName);
                 return;
-            }
-            else {
+            } else {
                 projectService.update(project);
                 // remove existing project panel
                 Portalchildren pc = (Portalchildren) p.getParent();
@@ -560,7 +559,7 @@ final  Object data) throws Exception {
 
         ListModelList listModel = (ListModelList) usersListbox.getModel();
         listModel.clear();
-        if(project.getUsersCollection() == null)
+        if (project.getUsersCollection() == null)
             project.setUsersCollection(new HashSet<Users>());
         Users[] array = project.getUsersCollection().toArray(new Users[0]);
         Listhead listhead = (Listhead) usersListbox.getHeads().toArray()[0];

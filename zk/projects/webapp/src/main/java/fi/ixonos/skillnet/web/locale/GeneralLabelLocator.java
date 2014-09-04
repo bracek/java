@@ -1,12 +1,13 @@
 package fi.ixonos.skillnet.web.locale;
 
 import fi.ixonos.projects.web.servlet.ProjectsInitServlet;
+
 import java.net.URL;
 import java.util.Locale;
 
 import org.zkoss.util.resource.LabelLocator;
 
-/** 
+/**
  * Class which implements a locator for general labels.<br/>
  * It must be registered for Labels with
  * <i>Labels.register(org.zkoss.util.resource.LabelLocator)</i>
@@ -23,7 +24,7 @@ public class GeneralLabelLocator implements LabelLocator {
      * @see org.zkoss.util.resource.LabelLocator#locate(java.util.Locale)
      */
     @Override
-    public URL locate(final Locale locale) throws Exception {
+    public URL locate(Locale locale) throws Exception {
         if (locale == null) {
             locale = new Locale("en");
         }

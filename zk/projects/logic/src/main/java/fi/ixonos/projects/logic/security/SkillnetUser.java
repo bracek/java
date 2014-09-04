@@ -36,9 +36,9 @@ public class SkillnetUser extends User {
 
     @Deprecated
     public SkillnetUser(final String username,
-final  String password,
-final  boolean enabled,
-final  GrantedAuthority[] authorities)
+                        final String password,
+                        final boolean enabled,
+                        final GrantedAuthority[] authorities)
             throws IllegalArgumentException {
         this(username, password, enabled, true, true, authorities);
         logger.debug("deprecated constructor");
@@ -50,30 +50,30 @@ final  GrantedAuthority[] authorities)
     }
 
     public SkillnetUser(final String username,
-final  String password,
-final  boolean enabled,
-final  boolean accountNonExpired,
-final             boolean credentialsNonExpired,
-final  GrantedAuthority[] authorities)
+                        final String password,
+                        final boolean enabled,
+                        final boolean accountNonExpired,
+                        final boolean credentialsNonExpired,
+                        final GrantedAuthority[] authorities)
             throws IllegalArgumentException {
         this(username, password, enabled, accountNonExpired, credentialsNonExpired, true, authorities);
         logger.debug("constructor");
     }
 
     public SkillnetUser(final String username,
-final  String password,
-final  boolean enabled,
-final  boolean accountNonExpired,
-final             boolean credentialsNonExpired,
-final  boolean accountNonLocked,
-final  GrantedAuthority[] authorities)
+                        final String password,
+                        final boolean enabled,
+                        final boolean accountNonExpired,
+                        final boolean credentialsNonExpired,
+                        final boolean accountNonLocked,
+                        final GrantedAuthority[] authorities)
             throws IllegalArgumentException {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
         logger.debug("constructor");
         try {
             //FIXME: why is UsersService not wired as resource? because it doesn't have Spring annotation @Component or @Service
-            if(usersService == null)
-                usersService = (UsersService)ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+            if (usersService == null)
+                usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
             Users user = usersService.getUser(username);
             this.firstName = user.getName();
             this.lastName = user.getSurname();
@@ -121,8 +121,7 @@ final  GrantedAuthority[] authorities)
         return customUserDetails;
     }
 
-    public void setCustomUserDetails(final HashMap<Object,
-final  Object> customUserDetails) {
+    public void setCustomUserDetails(final HashMap<Object, Object> customUserDetails) {
         this.customUserDetails = customUserDetails;
     }
 

@@ -18,7 +18,7 @@ import org.zkoss.zul.Window;
 public final class AddProjectWindow extends Window {
 
     private Projects project;
-    private ProjectsService projectsService = (final ProjectsService) ProjectsApplicationContext.getApplicationContext().getBean("projectsService");
+    private ProjectsService projectsService = ( ProjectsService) ProjectsApplicationContext.getApplicationContext().getBean("projectsService");
 
     public AddProjectWindow() {
         this.project = new Projects();

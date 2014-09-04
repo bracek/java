@@ -19,9 +19,9 @@ import org.zkoss.zul.Listbox;
 public class AddNewUserInitiator extends AnnotateDataBinderInit {
 
     @Resource
-    private CodeTableService codeTableService = (final CodeTableService) SpringUtil.getApplicationContext().getBean("codeTableService");
+    private CodeTableService codeTableService = ( CodeTableService) SpringUtil.getApplicationContext().getBean("codeTableService");
     @Resource
-    protected UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    protected UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
 
     @Override
     public void doAfterCompose(final Page page,

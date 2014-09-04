@@ -13,16 +13,15 @@ import fi.ixonos.projects.logic.service.UsersService;
 import fi.ixonos.projects.web.utils.PhotoUtil;
 
 /**
- * 
  * @author kendrto
  */
 public class UsersPhotoInitiator extends AnnotateDataBinderInit {
 
-    protected UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    protected UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
 
     @Override
     public void doAfterCompose(final Page page,
-final  Component[] comps) throws Exception {
+                               final Component[] comps) throws Exception {
 
         Window usersPhotolInitiator = (Window) comps[0];
 

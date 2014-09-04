@@ -20,8 +20,8 @@ import org.zkoss.zul.Listbox;
  */
 public class EditProjectInitiator extends AnnotateDataBinderInit {
 
-    private ProjectsService projectsService = (final ProjectsService) ProjectsApplicationContext.getApplicationContext().getBean("projectsService");
-    private UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private ProjectsService projectsService = ( ProjectsService) ProjectsApplicationContext.getApplicationContext().getBean("projectsService");
+    private UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
 
     @Override
     public void doAfterCompose(final Page page,

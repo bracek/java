@@ -19,7 +19,7 @@ public final class AddUsersWindow extends Window {
     private Users user;
     private Listbox usersListbox;
     private Listbox updateProjectListbox;
-    private UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    private UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
     private List<Users> addUsersList;
 
     public AddUsersWindow() {

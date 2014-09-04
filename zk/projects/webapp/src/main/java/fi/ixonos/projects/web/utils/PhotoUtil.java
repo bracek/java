@@ -25,7 +25,7 @@ import fi.ixonos.projects.web.servlet.ProjectsInitServlet;
 
 public final class PhotoUtil {
 
-    final static protected UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    final static protected UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
 
     /**
      * handle uploading photo

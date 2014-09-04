@@ -8,6 +8,7 @@ import fi.ixonos.projects.logic.bean.Users;
 import fi.ixonos.projects.logic.context.ProjectsApplicationContext;
 import fi.ixonos.projects.logic.enumeration.ProjectsRole;
 import fi.ixonos.projects.logic.service.UsersService;
+
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Arrays;
@@ -18,6 +19,7 @@ import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
+
 import org.apache.log4j.Logger;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.ldap.core.ContextSource;
@@ -28,7 +30,6 @@ import org.springframework.security.Authentication;
 import org.springframework.security.providers.ldap.LdapAuthenticator;
 
 /**
- *
  * @author polakja
  */
 public class ProjectsAuthenticator implements LdapAuthenticator {
@@ -39,7 +40,7 @@ public class ProjectsAuthenticator implements LdapAuthenticator {
     private static final String LDAP_DefaultUSFormat = "CN={0},OU=Kosice,OU=Foreign,OU=People";
     private static final String LDAP_DefaultDNFormat = "CN={0},OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local";
 
-    private final UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private final UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
 
     private final ContextSource contextSource;
 
@@ -60,7 +61,7 @@ public class ProjectsAuthenticator implements LdapAuthenticator {
 
             String principal = (String) authentication.getPrincipal();
             String userCN = null;
-            if(usersService.isUserAlreadyRegistered(principal)) { // in case of 'polakja' login - after 1st logon
+            if (usersService.isUserAlreadyRegistered(principal)) { // in case of 'polakja' login - after 1st logon
                 Users user = usersService.getUser(principal);
                 userCN = user.getName() + " " + user.getSurname();
             } else { // in case of 'Jan Polak' login - in 1st logon or fallback after 1st logon
@@ -78,17 +79,17 @@ public class ProjectsAuthenticator implements LdapAuthenticator {
                 logger.debug(MessageFormat.format("LDAP authentication successful: Welcome user {0}", accountName));
 
                 logger.debug("Importing Logged User '" + accountName + "'.");
-                String[] names = ((String)adapter.getAttributes().get("name").get()).split(" ");
+                String[] names = ((String) adapter.getAttributes().get("name").get()).split(" ");
                 String email = (String) getOptionalAttribute(adapter.getAttributes(), "mail");
                 String phone = (String) getOptionalAttribute(adapter.getAttributes(), "telephoneNumber");
                 String position = (String) getOptionalAttribute(adapter.getAttributes(), "description");
                 String location = (String) getOptionalAttribute(adapter.getAttributes(), "l");
                 boolean isGroupManager = adapter.getAttributes().get("directReports") != null;
-                if(!usersService.isUserAlreadyRegistered(accountName)) {
-                    if(isGroupManager)
-                        usersService.addNewUser(accountName, "", names[0], names[names.length-1], email, phone, location, position, true, null, Arrays.asList(new String[]{ProjectsRole.ROLE_GM, ProjectsRole.ROLE_ADMIN}));
+                if (!usersService.isUserAlreadyRegistered(accountName)) {
+                    if (isGroupManager)
+                        usersService.addNewUser(accountName, "", names[0], names[names.length - 1], email, phone, location, position, true, null, Arrays.asList(new String[]{ProjectsRole.ROLE_GM, ProjectsRole.ROLE_ADMIN}));
                     else
-                        usersService.addNewUser(accountName, "", names[0], names[names.length-1], email, phone, location, position, true, null, Arrays.asList(new String[]{ProjectsRole.ROLE_USER}));
+                        usersService.addNewUser(accountName, "", names[0], names[names.length - 1], email, phone, location, position, true, null, Arrays.asList(new String[]{ProjectsRole.ROLE_USER}));
                 }
                 logger.debug("User '" + accountName + "' successfully imported/updated. Password is [LDAP PASSWORD]");
 
@@ -121,7 +122,7 @@ public class ProjectsAuthenticator implements LdapAuthenticator {
     }
 
     private Object getOptionalAttribute(final Attributes attrs,
-final  String attrName) throws NamingException {
+                                        final String attrName) throws NamingException {
         return attrs.get(attrName) != null ? attrs.get(attrName).get() : "";
     }
 }

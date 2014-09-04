@@ -3,6 +3,7 @@ package fi.ixonos.projects.logic.security.ldap;
 import fi.ixonos.projects.logic.bean.Users;
 import fi.ixonos.projects.logic.context.ProjectsApplicationContext;
 import fi.ixonos.projects.logic.service.UsersService;
+
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +34,7 @@ public class ImportLdapUsersService {
     private static final String LDAP_DefaultUSFilter = "(final objectclass=person)";
     private static final String LDAP_DefaultSFormat = "OU=Kosice,OU=Foreign,OU=People";
     private static final String LDAP_DefaultDNFormat = "CN={0},OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local";
-    private final UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private final UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
     private final ContextSource contextSource;
 
     public ImportLdapUsersService(final ContextSource contextSource) {
@@ -42,13 +43,14 @@ public class ImportLdapUsersService {
 
     /**
      * Returns the list of users values from LDAP.
-     * @param ldapManagerName user name, like: "Peter Obluda" or "obludpe".
+     *
+     * @param ldapManagerName     user name, like: "Peter Obluda" or "obludpe".
      * @param ldapManagerPassword password.
      * @return List of strings, each strings like: "CN=Marek Menhert,OU=Kosice,OU=Foreign,OU=People,DC=ixonos,DC=local";
-     **/
+     */
     @SuppressWarnings("unchecked")
     public List<String> getUsersFullNameList(final String principal,
-final  String ldapManagerPassword) {
+                                             final String ldapManagerPassword) {
         NamingEnumeration results = null;
         DirContext ctx = null;
         try {
@@ -101,8 +103,8 @@ final  String ldapManagerPassword) {
     }
 
     public List<Map<String, Object>> findUsersByCN(final String searchExpression,
-final  String principal,
-final  String ldapManagerPassword) {
+                                                   final String principal,
+                                                   final String ldapManagerPassword) {
         NamingEnumeration results = null;
         DirContext ctx = null;
         try {
@@ -176,7 +178,7 @@ final  String ldapManagerPassword) {
     }
 
     private Object getOptionalAttribute(final Attributes attrs,
-final  String attrName) throws NamingException {
+                                        final String attrName) throws NamingException {
         return attrs.get(attrName) != null ? attrs.get(attrName).get() : "";
     }
 }

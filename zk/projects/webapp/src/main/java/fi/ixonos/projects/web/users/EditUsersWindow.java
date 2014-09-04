@@ -24,7 +24,7 @@ public final class EditUsersWindow extends Window implements IZkWindowGeneralAct
     private Users user;
     private Listbox usersListbox;
     private Listbox updateProjectListbox;
-    private ProjectsService projectsService = (final ProjectsService) SpringUtil.getApplicationContext().getBean("projectsService");
+    private ProjectsService projectsService = (ProjectsService) SpringUtil.getApplicationContext().getBean("projectsService");
     private List<Users> addUsersList;
 
     public EditUsersWindow() {

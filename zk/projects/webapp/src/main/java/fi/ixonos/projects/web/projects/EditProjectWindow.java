@@ -6,6 +6,7 @@ import fi.ixonos.projects.logic.service.ProjectsService;
 import fi.ixonos.projects.logic.service.UsersService;
 import fi.ixonos.projects.web.allocation.UsersComparator;
 import fi.ixonos.projects.web.zk.IZkWindowGeneralAction;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
@@ -30,7 +32,6 @@ import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Window;
 
 /**
- *
  * @author katrami
  */
 public class EditProjectWindow extends Window implements IZkWindowGeneralAction<Projects>, IEditProjectWindowAction {
@@ -40,8 +41,8 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
     private Listbox projectsListbox;
     private Listbox usersListbox;
     private Listbox updateProjectListbox;
-    private ProjectsService projectsService = (final ProjectsService) SpringUtil.getApplicationContext().getBean("projectsService");
-    private UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    private ProjectsService projectsService = (ProjectsService) SpringUtil.getApplicationContext().getBean("projectsService");
+    private UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
     private List<Users> addUsersList;
 
     public EditProjectWindow() {
@@ -100,7 +101,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         if (psListbox.getSelectedIndex() > -1) {
             List projects = (List) psListbox.getModel();
             setProject((Projects) projects.get(psListbox.getSelectedIndex()));
-            ((Listbox)getFellow("usersListbox")).setVisible(getProject() != null);
+            ((Listbox) getFellow("usersListbox")).setVisible(getProject() != null);
             refreshUsersOnProject();
             refreshListOfUsersWhichAreNotInProject();
         }
@@ -141,7 +142,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         if (project.getUsersCollection() == null) {
             project.setUsersCollection(new HashSet<Users>());
         }
-        if(!project.getUsersCollection().contains(this.user)){
+        if (!project.getUsersCollection().contains(this.user)) {
             project.getUsersCollection().add(this.user);
         }
         projectsService.update(this.project);
@@ -180,7 +181,7 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
             if (project.getUsersCollection() == null) {
                 project.setUsersCollection(new HashSet<Users>());
             }
-            if(!project.getUsersCollection().contains(selectedUser)){
+            if (!project.getUsersCollection().contains(selectedUser)) {
                 project.getUsersCollection().add(selectedUser);
             }
             projectsService.update(this.project);
@@ -229,8 +230,8 @@ public class EditProjectWindow extends Window implements IZkWindowGeneralAction<
         projectsList.addAll(projectsService.readAll());
     }
 
-    private Component getParentComponent(final Component component,
-final  Class clazz) throws Exception {
+    private Component getParentComponent(Component component,
+                                         final Class clazz) throws Exception {
         int index = 0;
         while ((component != null) && !clazz.isInstance((component = component.getParent()))) {
             index++;

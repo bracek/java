@@ -21,7 +21,7 @@ import org.springframework.security.userdetails.User;
  */
 public class UsersEditDetailInitiator extends AnnotateDataBinderInit {
 
-	protected UsersService usersService = (final UsersService) SpringUtil
+	protected UsersService usersService = (UsersService) SpringUtil
 			.getApplicationContext().getBean("usersService");
 
 	@Override

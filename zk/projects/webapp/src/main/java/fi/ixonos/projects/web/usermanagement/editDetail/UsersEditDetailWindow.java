@@ -31,7 +31,7 @@ public class UsersEditDetailWindow extends Window implements IUserEditDetailWind
 
     private static final long serialVersionUID = 1L;
     private Users user;
-    private UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    private UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
 
     /**
      * @{@inheritDoc}

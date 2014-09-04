@@ -22,13 +22,13 @@ import fi.ixonos.projects.logic.service.UsersService;
 public class UserManagementInitiator extends AnnotateDataBinderInit {
 
 	@Resource
-	private CodeTableService codeTableService = (final CodeTableService)SpringUtil.getApplicationContext().getBean("codeTableService");
+	private CodeTableService codeTableService = ( CodeTableService)SpringUtil.getApplicationContext().getBean("codeTableService");
 
 	@Resource
-	protected UsersService usersService = (final UsersService)SpringUtil.getApplicationContext().getBean("usersService");
+	protected UsersService usersService = (UsersService)SpringUtil.getApplicationContext().getBean("usersService");
 	
 	@Resource
-	protected GroupsService groupsService = (final GroupsService)SpringUtil.getApplicationContext().getBean("groupsService");
+	protected GroupsService groupsService = (GroupsService)SpringUtil.getApplicationContext().getBean("groupsService");
 
 	@Override
 	public void doAfterCompose(final Page page,

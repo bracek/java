@@ -40,7 +40,7 @@ final  Object data) throws Exception {
         item.setLabel(renderedAuthority.getCode());
     }
 
-    private Component getParentComponent(final Component component,
+    private Component getParentComponent( Component component,
 final  Class clazz) throws Exception {
         int index = 0;
         while ((component != null) && !clazz.isInstance((component = component.getParent()))) {

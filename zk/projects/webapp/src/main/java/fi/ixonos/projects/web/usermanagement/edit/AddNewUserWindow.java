@@ -109,7 +109,7 @@ public class AddNewUserWindow extends Window {
 
     }
 
-    private Component getParentComponent(final Component component,
+    private Component getParentComponent(Component component,
 final  Class clazz)
             throws Exception {
         int index = 0;

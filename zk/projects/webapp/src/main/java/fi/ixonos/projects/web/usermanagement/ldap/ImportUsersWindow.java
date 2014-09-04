@@ -39,8 +39,8 @@ public class ImportUsersWindow extends Window {
     private BindingListModel ldapUsers;
     private String ldapName;
     private String ldapPassword;
-    private final UsersService usersService = (final UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
-    private final ImportLdapUsersService ldapUsersService = (final ImportLdapUsersService) ProjectsApplicationContext.getApplicationContext().getBean("ldapUsersService");
+    private final UsersService usersService = (UsersService) ProjectsApplicationContext.getApplicationContext().getBean("usersService");
+    private final ImportLdapUsersService ldapUsersService = (ImportLdapUsersService) ProjectsApplicationContext.getApplicationContext().getBean("ldapUsersService");
 
     @SuppressWarnings("unchecked")
     public void loadLdapUsers(final Event event) throws Exception {

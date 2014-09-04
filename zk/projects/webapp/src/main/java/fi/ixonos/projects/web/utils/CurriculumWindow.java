@@ -20,7 +20,7 @@ import static fi.ixonos.projects.logic.enumeration.ProjectsRole.ROLE_GM;
  */
 public final class CurriculumWindow {
 
-    final static protected UsersService usersService = (final UsersService) SpringUtil.getApplicationContext().getBean("usersService");
+    final static protected UsersService usersService = (UsersService) SpringUtil.getApplicationContext().getBean("usersService");
     public static final String CURRICULUM_DOC_SUFFIX = "_cv.doc";
 
     /**

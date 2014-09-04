@@ -3,16 +3,14 @@ package fi.ixonos.projects.web.utils;
 import org.zkoss.zk.ui.Component;
 
 
-
 /**
- *
  * @author katrami
  * @date Oct 29, 2010
  */
 public class ZkUtils {
 
-    public static Component getParentComponent(final Component component,
-final  Class clazz) throws Exception {
+    public static Component getParentComponent(Component component,
+                                               final Class clazz) throws Exception {
         int index = 0;
         while ((component != null) && !clazz.isInstance((component = component.getParent()))) {
             index++;
