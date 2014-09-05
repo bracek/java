@@ -11,44 +11,43 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author SivaLabs
- * 
  */
 @Repository
 @Transactional
 public class ContactsDAO {
-	@Autowired
-	private SessionFactory sessionFactory;
+    @Autowired
+    private SessionFactory sessionFactory;
 
-	public Contact getById(final int id) {
-		return (Contact) sessionFactory.getCurrentSession().get(Contact.class,
-				id);
-	}
+    public Contact getById(final int id) {
+        return (Contact) sessionFactory.getCurrentSession().get(Contact.class,
+                id);
+    }
 
-	public List<Contact> searchContacts(final String name) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
-				Contact.class);
-		criteria.add(Restrictions.ilike("name", name + "%"));
-		return criteria.list();
-	}
+    public List<Contact> searchContacts(final String name) {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+                Contact.class);
+        criteria.add(Restrictions.ilike("name", name + "%"));
+        return criteria.list();
+    }
 
-	@SuppressWarnings("unchecked")
-	public List<Contact> getAllContacts() {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
-				Contact.class);
-		return criteria.list();
-	}
+    @SuppressWarnings("unchecked")
+    public List<Contact> getAllContacts() {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+                Contact.class);
+        return criteria.list();
+    }
 
-	public int save(final Contact contact) {
-		return (Integer) sessionFactory.getCurrentSession().save(contact);
-	}
+    public int save(final Contact contact) {
+        return (Integer) sessionFactory.getCurrentSession().save(contact);
+    }
 
-	public void update(final Contact contact) {
-		sessionFactory.getCurrentSession().merge(contact);
-	}
+    public void update(final Contact contact) {
+        sessionFactory.getCurrentSession().merge(contact);
+    }
 
-	public void delete(final int id) {
-		Contact c = getById(id);
-		sessionFactory.getCurrentSession().delete(c);
-	}
+    public void delete(final int id) {
+        Contact c = getById(id);
+        sessionFactory.getCurrentSession().delete(c);
+    }
 
 }
