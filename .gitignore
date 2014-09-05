@@ -1,13 +1,14 @@
 bin/
 target/
 *.prefs
-.settings/
 .settings/*
 .project/
-.idea/
+.idea
 .idea/*
 .classpath
 .iml
+.impl
 .project
-/springHibernate/geeks-contacts/geeeksContacts.iml
 *.xml~
+*.jar
+/postgres/jsp/contacts/*.iml
