@@ -87,8 +87,8 @@ public class ContactsControllers {
     @RequestMapping(value = "/updateContact", method = RequestMethod.GET)
     public ModelAndView edit(final @RequestParam("id") Integer id) {
         final ModelAndView mav = new ModelAndView("editContact");
+        final Contact contact = contactsDAO.read(id);
 //        final Contact contact = contactsDAO.getById(id);
-        final Contact contact = contactsDAO.getById(id);
         mav.addObject("editContact", contact);
         return mav;
     }

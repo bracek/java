@@ -14,9 +14,6 @@
 
     <context:annotation-config/>
     <context:component-scan base-package="com.att"/>
-
-
-    <mvc:annotation-driven/>
     <context:property-placeholder location="classpath:config.properties"/>
 
 
@@ -29,14 +26,15 @@
           p:basename="messages"/>
 
 
-    <bean id="transactionManager"
-          class="org.springframework.orm.hibernate3.HibernateTransactionManager"
-          p:sessionFactory-ref="sessionFactory"/>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
 
     <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 
-        <property name="dataSource" ref="dataSourceProjects"/>
+        <property name="dataSource" ref="dataSource"/>
 
         <property name="hibernateProperties">
 
@@ -52,10 +50,10 @@
 
 
     <bean id="projectsTxManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-          p:dataSource-ref="dataSourceProjects"/>
+          p:dataSource-ref="dataSource"/>
 
 
-    <bean id="dataSourceProjects"
+    <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource"
           p:driverClassName="${jdbc.driverClassName}" p:password="${jdbc.password}"
           p:url="${jdbc.url}" p:username="${jdbc.username}"/>

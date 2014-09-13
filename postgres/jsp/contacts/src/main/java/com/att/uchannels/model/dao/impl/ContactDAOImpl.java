@@ -20,9 +20,9 @@ public class ContactDAOImpl extends GenericDAOImpl<Contact> implements ContactDA
         setSessionFactory(sessionFactory);
     }
 
-    public Contact getById(final int id) {
-        return (Contact) getSession().get(Contact.class,
-                id);
-    }
+//    public Contact getById(final int id) {
+//        return (Contact) getSession().get(Contact.class,
+//                id);
+//    }
 }
 

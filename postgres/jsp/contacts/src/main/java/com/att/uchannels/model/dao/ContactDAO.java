@@ -8,5 +8,5 @@ import com.att.uchannels.domain.Contact;
 
 public interface ContactDAO extends GenericDAO<Contact> {
 
-    public Contact getById(final int id);
+//    public Contact getById(final int id);
 }

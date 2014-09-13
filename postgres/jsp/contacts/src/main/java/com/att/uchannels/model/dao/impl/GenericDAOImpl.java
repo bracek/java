@@ -9,7 +9,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Example;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataAccessException;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 /**
  * Created by miroslav.katrak on 4.9.2014.
@@ -27,12 +27,11 @@ public abstract class GenericDAOImpl<T> extends HibernateDaoSupport implements G
             getHibernateTemplate().save(t);
             return true;
         } catch (DataAccessException dataAccessException) {
-            if (dataAccessException.getCause() instanceof ConstraintViolationException){
-                ConstraintViolationException constraintViolationException = (ConstraintViolationException)dataAccessException.getCause();
-                throw new ConstraintViolationException(constraintViolationException.getMessage(),constraintViolationException.getSQLException(),constraintViolationException.getConstraintName());
+            if (dataAccessException.getCause() instanceof ConstraintViolationException) {
+                ConstraintViolationException constraintViolationException = (ConstraintViolationException) dataAccessException.getCause();
+                throw new ConstraintViolationException(constraintViolationException.getMessage(), constraintViolationException.getSQLException(), constraintViolationException.getConstraintName());
 
-            }
-            else{
+            } else {
                 throw new RuntimeException(dataAccessException.getMessage());
             }
         }
@@ -48,7 +47,7 @@ public abstract class GenericDAOImpl<T> extends HibernateDaoSupport implements G
         try {
             getHibernateTemplate().saveOrUpdate(t);
             return true;
-        }catch (DataAccessException dataAccessException) {
+        } catch (DataAccessException dataAccessException) {
             throw new RuntimeException(dataAccessException.getMessage());
         }
     }
@@ -63,7 +62,7 @@ public abstract class GenericDAOImpl<T> extends HibernateDaoSupport implements G
         try {
             getHibernateTemplate().update(t);
             return true;
-        }catch (DataAccessException dataAccessException) {
+        } catch (DataAccessException dataAccessException) {
             throw new RuntimeException(dataAccessException.getMessage());
         }
     }
@@ -131,7 +130,8 @@ public abstract class GenericDAOImpl<T> extends HibernateDaoSupport implements G
     @SuppressWarnings("unchecked")
     public List<T> readByCriteria(final T t) {
         try {
-            return getSession().createCriteria(getEntityClass()).add(Example.create(t)).list();
+//            return getSession().createCriteria(getEntityClass()).add(Example.create(t)).list();
+            return null;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -144,7 +144,8 @@ public abstract class GenericDAOImpl<T> extends HibernateDaoSupport implements G
     @SuppressWarnings("unchecked")
     public List<T> readByCriteria(final DetachedCriteria criteria) {
         try {
-            return criteria.getExecutableCriteria(getSession()).list();
+//            return criteria.getExecutableCriteria(getSession()).list();
+            return null;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -156,7 +157,8 @@ public abstract class GenericDAOImpl<T> extends HibernateDaoSupport implements G
     @SuppressWarnings("unchecked")
     public T readUniqueByCriteria(final DetachedCriteria criteria) {
         try {
-            return (T) criteria.getExecutableCriteria(getSession()).uniqueResult();
+//            return (T) criteria.getExecutableCriteria(getSession()).uniqueResult();
+            return null;
         } catch (ClassCastException e) {
             logger.error(e);
             throw new RuntimeException(e.getMessage());
